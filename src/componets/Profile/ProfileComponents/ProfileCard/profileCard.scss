@@ -1,0 +1,85 @@
+.BackgroundContainer{
+    min-height: 195.5px;
+    max-height: 195.5px;
+    position: relative;
+    overflow-y: hidden;
+    background: linear-gradient(62deg, rgb(21, 213, 235) 0.00%, rgb(255, 0, 191) 100.00%);
+    div {
+        position: absolute;
+        // top: 0;
+        // left: 0;
+        // right: 0;
+        bottom: 0;
+        transition-duration: .4s;
+        transition-timing-function: ease-in-out;
+        transition-property: opacity;
+        transition-delay: 1s;
+        opacity: 1;
+
+        div {
+            position: relative;
+            width: 100%;
+            padding-bottom: 25%;
+            cursor: pointer;
+        } 
+    }
+}
+.CamContainer {
+    position: absolute;
+    top: calc(1.6rem + .4rem);
+    right: calc(1.6rem + .4rem);
+
+    button {
+        height: 3.2rem;
+    width: 3.2rem;
+    min-width: auto;
+    background-color: white;
+    color: #004182;
+    border: none;
+    border-radius: 50%;
+    }
+}
+.IconCam {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.ProfileImgContainer2 {
+    margin-top: -112px;
+    z-index: 4;
+
+    .ProfileImgContainer3 {
+        width: 160px;
+    height: 160px;
+    box-sizing: border-box;
+    border-radius: 49.9%;
+    background-color: white;
+    border: 4px solid white;
+
+    .ProfileImgContainer4 {
+        width: 100%;
+    height: 100%;
+    background-color:white;
+    display: block;
+    border-radius: 49.9%;
+    img {
+        width: 152px;
+        height: 152px;
+        border-radius: 50%;
+    }
+    }
+    }
+}
+
+
+p {
+    margin: 0
+}
+
+    li {
+        list-style-type: none;
+    }
+
+a {
+    text-decoration: none;
+}
