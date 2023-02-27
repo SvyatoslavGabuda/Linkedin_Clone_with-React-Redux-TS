@@ -1,0 +1,14 @@
+footer {
+  font-size: 0.8rem;
+  h6 {
+    font-size: 0.9rem;
+  }
+  a {
+    text-decoration: none;
+    color: gray;
+    transition: all 0.5s ease;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
