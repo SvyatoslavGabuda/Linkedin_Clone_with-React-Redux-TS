@@ -5,6 +5,7 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { Counter } from "./features/counter/Counter";
 import "./App.scss";
+import { Chat } from "./componets/Chat/Chat";
 import MyFooter from "./componets/Footer/MyFooter";
 import { Home } from "./componets/Home/Home";
 import MyNav from "./componets/NavBar/MyNav";
@@ -21,6 +22,7 @@ function App() {
             <Route path="/profile/:id" element={<Profile />} />
           </Routes>
         </Container>
+        <Chat />
         <MyFooter />
       </BrowserRouter>
     </>
