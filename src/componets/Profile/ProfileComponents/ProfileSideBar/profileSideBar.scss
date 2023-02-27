@@ -1,0 +1,56 @@
+// CSS sideBarUpperSection instructions
+.sideBarUpperSection {
+  .upperSectionLink {
+    color: grey;
+    font-size: 1rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline blueviolet;
+    }
+  }
+
+  .sideBarQuestionIcon {
+    font-size: 0.9rem;
+  }
+}
+
+// CSS BusinessSection instructions
+
+.businessItem {
+  .businessCard {
+    .businessImg {
+      width: 48px;
+      height: 48px;
+      border-radius: 50px;
+      background-color: black;
+    }
+
+    .businessText {
+      h4 {
+        font-size: 1em;
+
+        &:hover {
+          color: #0a66c2;
+          text-decoration: underline #0a66c2;
+        }
+      }
+
+      p {
+        font-size: 0.9em;
+      }
+    }
+  }
+
+  .btn {
+    font-size: 0.8em;
+    border-radius: 20px;
+    padding: 3px 1em;
+    margin-left: 5em;
+    &:hover {
+      border: 1px solid grey;
+      color: black;
+      background-color: rgba(0, 0, 0, 0.144);
+    }
+  }
+}
