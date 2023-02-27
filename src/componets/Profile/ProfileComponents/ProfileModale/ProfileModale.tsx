@@ -30,7 +30,9 @@ export const ProfileModale = () => {
       });
       console.log(response);
       if (response.ok) {
-        console.log();
+        console.log("tutto apposto");
+      } else {
+        console.log("qualcosa è andato storoto");
       }
     } catch (error) {}
   };
