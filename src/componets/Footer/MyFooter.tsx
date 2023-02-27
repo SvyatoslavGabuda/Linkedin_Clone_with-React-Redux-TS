@@ -8,7 +8,9 @@ const MyFooter = () => {
     <footer>
       <Container>
         <Row>
-          <Col>Logo Linkedin Esteso</Col>
+          <Col>
+            <img className="footer-logo" src="logo.webp" alt="Linkedin Logo" height={"24px"} />
+          </Col>
         </Row>
         <Row className="">
           <Col className="d-flex flex-column">
@@ -81,14 +83,16 @@ const MyFooter = () => {
             </Link>
           </Col>
           <Col xs={3} className="d-flex flex-column">
-            <h6>Seleziona lingua</h6>
+            <h6 className="grayfooter">Seleziona lingua</h6>
             <Form.Select aria-label="Seleziona la lingua">
               <option value="it">Italiano (Italiano)</option>
             </Form.Select>
           </Col>
         </Row>
         <Row>
-          <Col>Linkedin Corporation &copy; {new Date().getFullYear()}</Col>
+          <Col>
+            <p className="copyright">Linkedin Corporation &copy; {new Date().getFullYear()}</p>
+          </Col>
         </Row>
       </Container>
     </footer>
