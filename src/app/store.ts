@@ -1,10 +1,9 @@
 import { configureStore, ThunkAction, Action, combineReducers } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
+
 import { allProfileReduce } from "./reducers/allProfileReduce";
 
 const allReducer = combineReducers({
   profile: allProfileReduce,
-  counter: counterReducer,
 });
 export const store = configureStore({
   reducer: allReducer,

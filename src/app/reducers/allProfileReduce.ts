@@ -11,8 +11,8 @@ export interface AllProfile {
   generalProfile: Iprofile | null;
 }
 
-const initialState: AllProfile = {
-  allProfile: [],
+const initialState = {
+  allProfile: [] as Iprofile[],
   myProfile: null,
   generalProfile: null,
 };

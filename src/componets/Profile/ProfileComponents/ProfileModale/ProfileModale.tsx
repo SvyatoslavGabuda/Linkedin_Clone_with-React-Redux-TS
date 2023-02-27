@@ -14,9 +14,9 @@ export const ProfileModale = () => {
 
   const [modalValue, setModalValue] = useState<Iprofile>();
 
-  const myProfile = useAppSelector((state) => state.profile);
+  const myProfile = useAppSelector((state: RootState) => state.profile.myProfile);
   console.log(myProfile);
-  //const myProfile = useSelector<RootState>((state) => state.profile.myprofile);
+  //const myProfile = useSelector((state:RootState) => state.profile.myProfile);
 
   const putInfo = async () => {
     try {
@@ -25,7 +25,7 @@ export const ProfileModale = () => {
         headers: {
           "Content-Type": "application/json",
           Authorization: process.env.REACT_APP_BEARER || "nonandra",
-          body: "",
+          body: JSON.stringify(modalValue),
         },
       });
       console.log(response);
@@ -60,7 +60,14 @@ export const ProfileModale = () => {
           >
             <Form.Group className="mb-3">
               <Form.Label>Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter Name" />
+              <Form.Control
+                type="text"
+                placeholder="Enter Name"
+                value={modalValue?.name}
+                onChange={(e) => {
+                  //setModalValue(...modalValue, modalValue?.name);
+                }}
+              />
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>surname</Form.Label>
