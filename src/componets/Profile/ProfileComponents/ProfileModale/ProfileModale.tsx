@@ -14,7 +14,7 @@ export const ProfileModale = () => {
 
   const [modalValue, setModalValue] = useState<Iprofile>();
 
-  const myProfile = useAppSelector((state: RootState) => state.profile.myProfile);
+  const myProfile = useAppSelector((state: { profile: AllProfile }) => state.profile.myProfile);
   console.log(myProfile);
   //const myProfile = useSelector((state:RootState) => state.profile.myProfile);
 

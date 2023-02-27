@@ -11,14 +11,14 @@ export interface AllProfile {
   generalProfile: Iprofile | null;
 }
 
-const initialState = {
+const initialState: AllProfile = {
   allProfile: [] as Iprofile[],
   myProfile: null,
   generalProfile: null,
 };
 
 export const allProfileReduce = (
-  state = initialState,
+  state: AllProfile = initialState,
   action: PayloadAction<Iprofile[] | Iprofile>
 ) => {
   switch (action.type) {

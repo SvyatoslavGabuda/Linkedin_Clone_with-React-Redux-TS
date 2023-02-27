@@ -8,7 +8,6 @@ const allReducer = combineReducers({
 export const store = configureStore({
   reducer: allReducer,
   // {
-  //   counter: counterReducer,
   //   profile: allProfileReduce,
   // },
 });
