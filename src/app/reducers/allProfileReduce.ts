@@ -4,19 +4,23 @@ import { Iprofile } from "../../componets/Profile/Profile";
 export const ADD_TO_ALLPROFILE = "ADD_TO_ALLPROFILE";
 export const ADD_TO_MYPROFILE = "ADD_TO_MYPROFILE";
 export const ADD_TO_GENERALPROFILE = "ADD_TO_GENERALPROFILE";
-interface AllProfile {
+
+export interface AllProfile {
   allProfile: Iprofile[];
   myProfile: Iprofile | null;
   generalProfile: Iprofile | null;
 }
 
-const initialState: AllProfile = {
-  allProfile: [],
+const initialState = {
+  allProfile: [] as Iprofile[],
   myProfile: null,
   generalProfile: null,
 };
 
-const allProfileReduce = (state = initialState, action: PayloadAction<Iprofile[] | Iprofile>) => {
+export const allProfileReduce = (
+  state = initialState,
+  action: PayloadAction<Iprofile[] | Iprofile>
+) => {
   switch (action.type) {
     case ADD_TO_ALLPROFILE:
       return {
@@ -35,7 +39,6 @@ const allProfileReduce = (state = initialState, action: PayloadAction<Iprofile[]
       };
 
     default:
-      return { state };
+      return state;
   }
 };
-export default allProfileReduce;
