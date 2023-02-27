@@ -1,0 +1,13 @@
+.chat {
+  background-color: white;
+  border: 1px solid gray;
+  width: 280px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 80vh;
+  transition: all 0.5s ease;
+}
+.chat-closed {
+  transform: translateY(calc(80vh - 2rem));
+}
