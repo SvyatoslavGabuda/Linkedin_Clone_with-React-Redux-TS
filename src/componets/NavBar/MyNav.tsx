@@ -52,10 +52,9 @@ const MyNav = () => {
                 <a className={location === "/profile/me" ? "nav-link profilenav nav-link-active" : "nav-link profilenav"}>
                   <img className="nav-profile-pic rounded-circle" src="https://placekitten.com/300/200" alt="Profile Picture" />
                   <NavDropdown title="Tu" id="navbarScrollingDropdown">
-                    <NavDropdown.Item>Action</NavDropdown.Item>
-                    <NavDropdown.Item>Another action</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item>Something else here</NavDropdown.Item>
+                    <Link to="/profile/me" className="nav-link">
+                      Visita il profilo
+                    </Link>
                   </NavDropdown>
                 </a>
 

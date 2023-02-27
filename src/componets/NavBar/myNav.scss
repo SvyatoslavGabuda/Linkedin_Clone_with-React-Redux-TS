@@ -34,3 +34,11 @@
     color: black;
   }
 }
+#navbarScrollingDropdown {
+  a {
+    color: black;
+    &:hover {
+      color: lightblue;
+    }
+  }
+}
