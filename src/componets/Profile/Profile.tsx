@@ -44,6 +44,7 @@ const Profile = () => {
   useEffect(() => {
     profileFetch();
   }, []);
+
   return (
     <>
       <ProfileCard />
