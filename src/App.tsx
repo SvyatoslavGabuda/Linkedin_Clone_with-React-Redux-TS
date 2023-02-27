@@ -20,8 +20,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/profile/:id" element={<Profile />} />
           </Routes>
-          <MyFooter />
         </Container>
+        <MyFooter />
       </BrowserRouter>
     </>
   );
