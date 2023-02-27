@@ -9,6 +9,8 @@ import {
   ADD_TO_MYPROFILE,
 } from "../../app/reducers/allProfileReduce";
 import { useParams } from "react-router-dom";
+import { ProfileModale } from "./ProfileComponents/ProfileModale/ProfileModale";
+import { useAppDispatch } from "../../app/hooks";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -36,7 +38,7 @@ const Profile = () => {
   const params = useParams();
 
   //dispatch
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   //fetch tutti i profili
   const profileFetch = async () => {
     try {
@@ -50,8 +52,12 @@ const Profile = () => {
         console.log(data);
         setAllProfile(data);
         dispatch({ type: ADD_TO_ALLPROFILE, payload: data });
+      } else {
+        console.log("erro");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   //fetch Profilo in base al BEARER
   const myProfileFetch = async () => {
@@ -90,9 +96,13 @@ const Profile = () => {
     profileFetch();
     myProfileFetch();
   }, []);
+  useEffect(() => {
+    idProfileFetch();
+  }, [params]);
 
   return (
     <>
+      <ProfileModale />
       <ProfileCard />
     </>
   );
