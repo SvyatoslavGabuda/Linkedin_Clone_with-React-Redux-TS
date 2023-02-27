@@ -1,4 +1,8 @@
 import "./profileCard.scss";
 export const ProfileCard = () => {
-  return <></>;
+  return (
+    <>
+      <h2>qua c'e il profilo</h2>
+    </>
+  );
 };
