@@ -30,8 +30,8 @@
     right: calc(1.6rem + .4rem);
 
     button {
-        height: 3.2rem;
-    width: 3.2rem;
+        height: 2.4rem;
+        width: 2.4rem;
     min-width: auto;
     background-color: white;
     color: #004182;
@@ -40,8 +40,11 @@
     }
 }
 .IconCam {
-    width: 1.6rem;
-    height: 1.6rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 1.3rem;
+    height: 1.3rem;
 }
 
 .ProfileImgContainer2 {
@@ -70,16 +73,89 @@
     }
     }
 }
-
-
-p {
-    margin: 0
-}
-
-    li {
-        list-style-type: none;
+.ButtonContainer3 {
+    button {
+        background-color: white;
+        border: none;
+        border-radius: 50%;
+        height: 4rem;
+    width: 4rem;
+        & :hover {
+            background-color: lightgray;
+            border-radius: 50%;
+        }
+        li {
+            padding: 10px 0px;
+        }
     }
-
+}
+.IconPen {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.Button2 {
+    padding: .6rem 1.2rem;
+    border: none;  
+    color: #0d6efd;
+    background-color: white;
+    box-shadow: inset 0 0 0 1px #0d6efd;
+ &:hover {
+    box-shadow: inset 0 0 0 2px #0d6efd;
+background-color: #0d6dfd3f;
+ }
+}
+.Button3 {
+    padding: .6rem 1.2rem;
+    border: none;
+    color: #6c757d;
+    background-color: white;
+    box-shadow: inset 0 0 0 1px #6c757d;
+    &:hover {
+        box-shadow: inset 0 0 0 2px #6c757d;
+        background-color: #6c757d3f;
+    }
+}
+.Button1,.Button2, .Button3,.Button4, p{
+    font-weight: 500;
+}
+p {
+    margin: 0;
+    font-size: 0.9em;
+}
+li {
+    list-style-type: none;
+}
+ul {
+    li {
+        img {
+            width: 32px;
+            height: 32px;
+        }
+        span {
+            font-weight: 500;
+            a {
+                color: black;
+            }
+        }
+    }
+}
 a {
     text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+section {
+    border-radius: 10px;
+    overflow: hidden;
+}
+.Button4 {
+    width: 100%;
+    border: none;
+    background-color: white;
+    color: #6c757d;
+    padding: 10px;
+    &:hover {
+        background-color: lightgray;
+    }
 }
