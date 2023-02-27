@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { ADD_TO_ALLPROFILE, ADD_TO_GENERALPROFILE, ADD_TO_MYPROFILE } from "../../app/reducers/allProfileReduce";
 import { useParams } from "react-router-dom";
+import { ProfileSideBar } from "./ProfileComponents/ProfileSideBar/ProfileSideBar";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
