@@ -1,9 +1,9 @@
 import { Card, Col, Row, ListGroup } from "react-bootstrap";
-import { BusinessComponent } from "./BusinessComponent";
+import { SideBarItemComponent } from "./SideBarItemComponent";
 
 export const OtherBusinessComponent = () => {
   return (
-    <Row className="p-3">
+    <Row className="px-3 py-1">
       <Col>
         <Card>
           <h5 className="p-3 m-0">Altre aziende consultate</h5>
@@ -11,11 +11,11 @@ export const OtherBusinessComponent = () => {
             <Col xs={10}>
               <ListGroup variant="flush">
                 {/* map delle aziende */}
-                <BusinessComponent />
-                <BusinessComponent />
-                <BusinessComponent />
-                <BusinessComponent />
-                <BusinessComponent />
+                <SideBarItemComponent />
+                <SideBarItemComponent />
+                <SideBarItemComponent />
+                <SideBarItemComponent />
+                <SideBarItemComponent />
               </ListGroup>
             </Col>
           </Row>

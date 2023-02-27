@@ -1,12 +1,12 @@
 import { Button, ListGroup } from "react-bootstrap";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 
-export const BusinessComponent = () => {
+export const SideBarItemComponent = () => {
   return (
-    <ListGroup.Item className="businessItem py-3">
-      <div className="businessCard d-flex align-items-center">
-        <img className="img-fluid me-3 businessImg" src="" alt="" />
-        <span className="businessText">
+    <ListGroup.Item className="sideBarItem py-3">
+      <div className="sideBarCard d-flex align-items-center">
+        <img className="img-fluid me-3 sideBarCardImg" src="" alt="" />
+        <span className="sideBarCardText">
           <h4 className="m-0">Nome Azienda</h4>
           <p className="m-0">Azienda che lavora in...</p>
         </span>

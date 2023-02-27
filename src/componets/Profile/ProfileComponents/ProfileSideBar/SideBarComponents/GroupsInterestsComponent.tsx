@@ -1,22 +1,16 @@
-import { Row, Col, ListGroup, Card } from "react-bootstrap";
+import { Row, Col, Card, ListGroup } from "react-bootstrap";
 import { SideBarItemComponent } from "./SideBarItemComponent";
 
-export const OtherPersonsComponent = () => {
+export const GroupsInterestsComponent = () => {
   return (
-    <Row className="px-3 py-1">
+    <Row className="p-3">
       <Col>
         <Card>
-          <h5 className="p-3 m-0">
-            Persone che potresti
-            <br /> conoscere
-          </h5>
+          <h5 className="p-3 m-0">Altre aziende consultate</h5>
           <Row className="justify-content-center">
             <Col xs={10}>
               <ListGroup variant="flush">
                 {/* map delle aziende */}
-                <SideBarItemComponent />
-                <SideBarItemComponent />
-                <SideBarItemComponent />
                 <SideBarItemComponent />
                 <SideBarItemComponent />
               </ListGroup>

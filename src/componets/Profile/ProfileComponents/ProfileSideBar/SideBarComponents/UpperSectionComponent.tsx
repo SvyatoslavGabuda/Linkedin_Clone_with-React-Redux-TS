@@ -3,7 +3,7 @@ import { BsFillQuestionCircleFill } from "react-icons/bs";
 
 export const UpperSectionComponent = () => {
   return (
-    <Row className="sideBarUpperSection d-flex flex-column p-3">
+    <Row className="sideBarUpperSection d-flex flex-column px-3 py-1">
       <Col>
         <Card>
           <div className="d-flex justify-content-between align-items-center p-3">
