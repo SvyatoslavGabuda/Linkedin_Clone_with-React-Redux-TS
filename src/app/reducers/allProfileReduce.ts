@@ -5,7 +5,7 @@ export const ADD_TO_ALLPROFILE = "ADD_TO_ALLPROFILE";
 export const ADD_TO_MYPROFILE = "ADD_TO_MYPROFILE";
 export const ADD_TO_GENERALPROFILE = "ADD_TO_GENERALPROFILE";
 
-interface AllProfile {
+export interface AllProfile {
   allProfile: Iprofile[];
   myProfile: Iprofile | null;
   generalProfile: Iprofile | null;

@@ -2,16 +2,15 @@ import { configureStore, ThunkAction, Action, combineReducers } from "@reduxjs/t
 import counterReducer from "../features/counter/counterSlice";
 import { allProfileReduce } from "./reducers/allProfileReduce";
 
-const allReducer = combineReducers({
-  counter: counterReducer,
-  profile: allProfileReduce,
-});
+// const allReducer = combineReducers({
+//   profile: allProfileReduce,
+//   counter: counterReducer,
+// });
 export const store = configureStore({
-  reducer: allReducer,
-  // {
-  //   counter: counterReducer,
-  //   profile: allProfileReduce,
-  // },
+  reducer: {
+    counter: counterReducer,
+    profile: allProfileReduce,
+  },
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -4,6 +4,7 @@ import { Iprofile } from "../../Profile";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../app/store";
 import { useAppSelector } from "../../../../app/hooks";
+import { AllProfile } from "../../../../app/reducers/allProfileReduce";
 export const ProfileModale = () => {
   const url = "https://striveschool-api.herokuapp.com/api/profile/";
   const [show, setShow] = useState(false);
@@ -33,10 +34,10 @@ export const ProfileModale = () => {
       }
     } catch (error) {}
   };
-  console.log("my profile", myProfile);
-  useEffect(() => {
-    console.log(myProfile);
-  }, [myProfile]);
+  // console.log("my profile", myProfile);
+  // useEffect(() => {
+  //   console.log(myProfile);
+  // }, [myProfile]);
 
   return (
     <>
