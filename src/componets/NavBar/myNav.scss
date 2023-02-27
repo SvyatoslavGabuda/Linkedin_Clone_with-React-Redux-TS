@@ -1,0 +1,44 @@
+.navbar-brand {
+  font-size: 2rem;
+}
+.nav-link-top {
+  min-width: 75px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  transition: all 0.5s ease;
+  svg {
+    font-size: 1.5rem;
+  }
+  span.navlabel {
+    font-size: 0.8rem;
+  }
+}
+.profilenav {
+  text-align: center;
+}
+#navbarScrollingDropdown {
+  font-size: 0.8rem;
+  padding: 0;
+}
+.nav-profile-pic {
+  width: 1.5rem;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+.nav-link-active {
+  border-bottom: 2px solid black;
+  color: black;
+  > div > a {
+    color: black;
+  }
+}
+#navbarScrollingDropdown {
+  a {
+    color: black;
+    &:hover {
+      color: lightblue;
+    }
+  }
+}
