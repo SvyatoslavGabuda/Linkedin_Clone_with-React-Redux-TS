@@ -9,5 +9,21 @@
   transition: all 0.5s ease;
 }
 .chat-closed {
-  transform: translateY(calc(80vh - 2rem));
+  transform: translateY(calc(80vh - 3rem));
+}
+.chat-profile-pic {
+  width: 1.8rem;
+  margin-right: 10px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+.chat-header {
+  padding: 8px;
+}
+.showchat {
+  transition: rotate 1.5s ease;
+}
+.hidechat {
+  rotate: 180deg;
 }
