@@ -28,7 +28,9 @@
 
     .sideBarCardText {
       .itemLink {
-        font-size: inherit;
+        text-decoration: none;
+        color: black;
+        font-size: inherit !important;
       }
 
       h4 {
