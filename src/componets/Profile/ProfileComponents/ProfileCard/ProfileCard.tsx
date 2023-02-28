@@ -117,11 +117,11 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                 <div className="d-flex">
                   <div>
                     <Button variant="primary" className="rounded-pill py-1 me-2 Button1">
-                      Disponibile per
+                      {params.id === "me" ? "Disponibile per" : "Messaggio"}
                     </Button>
                   </div>
                   <div>
-                    <button className="rounded-pill py-1 me-2 Button2">Aggiungi sezione del profilo</button>
+                    <button className="rounded-pill py-1 me-2 Button2">{params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}</button>
                   </div>
                   <div>
                     <button className="rounded-pill py-1 Button3">Altro</button>
