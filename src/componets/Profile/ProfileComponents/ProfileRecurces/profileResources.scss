@@ -139,11 +139,13 @@ ul {
         }
     }
 }
-a {
+.Follower {
+    a {
     text-decoration: none;
     &:hover {
         text-decoration: underline;
     }
+}
 }
 section {
     border-radius: 10px;
