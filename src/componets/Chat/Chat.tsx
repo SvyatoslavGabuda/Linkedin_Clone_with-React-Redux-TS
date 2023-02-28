@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Form } from "react-bootstrap";
 import { BiUpArrow } from "react-icons/bi";
 import "./chat.scss";
 export const Chat = () => {
@@ -19,8 +20,61 @@ export const Chat = () => {
             <BiUpArrow className={show ? "showchat hidechat" : "showchat"} />
           </span>
         </div>
-        <div className="chat-search">Search</div>
-        <div className="chat-list">Elenco Chat</div>
+        <div className="chat-list">
+          <Form.Control type="email" placeholder="Cerca messaggi" className="mb-2" />
+          <div className="chatElement">
+            <div>
+              <img src="https://placekitten.com/300/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
+            </div>
+            <div className="chatbody px-2">
+              <p>Giuseppe Simone</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, provident nisi praesentium tempora iure et ducimus laudantium
+                assumenda doloremque amet natus aut repellendus nulla ipsum fugit facere architecto incidunt beatae.
+              </p>
+            </div>
+            <div>7 Feb</div>
+          </div>
+          <div className="chatElement">
+            <div>
+              <img src="https://placekitten.com/300/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
+            </div>
+            <div className="chatbody px-2">
+              <p>Giuseppe Simone</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, provident nisi praesentium tempora iure et ducimus laudantium
+                assumenda doloremque amet natus aut repellendus nulla ipsum fugit facere architecto incidunt beatae.
+              </p>
+            </div>
+            <div>7 Feb</div>
+          </div>
+          <div className="chatElement">
+            <div>
+              <img src="https://placekitten.com/300/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
+            </div>
+            <div className="chatbody px-2">
+              <p>Giuseppe Simone</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, provident nisi praesentium tempora iure et ducimus laudantium
+                assumenda doloremque amet natus aut repellendus nulla ipsum fugit facere architecto incidunt beatae.
+              </p>
+            </div>
+            <div>7 Feb</div>
+          </div>
+          <div className="chatElement">
+            <div>
+              <img src="https://placekitten.com/300/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
+            </div>
+            <div className="chatbody px-2">
+              <p>Giuseppe Simone</p>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, provident nisi praesentium tempora iure et ducimus laudantium
+                assumenda doloremque amet natus aut repellendus nulla ipsum fugit facere architecto incidunt beatae.
+              </p>
+            </div>
+            <div>7 Feb</div>
+          </div>
+        </div>
       </div>
     </>
   );
