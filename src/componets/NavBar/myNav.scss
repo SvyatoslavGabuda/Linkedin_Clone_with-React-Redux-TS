@@ -42,3 +42,53 @@
     }
   }
 }
+#navbarScroll {
+  .dropdown-menu {
+    width: 270px;
+    padding: 10px;
+    transition: opacity 3.5s ease;
+    opacity: 0;
+  }
+  .show {
+    opacity: 1;
+  }
+  .ddprofileimg {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+  }
+  .dd-profile {
+    display: flex;
+    font-size: 0.8rem;
+    > div:first-child {
+      width: 70px;
+    }
+  }
+  .ddprofilebody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    > p {
+      font-size: 0.66rem;
+      overflow: hidden;
+      max-height: 1rem;
+      line-height: 1rem;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      text-overflow: ellipsis;
+      display: block;
+    }
+  }
+  .openprofilebtnnav {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 0.96rem;
+    color: #1461c2;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

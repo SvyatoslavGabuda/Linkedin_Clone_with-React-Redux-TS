@@ -48,15 +48,46 @@ const MyNav = () => {
                 </Link>
                 <div className="d-flex flex-column justify-content-center text-center align-items-center" style={{ minWidth: "75px" }}>
                   <Link to="/profile/me">
-                    <img className="nav-profile-pic rounded-circle" src={myProfile?.image} alt="Profile Picture" />
+                    <img className="nav-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />
                   </Link>
                   <NavDropdown
                     title="Tu"
                     id="navbarScrollingDropdown"
+                    align={"end"}
                     className={location === "/profile/me" ? "nav-link profilenav nav-link-active p-0" : "nav-link profilenav p-0"}
                   >
-                    <Link to="/profile/me" className="nav-link">
+                    <div className="dd-profile">
+                      <div>
+                        <img src={myProfile?.image} alt="Profile" className="ddprofileimg rounded-circle" />
+                      </div>
+                      <div className="ddprofilebody px-2">
+                        <h6 className="mb-1">{myProfile?.name + " " + myProfile?.surname}</h6>
+                        <p>{myProfile?.title}</p>
+                      </div>
+                    </div>
+                    <Link to="/profile/me" className="rounded-pill py-1 me-2 my-2 Button2 openprofilebtnnav">
                       Visita il profilo
+                    </Link>
+                    <br />
+                    <Link to="/" className="nav-link">
+                      Impostazioni e Privacy
+                    </Link>
+                    <Link to="/" className="nav-link">
+                      Guida
+                    </Link>
+                    <Link to="/" className="nav-link">
+                      Lingua
+                    </Link>
+                    <br />
+                    <Link to="/" className="nav-link">
+                      Post e attività
+                    </Link>
+                    <Link to="/" className="nav-link">
+                      Account per la pubblicazione di offerte
+                    </Link>
+                    <br />
+                    <Link to="/" className="nav-link">
+                      Esci
                     </Link>
                   </NavDropdown>
                 </div>
