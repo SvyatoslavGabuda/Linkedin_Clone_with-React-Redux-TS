@@ -31,7 +31,7 @@ export const Chat = () => {
               <img src={myProfile?.image} alt="Profile Picture" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
-              <p>{myProfile?.name + " " + myProfile.surname}</p>
+              <p>{myProfile?.name + " " + myProfile?.surname}</p>
               <p>Nel mezzo del cammin di nostra vita, odiai Typescript in maniera oscura.</p>
             </div>
             <div>7 Feb</div>
