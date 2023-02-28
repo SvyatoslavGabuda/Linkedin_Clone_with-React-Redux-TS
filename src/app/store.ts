@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action, combineReducers, Reducer } from "@reduxjs/toolkit";
 
-import { allProfileReduce } from "./reducers/allProfileReduce";
+import { AllProfile, allProfileReduce } from "./reducers/allProfileReduce";
+import experienceSlice from "./reducers/experienceSlice";
 
 // const allReducer = combineReducers({
 //   profile: allProfileReduce as Reducer,
@@ -8,6 +9,7 @@ import { allProfileReduce } from "./reducers/allProfileReduce";
 export const store = configureStore({
   reducer: {
     profile: allProfileReduce as Reducer,
+    experience: experienceSlice,
   },
 });
 

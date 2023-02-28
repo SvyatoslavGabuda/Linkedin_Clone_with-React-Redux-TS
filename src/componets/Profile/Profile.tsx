@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { ProfileSideBar } from "./ProfileComponents/ProfileSideBar/ProfileSideBar";
 import { ProfileModale } from "./ProfileComponents/ProfileModale/ProfileModale";
 import { useAppDispatch } from "../../app/hooks";
+import { GetExperience } from "./ProfileComponents/ProfileExperience/Experience/GetExperience";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -93,12 +94,14 @@ const Profile = () => {
     profileFetch();
     myProfileFetch();
   }, []);
+
   useEffect(() => {
     idProfileFetch();
   }, [params]);
 
   return (
     <>
+      <GetExperience />
       <ProfileModale />
       <ProfileCard />
       <ProfileSideBar />
