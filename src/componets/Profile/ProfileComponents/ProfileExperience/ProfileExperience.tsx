@@ -3,8 +3,18 @@ import { Row } from "react-bootstrap";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { GrAdd } from "react-icons/gr";
 import Logo from "./Assets/original.png";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { useEffect } from "react";
+import { expFetc } from "../../../../app/reducers/experienceSlice";
+import { ExpCard } from "./Experience/ExpCard";
 
 export const ProfileExperience = () => {
+  const dispatch = useAppDispatch();
+  const idProva = "5fc4af0bb708c200175de88e";
+  const experience = useAppSelector((state) => state.experience.experience);
+  useEffect(() => {
+    dispatch(expFetc(idProva));
+  }, []);
   return (
     <Row className="border-1 border border-1 rounded mb-2">
       <div className="px-4 pt-4 pb-3 border-bottom">
@@ -31,6 +41,8 @@ export const ProfileExperience = () => {
             </div>
           </div>
         </div>
+        {experience && experience.map((exp) => <ExpCard key={exp._id} myExp={exp} />)}
+
         <div className="d-flex border-bottom">
           <div>
             <img src={Logo} alt="Pic" className="me-2 ExpImg" />
