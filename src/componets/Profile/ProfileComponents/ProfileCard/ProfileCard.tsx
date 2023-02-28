@@ -13,7 +13,7 @@ import { ProfileResources } from "../ProfileRecurces/ProfileResources";
 export const ProfileCard = () => {
   return (
     <>
-      <Col xs={12} md={8}>
+      <Col xs={12} md={7} lg={8}>
         <Row className="mt-1 border border-1 rounded mb-2">
           <section className="p-0">
             <div className="BackgroundContainer rounded-top">

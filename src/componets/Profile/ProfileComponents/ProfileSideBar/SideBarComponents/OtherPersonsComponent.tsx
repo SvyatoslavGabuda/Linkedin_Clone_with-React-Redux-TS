@@ -6,8 +6,8 @@ import { SideBarItemComponent } from "./SideBarItemComponent";
 export const OtherPersonsComponent = () => {
   const allProfileData: Iprofile[] = useAppSelector((state) => state.profile.allProfile).slice(6, 12);
   return (
-    <Row className="px-3 py-1">
-      <Col>
+    <Row className="py-1 px-md-3 px-lg-4">
+      <Col className="p-0">
         <Card>
           <h5 className="p-3 m-0">
             Persone che potresti

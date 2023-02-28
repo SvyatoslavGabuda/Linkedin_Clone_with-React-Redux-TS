@@ -27,8 +27,13 @@
     }
 
     .sideBarCardText {
+      .itemLink {
+        font-size: inherit;
+      }
+
       h4 {
-        font-size: 1em;
+        font-size: 1.1em;
+        padding-bottom: 0.1em;
 
         &:hover {
           color: #0a66c2;
@@ -38,10 +43,18 @@
 
       p {
         font-size: 0.9em;
+        padding-bottom: 0.5em;
 
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        @media screen and (min-width: 768px) {
+          font-size: 0.8em;
+        }
+        @media screen and (min-width: 1200px) {
+          font-size: 0.9em;
+        }
       }
     }
   }
@@ -49,7 +62,7 @@
   .btn {
     font-size: 0.8em;
     border-radius: 20px;
-    padding: 3px 1em;
+    padding: 5px 1.22em;
     margin-left: 5em;
     &:hover {
       border: 1px solid grey;

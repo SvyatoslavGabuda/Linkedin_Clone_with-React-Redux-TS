@@ -7,7 +7,7 @@ import { GroupsInterestsComponent } from "./SideBarComponents/GroupsInterestsCom
 
 export const ProfileSideBar = () => {
   return (
-    <Col xs={12} md={4} style={{ backgroundColor: "#F3F2EF" }}>
+    <Col xs={12} md={5} lg={4}>
       <UpperSectionComponent />
       <OtherBusinessComponent />
       <OtherPersonsComponent />
