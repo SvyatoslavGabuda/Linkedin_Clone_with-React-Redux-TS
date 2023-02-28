@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { BiUpArrow } from "react-icons/bi";
+import { SlNote } from "react-icons/sl";
+import { TfiMoreAlt } from "react-icons/tfi";
 import { useAppSelector } from "../../app/hooks";
 import "./chat.scss";
 export const Chat = () => {
@@ -35,6 +37,8 @@ export const Chat = () => {
             <span>Messaggistica</span>
           </div>
           <span>
+            <TfiMoreAlt style={{ marginRight: "15px", scale: "0.9" }} />
+            <SlNote style={{ marginRight: "12px", scale: "0.9" }} />
             <BiUpArrow className={show ? "showchat hidechat" : "showchat"} />
           </span>
         </div>
