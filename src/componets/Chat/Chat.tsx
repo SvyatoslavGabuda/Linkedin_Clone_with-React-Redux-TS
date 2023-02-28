@@ -17,7 +17,21 @@ export const Chat = () => {
           }}
         >
           <div>
-            <img className="chat-profile-pic rounded-circle" src={myProfile?.image} alt="Profile Picture" />
+            <div style={{ position: "relative" }}>
+              <img className="chat-profile-pic rounded-circle" src={myProfile?.image} alt="Profile Picture" />
+              <div
+                className="d-block rounded-circle"
+                style={{
+                  position: "absolute",
+                  backgroundColor: "green",
+                  width: "10px",
+                  height: "10px",
+                  bottom: "-2px",
+                  right: "9px",
+                  border: "2px solid white",
+                }}
+              ></div>
+            </div>
             <span>Messaggistica</span>
           </div>
           <span>
