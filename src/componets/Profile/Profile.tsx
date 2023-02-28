@@ -97,6 +97,7 @@ const Profile = () => {
   useEffect(() => {
     profileFetch();
     myProfileFetch();
+    //dispatch(profileFetch());
   }, []);
 
   useEffect(() => {
