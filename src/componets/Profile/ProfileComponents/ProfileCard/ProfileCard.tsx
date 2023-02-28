@@ -47,7 +47,7 @@ export const ProfileCard = () => {
             {/* immagine profilo */}
             <div className="d-flex align-items-center justify-content-between mb-2">
               <div>
-                <h3 className="mb-0">Alessandro D'Ascenzo</h3>
+                <h3 className="mb-0">Nome Cognome</h3>
                 <p className="mb-2 fs-5 fw-normal">Studente Full Stack Developer</p>
                 <p className="mb-2">
                   <span className="text-secondary">Roma</span> · <a href="/">Informazioni di contatto</a>
@@ -171,7 +171,7 @@ export const ProfileCard = () => {
 
       <Row className="rounded-3">
         <div className="px-4 pt-4 pb-3 border-bottom">
-          <div className="mb-2">
+          <div className="mb-2 d-flex justify-content-between align-items-center">
             <div>
               <div>
                 <h3 className="fs-4 mb-0">Attività</h3>
@@ -182,6 +182,9 @@ export const ProfileCard = () => {
                   <a href="/">10 follower</a>
                 </p>
               </div>
+            </div>
+            <div>
+              <button className="rounded-pill py-1 me-2 Button2">Avvia un post</button>
             </div>
           </div>
           <div className="d-flex mt-3">
@@ -199,8 +202,46 @@ export const ProfileCard = () => {
         <div className="p-0">
           <button className="Button4">Mostra tutte le attività {"->"} </button>
         </div>
-        <div>
-          <button className="rounded-pill py-1 me-2 Button2">Avvia un post</button>
+      </Row>
+
+      {/* Esperienze */}
+
+      <Row className="rounded-3">
+        <div className="px-4 pt-4 pb-3 border-bottom">
+          <div className="mb-2">
+            <div className="d-flex justify-content-between">
+              <div>
+                <h3 className="fs-4 mb-0">Esperienze</h3>
+              </div>
+              <div className="d-flex">
+                <div className="ButtonContainer3">
+                  <button>
+                    <li>
+                      <HiOutlinePencil className="IconPen" />
+                    </li>
+                  </button>
+                </div>
+                <div className="ButtonContainer3">
+                  <button>
+                    <li>
+                      <HiOutlinePencil className="IconPen" />
+                    </li>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="d-flex border-bottom">
+            <div>
+              <img src={Logo} alt="Pic" className="me-2 ExpImg" />
+            </div>
+            <div className="mb-3">
+              <p className="fs-5">Web Developer</p>
+              <p>Epicode · A tempo pieno</p>
+              <p>nov 2022 - Presente · 4 mesi </p>
+              <p>Roma · Da remoto</p>
+            </div>
+          </div>
         </div>
       </Row>
     </>
