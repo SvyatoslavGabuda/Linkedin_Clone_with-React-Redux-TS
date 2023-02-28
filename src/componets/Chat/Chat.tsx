@@ -21,7 +21,7 @@ export const Chat = () => {
           </span>
         </div>
         <div className="chat-list">
-          <Form.Control type="email" placeholder="Cerca messaggi" className="mb-2" />
+          <Form.Control type="email" placeholder="Cerca messaggi" className="mb-4" />
           <div className="chatElement">
             <div>
               <img src="https://placekitten.com/300/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
