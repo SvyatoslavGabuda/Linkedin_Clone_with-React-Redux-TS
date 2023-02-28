@@ -1,5 +1,6 @@
 .navbar-brand {
   font-size: 2rem;
+  scale: 1.15;
 }
 .nav-link-top {
   min-width: 75px;
@@ -29,6 +30,7 @@
 }
 .nav-link-active {
   border-bottom: 2px solid black;
+  margin-bottom: -1px;
   color: black;
   > div > a {
     color: black;

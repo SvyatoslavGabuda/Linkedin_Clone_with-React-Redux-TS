@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav, NavDropdown, Form } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Form, Badge } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { BsLinkedin, BsFillPeopleFill, BsFillBellFill, BsFillGrid3X3GapFill } from "react-icons/bs";
 import { MdBusinessCenter } from "react-icons/md";
@@ -48,7 +48,21 @@ const MyNav = () => {
                 </Link>
                 <div className="d-flex flex-column justify-content-center text-center align-items-center" style={{ minWidth: "75px" }}>
                   <Link to="/profile/me">
-                    <img className="nav-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />
+                    <div style={{ position: "relative" }}>
+                      <img className="nav-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />
+                      <div
+                        className="d-block rounded-circle"
+                        style={{
+                          position: "absolute",
+                          backgroundColor: "green",
+                          width: "10px",
+                          height: "10px",
+                          bottom: "-2px",
+                          right: "-2px",
+                          border: "2px solid white",
+                        }}
+                      ></div>
+                    </div>
                   </Link>
                   <NavDropdown
                     title="Tu"
