@@ -10,16 +10,17 @@ export const Chat = () => {
   return (
     <>
       <div className={show ? "chat" : "chat chat-closed"}>
-        <div className="chat-header d-flex justify-content-between">
+        <div
+          className="chat-header d-flex justify-content-between"
+          onClick={() => {
+            setShow(!show);
+          }}
+        >
           <div>
             <img className="chat-profile-pic rounded-circle" src={myProfile?.image} alt="Profile Picture" />
             <span>Messaggistica</span>
           </div>
-          <span
-            onClick={() => {
-              setShow(!show);
-            }}
-          >
+          <span>
             <BiUpArrow className={show ? "showchat hidechat" : "showchat"} />
           </span>
         </div>
