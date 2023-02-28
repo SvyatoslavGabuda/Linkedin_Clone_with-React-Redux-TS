@@ -9,12 +9,17 @@ import { ProfileAnalisis } from "../ProfileAnalisis/ProfileAnalisis";
 import { ProfileExperience } from "../ProfileExperience/ProfileExperience";
 import { ProfileInterest } from "../ProfileInterests/ProfileInterests";
 import { ProfileResources } from "../ProfileRecurces/ProfileResources";
+import { Iprofile } from "../../Profile";
 
-export const ProfileCard = () => {
+interface ProfileCardProps {
+  profile: Iprofile;
+}
+
+export const ProfileCard = ({ profile }: ProfileCardProps) => {
   return (
     <>
       <Col xs={12} md={8}>
-        <Row className="mt-1 border border-1 rounded mb-2">
+        <Row className="mt-1 border border-1 rounded mb-2 bg-white">
           <section className="p-0">
             <div className="BackgroundContainer rounded-top">
               <div>
@@ -34,7 +39,7 @@ export const ProfileCard = () => {
                 <div className="ProfileImgContainer2">
                   <div className="ProfileImgContainer3">
                     <div className="ProfileImgContainer4">
-                      <img src="" alt="" />
+                      <img src={profile.image} alt="ProfilePic" />
                     </div>
                   </div>
                 </div>
@@ -53,10 +58,12 @@ export const ProfileCard = () => {
               {/* immagine profilo */}
               <div className="d-flex align-items-center justify-content-between mb-2">
                 <div>
-                  <h3 className="mb-0">Nome Cognome</h3>
+                  <h3 className="mb-0">
+                    {profile.name} {profile.surname}
+                  </h3>
                   <p className="mb-2 fs-5 fw-normal">Studente Full Stack Developer</p>
                   <p className="mb-2">
-                    <span className="text-secondary">Roma</span> · <a href="/">Informazioni di contatto</a>
+                    <span className="text-secondary">{profile.area}</span> · <a href="/">Informazioni di contatto</a>
                   </p>
                   <p>
                     <a href="/">1 collegamento</a>

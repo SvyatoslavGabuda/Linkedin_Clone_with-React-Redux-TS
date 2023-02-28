@@ -19,11 +19,11 @@ ul {
         }
     }
 }
-a {
+.Follower{ 
+    a {
     text-decoration: none;
-    color: black;
     font-size: 1.2em;
     &:hover {
         text-decoration: underline;
-    }
+    }}
 }
