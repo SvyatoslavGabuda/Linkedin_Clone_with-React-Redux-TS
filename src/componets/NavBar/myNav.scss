@@ -91,7 +91,7 @@
     color: lightgray;
     margin: 10px 0;
   }
-  .nav-link {
+  .nav-link:not(:first-of-type) {
     font-size: 0.8rem;
     padding: 5px 0;
   }
