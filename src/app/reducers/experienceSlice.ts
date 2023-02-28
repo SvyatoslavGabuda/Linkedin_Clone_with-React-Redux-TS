@@ -18,3 +18,16 @@ export interface Iexperience {
 const initialState = {
   experience: [] as Iexperience[],
 };
+
+const experienceSlice = createSlice({
+  name: "save",
+  initialState,
+  reducers: {
+    save(state, action: PayloadAction<Iexperience[]>) {
+      state.experience = action.payload;
+    },
+  },
+});
+
+export const { save } = experienceSlice.actions;
+export default experienceSlice.reducer;
