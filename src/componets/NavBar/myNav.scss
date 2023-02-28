@@ -46,11 +46,7 @@
   .dropdown-menu {
     width: 270px;
     padding: 10px;
-    transition: opacity 3.5s ease;
-    opacity: 0;
-  }
-  .show {
-    opacity: 1;
+    box-shadow: 5px 5px 15px rgba(143, 143, 143, 0.527);
   }
   .ddprofileimg {
     width: 100%;
@@ -90,5 +86,16 @@
     &:hover {
       text-decoration: none;
     }
+  }
+  hr {
+    color: lightgray;
+    margin: 10px 0;
+  }
+  .nav-link {
+    font-size: 0.8rem;
+    padding: 5px 0;
+  }
+  h6 {
+    font-weight: 600;
   }
 }

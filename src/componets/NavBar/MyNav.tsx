@@ -68,7 +68,8 @@ const MyNav = () => {
                     <Link to="/profile/me" className="rounded-pill py-1 me-2 my-2 Button2 openprofilebtnnav">
                       Visita il profilo
                     </Link>
-                    <br />
+                    <hr />
+                    <h6>Account</h6>
                     <Link to="/" className="nav-link">
                       Impostazioni e Privacy
                     </Link>
@@ -78,14 +79,15 @@ const MyNav = () => {
                     <Link to="/" className="nav-link">
                       Lingua
                     </Link>
-                    <br />
+                    <hr />
+                    <h6>Gestisci</h6>
                     <Link to="/" className="nav-link">
                       Post e attività
                     </Link>
                     <Link to="/" className="nav-link">
                       Account per la pubblicazione di offerte
                     </Link>
-                    <br />
+                    <hr />
                     <Link to="/" className="nav-link">
                       Esci
                     </Link>
