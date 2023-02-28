@@ -12,7 +12,7 @@ const MyNav = () => {
 
   return (
     <>
-      <Navbar expand="sm" className="p-0 bg-light mb-3 sticky-top">
+      <Navbar expand="sm" className="p-xs-3 p-sm-0 bg-light mb-3 sticky-top">
         <Container>
           <Navbar.Brand>
             <Link to="/" className="d-flex align-items-center">
@@ -46,7 +46,7 @@ const MyNav = () => {
                   <span className="navlabel">Notifiche</span>
                   <BsFillBellFill />
                 </Link>
-                <div className="d-flex flex-column justify-content-center text-center align-items-center" style={{ minWidth: "75px" }}>
+                <div className="d-flex flex-column justify-content-center text-center align-items-center min75md">
                   <Link to="/profile/me">
                     <div style={{ position: "relative" }}>
                       <img className="nav-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />

@@ -45,6 +45,29 @@
   }
 }
 #navbarScroll {
+  @media screen and (max-width: 576px) {
+    .navbar-nav {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: row;
+      overflow: hidden;
+    }
+    .navlabel {
+      display: none;
+    }
+    .nav-link-top {
+      min-width: unset;
+    }
+    .dropdown {
+      display: none;
+    }
+    .min75md {
+      min-width: unset !important;
+    }
+  }
+  .min75md {
+    min-width: 75px;
+  }
   .dropdown-menu {
     width: 270px;
     padding: 10px;
