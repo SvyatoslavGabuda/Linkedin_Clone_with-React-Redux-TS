@@ -19,7 +19,7 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
   return (
     <>
       <Col xs={12} md={7} lg={8}>
-        <Row className="mt-1 border border-1 rounded mb-2">
+        <Row className="mt-1 border border-1 rounded mb-2 bg-white">
           <section className="p-0">
             <div className="BackgroundContainer rounded-top">
               <div>
