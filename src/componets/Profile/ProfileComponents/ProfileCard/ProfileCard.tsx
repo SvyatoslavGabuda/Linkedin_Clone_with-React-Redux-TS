@@ -65,10 +65,9 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     <h3 className="mb-0">
                       {profile.name} {profile.surname}
                     </h3>
-                    <p className="mb-2 fs-5 fw-normal">Studente Full Stack Developer</p>
+                    <p className="mb-2 fs-5 fw-normal">{profile.title}</p>
                     <p className="mb-2">
-                      <span className="text-secondary">{profile.area}</span> ·{" "}
-                      <a href="/">Informazioni di contatto</a>
+                      <span className="text-secondary">{profile.area}</span> · <a href="/">Informazioni di contatto</a>
                     </p>
                     <p>
                       <a href="/">1 collegamento</a>
@@ -102,9 +101,7 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     </Button>
                   </div>
                   <div>
-                    <button className="rounded-pill py-1 me-2 Button2">
-                      Aggiungi sezione del profilo
-                    </button>
+                    <button className="rounded-pill py-1 me-2 Button2">Aggiungi sezione del profilo</button>
                   </div>
                   <div>
                     <button className="rounded-pill py-1 Button3">Altro</button>
