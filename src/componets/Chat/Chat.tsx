@@ -9,7 +9,7 @@ export const Chat = () => {
 
   return (
     <>
-      <div className={show ? "chat" : "chat chat-closed"}>
+      <div className={show ? "d-none d-sm-block chat" : "d-none d-sm-block chat chat-closed"}>
         <div
           className="chat-header d-flex justify-content-between"
           onClick={() => {
