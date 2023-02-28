@@ -42,3 +42,60 @@
     }
   }
 }
+#navbarScroll {
+  .dropdown-menu {
+    width: 270px;
+    padding: 10px;
+    box-shadow: 5px 5px 15px rgba(143, 143, 143, 0.527);
+  }
+  .ddprofileimg {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+  }
+  .dd-profile {
+    display: flex;
+    font-size: 0.8rem;
+    > div:first-child {
+      width: 70px;
+    }
+  }
+  .ddprofilebody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    > p {
+      font-size: 0.66rem;
+      overflow: hidden;
+      max-height: 1rem;
+      line-height: 1rem;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      text-overflow: ellipsis;
+      display: block;
+    }
+  }
+  .openprofilebtnnav {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 0.96rem;
+    color: #1461c2;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  hr {
+    color: lightgray;
+    margin: 10px 0;
+  }
+  .nav-link:not(:first-of-type) {
+    font-size: 0.8rem;
+    padding: 5px 0;
+  }
+  h6 {
+    font-weight: 600;
+  }
+}

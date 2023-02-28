@@ -6,7 +6,7 @@ import { CiStreamOn } from "react-icons/ci";
 export const ProfileResources = () => {
   return (
     <>
-      <Row className="border border-1 rounded">
+      <Row className="border border-1 rounded bg-white">
         <div className="px-4 pt-4 pb-3 border-bottom">
           <div className="mb-2">
             <div>
@@ -25,7 +25,7 @@ export const ProfileResources = () => {
             <div className="me-1">
               <CiStreamOn className="fs-4" />
             </div>
-            <div className="mb-3">
+            <div className="mb-3 Follower">
               <p>
                 <a href="/">Modalità creazione di contenuti</a>
                 <Badge bg="secondary" className="ms-1">
@@ -39,7 +39,7 @@ export const ProfileResources = () => {
             <div className="me-1">
               <FaUserFriends className="fs-4" />
             </div>
-            <div>
+            <div className="Follower">
               <p>
                 <a href="/">La mia rete</a>
               </p>

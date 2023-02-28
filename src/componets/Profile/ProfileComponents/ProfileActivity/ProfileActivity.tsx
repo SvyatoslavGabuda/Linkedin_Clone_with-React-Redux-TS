@@ -3,14 +3,14 @@ import { Row } from "react-bootstrap";
 
 export const ProfileActivity = () => {
   return (
-    <Row className="border border-1 rounded mb-2">
+    <Row className="border border-1 rounded mb-2 bg-white">
       <div className="px-4 pt-4 pb-3 border-bottom">
         <div className="mb-2 d-flex justify-content-between align-items-center">
           <div>
             <div>
               <h3 className="fs-4 mb-0">Attività</h3>
             </div>
-            <div className="d-flex">
+            <div className="d-flex Follower">
               <p>
                 <a href="/">10 follower</a>
               </p>
@@ -21,7 +21,7 @@ export const ProfileActivity = () => {
           </div>
         </div>
         <div className="d-flex mt-3">
-          <div>
+          <div className="Follower">
             <p>
               <a href="/">Pubblica qualcosa</a>
             </p>

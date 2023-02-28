@@ -9,13 +9,16 @@ p {
 li {
     list-style-type: none;
 }
-    a {
-    text-decoration: none;
-    color: white;
-    &:hover {
-        text-decoration: underline;
+.Follower {
+a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+            text-decoration: underline;
+        }
     }
-}
+} 
+    
 .Button4 {
     width: 100%;
     border: none;

@@ -16,7 +16,7 @@ export const ProfileExperience = () => {
     dispatch(expFetc(idProva));
   }, []);
   return (
-    <Row className="border-1 border border-1 rounded mb-2">
+    <Row className="border-1 border border-1 rounded mb-2 bg-white">
       <div className="px-4 pt-4 pb-3 border-bottom">
         <div className="mb-2">
           <div className="d-flex justify-content-between">

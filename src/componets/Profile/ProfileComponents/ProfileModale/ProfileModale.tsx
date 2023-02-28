@@ -1,15 +1,17 @@
 import { Form, Modal, Button } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
 import { Iprofile } from "../../Profile";
-import { useAppSelector } from "../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { hideM, showM, toogleM } from "../../../../app/reducers/upgrateModSlice";
 
 export const ProfileModale = () => {
   const url = "https://striveschool-api.herokuapp.com/api/profile/";
   //funzioni MODALE
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  //const [show, setShow] = useState(false);
+  //const handleClose = () => setShow(false);
+  //const handleShow = () => setShow(true);
+  const show = useAppSelector((state) => state.upGradeModale.show);
+  const dispatch = useAppDispatch();
   const [modalValue, setModalValue] = useState<Iprofile>({
     _id: "",
     name: "",
@@ -48,7 +50,7 @@ export const ProfileModale = () => {
     } catch (error) {
       console.log(error);
     } finally {
-      handleClose();
+      //handleClose();
     }
   };
 
@@ -58,11 +60,7 @@ export const ProfileModale = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        add
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={() => dispatch(hideM())}>
         <Modal.Header closeButton>
           <Modal.Title>Aggiungi Info</Modal.Title>
         </Modal.Header>
@@ -146,7 +144,7 @@ export const ProfileModale = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={() => dispatch(hideM())}>
             Close
           </Button>
         </Modal.Footer>

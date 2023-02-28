@@ -6,7 +6,7 @@ import "./profileAlalisis.scss";
 export const ProfileAnalisis = () => {
   return (
     <>
-      <Row className="p-4 border border-1 rounded mb-2">
+      <Row className="p-4 border border-1 rounded mb-2 bg-white">
         <div className="mb-2 p-0">
           <div>
             <div>
@@ -24,7 +24,7 @@ export const ProfileAnalisis = () => {
           <div className="me-1">
             <FaUserFriends className="fs-4" />
           </div>
-          <div>
+          <div className="Follower">
             <p>
               <a href="/">10 visualizzazioni del profilo</a>
             </p>
