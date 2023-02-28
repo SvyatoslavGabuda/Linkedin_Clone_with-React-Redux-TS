@@ -1,27 +1,16 @@
 import { useEffect } from "react";
-import { useAppSelector } from "../../../../../app/hooks";
-
-export interface Iexperience {
-  _id: string;
-  role: string;
-  company: string;
-  startDate: Date;
-  description: string;
-  area: string;
-  username: string;
-  user: string;
-  createdAt: Date;
-  updatedAt: Date;
-  __v: number;
-}
+import { useAppDispatch, useAppSelector } from "../../../../../app/hooks";
+import { save } from "../../../../../app/reducers/experienceSlice";
 
 export const GetExperience = () => {
   const url = "https://striveschool-api.herokuapp.com/api/profile/";
+  const idProva = "5fc4af0bb708c200175de88e";
 
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+  const dispatch = useAppDispatch();
   const fetchExperience = async () => {
     try {
-      const response = await fetch(url + myProfile._id + "/experiences", {
+      const response = await fetch(url + idProva + "/experiences", {
         headers: {
           Authorization: process.env.REACT_APP_BEARER || "nonandra",
         },
@@ -29,6 +18,7 @@ export const GetExperience = () => {
       if (response.ok) {
         const data = await response.json();
         console.log("experience ", data);
+        dispatch(save(data));
       } else {
         console.log("errorer");
       }
