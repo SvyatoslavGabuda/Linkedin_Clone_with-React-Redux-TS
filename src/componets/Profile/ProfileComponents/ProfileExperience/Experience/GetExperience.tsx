@@ -12,9 +12,5 @@ export const GetExperience = () => {
   useEffect(() => {
     dispatch(expFetc(idProva));
   }, []);
-  return (
-    <>
-      <h2>my GetExperience</h2>
-    </>
-  );
+  return <></>;
 };
