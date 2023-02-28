@@ -105,6 +105,7 @@ const Profile = () => {
 
   return (
     <>
+      <GetExperience />
       <ProfileModale />
       <ProfileCard />
       <ProfileSideBar />
