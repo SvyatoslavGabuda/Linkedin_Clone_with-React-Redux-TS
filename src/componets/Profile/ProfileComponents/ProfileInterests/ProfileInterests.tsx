@@ -1,2 +1,4 @@
 import "./profileInterests.scss";
-export const ProfileInterest = () => {};
+export const ProfileInterest = () => {
+  return <></>;
+};

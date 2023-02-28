@@ -1,0 +1,41 @@
+.sideBarUpperSection .upperSectionLink {
+  color: grey;
+  font-size: 1rem;
+  text-decoration: none;
+}
+.sideBarUpperSection .upperSectionLink:hover {
+  -webkit-text-decoration: underline blueviolet;
+          text-decoration: underline blueviolet;
+}
+.sideBarUpperSection .sideBarQuestionIcon {
+  font-size: 0.9rem;
+}
+
+.sideBarItem .sideBarCard .sideBarCardImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 50px;
+  background-color: black;
+}
+.sideBarItem .sideBarCard .sideBarCardText h4 {
+  font-size: 1em;
+}
+.sideBarItem .sideBarCard .sideBarCardText h4:hover {
+  color: #0a66c2;
+  -webkit-text-decoration: underline #0a66c2;
+          text-decoration: underline #0a66c2;
+}
+.sideBarItem .sideBarCard .sideBarCardText p {
+  font-size: 0.9em;
+}
+.sideBarItem .btn {
+  font-size: 0.8em;
+  border-radius: 20px;
+  padding: 3px 1em;
+  margin-left: 5em;
+}
+.sideBarItem .btn:hover {
+  border: 1px solid grey;
+  color: black;
+  background-color: rgba(0, 0, 0, 0.144);
+}/*# sourceMappingURL=profileSideBar.css.map */

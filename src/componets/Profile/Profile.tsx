@@ -3,15 +3,12 @@ import { ProfileActivity } from "./ProfileComponents/ProfileActivity/ProfileActi
 import { ProfileCard } from "./ProfileComponents/ProfileCard/ProfileCard";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  ADD_TO_ALLPROFILE,
-  ADD_TO_GENERALPROFILE,
-  ADD_TO_MYPROFILE,
-} from "../../app/reducers/allProfileReduce";
+import { ADD_TO_ALLPROFILE, ADD_TO_GENERALPROFILE, ADD_TO_MYPROFILE } from "../../app/reducers/allProfileReduce";
 import { useParams } from "react-router-dom";
 import { ProfileSideBar } from "./ProfileComponents/ProfileSideBar/ProfileSideBar";
 import { ProfileModale } from "./ProfileComponents/ProfileModale/ProfileModale";
 import { useAppDispatch } from "../../app/hooks";
+import { Row } from "react-bootstrap";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -104,8 +101,10 @@ const Profile = () => {
   return (
     <>
       <ProfileModale />
-      <ProfileCard />
-      <ProfileSideBar />
+      <Row>
+        <ProfileCard />
+        <ProfileSideBar />
+      </Row>
     </>
   );
 };
