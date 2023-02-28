@@ -5,7 +5,7 @@ import "./myFooter.scss";
 
 const MyFooter = () => {
   return (
-    <footer>
+    <footer className="my-5">
       <Container>
         <Row>
           <Col>
@@ -13,7 +13,7 @@ const MyFooter = () => {
           </Col>
         </Row>
         <Row className="">
-          <Col className="d-flex flex-column">
+          <Col className="d-flex flex-column mb-2">
             <Link className="footer-link" to="/">
               Informazioni
             </Link>
@@ -30,7 +30,7 @@ const MyFooter = () => {
               Centro Sicurezza
             </Link>
           </Col>
-          <Col className="d-flex flex-column">
+          <Col className="d-flex flex-column mb-2">
             <Link className="footer-link" to="/">
               Accessibilità
             </Link>
@@ -44,7 +44,7 @@ const MyFooter = () => {
               Mobile
             </Link>
           </Col>
-          <Col className="d-flex flex-column">
+          <Col className="d-flex flex-column mb-2">
             <Link className="footer-link" to="/">
               Talent Solutions
             </Link>
@@ -58,7 +58,7 @@ const MyFooter = () => {
               Piccole Imprese
             </Link>
           </Col>
-          <Col xs={3} className="d-flex flex-column">
+          <Col md={3} className="d-flex flex-column">
             <Link className="footer-link" to="/">
               <div className="d-flex">
                 <div>
@@ -82,7 +82,7 @@ const MyFooter = () => {
               </div>
             </Link>
           </Col>
-          <Col xs={3} className="d-flex flex-column">
+          <Col md={3} className="d-flex flex-column">
             <h6 className="grayfooter">Seleziona lingua</h6>
             <Form.Select aria-label="Seleziona la lingua">
               <option value="it">Italiano (Italiano)</option>

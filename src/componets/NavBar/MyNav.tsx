@@ -5,13 +5,10 @@ import { MdBusinessCenter } from "react-icons/md";
 import { ImHome3 } from "react-icons/im";
 import { AiFillMessage } from "react-icons/ai";
 import "./myNav.scss";
-import { useEffect } from "react";
+import { useAppSelector } from "../../app/hooks";
 const MyNav = () => {
   const { pathname: location } = useLocation();
-
-  useEffect(() => {
-    console.log(location);
-  });
+  const myProfile = useAppSelector((state) => state.profile.myProfile);
 
   return (
     <>
@@ -49,14 +46,20 @@ const MyNav = () => {
                   <span className="navlabel">Notifiche</span>
                   <BsFillBellFill />
                 </Link>
-                <a className={location === "/profile/me" ? "nav-link profilenav nav-link-active" : "nav-link profilenav"}>
-                  <img className="nav-profile-pic rounded-circle" src="https://placekitten.com/300/200" alt="Profile Picture" />
-                  <NavDropdown title="Tu" id="navbarScrollingDropdown">
+                <div className="d-flex flex-column justify-content-center text-center align-items-center" style={{ minWidth: "75px" }}>
+                  <Link to="/profile/me">
+                    <img className="nav-profile-pic rounded-circle" src={myProfile?.image} alt="Profile Picture" />
+                  </Link>
+                  <NavDropdown
+                    title="Tu"
+                    id="navbarScrollingDropdown"
+                    className={location === "/profile/me" ? "nav-link profilenav nav-link-active p-0" : "nav-link profilenav p-0"}
+                  >
                     <Link to="/profile/me" className="nav-link">
                       Visita il profilo
                     </Link>
                   </NavDropdown>
-                </a>
+                </div>
 
                 <Link className="nav-link nav-link-top" to="#">
                   <span className="navlabel">Lavoro</span>
