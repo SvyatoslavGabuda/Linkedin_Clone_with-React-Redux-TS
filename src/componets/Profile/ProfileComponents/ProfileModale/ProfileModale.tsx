@@ -40,8 +40,8 @@ export const ProfileModale = () => {
           body: JSON.stringify(modalValue),
         },
       });
-      console.log(response);
-      console.log(modalValue);
+      console.log("respose modale", response);
+      console.log("valore modale", modalValue);
       if (response.ok) {
         console.log("tutto apposto");
       } else {
@@ -50,6 +50,7 @@ export const ProfileModale = () => {
     } catch (error) {
       console.log(error);
     } finally {
+      dispatch(hideM());
       //handleClose();
     }
   };

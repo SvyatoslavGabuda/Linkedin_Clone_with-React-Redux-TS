@@ -3,7 +3,11 @@ import { ProfileActivity } from "./ProfileComponents/ProfileActivity/ProfileActi
 import { ProfileCard } from "./ProfileComponents/ProfileCard/ProfileCard";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { ADD_TO_ALLPROFILE, ADD_TO_GENERALPROFILE, ADD_TO_MYPROFILE } from "../../app/reducers/allProfileReduce";
+import {
+  ADD_TO_ALLPROFILE,
+  ADD_TO_GENERALPROFILE,
+  ADD_TO_MYPROFILE,
+} from "../../app/reducers/allProfileReduce";
 import { useParams } from "react-router-dom";
 import { ProfileSideBar } from "./ProfileComponents/ProfileSideBar/ProfileSideBar";
 import { ProfileModale } from "./ProfileComponents/ProfileModale/ProfileModale";
@@ -104,12 +108,18 @@ const Profile = () => {
 
   const currentProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
 
+  const clickedProfile: Iprofile = useAppSelector((state) => state.profile.generalProfile);
+
   return (
     <>
       <GetExperience />
       <ProfileModale />
       <Row>
-        <ProfileCard profile={currentProfile} />
+        {params.id === "me" ? (
+          <ProfileCard profile={currentProfile} />
+        ) : (
+          <ProfileCard profile={clickedProfile} />
+        )}
         <ProfileSideBar />
       </Row>
     </>
