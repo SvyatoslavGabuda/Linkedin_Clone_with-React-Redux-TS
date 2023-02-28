@@ -1,7 +1,10 @@
 import { Row, Col, Card, ListGroup } from "react-bootstrap";
+import { useAppSelector } from "../../../../../app/hooks";
+import { Iprofile } from "../../../Profile";
 import { SideBarItemComponent } from "./SideBarItemComponent";
 
 export const GroupsInterestsComponent = () => {
+  const allProfileData: Iprofile[] = useAppSelector((state) => state.profile.allProfile).slice(13, 15);
   return (
     <Row className="p-3">
       <Col>
@@ -10,9 +13,9 @@ export const GroupsInterestsComponent = () => {
           <Row className="justify-content-center">
             <Col xs={10}>
               <ListGroup variant="flush">
-                {/* map delle aziende */}
-                <SideBarItemComponent />
-                <SideBarItemComponent />
+                {allProfileData.map((item, i) => (
+                  <SideBarItemComponent item={item} key={i} />
+                ))}
               </ListGroup>
             </Col>
           </Row>

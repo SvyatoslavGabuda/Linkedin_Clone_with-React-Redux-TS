@@ -10,10 +10,10 @@ export const SideBarItemComponent = (props: SideBarItemProps) => {
   return (
     <ListGroup.Item className="sideBarItem py-3">
       <div className="sideBarCard d-flex align-items-center">
-        <img className="img-fluid me-3 sideBarCardImg" src="" alt="" />
+        <img className="img-fluid me-3 sideBarCardImg" src={props.item.image} alt="" />
         <span className="sideBarCardText">
-          <h4 className="m-0">Nome Azienda</h4>
-          <p className="m-0">Azienda che lavora in...</p>
+          <h4 className="m-0">{props.item.name + " " + props.item.surname}</h4>
+          <p className="m-0">{props.item.title}</p>
         </span>
       </div>
       <Button variant="outline-secondary d-flex align-items-center">
