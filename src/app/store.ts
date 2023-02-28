@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action, combineReducers, Reducer } from "@
 
 import { AllProfile, allProfileReduce } from "./reducers/allProfileReduce";
 import experienceSlice from "./reducers/experienceSlice";
+import profileSlice from "./reducers/profileSlice";
 
 // const allReducer = combineReducers({
 //   profile: allProfileReduce as Reducer,
@@ -10,6 +11,7 @@ export const store = configureStore({
   reducer: {
     profile: allProfileReduce as Reducer,
     experience: experienceSlice,
+    newProfile: profileSlice,
   },
 });
 
