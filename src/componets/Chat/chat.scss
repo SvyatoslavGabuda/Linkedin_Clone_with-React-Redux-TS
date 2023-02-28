@@ -41,6 +41,12 @@
 .chatElement {
   display: flex;
   font-size: 0.8rem;
+  > div:first-child {
+    width: 55px;
+  }
+  > div:last-child {
+    width: 45px;
+  }
 }
 .chatlistimg {
   width: 100%;
@@ -49,6 +55,7 @@
   object-position: center;
 }
 .chatbody {
+  width: 164px;
   padding-bottom: 5px;
   margin-bottom: 10px;
   border-bottom: 1px solid rgba(131, 129, 129, 0.363);

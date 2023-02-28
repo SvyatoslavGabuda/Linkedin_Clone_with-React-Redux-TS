@@ -27,11 +27,8 @@ export const Chat = () => {
               <img src="https://placekitten.com/300/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
-              <p>Giuseppe Simone</p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, provident nisi praesentium tempora iure et ducimus laudantium
-                assumenda doloremque amet natus aut repellendus nulla ipsum fugit facere architecto incidunt beatae.
-              </p>
+              <p>Vincenzo Maiorana</p>
+              <p>Nel mezzo del cammin di nostra vita, odiai Typescript in maniera oscura.</p>
             </div>
             <div>7 Feb</div>
           </div>
