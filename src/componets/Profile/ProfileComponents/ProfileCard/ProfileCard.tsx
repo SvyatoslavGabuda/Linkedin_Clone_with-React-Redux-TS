@@ -12,6 +12,7 @@ import { ProfileResources } from "../ProfileRecurces/ProfileResources";
 import { Iprofile } from "../../Profile";
 import { useAppDispatch } from "../../../../app/hooks";
 import { toogleM } from "../../../../app/reducers/upgrateModSlice";
+import { useParams } from "react-router";
 
 interface ProfileCardProps {
   profile: Iprofile;
@@ -19,6 +20,7 @@ interface ProfileCardProps {
 
 export const ProfileCard = ({ profile }: ProfileCardProps) => {
   const dispatch = useAppDispatch();
+  const params = useParams();
   return (
     <>
       <Col xs={12} md={7} lg={8}>
@@ -30,11 +32,13 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                   <div></div>
                 </div>
                 <div className="CamContainer">
-                  <button>
-                    <li>
-                      <AiFillCamera className="IconCam" />
-                    </li>
-                  </button>
+                  {params.id === "me" && (
+                    <button>
+                      <li>
+                        <AiFillCamera className="IconCam" />
+                      </li>
+                    </button>
+                  )}
                 </div>
               </div>
               {/* immagine profilo */}
@@ -51,9 +55,11 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     <div className="ButtonContainer2 d-flex">
                       <div className="ButtonContainer3">
                         <button>
-                          <li onClick={() => dispatch(toogleM())}>
-                            <HiOutlinePencil className="IconPen" />
-                          </li>
+                          {params.id === "me" && (
+                            <li onClick={() => dispatch(toogleM())}>
+                              <HiOutlinePencil className="IconPen" />
+                            </li>
+                          )}
                         </button>
                       </div>
                     </div>
@@ -112,10 +118,10 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
           </Row>
         )}
         <ProfileActivity />
-        <ProfileAnalisis />
+        {params.id === "me" && <ProfileAnalisis />}
         <ProfileExperience />
         <ProfileInterest />
-        <ProfileResources />
+        {params.id === "me" && <ProfileResources />}
       </Col>
     </>
   );
