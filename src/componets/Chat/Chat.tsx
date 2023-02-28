@@ -41,11 +41,8 @@ export const Chat = () => {
               <img src="https://placekitten.com/330/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
-              <p>Giuseppe Simone</p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, provident nisi praesentium tempora iure et ducimus laudantium
-                assumenda doloremque amet natus aut repellendus nulla ipsum fugit facere architecto incidunt beatae.
-              </p>
+              <p>Giovanni Muciaccia</p>
+              <p>Typescript è un heArt Attack. Typescript as HeartAttck</p>
             </div>
             <div>7 Feb</div>
           </div>
@@ -54,11 +51,8 @@ export const Chat = () => {
               <img src="https://placekitten.com/100/230" alt="Profile Picture" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
-              <p>Giuseppe Simone</p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, provident nisi praesentium tempora iure et ducimus laudantium
-                assumenda doloremque amet natus aut repellendus nulla ipsum fugit facere architecto incidunt beatae.
-              </p>
+              <p>Bill Gates</p>
+              <p>Don't go to that madman, come to me who's better than him, level up.</p>
             </div>
             <div>7 Feb</div>
           </div>
@@ -67,13 +61,10 @@ export const Chat = () => {
               <img src="https://placekitten.com/310/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
-              <p>Giuseppe Simone</p>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, provident nisi praesentium tempora iure et ducimus laudantium
-                assumenda doloremque amet natus aut repellendus nulla ipsum fugit facere architecto incidunt beatae.
-              </p>
+              <p>Steve Jobs</p>
+              <p>I'm looking for you because I need you at Apple, please call me on my private cell phone.</p>
             </div>
-            <div>7 Feb</div>
+            <div>5/10/11</div>
           </div>
         </div>
       </div>
