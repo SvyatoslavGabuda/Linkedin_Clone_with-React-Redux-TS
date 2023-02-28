@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Iprofile } from "../../Profile";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { hideM, showM, toogleM } from "../../../../app/reducers/upgrateModSlice";
+import "./profileModale.scss";
 
 export const ProfileModale = () => {
   const url = "https://striveschool-api.herokuapp.com/api/profile/";
@@ -40,8 +41,8 @@ export const ProfileModale = () => {
           body: JSON.stringify(modalValue),
         },
       });
-      console.log(response);
-      console.log(modalValue);
+      console.log("respose modale", response);
+      console.log("valore modale", modalValue);
       if (response.ok) {
         console.log("tutto apposto");
       } else {
@@ -50,6 +51,7 @@ export const ProfileModale = () => {
     } catch (error) {
       console.log(error);
     } finally {
+      dispatch(hideM());
       //handleClose();
     }
   };
@@ -60,18 +62,21 @@ export const ProfileModale = () => {
 
   return (
     <>
-      <Modal show={show} onHide={() => dispatch(hideM())}>
-        <Modal.Header closeButton>
-          <Modal.Title>Aggiungi Info</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form
-            onSubmit={(e) => {
-              putInfo(e);
-            }}
-          >
+      <Modal show={show} onHide={() => dispatch(hideM())} size="lg" id="profileEditModal">
+        <Form
+          onSubmit={(e) => {
+            putInfo(e);
+          }}
+        >
+          {" "}
+          <Modal.Header closeButton>
+            <Modal.Title>Modifica Introduzione</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p className="text-muted mb-4">*Indica che è obbligatorio</p>
+
             <Form.Group className="mb-3">
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Nome*</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Name"
@@ -82,7 +87,7 @@ export const ProfileModale = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>surname</Form.Label>
+              <Form.Label>Cognome*</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Surname"
@@ -93,7 +98,7 @@ export const ProfileModale = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>img</Form.Label>
+              <Form.Label>URL Immagine Profilo*</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter img url as a string"
@@ -104,7 +109,7 @@ export const ProfileModale = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>title</Form.Label>
+              <Form.Label>Sommario*</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter title"
@@ -115,9 +120,9 @@ export const ProfileModale = () => {
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label>Bio</Form.Label>
+              <Form.Label>Biografia*</Form.Label>
               <Form.Control
-                type="text"
+                as="textarea"
                 placeholder="Enter Bio"
                 value={modalValue?.bio}
                 onChange={(e) => {
@@ -127,7 +132,7 @@ export const ProfileModale = () => {
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>area</Form.Label>
+              <Form.Label>Città*</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter Area"
@@ -137,17 +142,16 @@ export const ProfileModale = () => {
                 }}
               />
             </Form.Group>
-
+          </Modal.Body>
+          <Modal.Footer>
             <Button variant="primary" type="submit">
-              Submit
+              Salva
             </Button>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => dispatch(hideM())}>
-            Close
-          </Button>
-        </Modal.Footer>
+            {/*             <Button variant="secondary" onClick={() => dispatch(hideM())}>
+              Close
+            </Button> */}
+          </Modal.Footer>{" "}
+        </Form>
       </Modal>
     </>
   );

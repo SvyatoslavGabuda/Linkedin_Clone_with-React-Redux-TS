@@ -12,7 +12,7 @@ const MyNav = () => {
 
   return (
     <>
-      <Navbar expand="sm" className="p-0">
+      <Navbar expand="sm" className="p-0 bg-light mb-3 sticky-top">
         <Container>
           <Navbar.Brand>
             <Link to="/" className="d-flex align-items-center">

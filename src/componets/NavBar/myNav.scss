@@ -75,6 +75,7 @@
       -webkit-line-clamp: 5;
       text-overflow: ellipsis;
       display: block;
+      user-select: none;
     }
   }
   .openprofilebtnnav {
@@ -97,5 +98,6 @@
   }
   h6 {
     font-weight: 600;
+    user-select: none;
   }
 }
