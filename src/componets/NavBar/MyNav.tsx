@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav, NavDropdown, Form } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Form, Badge } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { BsLinkedin, BsFillPeopleFill, BsFillBellFill, BsFillGrid3X3GapFill } from "react-icons/bs";
 import { MdBusinessCenter } from "react-icons/md";
@@ -48,7 +48,21 @@ const MyNav = () => {
                 </Link>
                 <div className="d-flex flex-column justify-content-center text-center align-items-center" style={{ minWidth: "75px" }}>
                   <Link to="/profile/me">
-                    <img className="nav-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />
+                    <div style={{ position: "relative" }}>
+                      <img className="nav-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />
+                      <div
+                        className="d-block rounded-circle"
+                        style={{
+                          position: "absolute",
+                          backgroundColor: "green",
+                          width: "10px",
+                          height: "10px",
+                          bottom: "-2px",
+                          right: "-2px",
+                          border: "2px solid white",
+                        }}
+                      ></div>
+                    </div>
                   </Link>
                   <NavDropdown
                     title="Tu"
@@ -57,8 +71,20 @@ const MyNav = () => {
                     className={location === "/profile/me" ? "nav-link profilenav nav-link-active p-0" : "nav-link profilenav p-0"}
                   >
                     <div className="dd-profile">
-                      <div>
-                        <img src={myProfile?.image} alt="Profile" className="ddprofileimg rounded-circle" />
+                      <div style={{ position: "relative" }}>
+                        <img src={myProfile?.image} alt="Profile" className="ddprofileimg rounded-circle" />{" "}
+                        <div
+                          className="d-block rounded-circle"
+                          style={{
+                            position: "absolute",
+                            backgroundColor: "green",
+                            width: "15px",
+                            height: "15px",
+                            bottom: "0px",
+                            right: "0px",
+                            border: "3px solid white",
+                          }}
+                        ></div>
                       </div>
                       <div className="ddprofilebody px-2">
                         <h6 className="mb-1">{myProfile?.name + " " + myProfile?.surname}</h6>
