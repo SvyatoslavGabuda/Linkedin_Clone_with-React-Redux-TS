@@ -1,7 +1,12 @@
 import { Button, ListGroup } from "react-bootstrap";
 import { BsFillPersonPlusFill } from "react-icons/bs";
+import { Iprofile } from "../../../Profile";
 
-export const SideBarItemComponent = () => {
+interface SideBarItemProps {
+  item: Iprofile;
+}
+
+export const SideBarItemComponent = (props: SideBarItemProps) => {
   return (
     <ListGroup.Item className="sideBarItem py-3">
       <div className="sideBarCard d-flex align-items-center">
