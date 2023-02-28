@@ -1,0 +1,31 @@
+.Button1, .Button2, .Button3, .Button4, p {
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.Button4 {
+  width: 100%;
+  border: none;
+  background-color: white;
+  color: #6c757d;
+  padding: 10px;
+}
+.Button4:hover {
+  background-color: #dbdbdb;
+}/*# sourceMappingURL=profileActivity.css.map */

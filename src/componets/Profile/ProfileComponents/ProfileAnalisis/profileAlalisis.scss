@@ -1,0 +1,29 @@
+p {
+    margin: 0;
+    font-size: 0.9em;
+}
+li {
+    list-style-type: none;
+}
+ul {
+    li {
+        img {
+            width: 32px;
+            height: 32px;
+        }
+        span {
+            font-weight: 500;
+            a {
+                color: black;
+            }
+        }
+    }
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+    &:hover {
+        text-decoration: underline;
+    }
+}

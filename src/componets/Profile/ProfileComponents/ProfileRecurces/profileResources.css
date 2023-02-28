@@ -1,0 +1,165 @@
+.BackgroundContainer {
+  min-height: 195.5px;
+  max-height: 195.5px;
+  position: relative;
+  overflow-y: hidden;
+  background: linear-gradient(62deg, rgb(21, 213, 235) 0%, rgb(255, 0, 191) 100%);
+}
+.BackgroundContainer div {
+  position: absolute;
+  bottom: 0;
+  transition-duration: 0.4s;
+  transition-timing-function: ease-in-out;
+  transition-property: opacity;
+  transition-delay: 1s;
+  opacity: 1;
+}
+.BackgroundContainer div div {
+  position: relative;
+  width: 100%;
+  padding-bottom: 25%;
+  cursor: pointer;
+}
+
+.CamContainer {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+.CamContainer button {
+  height: 2.4rem;
+  width: 2.4rem;
+  min-width: auto;
+  background-color: white;
+  color: #004182;
+  border: none;
+  border-radius: 50%;
+}
+
+.IconCam {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.ProfileImgContainer2 {
+  margin-top: -112px;
+  z-index: 4;
+}
+.ProfileImgContainer2 .ProfileImgContainer3 {
+  width: 160px;
+  height: 160px;
+  box-sizing: border-box;
+  border-radius: 49.9%;
+  background-color: white;
+  border: 4px solid white;
+}
+.ProfileImgContainer2 .ProfileImgContainer3 .ProfileImgContainer4 {
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: block;
+  border-radius: 49.9%;
+}
+.ProfileImgContainer2 .ProfileImgContainer3 .ProfileImgContainer4 img {
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+}
+
+.ButtonContainer3 button {
+  background-color: white;
+  border: none;
+  height: 4rem;
+  width: 4rem;
+}
+.ButtonContainer3 button :hover {
+  background-color: #dbdbdb;
+  border-radius: 50%;
+}
+.ButtonContainer3 button li {
+  padding: 10px 0px;
+}
+
+.IconPen {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.Button2 {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  color: #0d6efd;
+  background-color: white;
+  box-shadow: inset 0 0 0 1px #0d6efd;
+}
+.Button2:hover {
+  box-shadow: inset 0 0 0 2px #0d6efd;
+  background-color: rgba(13, 109, 253, 0.2470588235);
+}
+
+.Button3 {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  color: #6c757d;
+  background-color: white;
+  box-shadow: inset 0 0 0 1px #6c757d;
+}
+.Button3:hover {
+  box-shadow: inset 0 0 0 2px #6c757d;
+  background-color: rgba(108, 117, 125, 0.2470588235);
+}
+
+.Button1, .Button2, .Button3, .Button4, p {
+  font-weight: 500;
+}
+
+p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
+li {
+  list-style-type: none;
+}
+
+ul li img {
+  width: 32px;
+  height: 32px;
+}
+ul li span {
+  font-weight: 500;
+}
+ul li span a {
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+section {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.Button4 {
+  width: 100%;
+  border: none;
+  background-color: white;
+  color: #6c757d;
+  padding: 10px;
+}
+.Button4:hover {
+  background-color: #dbdbdb;
+}
+
+.ExpImg {
+  width: 48px;
+  height: 48px;
+}/*# sourceMappingURL=profileResources.css.map */
