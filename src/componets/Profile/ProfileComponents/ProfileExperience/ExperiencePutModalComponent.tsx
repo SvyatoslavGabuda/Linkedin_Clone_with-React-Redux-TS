@@ -1,24 +1,20 @@
-import { format, formatISO } from "date-fns";
-import React, { useEffect, useState } from "react";
+import { format } from "date-fns";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
-import { hideExpM } from "../../../../app/reducers/expModSlice";
+import { hidePutM } from "../../../../app/reducers/expPutModSlice";
+import { IexperiencePost } from "./ExperienceModalComponenent";
 
-export interface IexperiencePost {
-  role: string;
-  company: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  area: string;
-}
-
-export const ExperienceModalComponent = () => {
-  const showExpM = useAppSelector((state) => state.experienceModale.show);
-  const user = useAppSelector((state) => state.profile?.myProfile);
+export const ExperiencePutModalComponent = () => {
+  // recover show property of the modal from the
+  const showPutM = useAppSelector((state) => state.experiencePutModale.show);
+  // recover the specific experience to work with
+  const user = useAppSelector((state) => state.experience);
+  // define dispatch
   const dispatch = useAppDispatch();
+  // create a internal state to store the value of the experience into the input to modify
   const [experience, setExperience] = useState<IexperiencePost>({
     role: "",
     company: "",
@@ -28,11 +24,11 @@ export const ExperienceModalComponent = () => {
     area: "",
   });
 
-  // Fetch to POST a new Experience
-  const postNewExperience = async () => {
+  //   Fetch to PUT an existing Experience
+  const putExperience = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user?._id}/experiences`, {
-        method: "POST",
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${}/experiences`, {
+        method: "PUT",
         body: JSON.stringify(experience),
         headers: {
           Authorization: process.env.REACT_APP_BEARER || "nonandra",
@@ -40,22 +36,22 @@ export const ExperienceModalComponent = () => {
         },
       });
       if (response.ok) {
-        console.log("POST completata");
+        console.log("PUT Experience completed");
       } else {
-        console.log("Response POST experience not okay");
+        console.log("Response PUT experience not okay");
       }
     } catch (error) {
-      console.log("Errore fatale nella POST");
+      console.log("Fatal Error into Experience PUT");
     }
   };
 
   return (
     <>
-      <Modal show={showExpM} onHide={() => dispatch(hideExpM())}>
+      <Modal show={showPutM} onHide={() => dispatch(hidePutM())}>
         <Form
           onSubmit={(e) => {
             e.preventDefault();
-            postNewExperience();
+            // chiama funzione PUT
           }}
         >
           <Modal.Header closeButton>
@@ -150,8 +146,14 @@ export const ExperienceModalComponent = () => {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={() => dispatch(hideExpM())}>
-              Close
+            <Button
+              variant="secondary"
+              onClick={() => {
+                //Chiama funzione delete
+                dispatch(hidePutM());
+              }}
+            >
+              Delete experience
             </Button>
             <Button variant="primary" type="submit">
               Save Changes

@@ -3,6 +3,7 @@ import { configureStore, ThunkAction, Action, combineReducers, Reducer } from "@
 import { AllProfile, allProfileReduce } from "./reducers/allProfileReduce";
 import experienceSlice from "./reducers/experienceSlice";
 import expModSlice from "./reducers/expModSlice";
+import expPutModSlice from "./reducers/expPutModSlice";
 import profileSlice from "./reducers/profileSlice";
 import upgrateModSlice from "./reducers/upgrateModSlice";
 
@@ -16,6 +17,7 @@ export const store = configureStore({
     // newProfile: profileSlice,
     upGradeModale: upgrateModSlice,
     experienceModale: expModSlice,
+    experiencePutModale: expPutModSlice,
   },
 });
 

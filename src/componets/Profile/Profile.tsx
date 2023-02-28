@@ -12,6 +12,7 @@ import { Row } from "react-bootstrap";
 import { GetExperience } from "./ProfileComponents/ProfileExperience/Experience/GetExperience";
 import { useAppSelector } from "../../app/hooks";
 import { ExperienceModalComponent } from "./ProfileComponents/ProfileExperience/ExperienceModalComponenent";
+import { ExperiencePutModalComponent } from "./ProfileComponents/ProfileExperience/ExperiencePutModalComponent";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -112,6 +113,7 @@ const Profile = () => {
       <GetExperience />
       <ProfileModale />
       <ExperienceModalComponent />
+      <ExperiencePutModalComponent />
       <Row>
         {params.id === "me" ? <ProfileCard profile={currentProfile} /> : <ProfileCard profile={clickedProfile} />}
         <ProfileSideBar />
