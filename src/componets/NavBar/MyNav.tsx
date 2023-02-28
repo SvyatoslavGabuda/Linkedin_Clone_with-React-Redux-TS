@@ -71,8 +71,20 @@ const MyNav = () => {
                     className={location === "/profile/me" ? "nav-link profilenav nav-link-active p-0" : "nav-link profilenav p-0"}
                   >
                     <div className="dd-profile">
-                      <div>
-                        <img src={myProfile?.image} alt="Profile" className="ddprofileimg rounded-circle" />
+                      <div style={{ position: "relative" }}>
+                        <img src={myProfile?.image} alt="Profile" className="ddprofileimg rounded-circle" />{" "}
+                        <div
+                          className="d-block rounded-circle"
+                          style={{
+                            position: "absolute",
+                            backgroundColor: "green",
+                            width: "15px",
+                            height: "15px",
+                            bottom: "0px",
+                            right: "0px",
+                            border: "3px solid white",
+                          }}
+                        ></div>
                       </div>
                       <div className="ddprofilebody px-2">
                         <h6 className="mb-1">{myProfile?.name + " " + myProfile?.surname}</h6>
