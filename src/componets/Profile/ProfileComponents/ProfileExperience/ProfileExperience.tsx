@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { useEffect } from "react";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { ExpCard } from "./Experience/ExpCard";
+import { showExpM } from "../../../../app/reducers/expModSlice";
 
 export const ProfileExperience = () => {
   const dispatch = useAppDispatch();
@@ -33,7 +34,7 @@ export const ProfileExperience = () => {
               </div>
               <div className="ButtonContainer3">
                 <button>
-                  <li>
+                  <li onClick={() => dispatch(showExpM())}>
                     <HiOutlinePencil className="IconPen" />
                   </li>
                 </button>

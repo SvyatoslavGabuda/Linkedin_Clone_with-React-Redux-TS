@@ -2,6 +2,7 @@ import { configureStore, ThunkAction, Action, combineReducers, Reducer } from "@
 
 import { AllProfile, allProfileReduce } from "./reducers/allProfileReduce";
 import experienceSlice from "./reducers/experienceSlice";
+import expModSlice from "./reducers/expModSlice";
 import profileSlice from "./reducers/profileSlice";
 import upgrateModSlice from "./reducers/upgrateModSlice";
 
@@ -14,14 +15,10 @@ export const store = configureStore({
     experience: experienceSlice,
     // newProfile: profileSlice,
     upGradeModale: upgrateModSlice,
+    experienceModale: expModSlice,
   },
 });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;

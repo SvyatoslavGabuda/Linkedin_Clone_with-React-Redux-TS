@@ -1,27 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { Ishow } from "./upgrateModSlice";
 
-export interface Ishow {
-  show: boolean;
-}
 const initialState: Ishow = {
   show: false,
 };
 
-const upgradeModSlice = createSlice({
-  name: "upgrade",
+const expModSlice = createSlice({
+  name: "experience",
   initialState,
   reducers: {
-    toogleM(state) {
+    toogleExpM(state) {
       state.show = !state.show;
     },
-    hideM(state) {
+    hideExpM(state) {
       state.show = false;
     },
-    showM(state) {
+    showExpM(state) {
       state.show = true;
     },
   },
 });
-export const { toogleM, hideM, showM } = upgradeModSlice.actions;
-export default upgradeModSlice.reducer;
+export const { toogleExpM, hideExpM, showExpM } = expModSlice.actions;
+export default expModSlice.reducer;
