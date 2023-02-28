@@ -35,10 +35,10 @@ export const ProfileModale = () => {
     try {
       const response = await fetch(url, {
         method: "PUT",
+        body: JSON.stringify(modalValue),
         headers: {
           "Content-Type": "application/json",
           Authorization: process.env.REACT_APP_BEARER || "nonandra",
-          body: JSON.stringify(modalValue),
         },
       });
       console.log("respose modale", response);
