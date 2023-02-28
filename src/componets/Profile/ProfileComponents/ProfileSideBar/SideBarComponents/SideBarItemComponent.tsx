@@ -13,7 +13,7 @@ export const SideBarItemComponent = (props: SideBarItemProps) => {
         <img className="img-fluid me-3 sideBarCardImg" src={props.item.image} alt="" />
         <span className="sideBarCardText">
           <h4 className="m-0">{props.item.name + " " + props.item.surname}</h4>
-          <p className="m-0">{props.item.title}</p>
+          <p className="m-0">{props.item.title.slice(0, 25) + "..."}</p>
         </span>
       </div>
       <Button variant="outline-secondary d-flex align-items-center">
