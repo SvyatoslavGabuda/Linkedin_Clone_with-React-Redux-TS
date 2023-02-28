@@ -46,8 +46,22 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                 <div className="ProfileImgContainer d-flex justify-content-between">
                   <div className="ProfileImgContainer2">
                     <div className="ProfileImgContainer3">
-                      <div className="ProfileImgContainer4">
+                      <div className="ProfileImgContainer4" style={{ position: "relative" }}>
                         <img src={profile.image} alt="ProfilePic" />
+                        {params.id === "me" && (
+                          <div
+                            className="d-block rounded-circle"
+                            style={{
+                              position: "absolute",
+                              backgroundColor: "green",
+                              width: "24px",
+                              height: "24px",
+                              bottom: "8px",
+                              right: "8px",
+                              border: "3px solid white",
+                            }}
+                          ></div>
+                        )}
                       </div>
                     </div>
                   </div>
