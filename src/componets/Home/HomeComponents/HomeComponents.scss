@@ -172,3 +172,19 @@
     }
   }
 }
+
+.shownOrNot {
+  transition: 0.3s;
+  &:hover {
+    transition: 0.3s;
+    background-color: rgb(230, 230, 230);
+  }
+  .showMoreButton {
+    background-color: inherit;
+    border: none;
+
+    span {
+      margin-right: 7px;
+    }
+  }
+}

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export const HomeLeftLowerComponent = () => {
   return (
     <>
-      <Col xs={12} className="pt-2 HomeLeftLowerContainer">
+      <Col xs={12} className={"pt-2 HomeLeftLowerContainer"}>
         <Card className="p-0">
           <div className="p-0 pt-2">
             <div className="header py-1">Recenti</div>
