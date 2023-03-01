@@ -29,5 +29,5 @@ const postsPutModSlice = createSlice({
     },
   },
 });
-export const { tooglePutPosts, hidePutPosts, showPutPosts } = postsPutModSlice.actions;
+export const { tooglePutPosts, hidePutPosts, showPutPosts, addFocusPosts } = postsPutModSlice.actions;
 export default postsPutModSlice.reducer;

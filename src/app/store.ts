@@ -1,13 +1,12 @@
-import { configureStore, ThunkAction, Action, combineReducers, Reducer } from "@reduxjs/toolkit";
+import { configureStore, ThunkAction, Action, Reducer } from "@reduxjs/toolkit";
 
-import { AllProfile, allProfileReduce } from "./reducers/allProfileReduce";
+import { allProfileReduce } from "./reducers/allProfileReduce";
 import experienceSlice from "./reducers/experienceSlice";
 import expModSlice from "./reducers/expModSlice";
 import expPutModSlice from "./reducers/expPutModSlice";
 import postsModSlice from "./reducers/postsModSlice";
 import postsPutModSlice from "./reducers/postsPutModSlice";
 import postsSlice from "./reducers/postsSlice";
-import profileSlice from "./reducers/profileSlice";
 import upgrateModSlice from "./reducers/upgrateModSlice";
 
 // const allReducer = combineReducers({

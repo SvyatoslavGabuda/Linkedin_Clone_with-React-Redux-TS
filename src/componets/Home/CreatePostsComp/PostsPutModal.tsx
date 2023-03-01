@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { hidePosts } from "../../../app/reducers/postsModSlice";
@@ -18,9 +18,9 @@ export const PostsPutModal = () => {
   const dispatch = useAppDispatch();
   const [textPUT, setTextPUT] = useState("");
 
-  const postsPOST = async () => {
+  const postsPUT = async () => {
     try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/", {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${storePutPosts.focus._id}`, {
         method: "PUT",
         body: JSON.stringify({ text: textPUT }),
         headers: {
@@ -28,8 +28,6 @@ export const PostsPutModal = () => {
           Authorization: process.env.REACT_APP_BEARER || "nonandra",
         },
       });
-      console.log("testo", textPUT);
-      console.log(response);
       if (response.ok) {
         console.log("PUT post successfull");
       } else {
@@ -42,6 +40,10 @@ export const PostsPutModal = () => {
     }
   };
 
+  useEffect(() => {
+    setTextPUT(storePutPosts.focus.text);
+  }, [storePutPosts.focus.text]);
+
   return (
     <>
       {myProfile && (
@@ -52,7 +54,7 @@ export const PostsPutModal = () => {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              //fetch PUT posts
+              postsPUT();
             }}
           >
             <Modal.Body>

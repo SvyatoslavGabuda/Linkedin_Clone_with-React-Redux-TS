@@ -18,10 +18,14 @@ import { SlLink } from "react-icons/sl";
 import { FiAlertTriangle } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
 import { HiOutlinePencil } from "react-icons/hi2";
+import { addFocusPosts, showPutPosts } from "../../../app/reducers/postsPutModSlice";
+import { useAppDispatch } from "../../../app/hooks";
 
 export const HomeMid = () => {
   const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
   const MyProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
+  const storePutPosts = useAppSelector((state) => state.postPutModale);
+  const dispatch = useAppDispatch();
 
   const OnlyOnePostForUser = [...new Map(NewsArrData.map((p) => [p.user._id, p])).values()];
   const Oggi = new Date();
@@ -36,6 +40,26 @@ export const HomeMid = () => {
       return differenceInHours(Oggi, new Date(date)) + ore;
     }
   };
+
+  const postsDELETE = async () => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${storePutPosts.focus._id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: process.env.REACT_APP_BEARER || "nonandra",
+          "content-type": "application/json",
+        },
+      });
+      if (response.ok) {
+        console.log("Post successfully deleted");
+      } else {
+        console.log("something went wrong in the response of the post DELETE");
+      }
+    } catch (error) {
+      console.log("fatal error in DELETE post");
+    }
+  };
+
   return (
     <>
       <Posts />
@@ -76,7 +100,14 @@ export const HomeMid = () => {
                       </div>
                     </div>
                     <div>
-                      <NavDropdown title="..." align={"end"} className="fs-2">
+                      <NavDropdown
+                        title="..."
+                        align={"end"}
+                        className="fs-2"
+                        onClick={() => {
+                          dispatch(addFocusPosts(Singlepost));
+                        }}
+                      >
                         <div className="HomeMidDropDwon">
                           <Link to="/">
                             <BsBookmark /> Salva
@@ -93,7 +124,12 @@ export const HomeMid = () => {
                           </Link>
                         </div>
                         {Singlepost.user._id === MyProfile._id ? (
-                          <div className="HomeMidDropDwon">
+                          <div
+                            className="HomeMidDropDwon"
+                            onClick={() => {
+                              postsDELETE();
+                            }}
+                          >
                             <Link to="/">
                               <FaTrashAlt /> Elimina
                             </Link>
@@ -120,7 +156,12 @@ export const HomeMid = () => {
                           </Link>
                         </div>
                         {Singlepost.user._id === MyProfile._id ? (
-                          <div className="HomeMidDropDwon">
+                          <div
+                            className="HomeMidDropDwon"
+                            onClick={() => {
+                              dispatch(showPutPosts());
+                            }}
+                          >
                             <Link to="/">
                               <HiOutlinePencil /> Modifica
                             </Link>

@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { Col, Row } from "react-bootstrap";
 import { PostsModal } from "./PostsModal";
 import { tooglePosts } from "../../../app/reducers/postsModSlice";
+import { PostsPutModal } from "./PostsPutModal";
 
 export const CreatePost = () => {
   const myProfile = useAppSelector((state) => state.profile.myProfile);
@@ -86,6 +87,7 @@ export const CreatePost = () => {
         </Card.Body>
       </Card>
       <PostsModal />
+      <PostsPutModal />
     </>
   );
 };
