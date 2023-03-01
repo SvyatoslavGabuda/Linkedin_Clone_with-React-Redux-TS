@@ -92,6 +92,7 @@
   padding: 15px;
   background-color: white;
   overflow: hidden;
+  margin-bottom: 20px;
   h5 {
     font-size: 1rem;
     font-weight: 600;
@@ -136,5 +137,31 @@
       border-radius: 10px;
       background-color: rgba(128, 128, 128, 0.219);
     }
+  }
+}
+.HomeRightFooter {
+  > div {
+    &:last-child {
+      margin-top: 10px;
+    }
+    display: flex;
+    justify-content: center;
+    font-size: 0.7rem;
+    > a:nth-child(2) {
+      margin-left: 20px;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: gray;
+    margin-bottom: 0.3rem;
+    transition: all 0.5s ease;
+    &:hover {
+      text-decoration: underline;
+      color: rgb(0, 70, 201);
+    }
+  }
+  .footer-logo {
+    margin-right: 8px;
   }
 }

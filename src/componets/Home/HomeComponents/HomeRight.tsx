@@ -2,6 +2,7 @@ import { Col } from "react-bootstrap";
 import { BsFillInfoSquareFill } from "react-icons/bs";
 import { BiUpArrow } from "react-icons/bi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const HomeRight = () => {
   const [show, setShow] = useState(false);
@@ -62,6 +63,50 @@ export const HomeRight = () => {
             }}
           >
             <BiUpArrow className={!show ? "showchat hidechat" : "showchat"} /> &nbsp; Visualizza Altro
+          </div>
+        </div>
+        <div className="HomeRightFooter">
+          <div>
+            <Link className="footer-link" to="/">
+              Informazioni
+            </Link>
+            <Link className="footer-link" to="/">
+              Accessibilità
+            </Link>
+          </div>
+          <div>
+            <Link className="footer-link" to="/">
+              Centro assistenza
+            </Link>
+            <Link className="footer-link" to="/">
+              Privacy e condizioni
+            </Link>
+          </div>
+          <div>
+            <Link className="footer-link" to="/">
+              Opzioni per gli annunci pubblicitari
+            </Link>
+          </div>
+          <div>
+            <Link className="footer-link" to="/">
+              Pubblicità
+            </Link>
+            <Link className="footer-link" to="/">
+              Servizi alle aziende
+            </Link>
+          </div>
+          <div>
+            <Link className="footer-link" to="/">
+              Scarica l'app LinkedIn
+            </Link>
+            <Link className="footer-link" to="/">
+              Altro
+            </Link>
+          </div>
+          <div className="HomeFooterCR">
+            {" "}
+            <img className="footer-logo" src="logo.webp" alt="Linkedin Logo" height={"16px"} />
+            LinkedIn Corporation &copy; {new Date().getFullYear()}
           </div>
         </div>
       </Col>
