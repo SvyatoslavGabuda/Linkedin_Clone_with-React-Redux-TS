@@ -20,7 +20,7 @@ export const CreatePost = () => {
         <Card.Body>
           <Card.Text className="createPostTextAreaOne">
             <Row className="align-items-center">
-              <Col xs={2} className="text-center p-0">
+              <Col xs={1} className="text-center p-0">
                 {myProfile && (
                   <>
                     {" "}
