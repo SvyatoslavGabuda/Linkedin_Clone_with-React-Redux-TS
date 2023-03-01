@@ -92,6 +92,8 @@
 .HomeLeftLowerContainer {
   padding-top: 8px;
   margin-bottom: 8px;
+  position: sticky;
+  top: 80px;
   .header {
     padding-left: 12px;
     margin-right: 8px;
