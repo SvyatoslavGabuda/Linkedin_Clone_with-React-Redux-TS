@@ -21,6 +21,24 @@ import { HiOutlinePencil } from "react-icons/hi2";
 import { addFocusPosts, showPutPosts } from "../../../app/reducers/postsPutModSlice";
 import { useAppDispatch } from "../../../app/hooks";
 
+export const postsDELETE = async (idPost: string) => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${idPost}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: process.env.REACT_APP_BEARER || "nonandra",
+        "content-type": "application/json",
+      },
+    });
+    if (response.ok) {
+      console.log("Post successfully deleted");
+    } else {
+      console.log("something went wrong in the response of the post DELETE");
+    }
+  } catch (error) {
+    console.log("fatal error in DELETE post");
+  }
+};
 export const HomeMid = () => {
   const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
   const MyProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
@@ -41,24 +59,7 @@ export const HomeMid = () => {
     }
   };
 
-  const postsDELETE = async () => {
-    try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${storePutPosts.focus._id}`, {
-        method: "DELETE",
-        headers: {
-          Authorization: process.env.REACT_APP_BEARER || "nonandra",
-          "content-type": "application/json",
-        },
-      });
-      if (response.ok) {
-        console.log("Post successfully deleted");
-      } else {
-        console.log("something went wrong in the response of the post DELETE");
-      }
-    } catch (error) {
-      console.log("fatal error in DELETE post");
-    }
-  };
+  // storePutPosts.focus._id
 
   return (
     <>
@@ -70,7 +71,10 @@ export const HomeMid = () => {
         <Row className="flex-column">
           {NewsArrData &&
             OnlyOnePostForUser.map((Singlepost) => (
-              <Col className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0" key={Singlepost._id}>
+              <Col
+                className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0"
+                key={Singlepost._id}
+              >
                 <div>
                   {/* Profile */}
 
@@ -82,7 +86,10 @@ export const HomeMid = () => {
                       <div>
                         <Link
                           to={
-                            "/profile/" + (Singlepost.user._id === MyProfile._id ? MyProfile._id : Singlepost.user._id)
+                            "/profile/" +
+                            (Singlepost.user._id === MyProfile._id
+                              ? MyProfile._id
+                              : Singlepost.user._id)
                           }
                         >
                           <h3>
@@ -127,7 +134,7 @@ export const HomeMid = () => {
                           <div
                             className="HomeMidDropDwon"
                             onClick={() => {
-                              postsDELETE();
+                              postsDELETE(storePutPosts.focus._id);
                             }}
                           >
                             <Link to="/">
