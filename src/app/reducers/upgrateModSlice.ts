@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-interface Ishow {
+export interface Ishow {
   show: boolean;
 }
 const initialState: Ishow = {
