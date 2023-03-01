@@ -4,6 +4,10 @@ import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { hidePosts } from "../../../app/reducers/postsModSlice";
+import { Col, Row } from "react-bootstrap";
+import { BsChatText, BsImage, BsPlayBtnFill, BsThreeDots } from "react-icons/bs";
+import { GrArticle } from "react-icons/gr";
+import { AiOutlineClockCircle } from "react-icons/ai";
 
 export const PostsModal = () => {
   // const [show, setShow] = useState(false);
@@ -39,42 +43,90 @@ export const PostsModal = () => {
       dispatch(hidePosts());
     }
   };
+
+  const myProfile = useAppSelector((state) => state.profile.myProfile);
+
   return (
     <>
-      <Modal show={show} onHide={() => dispatch(hidePosts())}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
+      {myProfile && (
+        <Modal show={show} onHide={() => dispatch(hidePosts())}>
+          <Modal.Header closeButton>
+            <Modal.Title>Crea un Post</Modal.Title>
+          </Modal.Header>
           <Form
             onSubmit={(e) => {
               e.preventDefault();
               postsPOST();
             }}
           >
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Crea un post</Form.Label>
-              <Form.Control
-                as="textarea"
-                placeholder="Di cosa vuoi parlare?"
-                value={text}
-                onChange={(e) => {
-                  setText(e.target.value);
-                }}
-              />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
+            <Modal.Body>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label className="w-100">
+                  <Row className="w-100">
+                    <Col xs={2}>
+                      <img
+                        src={myProfile.image}
+                        style={{ width: 50, borderRadius: "50%" }}
+                        alt="profileimage"
+                      />
+                    </Col>
+                    <Col xs={8}>
+                      <h6>
+                        {myProfile.name} {myProfile.surname}
+                      </h6>
+                      <Button variant="outline-secondary" className=" rounded-pill ">
+                        Chiunque
+                      </Button>
+                    </Col>
+                  </Row>
+                </Form.Label>
+                <Form.Control
+                  as="textarea"
+                  placeholder="Di cosa vuoi parlare?"
+                  value={text}
+                  onChange={(e) => {
+                    setText(e.target.value);
+                  }}
+                />
+              </Form.Group>
+            </Modal.Body>
+            <Modal.Footer className="justify-content-between">
+              <Row className="justify-content-between w-100">
+                <Col>
+                  <Button variant="outline-secondary border-0" type="button">
+                    <BsImage />
+                  </Button>
+                  <Button variant="outline-secondary border-0" type="button">
+                    <BsPlayBtnFill />
+                  </Button>
+                  <Button variant="outline-secondary border-0" type="button">
+                    <GrArticle />
+                  </Button>
+                  <Button variant="outline-secondary border-0" type="button">
+                    <BsThreeDots />
+                  </Button>
+                  <Button variant="outline-secondary border-0" type="button">
+                    <BsChatText /> tutti
+                  </Button>
+                </Col>
+                <Col xs={4}>
+                  <Button variant="outline-secondary border-0" type="button">
+                    <AiOutlineClockCircle />
+                  </Button>
+                  <Button
+                    variant={text !== "" ? "primary" : "outline-secondary"}
+                    type="submit"
+                    className="rounded-pill"
+                    disabled={text !== "" ? false : true}
+                  >
+                    Pubblica
+                  </Button>
+                </Col>
+              </Row>
+            </Modal.Footer>
           </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => dispatch(hidePosts())}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        </Modal>
+      )}
     </>
   );
 };
