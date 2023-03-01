@@ -1,5 +1,5 @@
-import { format, parseISO } from "date-fns";
-import React, { useEffect, useState } from "react";
+import { format } from "date-fns";
+import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -87,7 +87,7 @@ export const ExperiencePutModalComponent = () => {
 
   return (
     <>
-      <Modal show={putStore.show} onHide={() => dispatch(hidePutM())}>
+      <Modal show={putStore.show} onHide={() => dispatch(hidePutM())} size="lg" className="modalExperience">
         <Form
           onSubmit={(e) => {
             e.preventDefault();
@@ -97,7 +97,7 @@ export const ExperiencePutModalComponent = () => {
           }}
         >
           <Modal.Header closeButton>
-            <Modal.Title>Aggiungi esperienza</Modal.Title>
+            <Modal.Title>Modifica esperienza</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             {user?.experience?.length > 0 && (
@@ -106,7 +106,7 @@ export const ExperiencePutModalComponent = () => {
                   <Form.Label>Qualifica*</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter role"
+                    placeholder="Esempio: Retail Sales Manager"
                     value={experience.role}
                     onChange={(e) => {
                       setExperience({
@@ -117,10 +117,10 @@ export const ExperiencePutModalComponent = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Azienda</Form.Label>
+                  <Form.Label>Azienda*</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter company name"
+                    placeholder="Esempio: Microsoft"
                     value={experience.company}
                     onChange={(e) => {
                       setExperience({
@@ -130,9 +130,9 @@ export const ExperiencePutModalComponent = () => {
                     }}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3 d-flex justify-content-around">
-                  <span>
-                    <Form.Label>Inizio esperienza</Form.Label>
+                <Form.Group className="mb-3 d-flex justify-content-center justify-content-md-start">
+                  <span className="startexperience">
+                    <Form.Label>Data di inizio*</Form.Label>
                     <Form.Control
                       type="date"
                       placeholder=""
@@ -146,7 +146,7 @@ export const ExperiencePutModalComponent = () => {
                     />
                   </span>
                   <span>
-                    <Form.Label>Termine esperienza</Form.Label>
+                    <Form.Label>Data di fine</Form.Label>
                     <Form.Control
                       type="date"
                       placeholder=""
@@ -161,10 +161,10 @@ export const ExperiencePutModalComponent = () => {
                   </span>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Descrizione</Form.Label>
+                  <Form.Label>Descrizione*</Form.Label>
                   <Form.Control
                     as={"textarea"}
-                    placeholder="Enter description"
+                    placeholder="Inserisci una descrizione che rispecchi le competenze acquisite e il tuo ruolo"
                     value={experience.description}
                     onChange={(e) => {
                       setExperience({
@@ -175,10 +175,10 @@ export const ExperiencePutModalComponent = () => {
                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label>Località</Form.Label>
+                  <Form.Label>Località*</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter Location"
+                    placeholder="Esempio: Milano, IT"
                     value={experience.area}
                     onChange={(e) => {
                       setExperience({
@@ -191,9 +191,9 @@ export const ExperiencePutModalComponent = () => {
               </>
             )}
           </Modal.Body>
-          <Modal.Footer>
+          <Modal.Footer className="d-flex justify-content-between">
             <Button
-              variant="secondary"
+              variant="text"
               onClick={(e) => {
                 //Chiama funzione delete
                 e.preventDefault();
@@ -201,10 +201,10 @@ export const ExperiencePutModalComponent = () => {
                 dispatch(hidePutM());
               }}
             >
-              Delete experience
+              Elimina esperienza
             </Button>
             <Button variant="primary" type="submit">
-              Save Changes
+              Salva
             </Button>
           </Modal.Footer>
         </Form>
