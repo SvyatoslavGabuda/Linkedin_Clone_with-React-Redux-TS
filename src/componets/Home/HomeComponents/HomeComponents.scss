@@ -89,30 +89,52 @@
   }
 }
 .HomeRightPartContainer {
+  padding: 15px;
+  background-color: white;
+  overflow: hidden;
   h5 {
     font-size: 1rem;
     font-weight: 600;
   }
+  .HomeRightPartHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    user-select: none;
+    svg:hover {
+      cursor: pointer;
+      opacity: 0.6;
+    }
+  }
   h6 {
     font-size: 0.8rem;
+    font-weight: 600;
     margin-bottom: 5px;
   }
-  padding: 10px;
-  background-color: white;
-  overflow: hidden;
   ul {
     padding-left: 15px;
     li {
-      margin-bottom: 0.8rem;
       list-style-type: disc;
+      padding: 6px;
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.219);
+      }
       > p {
         font-size: 0.6rem;
         padding: 0;
       }
-      h6:hover,
-      p:hover {
-        text-decoration: underline;
-      }
+    }
+  }
+  .HomeRightPartShowMore {
+    font-size: 0.8rem;
+    padding: 7px;
+    display: inline-flex;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+      border-radius: 10px;
+      background-color: rgba(128, 128, 128, 0.219);
     }
   }
 }
