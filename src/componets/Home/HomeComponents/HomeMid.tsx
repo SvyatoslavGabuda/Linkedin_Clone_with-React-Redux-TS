@@ -13,6 +13,11 @@ import "./HomeComponents.scss";
 import { useAppSelector } from "../../../app/hooks";
 import { Iprofile } from "../../Profile/Profile";
 import { differenceInHours, differenceInMinutes } from "date-fns";
+import { BsFlagFill, BsBookmark, BsCodeSlash, BsEyeSlashFill } from "react-icons/bs";
+import { SlLink } from "react-icons/sl";
+import { FiAlertTriangle } from "react-icons/fi";
+import { FaTrashAlt } from "react-icons/fa";
+import { HiOutlinePencil } from "react-icons/hi2";
 
 export const HomeMid = () => {
   const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
@@ -73,23 +78,56 @@ export const HomeMid = () => {
                     <div>
                       <NavDropdown title="..." align={"end"} className="fs-2">
                         <div className="HomeMidDropDwon">
-                          <Link to="/">Salva</Link>
+                          <Link to="/">
+                            <BsBookmark /> Salva
+                          </Link>
                         </div>
                         <div className="HomeMidDropDwon">
-                          <Link to="/">Copia link al post</Link>
+                          <Link to="/">
+                            <SlLink /> Copia link al post
+                          </Link>
                         </div>
                         <div className="HomeMidDropDwon">
-                          <Link to="/">Incorpora questo post</Link>
+                          <Link to="/">
+                            <BsCodeSlash /> Incorpora questo post
+                          </Link>
                         </div>
+                        {Singlepost.user._id === MyProfile._id ? (
+                          <div className="HomeMidDropDwon">
+                            <Link to="/">
+                              <FaTrashAlt /> Elimina
+                            </Link>
+                          </div>
+                        ) : (
+                          <div className="HomeMidDropDwon">
+                            <Link to="/">
+                              <BsEyeSlashFill /> Non voglio vederlo
+                            </Link>
+                          </div>
+                        )}
+                        {Singlepost.user._id !== MyProfile._id ? (
+                          <div className="HomeMidDropDwon">
+                            <Link to="/">
+                              <FiAlertTriangle /> Perchè vedo questo annuncio?
+                            </Link>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                         <div className="HomeMidDropDwon">
-                          <Link to="/">Non voglio vederlo</Link>
+                          <Link to="/">
+                            <BsFlagFill /> Segnala post
+                          </Link>
                         </div>
-                        <div className="HomeMidDropDwon">
-                          <Link to="/">Perchè vedo questo annuncio?</Link>
-                        </div>
-                        <div className="HomeMidDropDwon">
-                          <Link to="/">Segnala post</Link>
-                        </div>
+                        {Singlepost.user._id === MyProfile._id ? (
+                          <div className="HomeMidDropDwon">
+                            <Link to="/">
+                              <HiOutlinePencil /> Modifica
+                            </Link>
+                          </div>
+                        ) : (
+                          ""
+                        )}
                       </NavDropdown>
                     </div>
                   </div>
