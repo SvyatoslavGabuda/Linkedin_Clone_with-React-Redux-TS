@@ -12,7 +12,7 @@ export const HomeLeft = () => {
   return (
     <>
       {currentProfile && (
-        <Col xs={4}>
+        <Col xs={12} md={4} xl={3}>
           <div className="HomeLeftPartContainer border border-1 rounded rounded-3">
             {/* ---- */}
             {/* Contenitore Img Profilo */}
