@@ -44,7 +44,10 @@ export const PostsModal = () => {
     }
   };
 
+  const [disableBtn, setDisableBtn] = useState(true);
+
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+
   return (
     <>
       {myProfile && (
@@ -84,13 +87,15 @@ export const PostsModal = () => {
                   placeholder="Di cosa vuoi parlare?"
                   value={text}
                   onChange={(e) => {
+                    setDisableBtn(true);
+
                     setText(e.target.value);
                   }}
                 />
               </Form.Group>
             </Modal.Body>
-            <Modal.Footer className="">
-              <Row>
+            <Modal.Footer className="justify-content-between">
+              <Row className="justify-content-between w-100">
                 <Col>
                   <Button variant="outline-secondary border-0" type="button">
                     <BsImage />
@@ -108,11 +113,16 @@ export const PostsModal = () => {
                     <BsChatText /> tutti
                   </Button>
                 </Col>
-                <Col>
+                <Col xs={4}>
                   <Button variant="outline-secondary border-0" type="button">
                     <AiOutlineClockCircle />
                   </Button>
-                  <Button variant="primary" type="submit">
+                  <Button
+                    variant={disableBtn ? "outline-secondary" : "primary"}
+                    type="submit"
+                    className="rounded-pill"
+                    disabled={disableBtn}
+                  >
                     Pubblica
                   </Button>
                 </Col>
