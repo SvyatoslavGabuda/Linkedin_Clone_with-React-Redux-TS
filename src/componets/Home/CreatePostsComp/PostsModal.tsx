@@ -44,8 +44,6 @@ export const PostsModal = () => {
     }
   };
 
-  const [disableBtn, setDisableBtn] = useState(true);
-
   const myProfile = useAppSelector((state) => state.profile.myProfile);
 
   return (
@@ -87,8 +85,6 @@ export const PostsModal = () => {
                   placeholder="Di cosa vuoi parlare?"
                   value={text}
                   onChange={(e) => {
-                    setDisableBtn(true);
-
                     setText(e.target.value);
                   }}
                 />
@@ -118,10 +114,10 @@ export const PostsModal = () => {
                     <AiOutlineClockCircle />
                   </Button>
                   <Button
-                    variant={disableBtn ? "outline-secondary" : "primary"}
+                    variant={text !== "" ? "primary" : "outline-secondary"}
                     type="submit"
                     className="rounded-pill"
-                    disabled={disableBtn}
+                    disabled={text !== "" ? false : true}
                   >
                     Pubblica
                   </Button>
