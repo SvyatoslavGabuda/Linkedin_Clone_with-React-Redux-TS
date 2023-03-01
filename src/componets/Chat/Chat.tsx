@@ -20,7 +20,7 @@ export const Chat = () => {
         >
           <div>
             <div style={{ position: "relative" }}>
-              <img className="chat-profile-pic rounded-circle" src={myProfile?.image} alt="Profile Picture" />
+              <img className="chat-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />
               <div
                 className="d-block rounded-circle"
                 style={{
@@ -46,7 +46,7 @@ export const Chat = () => {
           <Form.Control type="email" placeholder="Cerca messaggi" className="mb-4" />
           <div className="chatElement">
             <div>
-              <img src={myProfile?.image} alt="Profile Picture" className="chatlistimg rounded-circle" />
+              <img src={myProfile?.image} alt="Profile" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
               <p>{myProfile?.name + " " + myProfile?.surname}</p>
@@ -56,7 +56,7 @@ export const Chat = () => {
           </div>
           <div className="chatElement">
             <div>
-              <img src="https://placekitten.com/330/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
+              <img src="https://placekitten.com/330/200" alt="Profile" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
               <p>Giovanni Muciaccia</p>
@@ -66,7 +66,7 @@ export const Chat = () => {
           </div>
           <div className="chatElement">
             <div>
-              <img src="https://placekitten.com/100/230" alt="Profile Picture" className="chatlistimg rounded-circle" />
+              <img src="https://placekitten.com/100/230" alt="Profile" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
               <p>Bill Gates</p>
@@ -76,7 +76,7 @@ export const Chat = () => {
           </div>
           <div className="chatElement">
             <div>
-              <img src="https://placekitten.com/310/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
+              <img src="https://placekitten.com/310/200" alt="Profile" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
               <p>Steve Jobs</p>
