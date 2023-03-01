@@ -1,9 +1,13 @@
 import "./profileActivity.scss";
 import { Row } from "react-bootstrap";
 import { useParams } from "react-router";
+import { tooglePosts } from "../../../../app/reducers/postsModSlice";
+import { useDispatch } from "react-redux";
+import { PostsModal } from "../../../Home/CreatePostsComp/PostsModal";
 
 export const ProfileActivity = () => {
   const params = useParams();
+  const dispatch = useDispatch();
   return (
     <Row className="border border-1 rounded mb-2 bg-white">
       <div className="px-4 pt-4 pb-3 border-bottom">
@@ -18,7 +22,21 @@ export const ProfileActivity = () => {
               </p>
             </div>
           </div>
-          <div>{params.id === "me" && <button className="rounded-pill py-1 me-2 Button2">Avvia un post</button>}</div>
+          <div>
+            {params.id === "me" && (
+              <>
+                <button
+                  className="rounded-pill py-1 me-2 Button2"
+                  onClick={() => {
+                    dispatch(tooglePosts());
+                  }}
+                >
+                  Avvia un post
+                </button>
+                <PostsModal />
+              </>
+            )}
+          </div>
         </div>
         <div className="d-flex mt-3">
           {params.id === "me" && (
