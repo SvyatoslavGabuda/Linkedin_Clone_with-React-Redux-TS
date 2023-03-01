@@ -12,6 +12,11 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { TbArrowsRandom } from "react-icons/tb";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { differenceInHours, differenceInMinutes } from "date-fns";
+import { BsFlagFill, BsBookmark, BsCodeSlash, BsEyeSlashFill } from "react-icons/bs";
+import { SlLink } from "react-icons/sl";
+import { FiAlertTriangle } from "react-icons/fi";
+import { FaTrashAlt } from "react-icons/fa";
+import { HiOutlinePencil } from "react-icons/hi2";
 
 export const ProfileActivity = () => {
   const params = useParams();
@@ -21,7 +26,9 @@ export const ProfileActivity = () => {
   const myProfile = useAppSelector((state) => state.profile.myProfile);
 
   const getLatestPost = () => {
-    let latestPost = [...alltheposts].reverse().filter((el) => el.user?._id === (params.id === "me" ? myProfile._id : params.id));
+    let latestPost = [...alltheposts]
+      .reverse()
+      .filter((el) => el.user?._id === (params.id === "me" ? myProfile._id : params.id));
     return [latestPost[0]];
   };
 
@@ -81,7 +88,7 @@ export const ProfileActivity = () => {
           <div>{}</div>
         </div>
       </div>
-      {alltheposts?.length > 0 &&
+      {getLatestPost()[0]?.user &&
         getLatestPost().map((Singlepost) => (
           <div className="border-bottom">
             {/* Profile */}
@@ -92,7 +99,9 @@ export const ProfileActivity = () => {
                   <img src={Singlepost.user.image} alt="ProfilePic" />
                 </div>
                 <div>
-                  <Link to={"/profile/" + (Singlepost.user._id === myProfile._id ? myProfile._id : Singlepost.user._id)}>
+                  <Link
+                    to={"/profile/" + (Singlepost.user._id === myProfile._id ? myProfile._id : Singlepost.user._id)}
+                  >
                     <h3>
                       {Singlepost.user.name} {Singlepost.user.surname}
                     </h3>
@@ -110,23 +119,56 @@ export const ProfileActivity = () => {
               <div>
                 <NavDropdown title="..." align={"end"} className="fs-2">
                   <div className="HomeMidDropDwon">
-                    <Link to="/">Salva</Link>
+                    <Link to="/">
+                      <BsBookmark /> Salva
+                    </Link>
                   </div>
                   <div className="HomeMidDropDwon">
-                    <Link to="/">Copia link al post</Link>
+                    <Link to="/">
+                      <SlLink /> Copia link al post
+                    </Link>
                   </div>
                   <div className="HomeMidDropDwon">
-                    <Link to="/">Incorpora questo post</Link>
+                    <Link to="/">
+                      <BsCodeSlash /> Incorpora questo post
+                    </Link>
                   </div>
+                  {Singlepost.user._id === myProfile._id ? (
+                    <div className="HomeMidDropDwon">
+                      <Link to="/">
+                        <FaTrashAlt /> Elimina
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className="HomeMidDropDwon">
+                      <Link to="/">
+                        <BsEyeSlashFill /> Non voglio vederlo
+                      </Link>
+                    </div>
+                  )}
+                  {Singlepost.user._id !== myProfile._id ? (
+                    <div className="HomeMidDropDwon">
+                      <Link to="/">
+                        <FiAlertTriangle /> Perchè vedo questo annuncio?
+                      </Link>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <div className="HomeMidDropDwon">
-                    <Link to="/">Non voglio vederlo</Link>
+                    <Link to="/">
+                      <BsFlagFill /> Segnala post
+                    </Link>
                   </div>
-                  <div className="HomeMidDropDwon">
-                    <Link to="/">Perchè vedo questo annuncio?</Link>
-                  </div>
-                  <div className="HomeMidDropDwon">
-                    <Link to="/">Segnala post</Link>
-                  </div>
+                  {Singlepost.user._id === myProfile._id ? (
+                    <div className="HomeMidDropDwon">
+                      <Link to="/">
+                        <HiOutlinePencil /> Modifica
+                      </Link>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </NavDropdown>
               </div>
             </div>
