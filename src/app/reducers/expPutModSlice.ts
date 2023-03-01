@@ -1,11 +1,11 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { Ishow } from "./upgrateModSlice";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface ShowPlus extends Ishow {
-  indexExp?: number;
+interface IshowPlus {
+  show: boolean;
+  indexExp: number;
 }
 
-const initialState: ShowPlus = {
+const initialState: IshowPlus = {
   show: false,
   indexExp: 0,
 };
@@ -23,7 +23,10 @@ const expPutModSlice = createSlice({
     showPutM(state) {
       state.show = true;
     },
+    addIndex: (state, action: PayloadAction<number>) => {
+      state.indexExp = action.payload;
+    },
   },
 });
-export const { tooglePutM, hidePutM, showPutM } = expPutModSlice.actions;
+export const { tooglePutM, hidePutM, showPutM, addIndex } = expPutModSlice.actions;
 export default expPutModSlice.reducer;

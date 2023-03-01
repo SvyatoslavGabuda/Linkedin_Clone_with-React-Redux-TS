@@ -14,10 +14,10 @@ export const store = configureStore({
   reducer: {
     profile: allProfileReduce as Reducer,
     experience: experienceSlice,
-    // newProfile: profileSlice,
     upGradeModale: upgrateModSlice,
     experienceModale: expModSlice,
     experiencePutModale: expPutModSlice,
+    // newProfile: profileSlice,
   },
 });
 

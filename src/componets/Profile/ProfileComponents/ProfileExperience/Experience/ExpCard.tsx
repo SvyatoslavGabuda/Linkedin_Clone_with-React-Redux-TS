@@ -2,13 +2,14 @@ import { format } from "date-fns";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
 import { Iexperience } from "../../../../../app/reducers/experienceSlice";
-import { showPutM } from "../../../../../app/reducers/expPutModSlice";
+import { addIndex, showPutM } from "../../../../../app/reducers/expPutModSlice";
 import Logo from "../Assets/original.png";
 
 interface ExpCardProps {
   myExp: Iexperience;
+  index: number;
 }
-export const ExpCard = ({ myExp }: ExpCardProps) => {
+export const ExpCard = ({ myExp, index }: ExpCardProps) => {
   const dispatch = useDispatch();
   return (
     <>
@@ -31,6 +32,7 @@ export const ExpCard = ({ myExp }: ExpCardProps) => {
             onClick={(e) => {
               e.preventDefault();
               dispatch(showPutM());
+              dispatch(addIndex(index));
             }}
           />
         </div>

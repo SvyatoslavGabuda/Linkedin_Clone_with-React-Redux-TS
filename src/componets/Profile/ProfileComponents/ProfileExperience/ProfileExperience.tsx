@@ -12,10 +12,13 @@ import { showExpM } from "../../../../app/reducers/expModSlice";
 export const ProfileExperience = () => {
   const dispatch = useAppDispatch();
   const idProva = "5fc4af0bb708c200175de88e";
+  const myProfile = useAppSelector((state) => state.profile.myProfile);
   const experience = useAppSelector((state) => state.experience.experience);
   useEffect(() => {
-    dispatch(expFetc(idProva));
-  }, []);
+    if (myProfile) {
+      dispatch(expFetc(myProfile._id));
+    }
+  }, [myProfile]);
   return (
     <Row className="border-1 border border-1 rounded mb-2 bg-white">
       <div className="px-4 pt-4 pb-3 border-bottom">
@@ -27,14 +30,14 @@ export const ProfileExperience = () => {
             <div className="d-flex">
               <div className="ButtonContainer3">
                 <button>
-                  <li>
+                  <li onClick={() => dispatch(showExpM())}>
                     <GrAdd className="IconPen" />
                   </li>
                 </button>
               </div>
               <div className="ButtonContainer3">
                 <button>
-                  <li onClick={() => dispatch(showExpM())}>
+                  <li>
                     <HiOutlinePencil className="IconPen" />
                   </li>
                 </button>
@@ -42,7 +45,7 @@ export const ProfileExperience = () => {
             </div>
           </div>
         </div>
-        {experience && experience.map((exp) => <ExpCard key={exp._id} myExp={exp} />)}
+        {experience && experience.map((exp, i) => <ExpCard key={exp._id} myExp={exp} index={i} />)}
 
         <div className="d-flex border-bottom">
           <div>
