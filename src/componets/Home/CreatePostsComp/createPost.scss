@@ -2,15 +2,16 @@
   .createPostTextAreaOne {
     img {
       border-radius: 50%;
-      width: 80%;
+      width: 100%;
     }
     .avviaPost {
+      margin-right: 10px;
       height: 100%;
       border: 1px solid darkgray;
       cursor: pointer;
       color: rgb(121, 121, 121);
       user-select: none;
-      padding: 15px 20px;
+      padding: 12px 18px;
       &:hover {
         background-color: lightgray;
       }
@@ -46,5 +47,12 @@
   }
   .chiunque {
     padding: 5px 15px;
+  }
+}
+.modalBtn {
+  font-size: 1.4em;
+  &:hover {
+    background-color: rgb(239, 238, 238);
+    color: gray;
   }
 }
