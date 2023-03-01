@@ -322,6 +322,8 @@
   }
 }
 .HomeRightFooter {
+  position: sticky;
+  top: 80px;
   > div {
     &:last-child {
       margin-top: 10px;
