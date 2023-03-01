@@ -1,18 +1,18 @@
 import { Col } from "react-bootstrap";
-import { useAppSelector } from "../../../app/hooks";
-import { Iprofile } from "../../Profile/Profile";
+import { useAppSelector } from "../../../../app/hooks";
+import { Iprofile } from "../../../Profile/Profile";
 import { FaBookmark } from "react-icons/fa";
 import { FcCloth } from "react-icons/fc";
-import "./HomeComponents.scss";
+import "../HomeComponents.scss";
 import { Link } from "react-router-dom";
 
-export const HomeLeft = () => {
+export const HomeLeftUpperComponent = () => {
   const currentProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
 
   return (
     <>
       {currentProfile && (
-        <Col xs={4}>
+        <Col xs={12}>
           <div className="HomeLeftPartContainer border border-1 rounded rounded-3">
             {/* ---- */}
             {/* Contenitore Img Profilo */}

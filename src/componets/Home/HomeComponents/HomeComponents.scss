@@ -1,92 +1,174 @@
-.HomeLeftPartContainer{
-    text-align: center;
-    background-color: white;
-    overflow: hidden;
-    .HomeLeftPartProfileSection{
-        padding: 1.2rem 1.2rem 1rem;
-        border-bottom: 1px solid lightgray;
-        > div {
-            background: linear-gradient(62deg, rgb(21, 213, 235) 0.00%, rgb(255, 0, 191) 100.00%);
-            display: block;
-            height: 56.25px;
-            margin: -1.2rem -1.2rem 0;
-        }
-        p {
-            margin-top: 4px;
-            margin-bottom: 0;
-            color: gray;
-            font-weight: lighter;
-        }
-       
-            
-            img {
-            height: 68px;
-            width: 68px;
-            margin: -38px auto 1.2rem;
-            border: 2px solid white;
-            border-radius: 50%;
-        }
-        a {
-            text-decoration: none;
-            color: black;
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-    
+.HomeLeftPartContainer {
+  text-align: center;
+  background-color: white;
+  overflow: hidden;
+  .HomeLeftPartProfileSection {
+    padding: 1.2rem 1.2rem 1rem;
+    border-bottom: 1px solid lightgray;
+    > div {
+      background: linear-gradient(62deg, rgb(21, 213, 235) 0%, rgb(255, 0, 191) 100%);
+      display: block;
+      height: 56.25px;
+      margin: -1.2rem -1.2rem 0;
     }
-    .HomeLeftPartSecond {
-        padding: 12px 0px;
-        border-bottom: 1px solid lightgray;
-        a {
-            text-decoration: none;
-        &:hover {
-            background-color: rgba(199, 199, 199, 0.418);
-        }
-        }
-        div {
-            span {
-                font-weight: 500;
-        }
-        }
+    p {
+      margin-top: 4px;
+      margin-bottom: 0;
+      color: gray;
+      font-weight: lighter;
     }
-    .HomeLeftPartThird{
-        text-decoration: none;
-        text-align: start;
-        padding: 16px;
-        display: block;
-        border-bottom: 1px solid lightgray;
-        &:hover {
-            background-color: rgba(199, 199, 199, 0.418);
-        }
-        h3 {
-            font-size: 0.9em;
-            color: gray;
-            font-weight: 400;
-            margin: 0;
-        }
-        div {
-            span {
-                font-size: 0.9em;
-                font-weight: 500;
-                color: black;
-                text-decoration: underline;
-            }
-        }
+
+    img {
+      height: 68px;
+      width: 68px;
+      margin: -38px auto 1.2rem;
+      border: 2px solid white;
+      border-radius: 50%;
     }
-    .HomeLeftPartLast {
-        text-decoration: none;
-        display: block;
-        padding: 16px;
-        text-align: start;
-        div {
-            span {
-                color: black;
-                font-weight: 500;
-            }
-        }
-        &:hover {
-            background-color: rgba(199, 199, 199, 0.418);
-        }
+    a {
+      text-decoration: none;
+      color: black;
+      &:hover {
+        text-decoration: underline;
+      }
     }
+  }
+  .HomeLeftPartSecond {
+    padding: 12px 0px;
+    border-bottom: 1px solid lightgray;
+    a {
+      text-decoration: none;
+      &:hover {
+        background-color: rgba(199, 199, 199, 0.418);
+      }
+    }
+    div {
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+  .HomeLeftPartThird {
+    text-decoration: none;
+    text-align: start;
+    padding: 16px;
+    display: block;
+    border-bottom: 1px solid lightgray;
+    &:hover {
+      background-color: rgba(199, 199, 199, 0.418);
+    }
+    h3 {
+      font-size: 0.9em;
+      color: gray;
+      font-weight: 400;
+      margin: 0;
+    }
+    div {
+      span {
+        font-size: 0.9em;
+        font-weight: 500;
+        color: black;
+        text-decoration: underline;
+      }
+    }
+  }
+  .HomeLeftPartLast {
+    text-decoration: none;
+    display: block;
+    padding: 16px;
+    text-align: start;
+    div {
+      span {
+        color: black;
+        font-weight: 500;
+      }
+    }
+    &:hover {
+      background-color: rgba(199, 199, 199, 0.418);
+    }
+  }
+}
+
+.HomeLeftLowerContainer {
+  padding-top: 8px;
+  margin-bottom: 8px;
+  .header {
+    padding-left: 12px;
+    margin-right: 8px;
+    font-size: 12px;
+  }
+  .secondaryHeader {
+    font-weight: 700;
+    color: #0a66c2;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .eventPlusIcon {
+      color: rgb(65, 65, 65);
+      font-size: 1.7em;
+      border-radius: 25px;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        background-color: rgb(230, 230, 230);
+      }
+    }
+  }
+
+  .findOutContainer {
+    text-decoration: none;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      background-color: rgb(230, 230, 230);
+    }
+    .findOut {
+      font-size: 0.9em;
+      font-weight: 500;
+      color: rgb(94, 94, 94);
+    }
+  }
+
+  .HomeLeftEventsList,
+  .HomeLeftGroupsList {
+    list-style-type: none;
+    padding: 0;
+    .eventList {
+      display: flex;
+      align-items: center;
+      padding: 2px 12px;
+      color: rgb(158, 158, 158);
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        background-color: rgb(230, 230, 230);
+        span {
+          transition: 0.3s;
+          color: rgb(65, 65, 65);
+        }
+      }
+
+      .eventIcon {
+        margin-right: 7px;
+        color: rgb(65, 65, 65);
+      }
+
+      span {
+        transition: 0.3s;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .seeAll {
+        margin-left: 22px;
+      }
+    }
+  }
 }

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Posts } from "./PostsS";
-import { HomeLeft } from "./HomeComponents/HomeLeft";
+import { HomeLeftComponent } from "./HomeComponents/HomeLeftComponent";
 export const Home = () => {
   return (
     <>
@@ -17,7 +17,7 @@ export const Home = () => {
         <h6 className="text-center mb-5">Se vuoi, oppure rimani qua a fissare il nulla per un altro po!</h6>
       </div>
       <Posts />
-      <HomeLeft />
+      <HomeLeftComponent />
     </>
   );
 };
