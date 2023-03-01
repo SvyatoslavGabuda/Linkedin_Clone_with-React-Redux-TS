@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hidePutM } from "../../../../app/reducers/expPutModSlice";
 import { IexperiencePost } from "./ExperienceModalComponenent";
 
@@ -53,6 +54,7 @@ export const ExperiencePutModalComponent = () => {
       );
       if (response.ok) {
         console.log("PUT Experience completed");
+        dispatch(expFetc(myProfile?._id));
       } else {
         console.log("Response PUT experience not okay");
       }
@@ -74,6 +76,7 @@ export const ExperiencePutModalComponent = () => {
       );
       if (response.ok) {
         console.log("DELETE Experience completed");
+        dispatch(expFetc(myProfile?._id));
       } else {
         console.log("Response DELETE experience not okay");
       }
@@ -90,6 +93,7 @@ export const ExperiencePutModalComponent = () => {
             e.preventDefault();
             putExperience();
             // chiama funzione PUT
+            dispatch(hidePutM());
           }}
         >
           <Modal.Header closeButton>
