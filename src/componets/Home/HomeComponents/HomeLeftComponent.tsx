@@ -12,7 +12,7 @@ export const HomeLeftComponent = () => {
   const [isShown, setIsShown] = useState(false);
 
   return (
-    <Col xs={12} md={4} xl={3}>
+    <Col xs={12} md={4} xl={3} className="px-0 px-md-3">
       <HomeLeftUpperComponent isShown={isShown} />
       <HomeLeftLowerComponent isShown={isShown} />
       <div className="shownOrNot my-2 d-flex justify-content-center d-md-none">
