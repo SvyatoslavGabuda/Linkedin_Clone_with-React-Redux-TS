@@ -7,7 +7,7 @@ interface Ishow {
 const initialState: Ishow = {
   show: false,
 };
-
+//dispatch(toofleM())
 const upgradeModSlice = createSlice({
   name: "upgrade",
   initialState,

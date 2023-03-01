@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Posts } from "./PostsS";
 import { HomeLeft } from "./HomeComponents/HomeLeft";
+import { CreatePost } from "./CreatePostsComp/CreatePost";
+
 export const Home = () => {
   return (
     <>
@@ -14,10 +16,13 @@ export const Home = () => {
         <Link to="/profile/me">
           <h3 className="text-center">Visita il tuo profilo</h3>
         </Link>
-        <h6 className="text-center mb-5">Se vuoi, oppure rimani qua a fissare il nulla per un altro po!</h6>
+        <h6 className="text-center mb-5">
+          Se vuoi, oppure rimani qua a fissare il nulla per un altro po!
+        </h6>
       </div>
       <Posts />
       <HomeLeft />
+      <CreatePost />
     </>
   );
 };
