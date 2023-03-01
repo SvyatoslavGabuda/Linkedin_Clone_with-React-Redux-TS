@@ -4,11 +4,12 @@ import { AiTwotoneCalendar } from "react-icons/ai";
 import { HiUserGroup } from "react-icons/hi2";
 import { BiPlus } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import { HomeLeftProps } from "../HomeLeftComponent";
 
-export const HomeLeftLowerComponent = () => {
+export const HomeLeftLowerComponent = ({ isShown }: HomeLeftProps) => {
   return (
     <>
-      <Col xs={12} className={"pt-2 HomeLeftLowerContainer"}>
+      <Col xs={12} className={`pt-2 HomeLeftLowerContainer ${isShown === false && "isItShown"}`}>
         <Card className="p-0">
           <div className="p-0 pt-2">
             <div className="header py-1">Recenti</div>
@@ -48,9 +49,9 @@ export const HomeLeftLowerComponent = () => {
             </ul>
           </div>
           <div>
-            <div className="header secondaryHeader py-1 d-flex align-items-center justify-content-between">
+            <div className="header secondaryHeader py-1 d-flex align-items-center justify-content-start justify-content-md-between ">
               <span>Eventi</span>
-              <BiPlus className="eventPlusIcon" />
+              <BiPlus className="eventPlusIcon ms-3 ms-md-0" />
             </div>
           </div>
           <div>

@@ -5,8 +5,9 @@ import { FaBookmark } from "react-icons/fa";
 import { FcCloth } from "react-icons/fc";
 import "../HomeComponents.scss";
 import { Link } from "react-router-dom";
+import { HomeLeftProps } from "../HomeLeftComponent";
 
-export const HomeLeftUpperComponent = () => {
+export const HomeLeftUpperComponent = ({ isShown }: HomeLeftProps) => {
   const currentProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
 
   return (
@@ -32,7 +33,7 @@ export const HomeLeftUpperComponent = () => {
             {/* ---- */}
             {/* Seconda linea */}
             {/* ---- */}
-            <div className="HomeLeftPartSecond">
+            <div className={`HomeLeftPartSecond ${isShown === false && "isItShown"}`}>
               <a href="/">
                 <div className="d-flex justify-content-between px-3 text-start">
                   <div>
@@ -48,7 +49,7 @@ export const HomeLeftUpperComponent = () => {
             {/* ---- */}
             {/* terza linea */}
             {/* ---- */}
-            <a href="/" className="HomeLeftPartThird">
+            <a href="/" className={`HomeLeftPartThird ${isShown === false && "isItShown"}`}>
               <h3>Accedi a strumenti e informazioni in esclusiva</h3>
               <div className="d-flex">
                 <li className="me-1">
@@ -60,7 +61,7 @@ export const HomeLeftUpperComponent = () => {
             {/* ---- */}
             {/* Quarta linea */}
             {/* ---- */}
-            <a href="/" className="HomeLeftPartLast">
+            <a href="/" className={`HomeLeftPartLast ${isShown === false && "isItShown"}`}>
               <div>
                 <span>
                   <FaBookmark /> I miei elementi

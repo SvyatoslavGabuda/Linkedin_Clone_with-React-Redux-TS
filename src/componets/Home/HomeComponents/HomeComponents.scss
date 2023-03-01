@@ -175,6 +175,7 @@
 
 .shownOrNot {
   transition: 0.3s;
+  border-radius: 10px;
   &:hover {
     transition: 0.3s;
     background-color: rgb(230, 230, 230);
@@ -182,9 +183,17 @@
   .showMoreButton {
     background-color: inherit;
     border: none;
+    border-radius: 10px;
 
     span {
       margin-right: 7px;
     }
+  }
+}
+
+.isItShown {
+  display: none !important;
+  @media screen and (min-width: 768px) {
+    display: block !important;
   }
 }
