@@ -4,7 +4,9 @@ import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hideExpM } from "../../../../app/reducers/expModSlice";
+import { hidePutM } from "../../../../app/reducers/expPutModSlice";
 
 export interface IexperiencePost {
   role: string;
@@ -41,6 +43,7 @@ export const ExperienceModalComponent = () => {
       });
       if (response.ok) {
         console.log("POST completata");
+        dispatch(expFetc(user?._id));
       } else {
         console.log("Response POST experience not okay");
       }
@@ -56,6 +59,7 @@ export const ExperienceModalComponent = () => {
           onSubmit={(e) => {
             e.preventDefault();
             postNewExperience();
+            dispatch(hideExpM());
           }}
         >
           <Modal.Header closeButton>

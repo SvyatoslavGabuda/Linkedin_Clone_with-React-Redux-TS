@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hidePutM } from "../../../../app/reducers/expPutModSlice";
 import { IexperiencePost } from "./ExperienceModalComponenent";
 
@@ -30,9 +31,7 @@ export const ExperiencePutModalComponent = () => {
     setExperience({
       role: user.experience[putStore.indexExp]?.role,
       company: user.experience[putStore.indexExp]?.company,
-      startDate:
-        user.experience[putStore.indexExp]?.startDate &&
-        format(new Date(user.experience[putStore.indexExp]?.startDate), "yyyy-MM-dd"),
+      startDate: user.experience[putStore.indexExp]?.startDate && format(new Date(user.experience[putStore.indexExp]?.startDate), "yyyy-MM-dd"),
       endDate: "",
       description: user.experience[putStore.indexExp]?.description,
       area: user.experience[putStore.indexExp]?.area,
@@ -43,9 +42,7 @@ export const ExperiencePutModalComponent = () => {
   const putExperience = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${
-          user.experience[putStore.indexExp]?._id
-        }`,
+        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${user.experience[putStore.indexExp]?._id}`,
         {
           method: "PUT",
           body: JSON.stringify(experience),
@@ -57,6 +54,7 @@ export const ExperiencePutModalComponent = () => {
       );
       if (response.ok) {
         console.log("PUT Experience completed");
+        dispatch(expFetc(myProfile?._id));
       } else {
         console.log("Response PUT experience not okay");
       }
@@ -68,9 +66,7 @@ export const ExperiencePutModalComponent = () => {
   const deleteExperience = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${
-          user.experience[putStore.indexExp]?._id
-        }`,
+        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${user.experience[putStore.indexExp]?._id}`,
         {
           method: "DELETE",
           headers: {
@@ -80,6 +76,7 @@ export const ExperiencePutModalComponent = () => {
       );
       if (response.ok) {
         console.log("DELETE Experience completed");
+        dispatch(expFetc(myProfile?._id));
       } else {
         console.log("Response DELETE experience not okay");
       }
@@ -96,13 +93,14 @@ export const ExperiencePutModalComponent = () => {
             e.preventDefault();
             putExperience();
             // chiama funzione PUT
+            dispatch(hidePutM());
           }}
         >
           <Modal.Header closeButton>
             <Modal.Title>Aggiungi esperienza</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {user.experience.length > 0 && (
+            {user?.experience?.length > 0 && (
               <>
                 <Form.Group className="mb-3">
                   <Form.Label>Qualifica*</Form.Label>
