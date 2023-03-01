@@ -11,65 +11,67 @@ export const HomeLeft = () => {
 
   return (
     <>
-      <Col xs={4}>
-        <div className="HomeLeftPartContainer border border-1 rounded rounded-3">
-          {/* ---- */}
-          {/* Contenitore Img Profilo */}
-          {/* ---- */}
-          <div className="HomeLeftPartProfileSection">
-            <div></div>
-            <Link to={"/profile/me"}>
-              <div className="HomeLeftPartImgContainer">
-                <img src={currentProfile.image} alt="" />
-              </div>
-              <div>
-                {currentProfile.name} {currentProfile.surname}
-              </div>
-            </Link>
-            <p>{currentProfile.title}</p>
-          </div>
-          {/* ---- */}
-          {/* Seconda linea */}
-          {/* ---- */}
-          <div className="HomeLeftPartSecond">
-            <a href="/">
-              <div className="d-flex justify-content-between px-3 text-start">
-                <div>
-                  <p className="text-secondary">Collegamento</p>
-                  <p className="text-black">Espandi la tua rete</p>
+      {currentProfile && (
+        <Col xs={4}>
+          <div className="HomeLeftPartContainer border border-1 rounded rounded-3">
+            {/* ---- */}
+            {/* Contenitore Img Profilo */}
+            {/* ---- */}
+            <div className="HomeLeftPartProfileSection">
+              <div></div>
+              <Link to={"/profile/me"}>
+                <div className="HomeLeftPartImgContainer">
+                  <img src={currentProfile.image} alt="" />
                 </div>
                 <div>
-                  <span>12</span>
+                  {currentProfile.name} {currentProfile.surname}
                 </div>
+              </Link>
+              <p>{currentProfile.title}</p>
+            </div>
+            {/* ---- */}
+            {/* Seconda linea */}
+            {/* ---- */}
+            <div className="HomeLeftPartSecond">
+              <a href="/">
+                <div className="d-flex justify-content-between px-3 text-start">
+                  <div>
+                    <p className="text-secondary">Collegamento</p>
+                    <p className="text-black">Espandi la tua rete</p>
+                  </div>
+                  <div>
+                    <span>12</span>
+                  </div>
+                </div>
+              </a>
+            </div>
+            {/* ---- */}
+            {/* terza linea */}
+            {/* ---- */}
+            <a href="/" className="HomeLeftPartThird">
+              <h3>Accedi a strumenti e informazioni in esclusiva</h3>
+              <div className="d-flex">
+                <li className="me-1">
+                  <FcCloth />
+                </li>
+                <span> Premium gratis</span>
               </div>
             </a>
-          </div>
-          {/* ---- */}
-          {/* terza linea */}
-          {/* ---- */}
-          <a href="/" className="HomeLeftPartThird">
-            <h3>Accedi a strumenti e informazioni in esclusiva</h3>
-            <div className="d-flex">
-              <li className="me-1">
-                <FcCloth />
-              </li>
-              <span> Premium gratis</span>
-            </div>
-          </a>
-          {/* ---- */}
-          {/* Quarta linea */}
-          {/* ---- */}
-          <a href="/" className="HomeLeftPartLast">
-            <div>
-              <span>
-                <FaBookmark /> I miei elementi
-              </span>
-            </div>
-          </a>
+            {/* ---- */}
+            {/* Quarta linea */}
+            {/* ---- */}
+            <a href="/" className="HomeLeftPartLast">
+              <div>
+                <span>
+                  <FaBookmark /> I miei elementi
+                </span>
+              </div>
+            </a>
 
-          {/* ---- */}
-        </div>
-      </Col>
+            {/* ---- */}
+          </div>
+        </Col>
+      )}
     </>
   );
 };

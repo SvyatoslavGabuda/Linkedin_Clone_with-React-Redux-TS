@@ -7,10 +7,5 @@ export const Posts = () => {
   useEffect(() => {
     dispatch(postsFetc());
   }, []);
-  return (
-    <>
-      {" "}
-      <h2>mypost</h2>
-    </>
-  );
+  return <></>;
 };
