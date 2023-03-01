@@ -16,19 +16,19 @@ export const HomeLeftLowerComponent = ({ isShown }: HomeLeftProps) => {
             <ul className="HomeLeftEventsList">
               <li className="eventList">
                 <AiTwotoneCalendar className="eventIcon" />
-                <span>Titolo evento</span>
+                <span>Epicode Co(de)-living Experience</span>
               </li>
               <li className="eventList">
                 <HiUserGroup className="eventIcon" />
-                <span>Titolo evento</span>
+                <span>Epicode - GuestLecture con @Zwap</span>
               </li>
               <li className="eventList">
                 <AiTwotoneCalendar className="eventIcon" />
-                <span>Titolo evento</span>
+                <span>Epi-Talk ore 18:00</span>
               </li>
               <li className="eventList">
                 <AiTwotoneCalendar className="eventIcon" />
-                <span>Titolo evento</span>
+                <span>Epic-Lunch con @CapGemini</span>
               </li>
               <li className="eventList">
                 <AiTwotoneCalendar className="eventIcon" />
