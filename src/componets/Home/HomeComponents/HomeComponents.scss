@@ -197,3 +197,153 @@
     display: block !important;
   }
 }
+
+// Home Mid
+
+.HomeMidButtonsCont {
+  background-color: white;
+  padding: 5px 10px;
+  .HomeMidButton {
+    border: none;
+    padding: 10px 10px;
+    color: gray;
+    background-color: white;
+    &:hover {
+      background-color: rgba(199, 199, 199, 0.418);
+      border-radius: 5px;
+    }
+    .HomeMidIcon {
+      font-size: 1.3em;
+    }
+  }
+}
+
+.HomeMidProfileCont {
+  h3 {
+    font-size: 1.1em;
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    &:hover {
+      text-decoration: underline;
+      color: #0a66c2;
+    }
+  }
+  p {
+    color: #666666;
+    font-weight: 400;
+  }
+  .HomeMidDropDwon {
+    &:hover {
+      background-color: rgba(199, 199, 199, 0.418);
+    }
+    padding: 10px 10px;
+    cursor: pointer;
+
+    a {
+      text-decoration: none;
+      color: #5e5e5e;
+      &:hover {
+        text-decoration: none;
+        color: #5e5e5e;
+      }
+    }
+  }
+  .dropdown-menu {
+    width: 350px;
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  .dropdown-toggle {
+    margin-top: -25px;
+    &:hover {
+      text-decoration: none;
+      color: #5e5e5e;
+    }
+  }
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+}
+.HomeRightPartContainer {
+  padding: 15px;
+  background-color: white;
+  overflow: hidden;
+  margin-bottom: 20px;
+  h5 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  .HomeRightPartHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    user-select: none;
+    svg:hover {
+      cursor: pointer;
+      opacity: 0.6;
+    }
+  }
+  h6 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  ul {
+    padding-left: 15px;
+    li {
+      list-style-type: disc;
+      padding: 6px;
+      &:hover {
+        cursor: pointer;
+        background-color: rgba(128, 128, 128, 0.219);
+      }
+      > p {
+        font-size: 0.6rem;
+        padding: 0;
+      }
+    }
+  }
+  .HomeRightPartShowMore {
+    font-size: 0.8rem;
+    padding: 7px;
+    display: inline-flex;
+    align-items: center;
+    &:hover {
+      cursor: pointer;
+      border-radius: 10px;
+      background-color: rgba(128, 128, 128, 0.219);
+    }
+  }
+}
+.HomeRightFooter {
+  > div {
+    &:last-child {
+      margin-top: 10px;
+    }
+    display: flex;
+    justify-content: center;
+    font-size: 0.7rem;
+    > a:nth-child(2) {
+      margin-left: 20px;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: gray;
+    margin-bottom: 0.3rem;
+    transition: all 0.5s ease;
+    &:hover {
+      text-decoration: underline;
+      color: rgb(0, 70, 201);
+    }
+  }
+  .footer-logo {
+    margin-right: 8px;
+  }
+}

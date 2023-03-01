@@ -1,0 +1,50 @@
+.createPost {
+  .createPostTextAreaOne {
+    img {
+      border-radius: 50%;
+      width: 80%;
+    }
+    .avviaPost {
+      height: 100%;
+      border: 1px solid darkgray;
+      cursor: pointer;
+      color: rgb(121, 121, 121);
+      user-select: none;
+      padding: 15px 20px;
+      &:hover {
+        background-color: lightgray;
+      }
+    }
+  }
+  .createPostTextAreaTwo {
+    .btn {
+      color: gray;
+      font-weight: 500;
+    }
+    .photoIcon {
+      color: #378fe9;
+      font-size: 1.5em;
+    }
+    .playIcon {
+      color: #5f9b41;
+      font-size: 1.5em;
+    }
+    .calendarIcon {
+      color: #c37d16;
+      font-size: 1.5em;
+    }
+    .articleIcon {
+      color: #e16745;
+      font-size: 1.5em;
+    }
+  }
+}
+.modalRow {
+  img {
+    width: 60px;
+    border-radius: 50%;
+  }
+  .chiunque {
+    padding: 5px 15px;
+  }
+}
