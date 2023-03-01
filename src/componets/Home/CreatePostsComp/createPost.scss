@@ -5,10 +5,43 @@
       width: 100%;
     }
     .avviaPost {
+      margin-right: 10px;
       height: 100%;
+      border: 1px solid darkgray;
+      cursor: pointer;
+      color: rgb(121, 121, 121);
+      user-select: none;
+      padding: 12px 18px;
+      &:hover {
+        background-color: lightgray;
+      }
     }
   }
   .createPostTextAreaTwo {
+    @media screen and (max-width: 512px) {
+      > div:first-child {
+        flex-direction: column;
+        > div:last-child {
+          display: none;
+        }
+      }
+      button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+    button {
+      > .row {
+        align-items: center;
+      }
+      div.col {
+        font-size: 0.8rem;
+      }
+    }
+    .btn {
+      color: gray;
+      font-weight: 500;
+    }
     .photoIcon {
       color: #378fe9;
       font-size: 1.5em;
@@ -25,5 +58,21 @@
       color: #e16745;
       font-size: 1.5em;
     }
+  }
+}
+.modalRow {
+  img {
+    width: 60px;
+    border-radius: 50%;
+  }
+  .chiunque {
+    padding: 5px 15px;
+  }
+}
+.modalBtn {
+  font-size: 1.4em;
+  &:hover {
+    background-color: rgb(239, 238, 238);
+    color: gray;
   }
 }

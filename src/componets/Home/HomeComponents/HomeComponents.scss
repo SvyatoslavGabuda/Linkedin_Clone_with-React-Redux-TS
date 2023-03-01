@@ -89,77 +89,186 @@
   }
 }
 
+.HomeLeftLowerContainer {
+  padding-top: 8px;
+  margin-bottom: 8px;
+  .header {
+    padding-left: 12px;
+    margin-right: 8px;
+    font-size: 12px;
+  }
+  .secondaryHeader {
+    font-weight: 700;
+    color: #0a66c2;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    .eventPlusIcon {
+      color: rgb(65, 65, 65);
+      font-size: 1.7em;
+      border-radius: 25px;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        background-color: rgb(230, 230, 230);
+      }
+    }
+  }
+
+  .findOutContainer {
+    text-decoration: none;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      background-color: rgb(230, 230, 230);
+    }
+    .findOut {
+      font-size: 0.9em;
+      font-weight: 500;
+      color: rgb(94, 94, 94);
+    }
+  }
+
+  .HomeLeftEventsList,
+  .HomeLeftGroupsList {
+    list-style-type: none;
+    padding: 0;
+    .eventList {
+      display: flex;
+      align-items: center;
+      padding: 2px 12px;
+      color: rgb(158, 158, 158);
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        transition: 0.3s;
+        background-color: rgb(230, 230, 230);
+        span {
+          transition: 0.3s;
+          color: rgb(65, 65, 65);
+        }
+      }
+
+      .eventIcon {
+        margin-right: 7px;
+        color: rgb(65, 65, 65);
+      }
+
+      span {
+        transition: 0.3s;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .seeAll {
+        margin-left: 22px;
+      }
+    }
+  }
+}
+
+.shownOrNot {
+  transition: 0.3s;
+  border-radius: 10px;
+  &:hover {
+    transition: 0.3s;
+    background-color: rgb(230, 230, 230);
+  }
+  .showMoreButton {
+    background-color: inherit;
+    border: none;
+    border-radius: 10px;
+
+    span {
+      margin-right: 7px;
+    }
+  }
+}
+
+.isItShown {
+  display: none !important;
+  @media screen and (min-width: 768px) {
+    display: block !important;
+  }
+}
+
 // Home Mid
 
-.HomeMidButtonsCont{
-    background-color: white;
-    padding: 5px 10px;
-    .HomeMidButton {
+.HomeMidButtonsCont {
+  background-color: white;
+  padding: 5px 10px;
+  .HomeMidButton {
     border: none;
     padding: 10px 10px;
     color: gray;
     background-color: white;
     &:hover {
-        background-color: rgba(199, 199, 199, 0.418);
-        border-radius: 5px;
+      background-color: rgba(199, 199, 199, 0.418);
+      border-radius: 5px;
     }
     .HomeMidIcon {
-        font-size: 1.3em;
+      font-size: 1.3em;
     }
-}
+  }
 }
 
-.HomeMidProfileCont{
-    h3 {
-        font-size: 1.1em;
-        margin: 0;
-    }
-    a {
-        text-decoration: none;
-        color: black;
-        &:hover {
-            text-decoration: underline;
-            color: #0A66C2;
-        }
-    }
-    p {
-        color: #666666;
-        font-weight: 400;
-    }
-    .HomeMidDropDwon{
+.HomeMidProfileCont {
+  h3 {
+    font-size: 1.1em;
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+    color: black;
     &:hover {
-        background-color: rgba(199, 199, 199, 0.418);
+      text-decoration: underline;
+      color: #0a66c2;
+    }
+  }
+  p {
+    color: #666666;
+    font-weight: 400;
+  }
+  .HomeMidDropDwon {
+    &:hover {
+      background-color: rgba(199, 199, 199, 0.418);
     }
     padding: 10px 10px;
     cursor: pointer;
-    
+
     a {
+      text-decoration: none;
+      color: #5e5e5e;
+      &:hover {
         text-decoration: none;
-        color: #5E5E5E;
-        &:hover {
-            text-decoration: none;
-            color: #5E5E5E;
-        }
+        color: #5e5e5e;
+      }
     }
+  }
+  .dropdown-menu {
+    width: 350px;
+  }
+  .dropdown-toggle::after {
+    display: none;
+  }
+  .dropdown-toggle {
+    margin-top: -25px;
+    &:hover {
+      text-decoration: none;
+      color: #5e5e5e;
     }
-    .dropdown-menu {
-        width: 350px;
-    }
-    .dropdown-toggle::after {
-        display: none;
-    }
-    .dropdown-toggle {
-        margin-top: -25px;
-        &:hover {
-            text-decoration: none;
-            color: #5E5E5E;
-        }
-    }
-    img {
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-    }
+  }
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
 }
 .HomeRightPartContainer {
   padding: 15px;
