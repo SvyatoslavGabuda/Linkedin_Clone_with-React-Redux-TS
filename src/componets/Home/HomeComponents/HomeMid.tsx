@@ -12,11 +12,25 @@ import PlaceHolderImg from "./Assets/Schermata 2022-10-07 alle 10.29.59-original
 import "./HomeComponents.scss";
 import { useAppSelector } from "../../../app/hooks";
 import { Iprofile } from "../../Profile/Profile";
+import { differenceInHours, differenceInMinutes } from "date-fns";
 
 export const HomeMid = () => {
-  const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(0, 25);
+  const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
   const MyProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
 
+  const OnlyOnePostForUser = [...new Map(NewsArrData.map((p) => [p.user._id, p])).values()];
+  const Oggi = new Date();
+  const posted = (date: string) => {
+    if (differenceInMinutes(Oggi, new Date(date)) < 1) {
+      return "Adesso";
+    } else if (differenceInHours(Oggi, new Date(date)) < 1) {
+      let minuti = differenceInMinutes(Oggi, new Date(date)) > 1 ? " minuti" : " minuto";
+      return differenceInMinutes(Oggi, new Date(date)) + minuti;
+    } else {
+      let ore = differenceInHours(Oggi, new Date(date)) > 1 ? " ore" : " ora";
+      return differenceInHours(Oggi, new Date(date)) + ore;
+    }
+  };
   return (
     <>
       <Posts />
@@ -26,12 +40,12 @@ export const HomeMid = () => {
         </Row>
         <Row className="flex-column">
           {NewsArrData &&
-            NewsArrData.map((Singlepost) => (
+            OnlyOnePostForUser.map((Singlepost) => (
               <Col className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0" key={Singlepost._id}>
                 <div>
                   {/* Profile */}
 
-                  <div className="d-flex HomeMidProfileCont justify-content-between px-3 pt-2">
+                  <div className="d-flex HomeMidProfileCont justify-content-between px-3 pt-3">
                     <div className="d-flex">
                       <div className="me-2">
                         <img src={Singlepost.user.image} alt="ProfilePic" />
@@ -47,9 +61,13 @@ export const HomeMid = () => {
                           </h3>
                         </Link>
                         <p>1754 follower</p>
-                        <p>
-                          2 giorni · <BiWorld />
-                        </p>
+                        <div className="d-flex">
+                          <p className="me-1">{posted(Singlepost.createdAt.toString())}</p>
+                          <p>
+                            {" "}
+                            · <BiWorld />
+                          </p>
+                        </div>
                       </div>
                     </div>
                     <div>
