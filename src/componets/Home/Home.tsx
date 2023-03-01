@@ -20,9 +20,8 @@ export const Home = () => {
           Se vuoi, oppure rimani qua a fissare il nulla per un altro po!
         </h6>
       </div>
-      <Posts />
+
       <HomeLeft />
-      <CreatePost />
     </>
   );
 };
