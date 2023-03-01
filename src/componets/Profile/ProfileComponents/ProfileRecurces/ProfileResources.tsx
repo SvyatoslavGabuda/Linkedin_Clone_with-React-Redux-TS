@@ -1,7 +1,7 @@
 import { Row, Badge } from "react-bootstrap";
 import { BsEyeFill } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
-import { CiStreamOn } from "react-icons/ci";
+import { GrBeacon } from "react-icons/gr";
 
 export const ProfileResources = () => {
   return (
@@ -23,7 +23,7 @@ export const ProfileResources = () => {
           </div>
           <div className="d-flex border-bottom">
             <div className="me-1">
-              <CiStreamOn className="fs-4" />
+              <GrBeacon className="fs-4" />
             </div>
             <div className="mb-3 Follower">
               <p>

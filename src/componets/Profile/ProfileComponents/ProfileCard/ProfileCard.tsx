@@ -12,6 +12,7 @@ import { ProfileResources } from "../ProfileRecurces/ProfileResources";
 import { Iprofile } from "../../Profile";
 import { useAppDispatch } from "../../../../app/hooks";
 import { toogleM } from "../../../../app/reducers/upgrateModSlice";
+import { useParams } from "react-router";
 
 interface ProfileCardProps {
   profile: Iprofile;
@@ -19,6 +20,7 @@ interface ProfileCardProps {
 
 export const ProfileCard = ({ profile }: ProfileCardProps) => {
   const dispatch = useAppDispatch();
+  const params = useParams();
   return (
     <>
       <Col xs={12} md={7} lg={8}>
@@ -30,11 +32,13 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                   <div></div>
                 </div>
                 <div className="CamContainer">
-                  <button>
-                    <li>
-                      <AiFillCamera className="IconCam" />
-                    </li>
-                  </button>
+                  {params.id === "me" && (
+                    <button>
+                      <li>
+                        <AiFillCamera className="IconCam" />
+                      </li>
+                    </button>
+                  )}
                 </div>
               </div>
               {/* immagine profilo */}
@@ -42,8 +46,22 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                 <div className="ProfileImgContainer d-flex justify-content-between">
                   <div className="ProfileImgContainer2">
                     <div className="ProfileImgContainer3">
-                      <div className="ProfileImgContainer4">
+                      <div className="ProfileImgContainer4" style={{ position: "relative" }}>
                         <img src={profile.image} alt="ProfilePic" />
+                        {params.id === "me" && (
+                          <div
+                            className="d-block rounded-circle"
+                            style={{
+                              position: "absolute",
+                              backgroundColor: "green",
+                              width: "24px",
+                              height: "24px",
+                              bottom: "8px",
+                              right: "8px",
+                              border: "3px solid white",
+                            }}
+                          ></div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -51,9 +69,11 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     <div className="ButtonContainer2 d-flex">
                       <div className="ButtonContainer3">
                         <button>
-                          <li onClick={() => dispatch(toogleM())}>
-                            <HiOutlinePencil className="IconPen" />
-                          </li>
+                          {params.id === "me" && (
+                            <li onClick={() => dispatch(toogleM())}>
+                              <HiOutlinePencil className="IconPen" />
+                            </li>
+                          )}
                         </button>
                       </div>
                     </div>
@@ -65,10 +85,9 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     <h3 className="mb-0">
                       {profile.name} {profile.surname}
                     </h3>
-                    <p className="mb-2 fs-5 fw-normal">Studente Full Stack Developer</p>
+                    <p className="mb-2 fs-5 fw-normal">{profile.title}</p>
                     <p className="mb-2">
-                      <span className="text-secondary">{profile.area}</span> ·{" "}
-                      <a href="/">Informazioni di contatto</a>
+                      <span className="text-secondary">{profile.area}</span> · <a href="/">Informazioni di contatto</a>
                     </p>
                     <p>
                       <a href="/">1 collegamento</a>
@@ -98,13 +117,11 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                 <div className="d-flex">
                   <div>
                     <Button variant="primary" className="rounded-pill py-1 me-2 Button1">
-                      Disponibile per
+                      {params.id === "me" ? "Disponibile per" : "Messaggio"}
                     </Button>
                   </div>
                   <div>
-                    <button className="rounded-pill py-1 me-2 Button2">
-                      Aggiungi sezione del profilo
-                    </button>
+                    <button className="rounded-pill py-1 me-2 Button2">{params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}</button>
                   </div>
                   <div>
                     <button className="rounded-pill py-1 Button3">Altro</button>
@@ -115,10 +132,10 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
           </Row>
         )}
         <ProfileActivity />
-        <ProfileAnalisis />
+        {params.id === "me" && <ProfileAnalisis />}
         <ProfileExperience />
         <ProfileInterest />
-        <ProfileResources />
+        {params.id === "me" && <ProfileResources />}
       </Col>
     </>
   );

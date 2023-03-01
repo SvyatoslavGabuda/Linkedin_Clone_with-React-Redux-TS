@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Form } from "react-bootstrap";
 import { BiUpArrow } from "react-icons/bi";
+import { SlNote } from "react-icons/sl";
+import { TfiMoreAlt } from "react-icons/tfi";
 import { useAppSelector } from "../../app/hooks";
 import "./chat.scss";
 export const Chat = () => {
@@ -9,7 +11,7 @@ export const Chat = () => {
 
   return (
     <>
-      <div className={show ? "chat" : "chat chat-closed"}>
+      <div className={show ? "d-none d-sm-block chat" : "d-none d-sm-block chat chat-closed"}>
         <div
           className="chat-header d-flex justify-content-between"
           onClick={() => {
@@ -17,10 +19,26 @@ export const Chat = () => {
           }}
         >
           <div>
-            <img className="chat-profile-pic rounded-circle" src={myProfile?.image} alt="Profile Picture" />
+            <div style={{ position: "relative" }}>
+              <img className="chat-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />
+              <div
+                className="d-block rounded-circle"
+                style={{
+                  position: "absolute",
+                  backgroundColor: "green",
+                  width: "10px",
+                  height: "10px",
+                  bottom: "-2px",
+                  right: "9px",
+                  border: "2px solid white",
+                }}
+              ></div>
+            </div>
             <span>Messaggistica</span>
           </div>
           <span>
+            <TfiMoreAlt style={{ marginRight: "15px", scale: "0.9" }} />
+            <SlNote style={{ marginRight: "12px", scale: "0.9" }} />
             <BiUpArrow className={show ? "showchat hidechat" : "showchat"} />
           </span>
         </div>
@@ -28,7 +46,7 @@ export const Chat = () => {
           <Form.Control type="email" placeholder="Cerca messaggi" className="mb-4" />
           <div className="chatElement">
             <div>
-              <img src={myProfile?.image} alt="Profile Picture" className="chatlistimg rounded-circle" />
+              <img src={myProfile?.image} alt="Profile" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
               <p>{myProfile?.name + " " + myProfile?.surname}</p>
@@ -38,7 +56,7 @@ export const Chat = () => {
           </div>
           <div className="chatElement">
             <div>
-              <img src="https://placekitten.com/330/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
+              <img src="https://placekitten.com/330/200" alt="Profile" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
               <p>Giovanni Muciaccia</p>
@@ -48,7 +66,7 @@ export const Chat = () => {
           </div>
           <div className="chatElement">
             <div>
-              <img src="https://placekitten.com/100/230" alt="Profile Picture" className="chatlistimg rounded-circle" />
+              <img src="https://placekitten.com/100/230" alt="Profile" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
               <p>Bill Gates</p>
@@ -58,7 +76,7 @@ export const Chat = () => {
           </div>
           <div className="chatElement">
             <div>
-              <img src="https://placekitten.com/310/200" alt="Profile Picture" className="chatlistimg rounded-circle" />
+              <img src="https://placekitten.com/310/200" alt="Profile" className="chatlistimg rounded-circle" />
             </div>
             <div className="chatbody px-2">
               <p>Steve Jobs</p>
