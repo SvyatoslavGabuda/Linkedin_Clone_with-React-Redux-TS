@@ -13,6 +13,7 @@ import { Home } from "./componets/Home/Home";
 import MyNav from "./componets/NavBar/MyNav";
 import Profile from "./componets/Profile/Profile";
 import { useEffect } from "react";
+import { NotFound } from "./componets/NotFound/NotFound";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -44,6 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/profile/:id" element={<Profile />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Container>
         <Chat />
