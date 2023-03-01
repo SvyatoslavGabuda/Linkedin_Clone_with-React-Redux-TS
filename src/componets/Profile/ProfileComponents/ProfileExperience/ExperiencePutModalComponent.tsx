@@ -30,9 +30,7 @@ export const ExperiencePutModalComponent = () => {
     setExperience({
       role: user.experience[putStore.indexExp]?.role,
       company: user.experience[putStore.indexExp]?.company,
-      startDate:
-        user.experience[putStore.indexExp]?.startDate &&
-        format(new Date(user.experience[putStore.indexExp]?.startDate), "yyyy-MM-dd"),
+      startDate: user.experience[putStore.indexExp]?.startDate && format(new Date(user.experience[putStore.indexExp]?.startDate), "yyyy-MM-dd"),
       endDate: "",
       description: user.experience[putStore.indexExp]?.description,
       area: user.experience[putStore.indexExp]?.area,
@@ -43,9 +41,7 @@ export const ExperiencePutModalComponent = () => {
   const putExperience = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${
-          user.experience[putStore.indexExp]?._id
-        }`,
+        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${user.experience[putStore.indexExp]?._id}`,
         {
           method: "PUT",
           body: JSON.stringify(experience),
@@ -68,9 +64,7 @@ export const ExperiencePutModalComponent = () => {
   const deleteExperience = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${
-          user.experience[putStore.indexExp]?._id
-        }`,
+        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${user.experience[putStore.indexExp]?._id}`,
         {
           method: "DELETE",
           headers: {
@@ -102,7 +96,7 @@ export const ExperiencePutModalComponent = () => {
             <Modal.Title>Aggiungi esperienza</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {user.experience.length > 0 && (
+            {user?.experience?.length > 0 && (
               <>
                 <Form.Group className="mb-3">
                   <Form.Label>Qualifica*</Form.Label>
