@@ -28,7 +28,7 @@ export const CreatePost = () => {
                   </>
                 )}
               </Col>
-              <Col className="h-100  m-0 p-0">
+              <Col className="h-100  m-0 pe-0">
                 <div
                   className="rounded-pill avviaPost "
                   onClick={() => {
