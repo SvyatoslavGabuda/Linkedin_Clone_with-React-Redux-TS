@@ -11,6 +11,7 @@ export const ProfileModale = () => {
   //const [show, setShow] = useState(false);
   //const handleClose = () => setShow(false);
   //const handleShow = () => setShow(true);
+
   const show = useAppSelector((state) => state.upGradeModale.show);
   const dispatch = useAppDispatch();
   const [modalValue, setModalValue] = useState<Iprofile>({
