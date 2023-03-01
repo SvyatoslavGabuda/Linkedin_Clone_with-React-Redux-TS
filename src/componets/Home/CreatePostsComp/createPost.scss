@@ -18,6 +18,26 @@
     }
   }
   .createPostTextAreaTwo {
+    @media screen and (max-width: 512px) {
+      > div:first-child {
+        flex-direction: column;
+        > div:last-child {
+          display: none;
+        }
+      }
+      button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+    button {
+      > .row {
+        align-items: center;
+      }
+      div.col {
+        font-size: 0.8rem;
+      }
+    }
     .btn {
       color: gray;
       font-weight: 500;
