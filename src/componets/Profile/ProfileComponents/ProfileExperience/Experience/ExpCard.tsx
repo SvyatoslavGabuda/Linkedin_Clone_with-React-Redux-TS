@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom";
 import { Iexperience } from "../../../../../app/reducers/experienceSlice";
 import { addIndex, showPutM } from "../../../../../app/reducers/expPutModSlice";
 import Logo from "../Assets/original.png";
@@ -10,10 +11,12 @@ interface ExpCardProps {
   index: number;
 }
 export const ExpCard = ({ myExp, index }: ExpCardProps) => {
+  const params = useParams();
+
   const dispatch = useDispatch();
   return (
     <>
-      <span className="d-flex justify-content-between border-bottom">
+      <span className="d-flex justify-content-between border-bottom mb-3">
         <div className="d-flex ">
           <div>
             <img src={Logo} alt="Pic" className="me-2 ExpImg" />
@@ -27,15 +30,17 @@ export const ExpCard = ({ myExp, index }: ExpCardProps) => {
             </p>
           </div>
         </div>
-        <div>
-          <HiOutlinePencil
-            onClick={(e) => {
-              e.preventDefault();
-              dispatch(showPutM());
-              dispatch(addIndex(index));
-            }}
-          />
-        </div>
+        {params.id === "me" && (
+          <div>
+            <HiOutlinePencil
+              onClick={(e) => {
+                e.preventDefault();
+                dispatch(showPutM());
+                dispatch(addIndex(index));
+              }}
+            />
+          </div>
+        )}
       </span>
     </>
   );
