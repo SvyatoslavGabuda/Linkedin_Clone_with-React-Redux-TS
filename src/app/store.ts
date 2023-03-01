@@ -5,6 +5,7 @@ import experienceSlice from "./reducers/experienceSlice";
 import expModSlice from "./reducers/expModSlice";
 import expPutModSlice from "./reducers/expPutModSlice";
 import postsModSlice from "./reducers/postsModSlice";
+import postsPutModSlice from "./reducers/postsPutModSlice";
 import postsSlice from "./reducers/postsSlice";
 import profileSlice from "./reducers/profileSlice";
 import upgrateModSlice from "./reducers/upgrateModSlice";
@@ -21,15 +22,11 @@ export const store = configureStore({
     experiencePutModale: expPutModSlice,
     allPosts: postsSlice,
     postsModale: postsModSlice,
+    postPutModale: postsPutModSlice,
     // newProfile: profileSlice,
   },
 });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<
-  ReturnType,
-  RootState,
-  unknown,
-  Action<string>
->;
+export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
