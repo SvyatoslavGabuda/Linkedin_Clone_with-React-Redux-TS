@@ -2,11 +2,17 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
-export const PostsModal = () => {
-  const [show, setShow] = useState(false);
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { hidePosts } from "../../../app/reducers/postsModSlice";
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+export const PostsModal = () => {
+  // const [show, setShow] = useState(false);
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+
+  const show = useAppSelector((state) => state.postsModale.show);
+  const dispatch = useAppDispatch();
 
   const [text, setText] = useState("");
 
@@ -29,15 +35,13 @@ export const PostsModal = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(hidePosts());
     }
   };
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={() => dispatch(hidePosts())}>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
@@ -66,7 +70,7 @@ export const PostsModal = () => {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="secondary" onClick={() => dispatch(hidePosts())}>
             Close
           </Button>
         </Modal.Footer>

@@ -5,12 +5,15 @@ import Card from "react-bootstrap/Card";
 import { BsCalendar2Event, BsFillPlayBtnFill } from "react-icons/bs";
 import { HiPhoto } from "react-icons/hi2";
 import { MdOutlineArticle } from "react-icons/md";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { Col, Row } from "react-bootstrap";
 import { PostsModal } from "./PostsModal";
+import { useState } from "react";
+import { tooglePosts } from "../../../app/reducers/postsModSlice";
 
 export const CreatePost = () => {
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+  const dispatch = useAppDispatch();
   return (
     <>
       <Card className="createPost">
@@ -26,7 +29,13 @@ export const CreatePost = () => {
                 )}
               </Col>
               <Col>
-                <Button variant="outline-secondary" className="w-100 rounded-pill avviaPost">
+                <Button
+                  variant="outline-secondary"
+                  className="w-100 rounded-pill avviaPost"
+                  onClick={() => {
+                    dispatch(tooglePosts());
+                  }}
+                >
                   Avvia un post
                 </Button>
               </Col>
