@@ -60,7 +60,7 @@ export const HomeMid = () => {
                             {Singlepost.user.name} {Singlepost.user.surname}
                           </h3>
                         </Link>
-                        <p>1754 follower</p>
+                        <p>{Singlepost.user.title}</p>
                         <div className="d-flex">
                           <p className="me-1">{posted(Singlepost.createdAt.toString())}</p>
                           <p>
