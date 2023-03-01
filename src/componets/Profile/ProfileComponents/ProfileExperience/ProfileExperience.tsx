@@ -8,55 +8,39 @@ import { useEffect } from "react";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { ExpCard } from "./Experience/ExpCard";
 import { showExpM } from "../../../../app/reducers/expModSlice";
+import { useParams } from "react-router-dom";
 
 export const ProfileExperience = () => {
   const dispatch = useAppDispatch();
-  const idProva = "5fc4af0bb708c200175de88e";
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+  const generalProfile = useAppSelector((state) => state.profile.generalProfile);
+  const params = useParams();
   const experience = useAppSelector((state) => state.experience.experience);
   useEffect(() => {
-    if (myProfile) {
-      dispatch(expFetc(myProfile._id));
-    }
-  }, [myProfile]);
+    params.id === "me" ? dispatch(expFetc(myProfile?._id)) : dispatch(expFetc(generalProfile?._id));
+  }, [params.id, generalProfile?._id]);
   return (
     <Row className="border-1 border border-1 rounded mb-2 bg-white">
       <div className="px-4 pt-4 pb-3 border-bottom">
         <div className="mb-2">
           <div className="d-flex justify-content-between">
-            <div>
-              <h3 className="fs-4 mb-0">Esperienze</h3>
-            </div>
-            <div className="d-flex">
-              <div className="ButtonContainer3">
-                <button>
-                  <li onClick={() => dispatch(showExpM())}>
-                    <GrAdd className="IconPen" />
-                  </li>
-                </button>
+            <h3 className="fs-4 mb-3">Esperienze</h3>{" "}
+            {params.id === "me" && (
+              <div style={{ cursor: "pointer" }} onClick={() => dispatch(showExpM())}>
+                <GrAdd className="IconPen" />
               </div>
-              <div className="ButtonContainer3">
-                <button>
-                  <li>
-                    <HiOutlinePencil className="IconPen" />
-                  </li>
-                </button>
-              </div>
-            </div>
+            )}
           </div>
         </div>
-        {experience && experience.map((exp, i) => <ExpCard key={exp._id} myExp={exp} index={i} />)}
+        {experience && experience?.map((exp, i) => <ExpCard key={exp._id} myExp={exp} index={i} />)}
 
-        <div className="d-flex border-bottom">
-          <div>
-            <img src={Logo} alt="Pic" className="me-2 ExpImg" />
-          </div>
-          <div className="mb-3">
-            <p className="fs-5">Web Developer</p>
-            <p>Epicode · A tempo pieno</p>
-            <p>nov 2022 - Presente · 4 mesi </p>
-            <p>Roma · Da remoto</p>
-          </div>
+        <div className="d-flex">
+          {experience?.length < 1 && params.id !== "me" && <h6>Non ci sono Esperienze da mostrare</h6>}
+          {experience?.length < 1 && params.id === "me" && (
+            <h6 onClick={() => dispatch(showExpM())} style={{ cursor: "pointer" }}>
+              Aggiungi una nuova esperienza...
+            </h6>
+          )}
         </div>
       </div>
     </Row>
