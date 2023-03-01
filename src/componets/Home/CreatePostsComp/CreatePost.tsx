@@ -20,7 +20,7 @@ export const CreatePost = () => {
         <Card.Body>
           <Card.Text className="createPostTextAreaOne">
             <Row className="align-items-center">
-              <Col xs={2} className="text-center">
+              <Col xs={2} className="text-center p-0">
                 {myProfile && (
                   <>
                     {" "}
@@ -28,23 +28,22 @@ export const CreatePost = () => {
                   </>
                 )}
               </Col>
-              <Col>
-                <Button
-                  variant="outline-secondary"
-                  className="w-100 rounded-pill avviaPost"
+              <Col className="h-100  m-0 p-0">
+                <div
+                  className="rounded-pill avviaPost "
                   onClick={() => {
                     dispatch(tooglePosts());
                   }}
                 >
                   Avvia un post
-                </Button>
+                </div>
               </Col>
             </Row>
           </Card.Text>
           <Card.Text className="createPostTextAreaTwo">
             <Row className="justify-content-around">
               <Col className="p-0">
-                <Button variant="light">
+                <Button variant="light" className="rounded-pill">
                   <Row>
                     <Col xs={2}>
                       <HiPhoto className="photoIcon" />{" "}
@@ -54,7 +53,7 @@ export const CreatePost = () => {
                 </Button>
               </Col>
               <Col className="p-0">
-                <Button variant="light">
+                <Button variant="light" className="rounded-pill">
                   <Row>
                     <Col xs={2}>
                       <BsFillPlayBtnFill className="playIcon" />
@@ -64,7 +63,7 @@ export const CreatePost = () => {
                 </Button>
               </Col>
               <Col className="p-0">
-                <Button variant="light">
+                <Button variant="light" className="rounded-pill">
                   <Row>
                     <Col xs={2}>
                       <BsCalendar2Event className="calendarIcon" />
@@ -73,11 +72,11 @@ export const CreatePost = () => {
                   </Row>
                 </Button>
               </Col>
-              <Col className="p-0">
-                <Button variant="light" className="w-100">
+              <Col xs={4} className="p-0">
+                <Button variant="light" className="w-100 rounded-pill">
                   <Row>
                     <Col xs={2}>
-                      <MdOutlineArticle className="articleIcon" />
+                      <MdOutlineArticle className="articleIcon " />
                     </Col>
                     <Col className="p-0"> Scrivi un articolo</Col>
                   </Row>
