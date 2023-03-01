@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Posts } from "./PostsS";
 import { HomeLeft } from "./HomeComponents/HomeLeft";
+import { HomeMid } from "./HomeComponents/HomeMid";
 export const Home = () => {
   return (
     <>
@@ -18,6 +19,7 @@ export const Home = () => {
       </div>
       <Posts />
       <HomeLeft />
+      <HomeMid />
     </>
   );
 };

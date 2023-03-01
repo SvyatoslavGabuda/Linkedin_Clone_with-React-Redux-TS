@@ -90,3 +90,76 @@
         }
     }
 }
+
+// Home Mid
+
+.HomeMidButtonsCont{
+    background-color: white;
+    padding: 5px 10px;
+    .HomeMidButton {
+    border: none;
+    padding: 10px 10px;
+    color: gray;
+    background-color: white;
+    &:hover {
+        background-color: rgba(199, 199, 199, 0.418);
+        border-radius: 5px;
+    }
+    .HomeMidIcon {
+        font-size: 1.3em;
+    }
+}
+}
+
+.HomeMidProfileCont{
+    h3 {
+        font-size: 1.1em;
+        margin: 0;
+    }
+    a {
+        text-decoration: none;
+        color: black;
+        &:hover {
+            text-decoration: underline;
+            color: #0A66C2;
+        }
+    }
+    p {
+        color: #666666;
+        font-weight: 400;
+    }
+    .HomeMidDropDwon{
+    &:hover {
+        background-color: rgba(199, 199, 199, 0.418);
+    }
+    padding: 10px 10px;
+    cursor: pointer;
+    
+    a {
+        text-decoration: none;
+        color: #5E5E5E;
+        &:hover {
+            text-decoration: none;
+            color: #5E5E5E;
+        }
+    }
+    }
+    .dropdown-menu {
+        width: 350px;
+    }
+    .dropdown-toggle::after {
+        display: none;
+    }
+    .dropdown-toggle {
+        margin-top: -25px;
+        &:hover {
+            text-decoration: none;
+            color: #5E5E5E;
+        }
+    }
+    img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+    }
+}
