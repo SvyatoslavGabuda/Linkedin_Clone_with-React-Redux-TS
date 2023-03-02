@@ -35,9 +35,7 @@ export const ProfileActivity = () => {
   const storePutPost = useAppSelector((state) => state.postPutModale);
 
   const getLatestPost = () => {
-    let latestPost = [...alltheposts]
-      .reverse()
-      .filter((el) => el.user?._id === (params.id === "me" ? myProfile._id : params.id));
+    let latestPost = [...alltheposts].reverse().filter((el) => el.user?._id === (params.id === "me" ? myProfile._id : params.id));
     return [latestPost[0]];
   };
 
@@ -109,9 +107,7 @@ export const ProfileActivity = () => {
                     <img src={Singlepost.user.image} alt="ProfilePic" />
                   </div>
                   <div>
-                    <Link
-                      to={"/profile/" + (Singlepost.user._id === myProfile._id ? myProfile._id : Singlepost.user._id)}
-                    >
+                    <Link to={"/profile/" + (Singlepost.user._id === myProfile._id ? myProfile._id : Singlepost.user._id)}>
                       <h3>
                         {Singlepost.user.name} {Singlepost.user.surname}
                       </h3>
@@ -189,7 +185,7 @@ export const ProfileActivity = () => {
                           dispatch(showPutPosts());
                         }}
                       >
-                        <Link to="/">
+                        <Link to="">
                           <HiOutlinePencil /> Modifica
                         </Link>
                       </div>
@@ -224,9 +220,7 @@ export const ProfileActivity = () => {
 
               {/* Img */}
 
-              <div className="w-100 text-center">
-                {Singlepost?.image && <img className="img-fluid" src={Singlepost.image} alt="" />}
-              </div>
+              <div className="w-100 text-center">{Singlepost?.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
 
               {/* Img */}
 
