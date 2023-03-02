@@ -3,6 +3,7 @@ import React, { useState, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { BsImage } from "react-icons/bs";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hideExpM } from "../../../../app/reducers/expModSlice";
@@ -141,7 +142,11 @@ export const ExperienceModalComponent = () => {
                     });
                   }}
                 />
-                <Form.Control type="file" style={{ width: 60 + "%" }} onChange={handleLoadFile} />
+                <label className="inputLabelExp m-0 d-flex align-items-center">
+                  <span className="px-2">Carica</span>
+                  <BsImage className="mx-2" />
+                  <input type="file" style={{ width: 60 + "%" }} onChange={handleLoadFile} />
+                </label>
               </div>
             </Form.Group>
             <Form.Group className="mb-3 d-flex flex-wrap justify-content-between justify-content-sm-start">
