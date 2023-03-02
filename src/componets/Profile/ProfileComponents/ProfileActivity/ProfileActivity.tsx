@@ -224,8 +224,8 @@ export const ProfileActivity = () => {
 
               {/* Img */}
 
-              <div>
-                <img className="img-fluid" src="https://placekitten.com/300/200" alt="" />
+              <div className="w-100 text-center">
+                {Singlepost?.image && <img className="img-fluid" src={Singlepost.image} alt="" />}
               </div>
 
               {/* Img */}
@@ -274,7 +274,7 @@ export const ProfileActivity = () => {
           <button className="Button4">Mostra tutte le attività {"->"} </button>
         </div>
       </Row>
-      <ActivityImgMod show={show} handleShow={handleShow} />
+      <ActivityImgMod show={show} handleShow={handleShow} lastpost={getLatestPost()} />
       <PostsPutModal />
     </>
   );
