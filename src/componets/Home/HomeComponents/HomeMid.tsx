@@ -74,7 +74,7 @@ export const HomeMid = () => {
           <SpinnerSuper />
           <SpinnerSuper /> */}
           {loadingState === "loading" && (
-            <div className="text-center py-5">
+            <div className="text-center ">
               {/* <Spinner animation="grow" variant="info" /> */}
               <SpinnerSuper />
               <SpinnerSuper />
