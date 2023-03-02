@@ -71,10 +71,7 @@ export const HomeMid = () => {
         <Row className="flex-column">
           {NewsArrData &&
             OnlyOnePostForUser.map((Singlepost) => (
-              <Col
-                className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0"
-                key={Singlepost._id}
-              >
+              <Col className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0" key={Singlepost._id}>
                 <div>
                   {/* Profile */}
 
@@ -86,10 +83,7 @@ export const HomeMid = () => {
                       <div>
                         <Link
                           to={
-                            "/profile/" +
-                            (Singlepost.user._id === MyProfile._id
-                              ? MyProfile._id
-                              : Singlepost.user._id)
+                            "/profile/" + (Singlepost.user._id === MyProfile._id ? MyProfile._id : Singlepost.user._id)
                           }
                         >
                           <h3>

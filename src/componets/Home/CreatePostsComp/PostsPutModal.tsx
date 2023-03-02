@@ -36,7 +36,7 @@ export const PostsPutModal = () => {
     } catch (error) {
       console.log("fatal error in posts PUT", error);
     } finally {
-      dispatch(hidePosts());
+      dispatch(hidePutPosts());
     }
   };
 
