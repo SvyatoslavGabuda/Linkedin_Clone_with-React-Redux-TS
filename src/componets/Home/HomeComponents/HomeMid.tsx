@@ -76,10 +76,7 @@ export const HomeMid = () => {
           )}
           {NewsArrData &&
             OnlyOnePostForUser.map((Singlepost) => (
-              <Col
-                className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0"
-                key={Singlepost._id}
-              >
+              <Col className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0" key={Singlepost._id}>
                 <div>
                   {/* Profile */}
 
@@ -89,14 +86,7 @@ export const HomeMid = () => {
                         <img src={Singlepost.user.image} alt="ProfilePic" />
                       </div>
                       <div>
-                        <Link
-                          to={
-                            "/profile/" +
-                            (Singlepost.user._id === MyProfile._id
-                              ? MyProfile._id
-                              : Singlepost.user._id)
-                          }
-                        >
+                        <Link to={"/profile/" + (Singlepost.user._id === MyProfile._id ? MyProfile._id : Singlepost.user._id)}>
                           <h3>
                             {Singlepost.user.name} {Singlepost.user.surname}
                           </h3>
@@ -195,18 +185,14 @@ export const HomeMid = () => {
 
                   {/* Img */}
 
-                  <div>
-                    {Singlepost.image && (
-                      <img className="img-fluid" src={Singlepost.image} alt="" />
-                    )}
-                  </div>
+                  <div>{Singlepost.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
 
                   {/* Img */}
 
                   {/* Buttons */}
 
                   <div className="HomeMidButtonsCont d-flex justify-content-evenly">
-                    <button className="HomeMidButton">
+                    <button className="HomeMidButton d-none d-sm-block">
                       <div className="d-flex align-items-center">
                         <div>
                           <SlLike className="HomeMidIcon me-1" />
@@ -222,7 +208,7 @@ export const HomeMid = () => {
                         <div>Commenta</div>
                       </div>
                     </button>
-                    <button className="HomeMidButton">
+                    <button className="HomeMidButton d-none d-lg-block">
                       <div className="d-flex align-items-center">
                         <div>
                           <TbArrowsRandom className="HomeMidIcon me-1" />
