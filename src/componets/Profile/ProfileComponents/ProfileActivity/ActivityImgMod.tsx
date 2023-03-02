@@ -50,6 +50,12 @@ export const ActivityImgMod = (props: ProfileImageMod) => {
         }}
       >
         <Modal.Body>
+          {props.lastpost[0].image && (
+            <div>
+              <h6 className="mb-3">Immagine attuale: </h6>
+              <img src={props.lastpost[0].image} style={{ width: "100%" }} alt="Active Post" className="mb-3" />
+            </div>
+          )}
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control type="file" placeholder="" onChange={handleLoadFile} />
           </Form.Group>

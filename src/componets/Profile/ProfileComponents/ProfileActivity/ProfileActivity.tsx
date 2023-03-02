@@ -200,7 +200,7 @@ export const ProfileActivity = () => {
                         }}
                       >
                         <Link to="">
-                          <HiOutlinePencil /> Cambia immagine collegata
+                          <HiOutlinePencil /> {Singlepost.image ? "Cambia immagine collegata" : "Aggiungi un'immagine"}
                         </Link>
                       </div>
                     ) : (
