@@ -98,7 +98,7 @@ export const ProfileActivity = () => {
         </div>
         {getLatestPost()[0]?.user &&
           getLatestPost().map((Singlepost) => (
-            <div className="border-bottom">
+            <div className="border-bottom" key={`pa-${Singlepost._id}`}>
               {/* Profile */}
 
               <div className="d-flex HomeMidProfileCont justify-content-between px-3 pt-3">
