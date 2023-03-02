@@ -147,9 +147,9 @@ export const ExperiencePutModalComponent = () => {
                     />
                     <button
                       type="button"
+                      id="uploadExpButton"
                       onClick={() => {
                         handleShow();
-                        console.log("click");
                       }}
                     >
                       <span>Carica</span>

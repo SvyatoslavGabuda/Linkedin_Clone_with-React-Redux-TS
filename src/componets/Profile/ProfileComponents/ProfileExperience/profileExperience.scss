@@ -14,3 +14,32 @@
   transition: 0.3s;
   display: none !important;
 }
+
+.modalExpImgContent {
+  background-color: black;
+  .currentExpImage {
+    width: 70%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+}
+.imageInputExp {
+  padding-top: 32px;
+}
+
+.expPutSubmitButton {
+  background-color: #0a66c2;
+  font-size: 14.4px;
+}
+
+#uploadExpButton {
+  color: grey;
+  transition: 0.2s;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  &:hover {
+    transition: 0.2s;
+    color: black;
+    background-color: rgb(197, 197, 197);
+  }
+}

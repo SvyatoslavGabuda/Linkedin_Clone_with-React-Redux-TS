@@ -53,19 +53,27 @@ export const ExpImagePUTMod = (props: ExperienceImageProp) => {
           <Modal.Title>Carica una foto della tua esperienza</Modal.Title>
         </Modal.Header>
         <Form onSubmit={(e) => handleSubmit(e)}>
-          <Modal.Body className="d-flex flex-column align-items-center justify-content-center">
+          <Modal.Body className="px-0 text-center">
             <h5>L'immagine attuale è:</h5>
-            <img src={""} alt="experience img" />
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Control type="file" placeholder="Enter email" onChange={handleLoadFile} />
-            </Form.Group>
+            <div className="d-flex flex-column align-items-center justify-content-center modalExpImgContent">
+              {thisExperience?.image?.length > 0 ? (
+                <img src={thisExperience.image} alt="experience img" className="currentExpImage" />
+              ) : (
+                <img src="../Assets/no-image.jpg" alt="experience img" className="currentExpImage" />
+              )}
+            </div>
+            <div className="d-flex flex-column align-items-center justify-content-center imageInputExp">
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Control type="file" placeholder="Enter email" onChange={handleLoadFile} />
+              </Form.Group>
+            </div>
           </Modal.Body>
           <Modal.Footer className="d-flex justify-content-between">
-            <Button variant="outline-secondary" type="button" className="d-flex align-items-center">
+            <Button variant="outline-secondary" type="button" className="d-flex align-items-center rounded-pill">
               <MdVisibility className="me-1" />
-              <p>tutti gli utenti di LinkedIn</p>
+              <p className="allUsersButton">tutti gli utenti di LinkedIn</p>
             </Button>
-            <Button variant="primary" className="rounded-pill" type="submit">
+            <Button className="rounded-pill expPutSubmitButton" type="submit" onClick={() => props.handleShow()}>
               Imposta immagine
             </Button>
           </Modal.Footer>
