@@ -5,16 +5,24 @@ export const ADD_TO_ALLPROFILE = "ADD_TO_ALLPROFILE";
 export const ADD_TO_MYPROFILE = "ADD_TO_MYPROFILE";
 export const ADD_TO_GENERALPROFILE = "ADD_TO_GENERALPROFILE";
 
+export const HANDLE_LOAD_MYPROFILE = "HANDLE_LOAD_MYPROFILE";
+
+export const HANDLE_LOAD_ALLPROFILE = "HANDLE_LOAD_ALLPROFILE";
+
 export interface AllProfile {
   allProfile: Iprofile[];
   myProfile: Iprofile | null;
   generalProfile: Iprofile | null;
+  loadingMyProfile: boolean;
+  loadingAllProfile: boolean;
 }
 
 const initialState: AllProfile = {
   allProfile: [] as Iprofile[],
   myProfile: null,
   generalProfile: null,
+  loadingMyProfile: false,
+  loadingAllProfile: false,
 };
 
 export const allProfileReduce = (
@@ -37,7 +45,16 @@ export const allProfileReduce = (
         ...state,
         generalProfile: action.payload,
       };
-
+    case HANDLE_LOAD_MYPROFILE:
+      return {
+        ...state,
+        loadingMyProfile: action.payload,
+      };
+    case HANDLE_LOAD_ALLPROFILE:
+      return {
+        ...state,
+        loadingAllProfile: action.payload,
+      };
     default:
       return state;
   }

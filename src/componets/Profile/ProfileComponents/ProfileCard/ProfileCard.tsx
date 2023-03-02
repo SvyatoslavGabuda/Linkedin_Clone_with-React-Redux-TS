@@ -1,5 +1,5 @@
 import "./profileCard.scss";
-import { Row, Button, Col } from "react-bootstrap";
+import { Row, Button, Col, Spinner } from "react-bootstrap";
 import { AiFillCamera } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi2";
 import Logo from "./Assets/original.png";
@@ -10,7 +10,7 @@ import { ProfileExperience } from "../ProfileExperience/ProfileExperience";
 import { ProfileInterest } from "../ProfileInterests/ProfileInterests";
 import { ProfileResources } from "../ProfileRecurces/ProfileResources";
 import { Iprofile } from "../../Profile";
-import { useAppDispatch } from "../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { toogleM } from "../../../../app/reducers/upgrateModSlice";
 import { useParams } from "react-router";
 import { ProfileImageMod } from "./ProfileImageMod";
@@ -27,9 +27,16 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
   const [show, setShow] = useState(false);
 
   const handleShow = () => setShow(!show);
+  const loadingState = useAppSelector((state) => state.profile.loadingMyProfile);
+
   return (
     <>
       <Col xs={12} md={7} lg={8}>
+        {loadingState === true && (
+          <div className="text-center py-5">
+            <Spinner animation="grow" variant="info" />
+          </div>
+        )}
         <ProfileImageMod show={show} handleShow={handleShow} />
         {profile && (
           <Row className="mt-1 border border-1 rounded mb-2 bg-white">
