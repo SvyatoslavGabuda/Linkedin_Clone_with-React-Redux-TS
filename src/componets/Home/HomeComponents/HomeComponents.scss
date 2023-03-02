@@ -19,8 +19,10 @@
     }
 
     img {
-      height: 68px;
       width: 68px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: center;
       margin: -38px auto 1.2rem;
       border: 2px solid white;
       border-radius: 50%;
@@ -269,7 +271,9 @@
   }
   img {
     width: 48px;
-    height: 48px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
     border-radius: 50%;
   }
 }
