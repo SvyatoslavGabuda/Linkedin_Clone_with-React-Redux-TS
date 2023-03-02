@@ -73,7 +73,9 @@
   }
 }
 .modalBtn {
-  font-size: 1.4em;
+  font-size: 1em;
+  margin-right: 10px;
+  padding: 5px 10px;
   &:hover {
     background-color: rgb(239, 238, 238);
     color: gray;

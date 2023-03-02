@@ -96,7 +96,7 @@ export const PostsModal = () => {
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="w-100">
                   <Row className="w-100 modalRow align-items-center">
-                    <Col xs={2} className="pe-0">
+                    <Col xs={2} className="pe-0 d-none d-sm-block">
                       <img src={myProfile.image} alt="profileimage" />
                     </Col>
                     <Col xs={8}>
@@ -130,25 +130,25 @@ export const PostsModal = () => {
                 </Col>
               </Row>
               <Row className="justify-content-between w-100 aling-items-center">
-                <Col>
+                <Col className="d-flex align-items-center">
                   <Form.Label htmlFor="newPostImage" className={imageAvailable ? "rounded-pill modalBtn imagePosted" : "rounded-pill modalBtn"}>
                     <BsImage />
                     <input type="file" id="newPostImage" style={{ display: "none" }} onChange={handleFile} />
                   </Form.Label>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
+                  <Form.Label className="rounded-pill modalBtn">
                     <BsPlayBtnFill />
-                  </Button>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
+                  </Form.Label>
+                  <Form.Label className="rounded-pill modalBtn">
                     <GrArticle />
-                  </Button>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
+                  </Form.Label>
+                  <Form.Label className="rounded-pill modalBtn">
                     <BsThreeDots />
-                  </Button>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
+                  </Form.Label>
+                  <Form.Label className="rounded-pill modalBtn">
                     <BsChatText /> Tutti
-                  </Button>
+                  </Form.Label>
                 </Col>
-                <Col xs={4}>
+                <Col xs={4} className="d-flex align-items-center">
                   <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <AiOutlineClockCircle />
                   </Button>
