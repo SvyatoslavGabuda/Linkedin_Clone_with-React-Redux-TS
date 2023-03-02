@@ -19,6 +19,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { HiOutlinePencil } from "react-icons/hi2";
 import { addFocusPosts, showPutPosts } from "../../../app/reducers/postsPutModSlice";
 import { useAppDispatch } from "../../../app/hooks";
+import { SpinnerSuper } from "../spinner/SpinnerSuper";
 
 export const postsDELETE = async (idPost: string) => {
   try {
@@ -71,12 +72,18 @@ export const HomeMid = () => {
         <Row className="flex-column">
           {loadingState === "loading" && (
             <div className="text-center py-5">
-              <Spinner animation="grow" variant="info" />
+              {/* <Spinner animation="grow" variant="info" /> */}
+              <SpinnerSuper />
+              <SpinnerSuper />
+              <SpinnerSuper />
             </div>
           )}
           {NewsArrData &&
             OnlyOnePostForUser.map((Singlepost) => (
-              <Col className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0" key={Singlepost._id}>
+              <Col
+                className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0"
+                key={Singlepost._id}
+              >
                 <div>
                   {/* Profile */}
 
@@ -86,7 +93,14 @@ export const HomeMid = () => {
                         <img src={Singlepost.user.image} alt="ProfilePic" />
                       </div>
                       <div>
-                        <Link to={"/profile/" + (Singlepost.user._id === MyProfile._id ? MyProfile._id : Singlepost.user._id)}>
+                        <Link
+                          to={
+                            "/profile/" +
+                            (Singlepost.user._id === MyProfile._id
+                              ? MyProfile._id
+                              : Singlepost.user._id)
+                          }
+                        >
                           <h3>
                             {Singlepost.user.name} {Singlepost.user.surname}
                           </h3>
@@ -185,7 +199,11 @@ export const HomeMid = () => {
 
                   {/* Img */}
 
-                  <div>{Singlepost.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
+                  <div>
+                    {Singlepost.image && (
+                      <img className="img-fluid" src={Singlepost.image} alt="" />
+                    )}
+                  </div>
 
                   {/* Img */}
 
