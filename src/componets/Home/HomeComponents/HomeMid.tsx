@@ -1,6 +1,6 @@
 import { CreatePost } from "../CreatePostsComp/CreatePost";
 
-import { Col, NavDropdown, Row, Spinner } from "react-bootstrap";
+import { Col, NavDropdown, Row } from "react-bootstrap";
 import { BiWorld } from "react-icons/bi";
 import { SlLike } from "react-icons/sl";
 import { FaRegCommentDots } from "react-icons/fa";

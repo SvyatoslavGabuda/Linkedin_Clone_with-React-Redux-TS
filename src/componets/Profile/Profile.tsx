@@ -1,8 +1,6 @@
 import "./profile.scss";
-import { ProfileActivity } from "./ProfileComponents/ProfileActivity/ProfileActivity";
 import { ProfileCard } from "./ProfileComponents/ProfileCard/ProfileCard";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import {
   ADD_TO_ALLPROFILE,
   ADD_TO_GENERALPROFILE,
@@ -131,11 +129,7 @@ const Profile = () => {
       <ExperienceModalComponent />
       <ExperiencePutModalComponent />
       <Row>
-        {params.id === "me" ? (
-          <ProfileCard profile={currentProfile} />
-        ) : (
-          <ProfileCard profile={clickedProfile} />
-        )}
+        {params.id === "me" ? <ProfileCard profile={currentProfile} /> : <ProfileCard profile={clickedProfile} />}
         <ProfileSideBar />
       </Row>
     </>
