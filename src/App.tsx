@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { Counter } from "./features/counter/Counter";
 import "./App.scss";
 import { useAppDispatch } from "./app/hooks";
-import { ADD_TO_MYPROFILE } from "./app/reducers/allProfileReduce";
+import { ADD_TO_MYPROFILE, HANDLE_LOAD_MYPROFILE } from "./app/reducers/allProfileReduce";
 import { Chat } from "./componets/Chat/Chat";
 import MyFooter from "./componets/Footer/MyFooter";
 import { Home } from "./componets/Home/Home";
@@ -20,6 +20,7 @@ const url = "https://striveschool-api.herokuapp.com/api/profile/";
 function App() {
   const dispatch = useAppDispatch();
   const myProfileFetch = async () => {
+    dispatch({ type: HANDLE_LOAD_MYPROFILE, payload: true });
     try {
       const response = await fetch(url + "me", {
         headers: {
@@ -32,7 +33,11 @@ function App() {
         // setMyProfile(data);
         dispatch({ type: ADD_TO_MYPROFILE, payload: data });
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch({ type: HANDLE_LOAD_MYPROFILE, payload: false });
+    }
   };
   useEffect(() => {
     myProfileFetch();

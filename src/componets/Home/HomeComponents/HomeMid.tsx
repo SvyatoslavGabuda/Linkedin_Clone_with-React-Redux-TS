@@ -1,6 +1,6 @@
 import { CreatePost } from "../CreatePostsComp/CreatePost";
 
-import { Col, NavDropdown, Row } from "react-bootstrap";
+import { Col, NavDropdown, Row, Spinner } from "react-bootstrap";
 import { BiWorld } from "react-icons/bi";
 import { SlLike } from "react-icons/sl";
 import { FaRegCommentDots } from "react-icons/fa";
@@ -59,6 +59,7 @@ export const HomeMid = () => {
   };
 
   // storePutPosts.focus._id
+  const loadingState = useAppSelector((state) => state.allPosts.status);
 
   return (
     <>
@@ -68,9 +69,17 @@ export const HomeMid = () => {
           <CreatePost />
         </Row>
         <Row className="flex-column">
+          {loadingState === "loading" && (
+            <div className="text-center py-5">
+              <Spinner animation="grow" variant="info" />
+            </div>
+          )}
           {NewsArrData &&
             OnlyOnePostForUser.map((Singlepost) => (
-              <Col className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0" key={Singlepost._id}>
+              <Col
+                className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0"
+                key={Singlepost._id}
+              >
                 <div>
                   {/* Profile */}
 
@@ -80,7 +89,14 @@ export const HomeMid = () => {
                         <img src={Singlepost.user.image} alt="ProfilePic" />
                       </div>
                       <div>
-                        <Link to={"/profile/" + (Singlepost.user._id === MyProfile._id ? MyProfile._id : Singlepost.user._id)}>
+                        <Link
+                          to={
+                            "/profile/" +
+                            (Singlepost.user._id === MyProfile._id
+                              ? MyProfile._id
+                              : Singlepost.user._id)
+                          }
+                        >
                           <h3>
                             {Singlepost.user.name} {Singlepost.user.surname}
                           </h3>
@@ -179,7 +195,11 @@ export const HomeMid = () => {
 
                   {/* Img */}
 
-                  <div>{Singlepost.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
+                  <div>
+                    {Singlepost.image && (
+                      <img className="img-fluid" src={Singlepost.image} alt="" />
+                    )}
+                  </div>
 
                   {/* Img */}
 
