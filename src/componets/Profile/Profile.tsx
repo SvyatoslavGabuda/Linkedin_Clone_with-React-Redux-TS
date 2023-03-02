@@ -56,7 +56,7 @@ const Profile = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setAllProfile(data);
         dispatch({ type: ADD_TO_ALLPROFILE, payload: data });
       } else {
@@ -79,7 +79,7 @@ const Profile = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("myprofle", data);
+        // console.log("myprofle", data);
         setMyProfile(data);
         dispatch({ type: ADD_TO_MYPROFILE, payload: data });
       }
@@ -129,7 +129,11 @@ const Profile = () => {
       <ExperienceModalComponent />
       <ExperiencePutModalComponent />
       <Row>
-        {params.id === "me" ? <ProfileCard profile={currentProfile} /> : <ProfileCard profile={clickedProfile} />}
+        {params.id === "me" ? (
+          <ProfileCard profile={currentProfile} />
+        ) : (
+          <ProfileCard profile={clickedProfile} />
+        )}
         <ProfileSideBar />
       </Row>
     </>
