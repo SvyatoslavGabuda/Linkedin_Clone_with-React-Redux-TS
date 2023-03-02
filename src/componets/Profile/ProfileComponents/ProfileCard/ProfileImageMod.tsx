@@ -65,7 +65,13 @@ export const ProfileImageMod = (props: ProfileImageMod) => {
                 </h5>
                 <img
                   src={myProfile.image}
-                  style={{ width: 150, height: 150, borderRadius: "50%", padding: 0 }}
+                  style={{
+                    width: 150,
+                    height: 150,
+                    borderRadius: "50%",
+                    padding: 0,
+                    objectFit: "cover",
+                  }}
                   alt="profileimg"
                 />
                 <p className="text-center mt-3" style={{ color: "gray" }}>

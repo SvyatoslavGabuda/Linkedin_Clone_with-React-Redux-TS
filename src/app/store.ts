@@ -22,6 +22,7 @@ export const store = configureStore({
     allPosts: postsSlice,
     postsModale: postsModSlice,
     postPutModale: postsPutModSlice,
+    
     // newProfile: profileSlice,
   },
 });

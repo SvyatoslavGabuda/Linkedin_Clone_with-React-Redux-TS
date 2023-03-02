@@ -3,7 +3,13 @@ import { ProfileActivity } from "./ProfileComponents/ProfileActivity/ProfileActi
 import { ProfileCard } from "./ProfileComponents/ProfileCard/ProfileCard";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { ADD_TO_ALLPROFILE, ADD_TO_GENERALPROFILE, ADD_TO_MYPROFILE } from "../../app/reducers/allProfileReduce";
+import {
+  ADD_TO_ALLPROFILE,
+  ADD_TO_GENERALPROFILE,
+  ADD_TO_MYPROFILE,
+  HANDLE_LOAD_ALLPROFILE,
+  HANDLE_LOAD_MYPROFILE,
+} from "../../app/reducers/allProfileReduce";
 import { useParams } from "react-router-dom";
 import { ProfileSideBar } from "./ProfileComponents/ProfileSideBar/ProfileSideBar";
 import { ProfileModale } from "./ProfileComponents/ProfileModale/ProfileModale";
@@ -43,6 +49,7 @@ const Profile = () => {
   const dispatch = useAppDispatch();
   //fetch tutti i profili
   const profileFetch = async () => {
+    dispatch({ type: HANDLE_LOAD_ALLPROFILE, payload: true });
     try {
       const response = await fetch(url, {
         headers: {
@@ -59,10 +66,13 @@ const Profile = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch({ type: HANDLE_LOAD_ALLPROFILE, payload: false });
     }
   };
   //fetch Profilo in base al BEARER
   const myProfileFetch = async () => {
+    dispatch({ type: HANDLE_LOAD_MYPROFILE, payload: true });
     try {
       const response = await fetch(url + "me", {
         headers: {
@@ -75,7 +85,11 @@ const Profile = () => {
         setMyProfile(data);
         dispatch({ type: ADD_TO_MYPROFILE, payload: data });
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch({ type: HANDLE_LOAD_MYPROFILE, payload: false });
+    }
   };
   //fetch PROFILO IN base al id
   const idProfileFetch = async () => {
@@ -115,7 +129,11 @@ const Profile = () => {
       <ExperienceModalComponent />
       <ExperiencePutModalComponent />
       <Row>
-        {params.id === "me" ? <ProfileCard profile={currentProfile} /> : <ProfileCard profile={clickedProfile} />}
+        {params.id === "me" ? (
+          <ProfileCard profile={currentProfile} />
+        ) : (
+          <ProfileCard profile={clickedProfile} />
+        )}
         <ProfileSideBar />
       </Row>
     </>
