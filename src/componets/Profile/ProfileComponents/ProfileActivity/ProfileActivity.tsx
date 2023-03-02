@@ -20,10 +20,15 @@ import { HiOutlinePencil } from "react-icons/hi2";
 import { PostsPutModal } from "../../../Home/CreatePostsComp/PostsPutModal";
 import { postsDELETE } from "../../../Home/HomeComponents/HomeMid";
 import { addFocusPosts, showPutPosts } from "../../../../app/reducers/postsPutModSlice";
+import { ActivityImgMod } from "./ActivityImgMod";
+import { useState } from "react";
 
 export const ProfileActivity = () => {
   const params = useParams();
   const dispatch = useDispatch();
+
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(!show);
 
   const alltheposts = useAppSelector((state) => state.allPosts.allPosts);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
@@ -191,6 +196,20 @@ export const ProfileActivity = () => {
                     ) : (
                       ""
                     )}
+                    {Singlepost.user._id === myProfile._id ? (
+                      <div
+                        className="HomeMidDropDwon"
+                        onClick={() => {
+                          handleShow();
+                        }}
+                      >
+                        <Link to="">
+                          <HiOutlinePencil /> Cambia immagine collegata
+                        </Link>
+                      </div>
+                    ) : (
+                      ""
+                    )}
                   </NavDropdown>
                 </div>
               </div>
@@ -255,6 +274,7 @@ export const ProfileActivity = () => {
           <button className="Button4">Mostra tutte le attività {"->"} </button>
         </div>
       </Row>
+      <ActivityImgMod show={show} handleShow={handleShow} />
       <PostsPutModal />
     </>
   );
