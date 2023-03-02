@@ -4,6 +4,7 @@ import { Iprofile } from "../../Profile";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { hideM, showM, toogleM } from "../../../../app/reducers/upgrateModSlice";
 import "./profileModale.scss";
+import { Add } from "../../../../app/reducers/slicerForUpDate";
 
 export const ProfileModale = () => {
   const url = "https://striveschool-api.herokuapp.com/api/profile/";
@@ -52,6 +53,7 @@ export const ProfileModale = () => {
       console.log(error);
     } finally {
       dispatch(hideM());
+      dispatch(Add());
       //handleClose();
     }
   };

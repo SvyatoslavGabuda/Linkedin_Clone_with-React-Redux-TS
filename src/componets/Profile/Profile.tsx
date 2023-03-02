@@ -108,11 +108,13 @@ const Profile = () => {
     } catch (error) {}
   };
 
+  const upDateState = useAppSelector((state) => state.upDate.numberOfUpdate);
+
   useEffect(() => {
     profileFetch();
     myProfileFetch();
     //dispatch(profileFetch());
-  }, []);
+  }, [upDateState]);
 
   useEffect(() => {
     idProfileFetch();
