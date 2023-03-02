@@ -1,6 +1,6 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import { FormEvent, ChangeEvent, useState } from "react";
-import { Iposts } from "../../../../app/reducers/postsSlice";
+import { Iposts, postsFetc } from "../../../../app/reducers/postsSlice";
 import { Add } from "../../../../app/reducers/slicerForUpDate";
 import { useAppDispatch } from "../../../../app/hooks";
 
@@ -35,6 +35,8 @@ export const ActivityImgMod = (props: ProfileImageMod) => {
       console.log(error);
     } finally {
       dispatch(Add());
+      dispatch(postsFetc());
+      props.handleShow();
     }
   };
 

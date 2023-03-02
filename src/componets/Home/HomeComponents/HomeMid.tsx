@@ -6,7 +6,7 @@ import { SlLike } from "react-icons/sl";
 import { FaRegCommentDots } from "react-icons/fa";
 import { TbArrowsRandom } from "react-icons/tb";
 import { RiSendPlaneFill } from "react-icons/ri";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Posts } from "../PostsS";
 import "./HomeComponents.scss";
 import { useAppSelector } from "../../../app/hooks";
@@ -20,7 +20,7 @@ import { HiOutlinePencil } from "react-icons/hi2";
 import { addFocusPosts, showPutPosts } from "../../../app/reducers/postsPutModSlice";
 import { useAppDispatch } from "../../../app/hooks";
 import { SpinnerSuper } from "../spinner/SpinnerSuper";
-
+import { postsFetc } from "../../../app/reducers/postsSlice";
 export const postsDELETE = async (idPost: string) => {
   try {
     const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${idPost}`, {
@@ -37,6 +37,8 @@ export const postsDELETE = async (idPost: string) => {
     }
   } catch (error) {
     console.log("fatal error in DELETE post");
+  } finally {
+    document.location.reload();
   }
 };
 export const HomeMid = () => {
@@ -83,7 +85,10 @@ export const HomeMid = () => {
           )}
           {NewsArrData &&
             OnlyOnePostForUser.map((Singlepost) => (
-              <Col className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0" key={Singlepost._id}>
+              <Col
+                className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0"
+                key={Singlepost._id}
+              >
                 <div>
                   {/* Profile */}
 
@@ -93,7 +98,14 @@ export const HomeMid = () => {
                         <img src={Singlepost.user.image} alt="ProfilePic" />
                       </div>
                       <div>
-                        <Link to={"/profile/" + (Singlepost.user._id === MyProfile._id ? MyProfile._id : Singlepost.user._id)}>
+                        <Link
+                          to={
+                            "/profile/" +
+                            (Singlepost.user._id === MyProfile._id
+                              ? MyProfile._id
+                              : Singlepost.user._id)
+                          }
+                        >
                           <h3>
                             {Singlepost.user.name} {Singlepost.user.surname}
                           </h3>
@@ -192,7 +204,11 @@ export const HomeMid = () => {
 
                   {/* Img */}
 
-                  <div>{Singlepost.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
+                  <div>
+                    {Singlepost.image && (
+                      <img className="img-fluid" src={Singlepost.image} alt="" />
+                    )}
+                  </div>
 
                   {/* Img */}
 

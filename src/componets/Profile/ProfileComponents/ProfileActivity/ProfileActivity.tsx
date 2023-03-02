@@ -22,6 +22,7 @@ import { postsDELETE } from "../../../Home/HomeComponents/HomeMid";
 import { addFocusPosts, showPutPosts } from "../../../../app/reducers/postsPutModSlice";
 import { ActivityImgMod } from "./ActivityImgMod";
 import { useState } from "react";
+import { postsFetc } from "../../../../app/reducers/postsSlice";
 
 export const ProfileActivity = () => {
   const params = useParams();
@@ -35,7 +36,9 @@ export const ProfileActivity = () => {
   const storePutPost = useAppSelector((state) => state.postPutModale);
 
   const getLatestPost = () => {
-    let latestPost = [...alltheposts].reverse().filter((el) => el.user?._id === (params.id === "me" ? myProfile._id : params.id));
+    let latestPost = [...alltheposts]
+      .reverse()
+      .filter((el) => el.user?._id === (params.id === "me" ? myProfile._id : params.id));
     return [latestPost[0]];
   };
 
@@ -107,7 +110,14 @@ export const ProfileActivity = () => {
                     <img src={Singlepost.user.image} alt="ProfilePic" />
                   </div>
                   <div>
-                    <Link to={"/profile/" + (Singlepost.user._id === myProfile._id ? myProfile._id : Singlepost.user._id)}>
+                    <Link
+                      to={
+                        "/profile/" +
+                        (Singlepost.user._id === myProfile._id
+                          ? myProfile._id
+                          : Singlepost.user._id)
+                      }
+                    >
                       <h3>
                         {Singlepost.user.name} {Singlepost.user.surname}
                       </h3>
@@ -200,7 +210,8 @@ export const ProfileActivity = () => {
                         }}
                       >
                         <Link to="">
-                          <HiOutlinePencil /> {Singlepost.image ? "Cambia immagine collegata" : "Aggiungi un'immagine"}
+                          <HiOutlinePencil />{" "}
+                          {Singlepost.image ? "Cambia immagine collegata" : "Aggiungi un'immagine"}
                         </Link>
                       </div>
                     ) : (
@@ -220,7 +231,9 @@ export const ProfileActivity = () => {
 
               {/* Img */}
 
-              <div className="w-100 text-center">{Singlepost?.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
+              <div className="w-100 text-center">
+                {Singlepost?.image && <img className="img-fluid" src={Singlepost.image} alt="" />}
+              </div>
 
               {/* Img */}
 
