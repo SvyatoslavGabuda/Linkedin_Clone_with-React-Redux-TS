@@ -8,7 +8,6 @@ import { TbArrowsRandom } from "react-icons/tb";
 import { RiSendPlaneFill } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { Posts } from "../PostsS";
-import PlaceHolderImg from "./Assets/Schermata 2022-10-07 alle 10.29.59-original.webp";
 import "./HomeComponents.scss";
 import { useAppSelector } from "../../../app/hooks";
 import { Iprofile } from "../../Profile/Profile";
@@ -184,9 +183,7 @@ export const HomeMid = () => {
 
                   {/* Img */}
 
-                  <div>
-                    <img className="img-fluid" src={PlaceHolderImg} alt="" />
-                  </div>
+                  <div>{Singlepost.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
 
                   {/* Img */}
 

@@ -9,6 +9,7 @@ export interface Iposts {
   createdAt: Date;
   updatedAt: Date;
   __v: number;
+  image?: string;
 }
 
 export interface User {

@@ -16,7 +16,9 @@ export const ProfileExperience = () => {
   const experience = useAppSelector((state) => state.experience.experience);
 
   useEffect(() => {
-    params.id === "me" ? dispatch(expFetc(myProfile?._id)) : dispatch(expFetc(generalProfile?._id));
+    if (myProfile?._id || generalProfile?._id) {
+      params.id === "me" ? dispatch(expFetc(myProfile?._id)) : dispatch(expFetc(generalProfile?._id));
+    }
   }, [params.id, generalProfile?._id]);
 
   return (
