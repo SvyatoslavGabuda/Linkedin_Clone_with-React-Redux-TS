@@ -13,6 +13,8 @@ import { Iprofile } from "../../Profile";
 import { useAppDispatch } from "../../../../app/hooks";
 import { toogleM } from "../../../../app/reducers/upgrateModSlice";
 import { useParams } from "react-router";
+import { ProfileImageMod } from "./ProfileImageMod";
+import { useState } from "react";
 
 interface ProfileCardProps {
   profile: Iprofile;
@@ -21,9 +23,14 @@ interface ProfileCardProps {
 export const ProfileCard = ({ profile }: ProfileCardProps) => {
   const dispatch = useAppDispatch();
   const params = useParams();
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(!show);
   return (
     <>
       <Col xs={12} md={7} lg={8}>
+        <ProfileImageMod show={show} handleShow={handleShow} />
         {profile && (
           <Row className="mt-1 border border-1 rounded mb-2 bg-white">
             <section className="p-0">
@@ -47,20 +54,32 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                   <div className="ProfileImgContainer2">
                     <div className="ProfileImgContainer3">
                       <div className="ProfileImgContainer4" style={{ position: "relative" }}>
-                        <img src={profile.image} alt="ProfilePic" />
-                        {params.id === "me" && (
-                          <div
-                            className="d-block rounded-circle"
-                            style={{
-                              position: "absolute",
-                              backgroundColor: "green",
-                              width: "24px",
-                              height: "24px",
-                              bottom: "8px",
-                              right: "8px",
-                              border: "3px solid white",
+                        {params.id === "me" ? (
+                          <img
+                            src={profile.image}
+                            alt="ProfilePic"
+                            onClick={() => {
+                              handleShow();
                             }}
-                          ></div>
+                          />
+                        ) : (
+                          <img src={profile.image} alt="ProfilePic" />
+                        )}
+                        {params.id === "me" && (
+                          <>
+                            <div
+                              className="d-block rounded-circle"
+                              style={{
+                                position: "absolute",
+                                backgroundColor: "green",
+                                width: "24px",
+                                height: "24px",
+                                bottom: "8px",
+                                right: "8px",
+                                border: "3px solid white",
+                              }}
+                            ></div>
+                          </>
                         )}
                       </div>
                     </div>
@@ -87,7 +106,8 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     </h3>
                     <p className="mb-2 fs-5 fw-normal">{profile.title}</p>
                     <p className="mb-2">
-                      <span className="text-secondary">{profile.area}</span> · <a href="/">Informazioni di contatto</a>
+                      <span className="text-secondary">{profile.area}</span> ·{" "}
+                      <a href="/">Informazioni di contatto</a>
                     </p>
                     <p>
                       <a href="/">1 collegamento</a>
@@ -121,7 +141,9 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     </Button>
                   </div>
                   <div>
-                    <button className="rounded-pill py-1 me-2 Button2">{params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}</button>
+                    <button className="rounded-pill py-1 me-2 Button2">
+                      {params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}
+                    </button>
                   </div>
                   <div>
                     <button className="rounded-pill py-1 Button3">Altro</button>
