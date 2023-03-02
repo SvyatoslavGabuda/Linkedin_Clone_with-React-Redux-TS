@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hidePutM } from "../../../../app/reducers/expPutModSlice";
+import { ExpImagePUTMod } from "./Experience/ExpImagePUTMod";
 import { IexperiencePost } from "./ExperienceModalComponenent";
 
 export const ExperiencePutModalComponent = () => {
@@ -31,7 +32,9 @@ export const ExperiencePutModalComponent = () => {
     setExperience({
       role: user.experience[putStore.indexExp]?.role,
       company: user.experience[putStore.indexExp]?.company,
-      startDate: user.experience[putStore.indexExp]?.startDate && format(new Date(user.experience[putStore.indexExp]?.startDate), "yyyy-MM-dd"),
+      startDate:
+        user.experience[putStore.indexExp]?.startDate &&
+        format(new Date(user.experience[putStore.indexExp]?.startDate), "yyyy-MM-dd"),
       endDate: "",
       description: user.experience[putStore.indexExp]?.description,
       area: user.experience[putStore.indexExp]?.area,
@@ -42,7 +45,9 @@ export const ExperiencePutModalComponent = () => {
   const putExperience = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${user.experience[putStore.indexExp]?._id}`,
+        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${
+          user.experience[putStore.indexExp]?._id
+        }`,
         {
           method: "PUT",
           body: JSON.stringify(experience),
@@ -66,7 +71,9 @@ export const ExperiencePutModalComponent = () => {
   const deleteExperience = async () => {
     try {
       const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${user.experience[putStore.indexExp]?._id}`,
+        `https://striveschool-api.herokuapp.com/api/profile/${myProfile._id}/experiences/${
+          user.experience[putStore.indexExp]?._id
+        }`,
         {
           method: "DELETE",
           headers: {
@@ -85,9 +92,17 @@ export const ExperiencePutModalComponent = () => {
     }
   };
 
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(!show);
+
   return (
     <>
-      <Modal show={putStore.show} onHide={() => dispatch(hidePutM())} size="lg" className="modalExperience">
+      <Modal
+        show={putStore.show}
+        onHide={() => dispatch(hidePutM())}
+        size="lg"
+        className={`modalExperience ${show === true ? "disappearModal" : ""}`}
+      >
         <Form
           onSubmit={(e) => {
             e.preventDefault();
@@ -118,17 +133,28 @@ export const ExperiencePutModalComponent = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label>Azienda*</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Esempio: Microsoft"
-                    value={experience.company}
-                    onChange={(e) => {
-                      setExperience({
-                        ...experience,
-                        company: e.target.value,
-                      });
-                    }}
-                  />
+                  <div className="d-flex">
+                    <Form.Control
+                      type="text"
+                      placeholder="Esempio: Microsoft"
+                      value={experience.company}
+                      onChange={(e) => {
+                        setExperience({
+                          ...experience,
+                          company: e.target.value,
+                        });
+                      }}
+                    />
+                    <button
+                      type="button"
+                      onClick={() => {
+                        handleShow();
+                        console.log("click");
+                      }}
+                    >
+                      <span>Carica</span>
+                    </button>
+                  </div>
                 </Form.Group>
                 <Form.Group className="mb-3 d-flex justify-content-center justify-content-md-start">
                   <span className="startexperience">
@@ -209,6 +235,7 @@ export const ExperiencePutModalComponent = () => {
           </Modal.Footer>
         </Form>
       </Modal>
+      <ExpImagePUTMod show={show} handleShow={handleShow} />
     </>
   );
 };

@@ -3,7 +3,7 @@ import { HiOutlinePencil } from "react-icons/hi2";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Iexperience } from "../../../../../app/reducers/experienceSlice";
-import { addIndex, showPutM } from "../../../../../app/reducers/expPutModSlice";
+import { addExperience, addIndex, showPutM } from "../../../../../app/reducers/expPutModSlice";
 import Logo from "../Assets/original.png";
 
 interface ExpCardProps {
@@ -19,7 +19,11 @@ export const ExpCard = ({ myExp, index }: ExpCardProps) => {
       <span className="d-flex justify-content-between border-bottom mb-3">
         <div className="d-flex ">
           <div>
-            <img src={Logo} alt="Pic" className="me-2 ExpImg" />
+            {myExp.image ? (
+              <img src={myExp.image} alt="Pic" className="me-2 ExpImg" />
+            ) : (
+              <img src={Logo} alt="Pic" className="me-2 ExpImg" />
+            )}
           </div>
           <div className="mb-3">
             <p className="fs-5">{myExp.role}</p>
@@ -37,6 +41,7 @@ export const ExpCard = ({ myExp, index }: ExpCardProps) => {
                 e.preventDefault();
                 dispatch(showPutM());
                 dispatch(addIndex(index));
+                dispatch(addExperience(myExp));
               }}
             />
           </div>
