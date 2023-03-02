@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hidePutM } from "../../../../app/reducers/expPutModSlice";
-import { ExpImageMod } from "./Experience/ExpImageMod";
+import { ExpImagePUTMod } from "./Experience/ExpImagePUTMod";
 import { IexperiencePost } from "./ExperienceModalComponenent";
 
 export const ExperiencePutModalComponent = () => {
@@ -235,7 +235,7 @@ export const ExperiencePutModalComponent = () => {
           </Modal.Footer>
         </Form>
       </Modal>
-      <ExpImageMod show={show} handleShow={handleShow} />
+      <ExpImagePUTMod show={show} handleShow={handleShow} />
     </>
   );
 };

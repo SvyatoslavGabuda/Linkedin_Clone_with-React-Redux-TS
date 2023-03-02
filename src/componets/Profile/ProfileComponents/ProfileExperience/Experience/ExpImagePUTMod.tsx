@@ -10,7 +10,7 @@ interface ExperienceImageProp {
   handleShow: () => void;
 }
 
-export const ExpImageMod = (props: ExperienceImageProp) => {
+export const ExpImagePUTMod = (props: ExperienceImageProp) => {
   const myProfile = useAppSelector((state) => state.profile.myProfile);
   const thisExperience = useAppSelector((state) => state.experiencePutModale.currentExperience);
   const [image, setImage] = useState(new FormData());

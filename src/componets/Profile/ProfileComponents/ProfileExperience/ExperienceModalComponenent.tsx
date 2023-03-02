@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
@@ -20,6 +20,9 @@ export const ExperienceModalComponent = () => {
   const showExpM = useAppSelector((state) => state.experienceModale.show);
   const user = useAppSelector((state) => state.profile?.myProfile);
   const dispatch = useAppDispatch();
+
+  const [expImage, setExpImage] = useState(new FormData());
+  const [experienceId, setExperienceId] = useState(false);
   const [experience, setExperience] = useState<IexperiencePost>({
     role: "",
     company: "",
@@ -40,15 +43,60 @@ export const ExperienceModalComponent = () => {
           "content-type": "application/json",
         },
       });
+      let existingExperience = await response.json();
       if (response.ok) {
         console.log("POST completata");
-        dispatch(expFetc(user?._id));
+        if (experienceId) {
+          fetchExperienceImage(existingExperience._id);
+        } else {
+          dispatch(expFetc(user?._id));
+        }
+        setExperience({
+          role: "",
+          company: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+          area: "",
+        });
       } else {
         console.log("Response POST experience not okay");
       }
     } catch (error) {
       console.log("Errore fatale nella POST");
     }
+  };
+
+  const fetchExperienceImage = async (expId: string) => {
+    try {
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${user._id}/experiences/${expId}/picture`,
+        {
+          method: "POST",
+          body: expImage,
+          headers: {
+            Authorization: process.env.REACT_APP_BEARER || "nonandra",
+          },
+        }
+      );
+      if (response.ok) {
+        console.log("POST experience image successfully uploaded");
+        dispatch(expFetc(user?._id));
+      } else {
+        console.log("POST experience image failed in response");
+      }
+    } catch (error) {
+      console.log("fatal error in POST experience image upload");
+    }
+  };
+
+  const handleLoadFile = (e: ChangeEvent<HTMLInputElement>) => {
+    setExperienceId(true);
+    setExpImage((exp) => {
+      exp.delete("experience");
+      exp.append("experience", e.target.files![0]);
+      return exp;
+    });
   };
 
   return (
@@ -93,6 +141,7 @@ export const ExperienceModalComponent = () => {
                     });
                   }}
                 />
+                <Form.Control type="file" style={{ width: 60 + "%" }} onChange={handleLoadFile} />
               </div>
             </Form.Group>
             <Form.Group className="mb-3 d-flex flex-wrap justify-content-between justify-content-sm-start">
