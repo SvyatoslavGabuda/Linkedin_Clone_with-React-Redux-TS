@@ -18,7 +18,7 @@ export const CreatePost = () => {
     <>
       <Card className="createPost">
         <Card.Body>
-          <Card.Text className="createPostTextAreaOne">
+          <div className="createPostTextAreaOne">
             <Row className="align-items-center mb-3">
               <Col xs={1} className="text-center p-0">
                 {myProfile && (
@@ -39,8 +39,8 @@ export const CreatePost = () => {
                 </div>
               </Col>
             </Row>
-          </Card.Text>
-          <Card.Text className="createPostTextAreaTwo">
+          </div>
+          <div className="createPostTextAreaTwo">
             <Row className="justify-content-around">
               <Col className="p-0">
                 <Button variant="light" className="">
@@ -83,7 +83,7 @@ export const CreatePost = () => {
                 </Button>
               </Col>
             </Row>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
       <PostsModal />
