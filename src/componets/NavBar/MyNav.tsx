@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav, NavDropdown, Form, Badge } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Form } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { BsLinkedin, BsFillPeopleFill, BsFillBellFill, BsFillGrid3X3GapFill } from "react-icons/bs";
 import { MdBusinessCenter } from "react-icons/md";
