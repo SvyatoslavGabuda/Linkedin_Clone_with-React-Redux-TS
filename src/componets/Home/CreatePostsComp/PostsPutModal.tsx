@@ -87,31 +87,14 @@ export const PostsPutModal = () => {
               </Form.Group>
             </Modal.Body>
             <Modal.Footer className="justify-content-between">
-              <Row>
+              <Row></Row>
+              <Row className="justify-content-between w-100 aling-items-center">
                 <Col>
                   <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <BsEmojiSmile />
                   </Button>
                 </Col>
-              </Row>
-              <Row className="justify-content-between w-100 aling-items-center">
-                <Col>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
-                    <BsImage />
-                  </Button>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
-                    <BsPlayBtnFill />
-                  </Button>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
-                    <GrArticle />
-                  </Button>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
-                    <BsThreeDots />
-                  </Button>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
-                    <BsChatText /> Tutti
-                  </Button>
-                </Col>
+
                 <Col xs={4}>
                   <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <AiOutlineClockCircle />
@@ -123,7 +106,7 @@ export const PostsPutModal = () => {
                     size="sm"
                     disabled={textPUT !== "" ? false : true}
                   >
-                    Pubblica
+                    Modifica
                   </Button>
                 </Col>
               </Row>
