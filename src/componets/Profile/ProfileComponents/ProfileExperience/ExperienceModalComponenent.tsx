@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hideExpM } from "../../../../app/reducers/expModSlice";
+import { Add } from "../../../../app/reducers/slicerForUpDate";
 
 export interface IexperiencePost {
   role: string;
@@ -35,14 +36,17 @@ export const ExperienceModalComponent = () => {
   // Fetch to POST a new Experience
   const postNewExperience = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user?._id}/experiences`, {
-        method: "POST",
-        body: JSON.stringify(experience),
-        headers: {
-          Authorization: process.env.REACT_APP_BEARER || "nonandra",
-          "content-type": "application/json",
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/profile/${user?._id}/experiences`,
+        {
+          method: "POST",
+          body: JSON.stringify(experience),
+          headers: {
+            Authorization: process.env.REACT_APP_BEARER || "nonandra",
+            "content-type": "application/json",
+          },
+        }
+      );
       let existingExperience = await response.json();
       if (response.ok) {
         console.log("POST completata");
@@ -64,6 +68,8 @@ export const ExperienceModalComponent = () => {
       }
     } catch (error) {
       console.log("Errore fatale nella POST");
+    } finally {
+      dispatch(Add());
     }
   };
 
@@ -101,7 +107,12 @@ export const ExperienceModalComponent = () => {
 
   return (
     <>
-      <Modal show={showExpM} onHide={() => dispatch(hideExpM())} size="lg" className="modalExperience">
+      <Modal
+        show={showExpM}
+        onHide={() => dispatch(hideExpM())}
+        size="lg"
+        className="modalExperience"
+      >
         <Form
           onSubmit={(e) => {
             e.preventDefault();

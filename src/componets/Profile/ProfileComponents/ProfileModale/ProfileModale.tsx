@@ -42,8 +42,8 @@ export const ProfileModale = () => {
           Authorization: process.env.REACT_APP_BEARER || "nonandra",
         },
       });
-      console.log("respose modale", response);
-      console.log("valore modale", modalValue);
+      // console.log("respose modale", response);
+      // console.log("valore modale", modalValue);
       if (response.ok) {
         console.log("tutto apposto");
       } else {

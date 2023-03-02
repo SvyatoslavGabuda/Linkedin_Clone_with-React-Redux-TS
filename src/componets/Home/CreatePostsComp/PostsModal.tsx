@@ -10,6 +10,7 @@ import { GrArticle } from "react-icons/gr";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { FaGlobeAmericas } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
+import { Add } from "../../../app/reducers/slicerForUpDate";
 
 export const PostsModal = () => {
   const show = useAppSelector((state) => state.postsModale.show);
@@ -63,6 +64,8 @@ export const PostsModal = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(Add());
     }
   };
 

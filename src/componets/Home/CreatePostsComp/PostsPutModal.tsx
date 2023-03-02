@@ -9,6 +9,7 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { FaGlobeAmericas } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { hidePutPosts } from "../../../app/reducers/postsPutModSlice";
+import { Add } from "../../../app/reducers/slicerForUpDate";
 
 export const PostsPutModal = () => {
   const storePutPosts = useAppSelector((state) => state.postPutModale);
@@ -18,14 +19,17 @@ export const PostsPutModal = () => {
 
   const postsPUT = async () => {
     try {
-      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${storePutPosts.focus._id}`, {
-        method: "PUT",
-        body: JSON.stringify({ text: textPUT }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: process.env.REACT_APP_BEARER || "nonandra",
-        },
-      });
+      const response = await fetch(
+        `https://striveschool-api.herokuapp.com/api/posts/${storePutPosts.focus._id}`,
+        {
+          method: "PUT",
+          body: JSON.stringify({ text: textPUT }),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: process.env.REACT_APP_BEARER || "nonandra",
+          },
+        }
+      );
       if (response.ok) {
         console.log("PUT post successfull");
       } else {
@@ -35,6 +39,7 @@ export const PostsPutModal = () => {
       console.log("fatal error in posts PUT", error);
     } finally {
       dispatch(hidePutPosts());
+      dispatch(Add());
     }
   };
 
@@ -88,13 +93,21 @@ export const PostsPutModal = () => {
               <Row></Row>
               <Row className="justify-content-between w-100 aling-items-center">
                 <Col>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
+                  <Button
+                    variant="outline-secondary border-0"
+                    type="button"
+                    className="rounded-pill modalBtn"
+                  >
                     <BsEmojiSmile />
                   </Button>
                 </Col>
 
                 <Col xs={4}>
-                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
+                  <Button
+                    variant="outline-secondary border-0"
+                    type="button"
+                    className="rounded-pill modalBtn"
+                  >
                     <AiOutlineClockCircle />
                   </Button>
                   <Button
