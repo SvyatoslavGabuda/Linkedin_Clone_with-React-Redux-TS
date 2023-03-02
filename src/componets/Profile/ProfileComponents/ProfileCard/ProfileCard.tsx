@@ -113,14 +113,13 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     </h3>
                     <p className="mb-2 fs-5 fw-normal">{profile.title}</p>
                     <p className="mb-2">
-                      <span className="text-secondary">{profile.area}</span> ·{" "}
-                      <a href="/">Informazioni di contatto</a>
+                      <span className="text-secondary">{profile.area}</span> · <a href="/">Informazioni di contatto</a>
                     </p>
                     <p>
                       <a href="/">1 collegamento</a>
                     </p>
                   </div>
-                  <div>
+                  <div className="d-none d-lg-block">
                     <ul>
                       <li className="mb-3">
                         <div className="d-flex align-items-center">
@@ -141,16 +140,14 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     </ul>
                   </div>
                 </div>
-                <div className="d-flex">
+                <div className="d-flex profileCardButtonsModifiers">
                   <div>
                     <Button variant="primary" className="rounded-pill py-1 me-2 Button1">
                       {params.id === "me" ? "Disponibile per" : "Messaggio"}
                     </Button>
                   </div>
                   <div>
-                    <button className="rounded-pill py-1 me-2 Button2">
-                      {params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}
-                    </button>
+                    <button className="rounded-pill py-1 me-2 Button2">{params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}</button>
                   </div>
                   <div>
                     <button className="rounded-pill py-1 Button3">Altro</button>
