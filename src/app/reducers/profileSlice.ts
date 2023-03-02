@@ -28,7 +28,7 @@ export const myProfileFetch = createAsyncThunk("fetch-prfile", async () => {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log("myprofle", data);
+      // console.log("myprofle", data);
       return data;
       //setMyProfile(data);
       //dispatch({ type: ADD_TO_MYPROFILE, payload: data });

@@ -2,8 +2,9 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useState, FormEvent, ChangeEvent } from "react";
-import { useAppSelector } from "../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { Row } from "react-bootstrap";
+import { Add } from "../../../../app/reducers/slicerForUpDate";
 interface ProfileImageMod {
   show: boolean;
   handleShow: () => void;
@@ -15,7 +16,7 @@ export const ProfileImageMod = (props: ProfileImageMod) => {
   //   const handleShow = () => setShow(true);
 
   const myProfile = useAppSelector((state) => state.profile.myProfile);
-
+  const dispatch = useAppDispatch();
   const [image, setImage] = useState(new FormData());
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -37,6 +38,8 @@ export const ProfileImageMod = (props: ProfileImageMod) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(Add());
     }
   };
   const handleLoadFile = (e: ChangeEvent<HTMLInputElement>) => {

@@ -1,6 +1,6 @@
 import { CreatePost } from "../CreatePostsComp/CreatePost";
 
-import { Col, NavDropdown, Row, Spinner } from "react-bootstrap";
+import { Col, NavDropdown, Row } from "react-bootstrap";
 import { BiWorld } from "react-icons/bi";
 import { SlLike } from "react-icons/sl";
 import { FaRegCommentDots } from "react-icons/fa";
@@ -70,8 +70,11 @@ export const HomeMid = () => {
           <CreatePost />
         </Row>
         <Row className="flex-column">
+          {/* <SpinnerSuper />
+          <SpinnerSuper />
+          <SpinnerSuper /> */}
           {loadingState === "loading" && (
-            <div className="text-center py-5">
+            <div className="text-center ">
               {/* <Spinner animation="grow" variant="info" /> */}
               <SpinnerSuper />
               <SpinnerSuper />

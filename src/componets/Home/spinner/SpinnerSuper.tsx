@@ -1,4 +1,8 @@
 import "./SpinnerSuper.scss";
 export const SpinnerSuper = () => {
-  return <span className="loader"></span>;
+  return (
+    <div className="my-3">
+      <span className="loader"></span>
+    </div>
+  );
 };

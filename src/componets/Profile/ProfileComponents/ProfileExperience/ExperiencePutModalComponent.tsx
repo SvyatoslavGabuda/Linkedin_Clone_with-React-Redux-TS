@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hidePutM } from "../../../../app/reducers/expPutModSlice";
+import { Add } from "../../../../app/reducers/slicerForUpDate";
 import { ExpImagePUTMod } from "./Experience/ExpImagePUTMod";
 import { IexperiencePost } from "./ExperienceModalComponenent";
 
@@ -65,6 +66,8 @@ export const ExperiencePutModalComponent = () => {
       }
     } catch (error) {
       console.log("Fatal Error into Experience PUT");
+    } finally {
+      dispatch(Add());
     }
   };
 
@@ -89,6 +92,8 @@ export const ExperiencePutModalComponent = () => {
       }
     } catch (error) {
       console.log("Fatal Error into Experience DELETE");
+    } finally {
+      dispatch(Add());
     }
   };
 

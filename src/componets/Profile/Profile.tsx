@@ -1,8 +1,6 @@
 import "./profile.scss";
-import { ProfileActivity } from "./ProfileComponents/ProfileActivity/ProfileActivity";
 import { ProfileCard } from "./ProfileComponents/ProfileCard/ProfileCard";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import {
   ADD_TO_ALLPROFILE,
   ADD_TO_GENERALPROFILE,
@@ -58,7 +56,7 @@ const Profile = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setAllProfile(data);
         dispatch({ type: ADD_TO_ALLPROFILE, payload: data });
       } else {
@@ -81,7 +79,7 @@ const Profile = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("myprofle", data);
+        // console.log("myprofle", data);
         setMyProfile(data);
         dispatch({ type: ADD_TO_MYPROFILE, payload: data });
       }
@@ -108,11 +106,13 @@ const Profile = () => {
     } catch (error) {}
   };
 
+  const upDateState = useAppSelector((state) => state.upDate.numberOfUpdate);
+
   useEffect(() => {
     profileFetch();
     myProfileFetch();
     //dispatch(profileFetch());
-  }, []);
+  }, [upDateState]);
 
   useEffect(() => {
     idProfileFetch();

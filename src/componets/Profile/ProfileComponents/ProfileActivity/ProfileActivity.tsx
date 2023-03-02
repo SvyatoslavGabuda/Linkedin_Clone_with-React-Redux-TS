@@ -98,7 +98,7 @@ export const ProfileActivity = () => {
         </div>
         {getLatestPost()[0]?.user &&
           getLatestPost().map((Singlepost) => (
-            <div className="border-bottom">
+            <div className="border-bottom" key={`pa-${Singlepost._id}`}>
               {/* Profile */}
 
               <div className="d-flex HomeMidProfileCont justify-content-between px-3 pt-3">
@@ -227,8 +227,8 @@ export const ProfileActivity = () => {
               {/* Buttons */}
 
               <div className="HomeMidButtonsCont d-flex justify-content-evenly">
-                <button className="HomeMidButton">
-                  <div className="d-flex align-items-center">
+                <button className="HomeMidButton d-none d-sm-block">
+                  <div className="d-flex align-items-center ">
                     <div>
                       <SlLike className="HomeMidIcon me-1" />
                     </div>
@@ -243,7 +243,7 @@ export const ProfileActivity = () => {
                     <div>Commenta</div>
                   </div>
                 </button>
-                <button className="HomeMidButton">
+                <button className="HomeMidButton  d-none d-lg-block">
                   <div className="d-flex align-items-center">
                     <div>
                       <TbArrowsRandom className="HomeMidIcon me-1" />

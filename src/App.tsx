@@ -29,7 +29,7 @@ function App() {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("myprofle", data);
+        // console.log("myprofle", data);
         // setMyProfile(data);
         dispatch({ type: ADD_TO_MYPROFILE, payload: data });
       }
