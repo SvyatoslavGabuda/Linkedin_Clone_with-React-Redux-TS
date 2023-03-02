@@ -1,6 +1,6 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useState, ChangeEvent } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { hidePosts } from "../../../app/reducers/postsModSlice";
@@ -16,6 +16,8 @@ export const PostsModal = () => {
   const dispatch = useAppDispatch();
 
   const [text, setText] = useState("");
+  const [postImage, setPostImage] = useState(new FormData());
+  const [imageAvailable, setAvailabilityImg] = useState(false);
 
   const postsPOST = async () => {
     try {
@@ -29,8 +31,12 @@ export const PostsModal = () => {
       });
       console.log("testo", text);
       console.log(response);
+      let postIdquery = await response.json();
       if (response.ok) {
         console.log("post creato");
+        if (imageAvailable) {
+          fetchPostImage(postIdquery._id);
+        }
       } else {
         console.log("NON creato");
       }
@@ -41,7 +47,36 @@ export const PostsModal = () => {
     }
   };
 
+  const fetchPostImage = async (postid: string) => {
+    try {
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${postid}`, {
+        method: "POST",
+        body: postImage,
+        headers: {
+          Authorization: process.env.REACT_APP_BEARER || "nonandra",
+        },
+      });
+      if (response.ok) {
+        console.log("immagine Caricata");
+      } else {
+        console.log("non caricata l'immagine");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+
+  const handleFile = (ev: ChangeEvent<HTMLInputElement>) => {
+    setAvailabilityImg(true);
+    setPostImage((prev) => {
+      //per cambiare i formData, bisogna "appendere" una nuova coppia chiave/valore, usando il metodo .append()
+      prev.delete("post"); //ricordatevi di svuotare il FormData prima :)
+      prev.append("post", ev.target.files![0]); //L'API richiede un "nome" diverso per ogni rotta, per caricare un'immagine ad un post, nel form data andra' inserito un valore con nome "post"
+      return prev;
+    });
+  };
 
   return (
     <>
@@ -96,10 +131,9 @@ export const PostsModal = () => {
               </Row>
               <Row className="justify-content-between w-100 aling-items-center">
                 <Col>
-                  <Form.Label htmlFor="newPostImage" className="rounded-pill modalBtn">
+                  <Form.Label htmlFor="newPostImage" className={imageAvailable ? "rounded-pill modalBtn imagePosted" : "rounded-pill modalBtn"}>
                     <BsImage />
-
-                    <input type="file" id="newPostImage" style={{ display: "none" }} />
+                    <input type="file" id="newPostImage" style={{ display: "none" }} onChange={handleFile} />
                   </Form.Label>
                   <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <BsPlayBtnFill />
