@@ -47,15 +47,16 @@ export const PostsModal = () => {
     <>
       {myProfile && (
         <Modal show={show} onHide={() => dispatch(hidePosts())}>
-          <Modal.Header closeButton>
-            <Modal.Title>Crea un Post</Modal.Title>
-          </Modal.Header>
           <Form
             onSubmit={(e) => {
               e.preventDefault();
               postsPOST();
             }}
           >
+            {" "}
+            <Modal.Header closeButton>
+              <Modal.Title>Crea un Post</Modal.Title>
+            </Modal.Header>
             <Modal.Body>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="w-100">
@@ -88,59 +89,33 @@ export const PostsModal = () => {
             <Modal.Footer className="justify-content-between">
               <Row>
                 <Col>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <BsEmojiSmile />
                   </Button>
                 </Col>
               </Row>
               <Row className="justify-content-between w-100 aling-items-center">
                 <Col>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+                  <Form.Label htmlFor="newPostImage" className="rounded-pill modalBtn">
                     <BsImage />
-                  </Button>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+
+                    <input type="file" id="newPostImage" style={{ display: "none" }} />
+                  </Form.Label>
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <BsPlayBtnFill />
                   </Button>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <GrArticle />
                   </Button>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <BsThreeDots />
                   </Button>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <BsChatText /> Tutti
                   </Button>
                 </Col>
                 <Col xs={4}>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <AiOutlineClockCircle />
                   </Button>
                   <Button
