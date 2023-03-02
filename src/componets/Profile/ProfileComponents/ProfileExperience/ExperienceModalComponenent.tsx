@@ -1,12 +1,11 @@
-import { format, formatISO } from "date-fns";
-import React, { useEffect, useState } from "react";
+import { format } from "date-fns";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hideExpM } from "../../../../app/reducers/expModSlice";
-import { hidePutM } from "../../../../app/reducers/expPutModSlice";
 
 export interface IexperiencePost {
   role: string;
@@ -82,17 +81,19 @@ export const ExperienceModalComponent = () => {
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label>Nome azienda*</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Esempio: Microsoft"
-                value={experience.company}
-                onChange={(e) => {
-                  setExperience({
-                    ...experience,
-                    company: e.target.value,
-                  });
-                }}
-              />
+              <div className="d-flex">
+                <Form.Control
+                  type="text"
+                  placeholder="Esempio: Microsoft"
+                  value={experience.company}
+                  onChange={(e) => {
+                    setExperience({
+                      ...experience,
+                      company: e.target.value,
+                    });
+                  }}
+                />
+              </div>
             </Form.Group>
             <Form.Group className="mb-3 d-flex flex-wrap justify-content-between justify-content-sm-start">
               <span className="startexperience">

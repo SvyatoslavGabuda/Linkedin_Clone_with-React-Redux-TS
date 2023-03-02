@@ -7,6 +7,7 @@ export interface Iexperience {
   company: string;
   startDate: Date;
   description: string;
+  image: string;
   area: string;
   username: string;
   user: string;
