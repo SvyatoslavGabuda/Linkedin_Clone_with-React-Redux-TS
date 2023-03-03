@@ -16,7 +16,9 @@ export const SideBarItemComponent = (props: SideBarItemProps) => {
           <Link to={"/profile/" + props.item._id} className="itemLink">
             <h4 className="m-0">{props.item.name + " " + props.item.surname}</h4>
           </Link>
-          <p className="m-0">{props.item.title.slice(0, 25) + "..."}</p>
+          <p className="m-0 sideBarItemTitle">
+            {props.item.title !== undefined && props.item.title !== "" ? props.item.title : "Nessuna professione"}
+          </p>
         </span>
       </div>
       <Button variant="outline-secondary d-flex align-items-center">

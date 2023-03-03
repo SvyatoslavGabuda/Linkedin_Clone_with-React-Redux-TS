@@ -1,10 +1,12 @@
 import { Row, Col, ListGroup, Card } from "react-bootstrap";
-import { useAppSelector } from "../../../../../app/hooks";
 import { Iprofile } from "../../../Profile";
 import { SideBarItemComponent } from "./SideBarItemComponent";
 
-export const OtherPersonsComponent = () => {
-  const allProfileData: Iprofile[] = useAppSelector((state) => state.profile.allProfile).slice(6, 12);
+interface OtherPersonsProps {
+  profiles: Iprofile[];
+}
+
+export const OtherPersonsComponent = (props: OtherPersonsProps) => {
   return (
     <Row className="py-1 px-md-3 px-lg-4">
       <Col className="p-0">
@@ -16,7 +18,7 @@ export const OtherPersonsComponent = () => {
           <Row className="justify-content-center">
             <Col xs={10}>
               <ListGroup variant="flush">
-                {allProfileData.map((item, i) => (
+                {props.profiles.slice(6, 12).map((item, i) => (
                   <SideBarItemComponent item={item} key={i} />
                 ))}
               </ListGroup>

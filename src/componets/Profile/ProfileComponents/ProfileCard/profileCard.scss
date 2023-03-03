@@ -167,6 +167,8 @@ section {
   }
 }
 .ExpImg {
+  object-fit: cover;
+  object-position: center;
   width: 48px;
   height: 48px;
 }

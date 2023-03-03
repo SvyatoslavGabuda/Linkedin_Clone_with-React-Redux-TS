@@ -54,7 +54,6 @@ export const ProfileModale = () => {
     } finally {
       dispatch(hideM());
       dispatch(Add());
-      //handleClose();
     }
   };
 
