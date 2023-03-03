@@ -15,14 +15,14 @@ export const ProfileExperience = () => {
   const params = useParams();
   const experience = useAppSelector((state) => state.experience.experience);
   const loadingState = useAppSelector((state) => state.experience.status);
-
+  const upDateState = useAppSelector((state) => state.upDate.numberOfUpdate);
   useEffect(() => {
     if (myProfile?._id || generalProfile?._id) {
       params.id === "me"
         ? dispatch(expFetc(myProfile?._id))
         : dispatch(expFetc(generalProfile?._id));
     }
-  }, [params.id, generalProfile?._id]);
+  }, [params.id, generalProfile?._id, upDateState]);
 
   return (
     <Row className="border-1 border border-1 rounded mb-2 bg-white">

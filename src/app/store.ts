@@ -7,6 +7,7 @@ import expPutModSlice from "./reducers/expPutModSlice";
 import postsModSlice from "./reducers/postsModSlice";
 import postsPutModSlice from "./reducers/postsPutModSlice";
 import postsSlice from "./reducers/postsSlice";
+import slicerForUpDate from "./reducers/slicerForUpDate";
 import upgrateModSlice from "./reducers/upgrateModSlice";
 
 // const allReducer = combineReducers({
@@ -22,11 +23,17 @@ export const store = configureStore({
     allPosts: postsSlice,
     postsModale: postsModSlice,
     postPutModale: postsPutModSlice,
-    
+    upDate: slicerForUpDate,
+
     // newProfile: profileSlice,
   },
 });
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;

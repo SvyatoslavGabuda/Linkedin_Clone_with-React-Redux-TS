@@ -1,6 +1,8 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import { FormEvent, ChangeEvent, useState } from "react";
-import { Iposts } from "../../../../app/reducers/postsSlice";
+import { Iposts, postsFetc } from "../../../../app/reducers/postsSlice";
+import { Add } from "../../../../app/reducers/slicerForUpDate";
+import { useAppDispatch } from "../../../../app/hooks";
 
 interface ProfileImageMod {
   show: boolean;
@@ -10,17 +12,20 @@ interface ProfileImageMod {
 
 export const ActivityImgMod = (props: ProfileImageMod) => {
   const [image, setImage] = useState(new FormData());
-
+  const dispatch = useAppDispatch();
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch("https://striveschool-api.herokuapp.com/api/posts/" + props.lastpost[0]._id, {
-        method: "POST",
-        body: image,
-        headers: {
-          Authorization: process.env.REACT_APP_BEARER || "nonandra",
-        },
-      });
+      const response = await fetch(
+        "https://striveschool-api.herokuapp.com/api/posts/" + props.lastpost[0]._id,
+        {
+          method: "POST",
+          body: image,
+          headers: {
+            Authorization: process.env.REACT_APP_BEARER || "nonandra",
+          },
+        }
+      );
       if (response.ok) {
         console.log("immagine Caricata");
       } else {
@@ -28,6 +33,10 @@ export const ActivityImgMod = (props: ProfileImageMod) => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch(Add());
+      dispatch(postsFetc());
+      props.handleShow();
     }
   };
 
@@ -53,7 +62,12 @@ export const ActivityImgMod = (props: ProfileImageMod) => {
           {props.lastpost[0]?.image && (
             <div>
               <h6 className="mb-3">Immagine attuale: </h6>
-              <img src={props.lastpost[0].image} style={{ width: "100%" }} alt="Active Post" className="mb-3" />
+              <img
+                src={props.lastpost[0].image}
+                style={{ width: "100%" }}
+                alt="Active Post"
+                className="mb-3"
+              />
             </div>
           )}
           <Form.Group className="mb-3" controlId="formBasicEmail">
