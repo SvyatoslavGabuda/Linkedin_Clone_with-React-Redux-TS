@@ -26,7 +26,6 @@ export const ProfileSideBar = () => {
     if (fetchedProfiles.length !== 0) {
       setRandomizedArray(shuffleArray(fetchedProfiles.allProfile));
     }
-    console.log("random");
   }, [fetchedProfiles]);
 
   return (
