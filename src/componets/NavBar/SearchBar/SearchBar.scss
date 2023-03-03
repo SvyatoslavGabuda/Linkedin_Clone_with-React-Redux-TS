@@ -76,7 +76,7 @@
   overflow-y: overlay;
   overflow-x: hidden;
 
-  padding: 1em 0.5em;
+  padding: 1em 0;
   color: #12112e;
   background-color: #fff;
   a {
@@ -124,7 +124,7 @@
 
 .SearchedProfileImgContainer {
   position: absolute;
-  right: 20px;
+  right: 25px;
   display: flex;
   align-items: center;
 
@@ -159,4 +159,13 @@
   flex: 0.1;
   color: black;
   font-size: 16px;
+  margin-left: 10px;
+}
+
+.SearchLinkContainer {
+  transition: 0.2s;
+  &:hover {
+    transition: 0.2s;
+    background-color: rgb(228, 228, 228);
+  }
 }

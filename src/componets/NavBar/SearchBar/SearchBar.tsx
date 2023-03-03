@@ -49,7 +49,7 @@ export const SearchBar = () => {
     if (e.target.value.trim() === "") setNotFoundMsg(false);
 
     setSearchPerson(e.target.value);
-    console.log(e.target.value);
+    //console.log(e.target.value);
     funzioneRicerca(e);
   };
 
@@ -59,7 +59,7 @@ export const SearchBar = () => {
     const risultato = allProfile.filter((user: any) =>
       user.username.toLowerCase().includes(e.target.value.toLowerCase())
     );
-    console.log(risultato);
+    //console.log(risultato);
     setAllRes(risultato);
     if (risultato.length === 0) {
       setNotFoundMsg(true);
@@ -125,7 +125,11 @@ export const SearchBar = () => {
             {/* Profilo */}
             {allRes.length > 0 &&
               allRes.map((el) => (
-                <Link to={"/profile/" + (el._id === myProfile._id ? "me" : el._id)}>
+                <Link
+                  className="SearchLinkContainer"
+                  to={"/profile/" + (el._id === myProfile._id ? "me" : el._id)}
+                  key={el._id}
+                >
                   <div className="SearchedProfileContainer">
                     <span className="SearchedProfileIcon">
                       <IoSearch />
