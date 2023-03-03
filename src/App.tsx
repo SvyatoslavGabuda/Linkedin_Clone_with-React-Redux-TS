@@ -68,6 +68,7 @@ function App() {
   };
   useEffect(() => {
     myProfileFetch();
+    profileFetch();
   }, []);
   return (
     <>
