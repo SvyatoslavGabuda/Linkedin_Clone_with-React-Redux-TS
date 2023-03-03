@@ -17,6 +17,7 @@ import { GetExperience } from "./ProfileComponents/ProfileExperience/Experience/
 import { useAppSelector } from "../../app/hooks";
 import { ExperienceModalComponent } from "./ProfileComponents/ProfileExperience/ExperienceModalComponenent";
 import { ExperiencePutModalComponent } from "./ProfileComponents/ProfileExperience/ExperiencePutModalComponent";
+import useDocumentTitle from "../../app/useDocumentTitle";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -122,6 +123,16 @@ const Profile = () => {
 
   const clickedProfile: Iprofile = useAppSelector((state) => state.profile.generalProfile);
 
+  let titolocondizionale = "";
+
+  if (params.id === "me") {
+    titolocondizionale = `${myProfile?.name} ${myProfile?.surname} | `;
+  } else if (params.id !== "me") {
+    titolocondizionale = `Profilo | `;
+  }
+
+  useDocumentTitle(`${titolocondizionale} LinkedIn`);
+
   return (
     <>
       <GetExperience />
@@ -129,11 +140,7 @@ const Profile = () => {
       <ExperienceModalComponent />
       <ExperiencePutModalComponent />
       <Row>
-        {params.id === "me" ? (
-          <ProfileCard profile={currentProfile} />
-        ) : (
-          <ProfileCard profile={clickedProfile} />
-        )}
+        {params.id === "me" ? <ProfileCard profile={currentProfile} /> : <ProfileCard profile={clickedProfile} />}
         <ProfileSideBar />
       </Row>
     </>
