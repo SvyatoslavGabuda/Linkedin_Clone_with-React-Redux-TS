@@ -6,7 +6,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { Counter } from "./features/counter/Counter";
 import "./App.scss";
 import { useAppDispatch } from "./app/hooks";
-import { ADD_TO_MYPROFILE, HANDLE_LOAD_MYPROFILE } from "./app/reducers/allProfileReduce";
+import {
+  ADD_TO_ALLPROFILE,
+  ADD_TO_MYPROFILE,
+  HANDLE_LOAD_ALLPROFILE,
+  HANDLE_LOAD_MYPROFILE,
+} from "./app/reducers/allProfileReduce";
 import { Chat } from "./componets/Chat/Chat";
 import MyFooter from "./componets/Footer/MyFooter";
 import { Home } from "./componets/Home/Home";
@@ -39,8 +44,31 @@ function App() {
       dispatch({ type: HANDLE_LOAD_MYPROFILE, payload: false });
     }
   };
+  const profileFetch = async () => {
+    dispatch({ type: HANDLE_LOAD_ALLPROFILE, payload: true });
+    try {
+      const response = await fetch(url, {
+        headers: {
+          Authorization: process.env.REACT_APP_BEARER || "nonandra",
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        // console.log(data);
+        //setAllProfile(data);
+        dispatch({ type: ADD_TO_ALLPROFILE, payload: data });
+      } else {
+        console.log("erro");
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch({ type: HANDLE_LOAD_ALLPROFILE, payload: false });
+    }
+  };
   useEffect(() => {
     myProfileFetch();
+    profileFetch();
   }, []);
   return (
     <>
