@@ -130,7 +130,7 @@ export const SearchBar = () => {
                     <span className="SearchedProfileIcon">
                       <IoSearch />
                     </span>
-                    <div className="d-flex flex-column">
+                    <div className="d-flex flex-column SearchedInfoText">
                       <h3 className="SearchedProfileName ">
                         {el.name} {el.surname} ·{" "}
                       </h3>

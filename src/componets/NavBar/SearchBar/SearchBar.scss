@@ -73,6 +73,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow-y: overlay;
+  overflow-x: hidden;
+
   padding: 1em 0.5em;
   color: #12112e;
   background-color: #fff;
@@ -103,15 +106,28 @@
 //Style risultati
 
 .SearchedProfileContainer {
+  position: relative;
   width: 100%;
   height: 3em;
   display: flex;
+
   border-bottom: 1px solid #bebebe48;
-  padding: 0px 8px;
+  padding: 0 15px 0 8px;
   align-items: center;
-  justify-content: space-between;
 }
+
+.SearchedInfoText {
+  display: flex;
+  flex-direction: column;
+  flex: 0.9;
+}
+
 .SearchedProfileImgContainer {
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+
   width: auto;
   height: 100%;
 
@@ -122,7 +138,7 @@
   }
 }
 .SearchedProfileName {
-  font-size: 1.1em;
+  font-size: 1em;
   color: black;
   margin-bottom: 0;
   white-space: nowrap;
@@ -130,8 +146,8 @@
   text-overflow: ellipsis;
 }
 .SearchedProfileTitle {
-  max-width: 70%;
-  font-size: 15px;
+  max-width: 50%;
+  font-size: 13px;
   color: gray;
   font-weight: lighter;
   white-space: nowrap;
@@ -139,6 +155,8 @@
   text-overflow: ellipsis;
 }
 .SearchedProfileIcon {
+  display: flex;
+  flex: 0.1;
   color: black;
   font-size: 16px;
 }
