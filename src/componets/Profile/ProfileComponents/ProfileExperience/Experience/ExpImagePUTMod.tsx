@@ -2,6 +2,7 @@ import React, { useState, FormEvent, ChangeEvent } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { BsImage } from "react-icons/bs";
 import { MdVisibility } from "react-icons/md";
 import { useAppSelector } from "../../../../../app/hooks";
 
@@ -64,7 +65,11 @@ export const ExpImagePUTMod = (props: ExperienceImageProp) => {
             </div>
             <div className="d-flex flex-column align-items-center justify-content-center imageInputExp">
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Control type="file" placeholder="Enter email" onChange={handleLoadFile} />
+                <label className="inputLabelExp m-0 py-2 px-5 d-flex align-items-center">
+                  <span className="px-2">Carica</span>
+                  <BsImage className="mx-2" />
+                  <input type="file" style={{ width: 60 + "%" }} onChange={handleLoadFile} />
+                </label>
               </Form.Group>
             </div>
           </Modal.Body>
