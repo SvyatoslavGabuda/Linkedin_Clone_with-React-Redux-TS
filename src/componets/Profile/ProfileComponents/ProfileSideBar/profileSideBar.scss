@@ -18,6 +18,7 @@
 // CSS BusinessSection instructions
 
 .sideBarItem {
+  max-width: 100%;
   .sideBarCard {
     .sideBarCardImg {
       width: 48px;
@@ -27,6 +28,10 @@
     }
 
     .sideBarCardText {
+      max-width: 75%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       .itemLink {
         text-decoration: none;
         color: black;
@@ -36,6 +41,9 @@
       h4 {
         font-size: 1.1em;
         padding-bottom: 0.1em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 
         &:hover {
           color: #0a66c2;
@@ -72,4 +80,11 @@
       background-color: rgba(0, 0, 0, 0.144);
     }
   }
+}
+
+.sideBarItemTitle {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

@@ -1,33 +1,57 @@
 import "./profileSideBar.scss";
-import { Col } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import { UpperSectionComponent } from "./SideBarComponents/UpperSectionComponent";
 import { OtherBusinessComponent } from "./SideBarComponents/OtherBusinessComponents";
 import { OtherPersonsComponent } from "./SideBarComponents/OtherPersonsComponent";
 import { GroupsInterestsComponent } from "./SideBarComponents/GroupsInterestsComponent";
 import { useAppSelector } from "../../../../app/hooks";
 import { Iprofile } from "../../Profile";
+import { useState, useEffect } from "react";
 
 export const ProfileSideBar = () => {
   const fetchedProfiles = useAppSelector((state) => state.profile.allProfile);
-  const myProfiles = [...fetchedProfiles];
-  console.log("based", myProfiles);
-  const randomizeIt = (profiles: Iprofile[]) => {
-    for (let i = profiles.length - 1; i > 0; i--) {
-      let randomIndex = Math.floor(Math.random() * (i + 1));
-      [profiles[i], profiles[randomIndex]] = [profiles[randomIndex], profiles[i]];
+  const [randomizedArray, setRandomizedArray] = useState<Iprofile[]>([]);
+
+  function shuffleArray(array: Iprofile[]) {
+    let ordered = array.slice(0);
+    let randomized = ordered
+      .map((profile) => ({ profile, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ profile }) => profile);
+    console.log(randomized);
+    return randomized.filter((el) => el.name && el.surname && el.image);
+  }
+  useEffect(() => {
+    if (fetchedProfiles.length !== 0) {
+      setRandomizedArray(shuffleArray(fetchedProfiles));
     }
-    console.log("random", profiles);
-  };
+  }, [fetchedProfiles]);
 
   return (
     <>
       <Col xs={12} md={5} lg={4}>
         <UpperSectionComponent />
-        <OtherBusinessComponent />
-        <OtherPersonsComponent />
-        <GroupsInterestsComponent />
+        {randomizedArray.length > 0 ? (
+          <>
+            {console.log("passing", randomizedArray)}
+            <OtherBusinessComponent profiles={randomizedArray} />
+            <OtherPersonsComponent profiles={randomizedArray} />
+            <GroupsInterestsComponent profiles={randomizedArray} />
+          </>
+        ) : (
+          <>
+            <Row>
+              <Col xs={12} className="d-flex flex-column align-items-center justify-content-between py-5">
+                <Spinner animation="grow" variant="info" className="my-5" />
+                <Spinner animation="grow" variant="info" className="my-5" />
+                <Spinner animation="grow" variant="info" className="my-5" />
+                <Spinner animation="grow" variant="info" className="my-5" />
+                <Spinner animation="grow" variant="info" className="my-5" />
+              </Col>
+            </Row>
+          </>
+        )}
       </Col>
-      {fetchedProfiles.length > 0 && randomizeIt(myProfiles)}
     </>
   );
 };

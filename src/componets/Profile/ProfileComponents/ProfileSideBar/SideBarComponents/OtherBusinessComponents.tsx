@@ -3,9 +3,11 @@ import { useAppSelector } from "../../../../../app/hooks";
 import { Iprofile } from "../../../Profile";
 import { SideBarItemComponent } from "./SideBarItemComponent";
 
-export const OtherBusinessComponent = () => {
-  const allProfileData: Iprofile[] = useAppSelector((state) => state.profile.allProfile).slice(0, 5);
+interface OtherBusinessProps {
+  profiles: Iprofile[];
+}
 
+export const OtherBusinessComponent = (props: OtherBusinessProps) => {
   return (
     <Row className="py-1 px-md-3 px-lg-4">
       <Col className="p-0">
@@ -14,7 +16,7 @@ export const OtherBusinessComponent = () => {
           <Row className="justify-content-center">
             <Col xs={10}>
               <ListGroup variant="flush">
-                {allProfileData.map((item, i) => (
+                {props.profiles.slice(0, 5).map((item, i) => (
                   <SideBarItemComponent item={item} key={i} />
                 ))}
               </ListGroup>
