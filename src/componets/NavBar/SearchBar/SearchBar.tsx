@@ -8,6 +8,7 @@ import { Iprofile } from "./SearchInterface";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useAppSelector } from "../../../app/hooks";
+import { ImProfile } from "react-icons/im";
 
 export const SearchBar = () => {
   const myProfile = useAppSelector((state) => state.profile.myProfile);
@@ -45,6 +46,7 @@ export const SearchBar = () => {
     e.preventDefault();
     setSearchPerson(e.target.value);
     console.log(e.target.value);
+    funzioneRicerca(e);
   };
 
   const prepareUrl = (search: string) => {
@@ -76,9 +78,22 @@ export const SearchBar = () => {
       console.log(error);
     }
   };
-
-  useDebounce(searchPerson, 500, searchProfile);
-
+  const [allRes, setAllRes] = useState<Iprofile[]>([]);
+  //useDebounce(searchPerson, 500, searchProfile);
+  const allProfile = useAppSelector((state) => state.profile.allProfile);
+  const funzioneRicerca = (e: any) => {
+    const userNames = allProfile?.map((el: any) => {
+      return {
+        userName: el.username,
+        id: el._id,
+      };
+    });
+    const risultato = allProfile.filter((user: any) =>
+      user.username.toLowerCase().includes(e.target.value.toLowerCase())
+    );
+    console.log(risultato);
+    setAllRes(risultato);
+  };
   return (
     <motion.div
       className="SearchBarContainer"
@@ -123,24 +138,28 @@ export const SearchBar = () => {
             <PacmanLoader size={20} color={"#bebebe"} />
           </div>
         )}
-        {!isLoading && Profile.name && (
+        {!isLoading && allRes.length > 0 && (
           <>
             {/* Profilo */}
-            <Link to={"/profile/" + (Profile._id === myProfile._id ? "me" : Profile._id)}>
-              <div className="SearchedProfileContainer">
-                <span className="SearchedProfileIcon">
-                  <IoSearch />
-                </span>
-                <div className="d-flex">
-                  <h3 className="SearchedProfileName ">
-                    {Profile.name} {Profile.surname} · <span className="SearchedProfileTitle"> {Profile.title}</span>
-                  </h3>
-                </div>
-                <div className="SearchedProfileImgContainer">
-                  <img src={Profile.image} alt="" />
-                </div>
-              </div>
-            </Link>
+            {allRes.length > 0 &&
+              allRes.map((el) => (
+                <Link to={"/profile/" + (el._id === myProfile._id ? "me" : el._id)}>
+                  <div className="SearchedProfileContainer">
+                    <span className="SearchedProfileIcon">
+                      <IoSearch />
+                    </span>
+                    <div className="d-flex">
+                      <h3 className="SearchedProfileName ">
+                        {el.name} {el.surname} ·{" "}
+                        <span className="SearchedProfileTitle"> {el.title}</span>
+                      </h3>
+                    </div>
+                    <div className="SearchedProfileImgContainer">
+                      <img src={el.image} alt="" />
+                    </div>
+                  </div>
+                </Link>
+              ))}
             {/* Profilo */}
           </>
         )}
