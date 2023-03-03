@@ -43,3 +43,21 @@
     background-color: rgb(197, 197, 197);
   }
 }
+
+.inputLabelExp {
+  color: grey;
+  font-weight: 500;
+  transition: 0.2s;
+  border: 1px solid lightgray;
+  background-color: rgb(226, 226, 226);
+  border-radius: 5px;
+
+  &:hover {
+    transition: 0.2s;
+    color: black;
+    background-color: rgb(197, 197, 197);
+  }
+  input[type="file"] {
+    display: none;
+  }
+}
