@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import { SideBarSpinnerComponent } from "./SideBarComponents/ProfileSpinner/SideBarSpinnerComponent";
 
 export const ProfileSideBar = () => {
-  const fetchedProfiles = useAppSelector((state) => state.profile.allProfile);
+  const fetchedProfiles = useAppSelector((state) => state.profile);
   const [randomizedArray, setRandomizedArray] = useState<Iprofile[]>([]);
 
   function shuffleArray(array: Iprofile[]) {
@@ -19,22 +19,22 @@ export const ProfileSideBar = () => {
       .map((profile) => ({ profile, sort: Math.random() }))
       .sort((a, b) => a.sort - b.sort)
       .map(({ profile }) => profile);
-    console.log(randomized);
     return randomized.filter((el) => el.name && el.surname && el.image);
   }
+
   useEffect(() => {
     if (fetchedProfiles.length !== 0) {
-      setRandomizedArray(shuffleArray(fetchedProfiles));
+      setRandomizedArray(shuffleArray(fetchedProfiles.allProfile));
     }
+    console.log("random");
   }, [fetchedProfiles]);
 
   return (
     <>
       <Col xs={12} md={5} lg={4}>
         <UpperSectionComponent />
-        {randomizedArray.length > 0 ? (
+        {fetchedProfiles.loadingAllProfile === false && randomizedArray.length > 0 ? (
           <>
-            {console.log("passing", randomizedArray)}
             <OtherBusinessComponent profiles={randomizedArray} />
             <OtherPersonsComponent profiles={randomizedArray} />
             <GroupsInterestsComponent profiles={randomizedArray} />
