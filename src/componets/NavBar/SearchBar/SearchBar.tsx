@@ -15,13 +15,11 @@ export const SearchBar = () => {
 
   const [isExpanded, setExpanded] = useState<boolean>();
   const [searchPerson, setSearchPerson] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [Profile, setProfile] = useState<Partial<Iprofile>>({});
+
   const [notFoundMsg, setNotFoundMsg] = useState(false);
   const inputRef = useRef<null | HTMLInputElement>(null);
-  //   console.log(inputRef);
-
-  const isEmpty = !Profile || Object.keys(Profile).length === 0;
+  const allProfile = useAppSelector((state) => state.profile.allProfile);
+  const [allRes, setAllRes] = useState<Iprofile[]>([]);
 
   const containerVariants = {
     expanded: {
@@ -39,8 +37,9 @@ export const SearchBar = () => {
   const collapseContainer = () => {
     setExpanded(false);
     setSearchPerson("");
-    setIsLoading(false);
-    setProfile({});
+
+    setAllRes([]);
+
     setNotFoundMsg(false);
     if (inputRef.current) inputRef.current.value = "";
   };
@@ -54,56 +53,17 @@ export const SearchBar = () => {
     funzioneRicerca(e);
   };
 
-  const prepareUrl = (search: string) => {
-    const url = `https://striveschool-api.herokuapp.com/api/profile/${search}`;
-
-    return encodeURI(url);
-  };
-
-  const searchProfile = async () => {
-    if (!searchPerson || searchPerson.trim() === "") return;
-
-    setIsLoading(true);
-    setNotFoundMsg(false);
-
-    const URL = prepareUrl(searchPerson);
-
-    try {
-      const response = await fetch(URL, {
-        headers: {
-          Authorization: process.env.REACT_APP_BEARER || "nonandra",
-        },
-      });
-      if (response.ok) {
-        const data: Iprofile = await response.json();
-        console.log(data);
-        setIsLoading(false);
-        setProfile(data);
-        if (data && Object.keys(data).length === 0) setNotFoundMsg(true);
-      } else {
-        console.log("Fetch error");
-      }
-    } catch (error) {
-      console.log("Error catch", error);
-      setNotFoundMsg(true);
-      setIsLoading(false);
-    }
-  };
-  const [allRes, setAllRes] = useState<Iprofile[]>([]);
   //useDebounce(searchPerson, 500, searchProfile);
-  const allProfile = useAppSelector((state) => state.profile.allProfile);
+
   const funzioneRicerca = (e: any) => {
-    const userNames = allProfile?.map((el: any) => {
-      return {
-        userName: el.username,
-        id: el._id,
-      };
-    });
     const risultato = allProfile.filter((user: any) =>
       user.username.toLowerCase().includes(e.target.value.toLowerCase())
     );
     console.log(risultato);
     setAllRes(risultato);
+    if (risultato.length === 0) {
+      setNotFoundMsg(true);
+    }
   };
   return (
     <motion.div
@@ -145,22 +105,22 @@ export const SearchBar = () => {
       </div>
       <span className="LineSeparatpr"></span>
       <div className="SearchContent">
-        {isLoading && (
+        {/* {isLoading && (
           <div className="LoaderWrapper">
             <PacmanLoader size={20} color={"#bebebe"} />
           </div>
-        )}
-        {!isLoading && isEmpty && !notFoundMsg && (
+        )} */}
+        {allRes.length === 0 && !notFoundMsg && (
           <div className="LoaderWrapper">
             <span className="SearchedProfileTitle">Start typing to Search</span>
           </div>
         )}
-        {!isLoading && notFoundMsg && (
+        {notFoundMsg && (
           <div className="LoaderWrapper">
             <span className="SearchedProfileTitle">Stop looking for your imaginary friends</span>
           </div>
         )}
-        {!isLoading && allRes.length > 0 && (
+        {allRes.length > 0 && (
           <>
             {/* Profilo */}
             {allRes.length > 0 &&
