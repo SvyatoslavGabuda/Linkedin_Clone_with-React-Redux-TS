@@ -111,12 +111,7 @@ export const ProfileActivity = () => {
                   </div>
                   <div>
                     <Link
-                      to={
-                        "/profile/" +
-                        (Singlepost.user._id === myProfile._id
-                          ? myProfile._id
-                          : Singlepost.user._id)
-                      }
+                      to={"/profile/" + (Singlepost.user._id === myProfile._id ? myProfile._id : Singlepost.user._id)}
                     >
                       <h3>
                         {Singlepost.user.name} {Singlepost.user.surname}
@@ -210,8 +205,7 @@ export const ProfileActivity = () => {
                         }}
                       >
                         <Link to="">
-                          <HiOutlinePencil />{" "}
-                          {Singlepost.image ? "Cambia immagine collegata" : "Aggiungi un'immagine"}
+                          <HiOutlinePencil /> {Singlepost.image ? "Cambia immagine collegata" : "Aggiungi un'immagine"}
                         </Link>
                       </div>
                     ) : (
@@ -232,7 +226,7 @@ export const ProfileActivity = () => {
               {/* Img */}
 
               <div className="w-100 text-center">
-                {Singlepost?.image && <img className="img-fluid" src={Singlepost.image} alt="" />}
+                {Singlepost?.image && <img className="w-100" src={Singlepost.image} alt="" />}
               </div>
 
               {/* Img */}

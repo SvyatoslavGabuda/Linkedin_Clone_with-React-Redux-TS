@@ -17,10 +17,11 @@ export const SearchBar = () => {
   const [searchPerson, setSearchPerson] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [Profile, setProfile] = useState<Partial<Iprofile>>({});
+  const [notFoundMsg, setNotFoundMsg] = useState(false);
   const inputRef = useRef<null | HTMLInputElement>(null);
   //   console.log(inputRef);
 
-  // const isEmpty = !Profile || Profile..lenght === 0 condizione per gli arry
+  const isEmpty = !Profile || Object.keys(Profile).length === 0;
 
   const containerVariants = {
     expanded: {
@@ -39,11 +40,15 @@ export const SearchBar = () => {
     setExpanded(false);
     setSearchPerson("");
     setIsLoading(false);
+    setProfile({});
+    setNotFoundMsg(false);
     if (inputRef.current) inputRef.current.value = "";
   };
 
   const changeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
+    if (e.target.value.trim() === "") setNotFoundMsg(false);
+
     setSearchPerson(e.target.value);
     console.log(e.target.value);
     funzioneRicerca(e);
@@ -59,6 +64,7 @@ export const SearchBar = () => {
     if (!searchPerson || searchPerson.trim() === "") return;
 
     setIsLoading(true);
+    setNotFoundMsg(false);
 
     const URL = prepareUrl(searchPerson);
 
@@ -73,9 +79,14 @@ export const SearchBar = () => {
         console.log(data);
         setIsLoading(false);
         setProfile(data);
+        if (data && Object.keys(data).length === 0) setNotFoundMsg(true);
+      } else {
+        console.log("Fetch error");
       }
     } catch (error) {
-      console.log(error);
+      console.log("Error catch", error);
+      setNotFoundMsg(true);
+      setIsLoading(false);
     }
   };
   const [allRes, setAllRes] = useState<Iprofile[]>([]);
@@ -99,6 +110,7 @@ export const SearchBar = () => {
       className="SearchBarContainer"
       animate={isExpanded ? "expanded" : "collapsed"}
       variants={containerVariants}
+      style={{ boxShadow: isExpanded ? "0px 2px 12px 3px rgba(0, 0, 0, 0.14)" : "none" }}
     >
       <div className="SearchInputContainer">
         <span className="SearchIcon">
@@ -136,6 +148,16 @@ export const SearchBar = () => {
         {isLoading && (
           <div className="LoaderWrapper">
             <PacmanLoader size={20} color={"#bebebe"} />
+          </div>
+        )}
+        {!isLoading && isEmpty && !notFoundMsg && (
+          <div className="LoaderWrapper">
+            <span className="SearchedProfileTitle">Start typing to Search</span>
+          </div>
+        )}
+        {!isLoading && notFoundMsg && (
+          <div className="LoaderWrapper">
+            <span className="SearchedProfileTitle">Stop looking for your imaginary friends</span>
           </div>
         )}
         {!isLoading && allRes.length > 0 && (

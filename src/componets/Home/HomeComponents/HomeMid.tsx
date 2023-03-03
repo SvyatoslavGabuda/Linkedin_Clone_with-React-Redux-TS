@@ -198,7 +198,7 @@ export const HomeMid = () => {
 
                   {/* Img */}
 
-                  <div>{Singlepost.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
+                  <div>{Singlepost.image && <img className="w-100" src={Singlepost.image} alt="" />}</div>
 
                   {/* Img */}
 
