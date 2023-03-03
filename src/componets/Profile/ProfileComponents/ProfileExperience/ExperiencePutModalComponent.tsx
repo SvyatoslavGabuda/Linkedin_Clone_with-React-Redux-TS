@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import { BsImage } from "react-icons/bs";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { expFetc } from "../../../../app/reducers/experienceSlice";
 import { hidePutM } from "../../../../app/reducers/expPutModSlice";
@@ -154,6 +155,7 @@ export const ExperiencePutModalComponent = () => {
                         }}
                       />
                       <button
+                        className="m-0 d-flex align-items-center "
                         type="button"
                         id="uploadExpButton"
                         onClick={() => {
@@ -161,6 +163,7 @@ export const ExperiencePutModalComponent = () => {
                         }}
                       >
                         <span>Carica</span>
+                        <BsImage className="mx-2" />
                       </button>
                     </div>
                   </Form.Group>
