@@ -5,8 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import { useDebounce } from "./SearchBarHook";
 import { Iprofile } from "./SearchInterface";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useAppSelector } from "../../../app/hooks";
 
 export const SearchBar = () => {
+  const myProfile = useAppSelector((state) => state.profile.myProfile);
+
   const [isExpanded, setExpanded] = useState<boolean>();
   const [searchPerson, setSearchPerson] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +26,7 @@ export const SearchBar = () => {
       height: "20em",
     },
     collapsed: {
-      height: "3.8em",
+      height: "2.7em",
     },
   };
 
@@ -58,8 +63,7 @@ export const SearchBar = () => {
     try {
       const response = await fetch(URL, {
         headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M2ZjODE3MmYxOTNlNjAwMTM4MDdmNjMiLCJpYXQiOjE2Nzc0OTI1OTQsImV4cCI6MTY3ODcwMjE5NH0.4PviLc9JI-n-TloQf-X4ejWxSPAfW7TzE00CwAf-GdA",
+          Authorization: process.env.REACT_APP_BEARER || "nonandra",
         },
       });
       if (response.ok) {
@@ -122,19 +126,21 @@ export const SearchBar = () => {
         {!isLoading && Profile.name && (
           <>
             {/* Profilo */}
-            <div className="SearchedProfileContainer">
-              <span className="SearchedProfileIcon">
-                <IoSearch />
-              </span>
-              <div className="d-flex">
-                <h3 className="SearchedProfileName ">
-                  {Profile.name} {Profile.surname} · <span className="SearchedProfileTitle"> {Profile.title}</span>
-                </h3>
+            <Link to={"/profile/" + (Profile._id === myProfile._id ? "me" : Profile._id)}>
+              <div className="SearchedProfileContainer">
+                <span className="SearchedProfileIcon">
+                  <IoSearch />
+                </span>
+                <div className="d-flex">
+                  <h3 className="SearchedProfileName ">
+                    {Profile.name} {Profile.surname} · <span className="SearchedProfileTitle"> {Profile.title}</span>
+                  </h3>
+                </div>
+                <div className="SearchedProfileImgContainer">
+                  <img src={Profile.image} alt="" />
+                </div>
               </div>
-              <div className="SearchedProfileImgContainer">
-                <img src={Profile.image} alt="" />
-              </div>
-            </div>
+            </Link>
             {/* Profilo */}
           </>
         )}

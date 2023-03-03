@@ -85,10 +85,7 @@ export const HomeMid = () => {
           )}
           {NewsArrData &&
             OnlyOnePostForUser.map((Singlepost) => (
-              <Col
-                className="bg-white border border-1 rounded rounded-3 overflow-hidden my-2 p-0"
-                key={Singlepost._id}
-              >
+              <Col className="bg-white border border-1 rounded rounded-3 my-2 p-0" key={Singlepost._id}>
                 <div>
                   {/* Profile */}
 
@@ -100,10 +97,7 @@ export const HomeMid = () => {
                       <div>
                         <Link
                           to={
-                            "/profile/" +
-                            (Singlepost.user._id === MyProfile._id
-                              ? MyProfile._id
-                              : Singlepost.user._id)
+                            "/profile/" + (Singlepost.user._id === MyProfile._id ? MyProfile._id : Singlepost.user._id)
                           }
                         >
                           <h3>
@@ -204,17 +198,13 @@ export const HomeMid = () => {
 
                   {/* Img */}
 
-                  <div>
-                    {Singlepost.image && (
-                      <img className="img-fluid" src={Singlepost.image} alt="" />
-                    )}
-                  </div>
+                  <div>{Singlepost.image && <img className="img-fluid" src={Singlepost.image} alt="" />}</div>
 
                   {/* Img */}
 
                   {/* Buttons */}
 
-                  <div className="HomeMidButtonsCont d-flex justify-content-evenly">
+                  <div className="HomeMidButtonsCont d-flex justify-content-evenly rounded rounded-3">
                     <button className="HomeMidButton d-none d-sm-block">
                       <div className="d-flex align-items-center">
                         <div>

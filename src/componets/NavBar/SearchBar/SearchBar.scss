@@ -1,16 +1,24 @@
 .SearchBarContainer {
     display: flex;
     flex-direction: column;
-    width:34em;
-    height: 3.8em;
-    background-color: #fff;
+    width:24em;
+    height: 2.7em;
+    background-color: #EEF3F8;
     border-radius: 6px;
-    box-shadow: 0px 2px 12px 3px rgba(0, 0, 0, 0.14);
+    // box-shadow: 0px 2px 12px 3px rgba(0, 0, 0, 0.14);
+    position: fixed;
+    top: 9px;
     overflow: hidden;
+    @media screen and (max-width: 1199px) {
+        width:20em;
+    }
+    @media screen and (max-width: 991px) {
+       display: none;
+    }
 }
 .SearchInputContainer {
     width: 100%;
-    min-height: 4em;
+    min-height: 2.7em;
     display: flex;
     align-items: center;
     position: relative;
@@ -21,10 +29,10 @@
     height: 100%;
     outline: none;
     border: none;
-    font-size: 21px;
+    font-size: 1em;
     color: #12112e;
     border-radius: 6px;
-    font-weight: 500;
+    font-weight: 400;
     background-color: transparent;
 
     &:focus {
@@ -34,13 +42,15 @@
         }
     }
     &::placeholder {
-        color: #bebebe;
+        color: black;
         transition: all 250ms ease-in-out;
+        font-size: 0.8em;
+        font-weight: lighter;
     }
 }
 .SearchIcon {
-    color: #bebebe;
-    font-size: 27px;
+    color: black;
+    font-size: 20px;
     margin-right: 10px;
     vertical-align: center;
 }
@@ -63,8 +73,12 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 1em;
+    padding: 1em 0.5em;
     color: #12112e;
+    background-color: #fff;
+    a {
+        text-decoration: none;
+    }
 }
 
 //Style div separtor
@@ -109,18 +123,18 @@
     }
 }
 .SearchedProfileName {
-    font-size: 20px;
+    font-size: 1.1em;
     color: black;
-    margin-left: 10px;
     margin-bottom: 0;
     
 }
 .SearchedProfileTitle {
     font-size: 15px;
     color: gray;
+    font-weight: lighter;
 }
 .SearchedProfileIcon {
-    color:#bebebe ;
+    color:black ;
     font-size: 16px;
     
 }

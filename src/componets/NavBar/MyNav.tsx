@@ -6,6 +6,7 @@ import { ImHome3 } from "react-icons/im";
 import { AiFillMessage } from "react-icons/ai";
 import "./myNav.scss";
 import { useAppSelector } from "../../app/hooks";
+import { SearchBar } from "./SearchBar/SearchBar";
 const MyNav = () => {
   const { pathname: location } = useLocation();
   const myProfile = useAppSelector((state) => state.profile.myProfile);
@@ -22,11 +23,15 @@ const MyNav = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll" className="justify-content-between">
             <Form className="d-none d-md-flex">
-              <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
+              {/* <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" /> */}
+              <SearchBar />
             </Form>
             <div>
               <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-                <Link className={location === "/" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"} to="/">
+                <Link
+                  className={location === "/" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"}
+                  to="/"
+                >
                   <span className="navlabel">Home</span>
                   <ImHome3 />
                 </Link>
@@ -68,7 +73,9 @@ const MyNav = () => {
                     title="Tu"
                     id="navbarScrollingDropdown"
                     align={"end"}
-                    className={location === "/profile/me" ? "nav-link profilenav nav-link-active p-0" : "nav-link profilenav p-0"}
+                    className={
+                      location === "/profile/me" ? "nav-link profilenav nav-link-active p-0" : "nav-link profilenav p-0"
+                    }
                   >
                     <div className="dd-profile">
                       <div style={{ position: "relative" }}>
