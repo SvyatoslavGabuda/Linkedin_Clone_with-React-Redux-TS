@@ -16,8 +16,9 @@ export const ProfileExperience = () => {
   const experience = useAppSelector((state) => state.experience.experience);
   const loadingState = useAppSelector((state) => state.experience.status);
   const upDateState = useAppSelector((state) => state.upDate.numberOfUpdate);
+  const idProva = "63fc6e0af193e60013807f57";
   useEffect(() => {
-    if (myProfile?._id || generalProfile?._id) {
+    if (myProfile) {
       params.id === "me"
         ? dispatch(expFetc(myProfile?._id))
         : dispatch(expFetc(generalProfile?._id));
