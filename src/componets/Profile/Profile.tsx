@@ -128,7 +128,7 @@ const Profile = () => {
   if (params.id === "me") {
     titolocondizionale = `${myProfile?.name} ${myProfile?.surname} | `;
   } else if (params.id !== "me") {
-    titolocondizionale = `Profilo | `;
+    titolocondizionale = `${clickedProfile?.name} ${clickedProfile?.surname} | `;
   }
 
   useDocumentTitle(`${titolocondizionale} LinkedIn`);
