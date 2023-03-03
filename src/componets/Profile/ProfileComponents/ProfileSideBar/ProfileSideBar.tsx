@@ -1,5 +1,5 @@
 import "./profileSideBar.scss";
-import { Col, Row, Spinner } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { UpperSectionComponent } from "./SideBarComponents/UpperSectionComponent";
 import { OtherBusinessComponent } from "./SideBarComponents/OtherBusinessComponents";
 import { OtherPersonsComponent } from "./SideBarComponents/OtherPersonsComponent";
