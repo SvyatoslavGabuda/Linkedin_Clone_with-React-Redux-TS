@@ -1,5 +1,4 @@
 import { Card, Col, Row, ListGroup } from "react-bootstrap";
-import { useAppSelector } from "../../../../../app/hooks";
 import { Iprofile } from "../../../Profile";
 import { SideBarItemComponent } from "./SideBarItemComponent";
 

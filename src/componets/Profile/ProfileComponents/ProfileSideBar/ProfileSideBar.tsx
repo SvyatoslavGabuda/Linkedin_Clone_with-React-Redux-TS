@@ -7,6 +7,7 @@ import { GroupsInterestsComponent } from "./SideBarComponents/GroupsInterestsCom
 import { useAppSelector } from "../../../../app/hooks";
 import { Iprofile } from "../../Profile";
 import { useState, useEffect } from "react";
+import { SideBarSpinnerComponent } from "./SideBarComponents/ProfileSpinner/SideBarSpinnerComponent";
 
 export const ProfileSideBar = () => {
   const fetchedProfiles = useAppSelector((state) => state.profile.allProfile);
@@ -41,12 +42,13 @@ export const ProfileSideBar = () => {
         ) : (
           <>
             <Row>
-              <Col xs={12} className="d-flex flex-column align-items-center justify-content-between py-5">
-                <Spinner animation="grow" variant="info" className="my-5" />
-                <Spinner animation="grow" variant="info" className="my-5" />
-                <Spinner animation="grow" variant="info" className="my-5" />
-                <Spinner animation="grow" variant="info" className="my-5" />
-                <Spinner animation="grow" variant="info" className="my-5" />
+              <Col xs={12} className="d-flex flex-column align-items-center pt-2">
+                <SideBarSpinnerComponent />
+                <SideBarSpinnerComponent />
+                <SideBarSpinnerComponent />
+                <SideBarSpinnerComponent />
+                <SideBarSpinnerComponent />
+                <SideBarSpinnerComponent />
               </Col>
             </Row>
           </>
