@@ -7,13 +7,14 @@ import { AiFillMessage } from "react-icons/ai";
 import "./myNav.scss";
 import { useAppSelector } from "../../app/hooks";
 import { SearchBar } from "./SearchBar/SearchBar";
+import { ScrollNavbarComponent } from "./onScrollNavbar/ScrollNavbarComponent";
 const MyNav = () => {
   const { pathname: location } = useLocation();
   const myProfile = useAppSelector((state) => state.profile.myProfile);
 
   return (
     <>
-      <Navbar expand="sm" className="p-xs-3 p-sm-0 bg-light mb-3 sticky-top">
+      <Navbar expand="sm" className="p-xs-3 p-sm-0 mb-3 bg-light sticky-top">
         <Container>
           <Navbar.Brand>
             <Link to="/" className="d-flex align-items-center">
@@ -136,6 +137,7 @@ const MyNav = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <ScrollNavbarComponent />
     </>
   );
 };
