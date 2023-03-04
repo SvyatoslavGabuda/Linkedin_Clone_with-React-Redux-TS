@@ -21,14 +21,7 @@ export const ExperiencePutModalComponent = () => {
   // define dispatch
   const dispatch = useAppDispatch();
   // create a internal state to store the value of the experience into the input to modify
-  const [experience, setExperience] = useState<IexperiencePost>({
-    role: "",
-    company: "",
-    startDate: "",
-    endDate: "",
-    description: "",
-    area: "",
-  });
+  const [experience, setExperience] = useState<IexperiencePost>();
 
   useEffect(() => {
     if (myProfile) {
