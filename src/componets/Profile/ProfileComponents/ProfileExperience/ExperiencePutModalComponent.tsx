@@ -36,6 +36,7 @@ export const ExperiencePutModalComponent = () => {
         area: user.experience[putStore.indexExp]?.area,
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [putStore.show]);
 
   //   Fetch to PUT an existing Experience
