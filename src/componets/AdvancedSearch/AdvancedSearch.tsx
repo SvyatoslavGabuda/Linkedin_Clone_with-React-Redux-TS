@@ -10,16 +10,16 @@ export const AdvancedSearch = () => {
   const myProfile = useAppSelector((state) => state.profile.myProfile);
   const [notFoundMsg, setNotFoundMsg] = useState(false);
   const [found, setFound] = useState<Iprofile[]>([]);
-  const [reserctType, setreaserctType] = useState("user");
+  const [reserctType, setreaserctType] = useState("username");
   const handeleChance = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     funzioneRicerca(e, reserctType);
   };
   const funzioneRicerca = (e: any, resType: any) => {
     setNotFoundMsg(false);
-    //console.log(resType);
+    console.log(resType);
     const risultato = allProfile.filter((prof: any) =>
-      prof[resType].toLowerCase().includes(e.target.value.toLowerCase())
+      prof[resType]?.toLowerCase().includes(e.target.value.toLowerCase())
     );
     // console.log(risultato);
     setFound(risultato);
