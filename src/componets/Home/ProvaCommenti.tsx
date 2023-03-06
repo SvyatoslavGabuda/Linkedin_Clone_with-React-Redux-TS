@@ -7,9 +7,5 @@ export const ProvaCommmenti = () => {
   useEffect(() => {
     dispatch(commentFetch({ metod: "GET", id: "1597808709" }));
   }, []);
-  return (
-    <>
-      <h2> tutti i commenti</h2>
-    </>
-  );
+  return <></>;
 };
