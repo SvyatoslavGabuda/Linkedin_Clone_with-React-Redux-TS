@@ -14,6 +14,7 @@ import MyNav from "./componets/NavBar/MyNav";
 import Profile from "./componets/Profile/Profile";
 import { useEffect } from "react";
 import { NotFound } from "./componets/NotFound/NotFound";
+import { AdvancedSearch } from "./componets/AdvancedSearch/AdvancedSearch";
 import { Jobs } from "./componets/Jobs/Jobs";
 import { MyJobs } from "./componets/Jobs/MyJobs";
 
@@ -78,6 +79,7 @@ function App() {
             <Route path="/myjobs" element={<MyJobs />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/advancedSearch" element={<AdvancedSearch />} />
           </Routes>
         </Container>
         <Chat />
