@@ -1,6 +1,7 @@
 import { configureStore, ThunkAction, Action, Reducer } from "@reduxjs/toolkit";
 
 import { allProfileReduce } from "./reducers/allProfileReduce";
+import commentSlice from "./reducers/commentSlice";
 import experienceSlice from "./reducers/experienceSlice";
 import expModSlice from "./reducers/expModSlice";
 import expPutModSlice from "./reducers/expPutModSlice";
@@ -24,6 +25,7 @@ export const store = configureStore({
     postsModale: postsModSlice,
     postPutModale: postsPutModSlice,
     upDate: slicerForUpDate,
+    comments: commentSlice,
 
     // newProfile: profileSlice,
   },
