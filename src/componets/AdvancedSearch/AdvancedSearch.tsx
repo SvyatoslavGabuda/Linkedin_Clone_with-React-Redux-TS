@@ -15,11 +15,11 @@ export const AdvancedSearch = () => {
     funzioneRicerca(e, reserctType);
   };
   const funzioneRicerca = (e: any, resType: any) => {
-    console.log(resType);
+    //console.log(resType);
     const risultato = allProfile.filter((prof: any) =>
       prof[resType].toLowerCase().includes(e.target.value.toLowerCase())
     );
-    console.log(risultato);
+    // console.log(risultato);
     setFound(risultato);
     if (risultato.length === 0) {
       //setNotFoundMsg(true);

@@ -13,43 +13,50 @@ export interface Icomments {
 }
 interface comments {
   comments: Icomments[];
+  commenttoPost: Icomments;
   status: "idle" | "loading" | "failed";
 }
 
 const initialState: comments = {
   comments: [],
   status: "idle",
+  commenttoPost: {} as Icomments,
 };
 interface params {
   metod: string;
   id?: string;
+  commentToPost?: Icomments;
 }
 const url = "https://striveschool-api.herokuapp.com/api/comments/";
 
-export const commentFetch = createAsyncThunk("fetchComment", async ({ metod, id }: params) => {
-  try {
-    const response = await fetch(url + id, {
-      method: metod,
-      headers: {
-        Authorization: process.env.REACT_APP_BEARER || "nonandra",
-      },
-    });
-    if (response.ok) {
-      if (metod === "GET") {
-        const data = await response.json();
-        console.log(data);
+export const commentFetch = createAsyncThunk(
+  "fetchComment",
+  async ({ metod, id, commentToPost }: params) => {
+    try {
+      const response = await fetch(url + id, {
+        method: metod,
+        body: JSON.stringify(commentToPost),
+        headers: {
+          Authorization: process.env.REACT_APP_BEARER || "nonandra",
+        },
+      });
+      if (response.ok) {
+        if (metod === "GET") {
+          const data = await response.json();
+          console.log(data);
 
-        return data;
+          return data;
+        } else {
+          console.log("l'operazione " + metod + " è andata a buon fine!!");
+        }
       } else {
-        console.log("l'operazione " + metod + " è andata a buon fine!!");
+        console.log("non ha funzionato");
       }
-    } else {
-      console.log("non ha funzionato");
+    } catch (error) {
+      console.log(error);
     }
-  } catch (error) {
-    console.log(error);
   }
-});
+);
 
 const commentSlice = createSlice({
   name: "save",
