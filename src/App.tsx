@@ -6,12 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { Counter } from "./features/counter/Counter";
 import "./App.scss";
 import { useAppDispatch } from "./app/hooks";
-import {
-  ADD_TO_ALLPROFILE,
-  ADD_TO_MYPROFILE,
-  HANDLE_LOAD_ALLPROFILE,
-  HANDLE_LOAD_MYPROFILE,
-} from "./app/reducers/allProfileReduce";
+import { ADD_TO_ALLPROFILE, ADD_TO_MYPROFILE, HANDLE_LOAD_ALLPROFILE, HANDLE_LOAD_MYPROFILE } from "./app/reducers/allProfileReduce";
 import { Chat } from "./componets/Chat/Chat";
 import MyFooter from "./componets/Footer/MyFooter";
 import { Home } from "./componets/Home/Home";
@@ -19,6 +14,7 @@ import MyNav from "./componets/NavBar/MyNav";
 import Profile from "./componets/Profile/Profile";
 import { useEffect } from "react";
 import { NotFound } from "./componets/NotFound/NotFound";
+import { Jobs } from "./componets/Jobs/Jobs";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -77,6 +73,7 @@ function App() {
         <Container>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/jobs" element={<Jobs />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
