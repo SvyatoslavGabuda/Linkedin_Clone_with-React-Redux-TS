@@ -1,4 +1,6 @@
 import { configureStore, ThunkAction, Action, Reducer } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 import { allProfileReduce } from "./reducers/allProfileReduce";
 import commentSlice from "./reducers/commentSlice";
@@ -14,6 +16,14 @@ import upgrateModSlice from "./reducers/upgrateModSlice";
 // const allReducer = combineReducers({
 //   profile: allProfileReduce as Reducer,
 // });
+
+const persistConfig = {
+  key : '',
+  storage
+}
+
+// const persistedReducer = persistReducer(persistConfig, commentSlice.reducer)
+
 export const store = configureStore({
   reducer: {
     profile: allProfileReduce as Reducer,
@@ -30,6 +40,8 @@ export const store = configureStore({
     // newProfile: profileSlice,
   },
 });
+
+const persistor = persistStore(store)
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;

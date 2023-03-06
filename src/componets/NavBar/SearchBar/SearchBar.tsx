@@ -2,13 +2,9 @@ import "./SearchBar.scss";
 import { IoSearch, IoClose } from "react-icons/io5";
 import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import PacmanLoader from "react-spinners/PacmanLoader";
-import { useDebounce } from "./SearchBarHook";
 import { Iprofile } from "./SearchInterface";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { useAppSelector } from "../../../app/hooks";
-import { ImProfile } from "react-icons/im";
 
 export const SearchBar = () => {
   const myProfile = useAppSelector((state) => state.profile.myProfile);

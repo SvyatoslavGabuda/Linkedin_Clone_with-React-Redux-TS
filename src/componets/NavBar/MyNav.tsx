@@ -36,7 +36,10 @@ const MyNav = () => {
                   <span className="navlabel">Home</span>
                   <ImHome3 />
                 </Link>
-                <Link className="nav-link nav-link-top" to="/">
+                <Link
+                  className={location === "/rete" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"}
+                  to="/rete"
+                >
                   <span className="navlabel">Rete</span>
                   <BsFillPeopleFill />
                 </Link>
