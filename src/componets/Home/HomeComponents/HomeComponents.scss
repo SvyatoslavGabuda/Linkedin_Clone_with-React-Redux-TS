@@ -415,8 +415,6 @@
     width: 90%;
 
     div {
-      margin-bottom: 5px;
-
       h6 {
         font-size: 14px;
         margin-bottom: 0;
@@ -439,5 +437,20 @@
       color: gray;
       margin-bottom: 8px;
     }
+  }
+}
+
+.singleCommentDropdown {
+  background-color: inherit;
+  border: none;
+  color: #555555;
+  &:hover {
+    color: #555555;
+    background-color: inherit;
+    border: none;
+  }
+
+  .btn {
+    background-color: inherit;
   }
 }
