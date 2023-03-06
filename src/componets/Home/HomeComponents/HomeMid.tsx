@@ -1,6 +1,6 @@
 import { CreatePost } from "../CreatePostsComp/CreatePost";
 
-import { Col, NavDropdown, Row } from "react-bootstrap";
+import { Col, Form, InputGroup, NavDropdown, Row, Dropdown, Card } from "react-bootstrap";
 import { BiWorld } from "react-icons/bi";
 import { SlLike } from "react-icons/sl";
 import { FaRegCommentDots } from "react-icons/fa";
@@ -12,7 +12,7 @@ import "./HomeComponents.scss";
 import { useAppSelector } from "../../../app/hooks";
 import { Iprofile } from "../../Profile/Profile";
 import { differenceInHours, differenceInMinutes } from "date-fns";
-import { BsFlagFill, BsBookmark, BsCodeSlash, BsEyeSlashFill } from "react-icons/bs";
+import { BsFlagFill, BsBookmark, BsCodeSlash, BsEyeSlashFill, BsEmojiNeutral, BsImage, BsClock } from "react-icons/bs";
 import { SlLink } from "react-icons/sl";
 import { FiAlertTriangle } from "react-icons/fi";
 import { FaTrashAlt } from "react-icons/fa";
@@ -21,6 +21,8 @@ import { addFocusPosts, showPutPosts } from "../../../app/reducers/postsPutModSl
 import { useAppDispatch } from "../../../app/hooks";
 import { SpinnerSuper } from "../spinner/SpinnerSuper";
 import { postsFetc } from "../../../app/reducers/postsSlice";
+import { IoIosRocket } from "react-icons/io";
+import { PostCommentComponent } from "./HomeMidComponent/PostCommentComponent";
 export const postsDELETE = async (idPost: string) => {
   try {
     const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${idPost}`, {
@@ -240,6 +242,55 @@ export const HomeMid = () => {
                   </div>
 
                   {/* Buttons */}
+                </div>
+                <div className="postCommentContainer">
+                  <div className="d-flex align-items-center">
+                    <img
+                      className="me-2"
+                      src={MyProfile.image}
+                      alt=""
+                      style={{ width: 35 + "px", borderRadius: 50 + "px" }}
+                    />
+                    <InputGroup className="border rounded d-flex align-items-center me-2 py-2">
+                      <Form.Control
+                        className="border-0 rounded me-1 commentsInput"
+                        placeholder="Aggiungi un commento..."
+                      />
+                      <span className="commentsIconContainer">
+                        <BsEmojiNeutral className="fs-2 me-2 text-secondary" />
+                        <BsImage className="fs-2 me-2 text-secondary" />
+                      </span>
+                    </InputGroup>
+                  </div>
+                  <div className="my-2 commentsDropdown">
+                    <Dropdown>
+                      <Dropdown.Toggle id="dropdown-basic" className="dropFilter">
+                        Filtra
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu>
+                        <Dropdown.Item href="#/action-1" className="d-flex align-items-center">
+                          <IoIosRocket className="fs-2 dropCommentIcon" />
+                          <span className="ms-3 commentsDropdownText">
+                            <h6 className="mb-0">Più rilevanti</h6>
+                            <p>Vedi i commenti più pertinenti</p>
+                          </span>
+                        </Dropdown.Item>
+                        <Dropdown.Item href="#/action-2" className="d-flex align-items-center">
+                          <BsClock className="fs-2 dropCommentIcon" />
+
+                          <span className="ms-3 commentsDropdownText">
+                            <h6 className="mb-0">Più recenti</h6>
+                            <p>Vedi tutti i commenti (i più recenti sono in alto)</p>
+                          </span>
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </div>
+
+                  <Row className="d-flex justify-content-center">
+                    <PostCommentComponent />
+                  </Row>
                 </div>
               </Col>
             ))}
