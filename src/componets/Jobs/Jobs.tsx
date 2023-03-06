@@ -104,7 +104,7 @@ export const Jobs = () => {
           <div className="jobsList p-3 rounded bg-light mb-3">
             <h5 className="d-flex justify-content-between align-items-center">Consigliato per te</h5>
             <p>Sulla base del tuo profilo e della tua cronologia delle ricerche</p>
-            <div>{jobs.status === "idle" && jobs.allJobs?.map((v) => <JobComponent job={v} />)}</div>
+            <div>{jobs.status === "idle" && jobs.allJobs?.map((v) => <JobComponent job={v} key={v._id} />)}</div>
             <div className="text-center" onClick={limitUp}>
               Mostra altro...
             </div>
