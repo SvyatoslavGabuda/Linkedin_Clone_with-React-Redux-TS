@@ -27,7 +27,7 @@ export const AdvancedSearch = () => {
   };
   return (
     <>
-      <h2>Ricerca Avanzata</h2>
+      <h2>Advanced Research</h2>
       <Form>
         <Form.Group>
           <Form.Label>Select the way you want to search:</Form.Label>
