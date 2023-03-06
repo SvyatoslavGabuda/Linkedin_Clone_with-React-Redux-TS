@@ -358,6 +358,10 @@
   }
 }
 
+.inputCommentContainer {
+  width: 85%;
+}
+
 .commentsInput {
   font-size: 12px;
   @media screen and (min-width: 340px) {
@@ -417,6 +421,7 @@
         font-size: 14px;
         margin-bottom: 0;
       }
+
       p {
         font-size: 12px;
         margin-bottom: 0;

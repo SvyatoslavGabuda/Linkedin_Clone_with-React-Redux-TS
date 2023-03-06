@@ -20,7 +20,7 @@ const initialState: comments = {
   comments: [],
   status: "idle",
 };
-interface params {
+export interface params {
   metod: string;
   id?: string;
 }
