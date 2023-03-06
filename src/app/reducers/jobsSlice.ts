@@ -33,8 +33,8 @@ export const jobsFetch = createAsyncThunk("fetch-jobs", async (limit: number = 1
       },
     });
     if (resposnse.ok) {
-      const data = await resposnse.json();
-      return data;
+      const { data: risultati } = await resposnse.json();
+      return risultati;
     } else {
       console.log("Errore nel fetch dei lavori");
     }
