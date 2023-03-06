@@ -15,6 +15,7 @@ import Profile from "./componets/Profile/Profile";
 import { useEffect } from "react";
 import { NotFound } from "./componets/NotFound/NotFound";
 import { Jobs } from "./componets/Jobs/Jobs";
+import { MyJobs } from "./componets/Jobs/MyJobs";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -74,6 +75,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
+            <Route path="/myjobs" element={<MyJobs />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

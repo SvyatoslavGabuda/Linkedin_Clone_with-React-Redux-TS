@@ -34,17 +34,17 @@ export const JobComponent = ({ job }: { job: Ijob }) => {
         <p>{diff()}</p>
       </div>
       <div>
-        {!jobsFav.find((el: string) => el === job._id) && (
+        {!jobsFav.find((el: Ijob) => el._id === job._id) && (
           <BsBookmark
             onClick={() => {
-              dispatch({ type: "ADDJOBTOFAV", payload: job._id });
+              dispatch({ type: "ADDJOBTOFAV", payload: job });
             }}
           />
         )}
-        {jobsFav.find((el: string) => el === job._id) && (
+        {jobsFav.find((el: Ijob) => el._id === job._id) && (
           <BsFillBookmarkFill
             onClick={() => {
-              dispatch({ type: "DELJOBFROMFAV", payload: job._id });
+              dispatch({ type: "DELJOBFROMFAV", payload: job });
             }}
           />
         )}
