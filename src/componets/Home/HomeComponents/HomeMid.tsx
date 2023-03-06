@@ -52,7 +52,8 @@ export const HomeMid = () => {
               <SpinnerSuper />
             </div>
           )}
-          {NewsArrData && OnlyOnePostForUser.map((Singlepost) => <SinglePostComponent post={Singlepost} />)}
+          {NewsArrData &&
+            OnlyOnePostForUser.map((Singlepost) => <SinglePostComponent post={Singlepost} key={Singlepost._id} />)}
         </Row>
       </Col>
     </>
