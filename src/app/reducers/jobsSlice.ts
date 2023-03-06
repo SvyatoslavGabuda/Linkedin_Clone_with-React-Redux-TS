@@ -24,10 +24,10 @@ const initialState: allJobs = {
   status: "idle",
 };
 
-const postUrl = "https://strive-benchmark.herokuapp.com/api/jobs";
-export const jobsFetch = createAsyncThunk("fetch-jobs", async () => {
+const getUrl = "https://strive-benchmark.herokuapp.com/api/jobs";
+export const jobsFetch = createAsyncThunk("fetch-jobs", async (limit: number = 10) => {
   try {
-    const resposnse = await fetch(postUrl, {
+    const resposnse = await fetch(`${getUrl}/?&limit=${limit.toString()}`, {
       headers: {
         Authorization: process.env.REACT_APP_BEARER || "nonandra",
       },
