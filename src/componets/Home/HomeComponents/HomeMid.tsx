@@ -33,29 +33,22 @@ export const postsDELETE = async (idPost: string) => {
   }
 };
 export const HomeMid = () => {
-  const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
+  // const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
+  //setAllPostRev([...allpost].reverse());
+  // const OnlyOnePostForUser = [...new Map(NewsArrData.map((p) => [p.user._id, p])).values()];
   const allpost = useAppSelector((state) => state.allPosts.allPosts);
   const [allPostRev, setAllPostRev] = useState<Iposts[]>([]);
-
-  //setAllPostRev([...allpost].reverse());
-
-  const OnlyOnePostForUser = [...new Map(NewsArrData.map((p) => [p.user._id, p])).values()];
-
   const loadingState: string = useAppSelector((state) => state.allPosts.status);
-
   const [postOffSet, setPostOffset] = useState(0);
-
   const [postPerPage, setPostPerPage] = useState(10);
-
   const endOffset = postOffSet + postPerPage;
-
   const curretPOSTS = allPostRev.slice(postOffSet, endOffset);
-
   const pageCount = Math.ceil(allPostRev.length / postPerPage);
 
   const handlePageClick = (e: any) => {
     const newOffset = (e.selected * postPerPage) % allPostRev.length;
     setPostOffset(newOffset);
+    window.scrollTo(0, 0);
   };
   useEffect(() => {
     setAllPostRev([...allpost].reverse());
@@ -81,10 +74,10 @@ export const HomeMid = () => {
           {curretPOSTS && (
             <ReactPaginate
               breakLabel="..."
-              previousLabel="< previous"
-              nextLabel="next >"
+              previousLabel="<<"
+              nextLabel=">>"
               onPageChange={handlePageClick}
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={3}
               pageCount={pageCount}
               pageLinkClassName="page-link"
               previousClassName="page-item"
@@ -93,7 +86,7 @@ export const HomeMid = () => {
               nextLinkClassName="page-link"
               breakClassName="page-item"
               breakLinkClassName="page-link"
-              containerClassName="pagination"
+              containerClassName="pagination justify-content-between"
               activeClassName="active"
             />
           )}
