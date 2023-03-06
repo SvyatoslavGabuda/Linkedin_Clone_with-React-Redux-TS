@@ -1,17 +1,28 @@
-export const JobComponent = () => {
+import { Ijob } from "../../app/reducers/jobsSlice";
+import { BsBookmark, BsFillBookmarkFill } from "react-icons/bs";
+import differenceInDays from "date-fns/differenceInDays";
+
+export const JobComponent = ({ job }: { job: Ijob }) => {
+  const oggi = new Date();
+  const iat = new Date(job.publication_date);
+  const diff = differenceInDays(oggi, iat);
+  const img = job.url.substring(job.url.lastIndexOf("-")).substring(1);
+
   return (
-    <div className="jobcard d-flex">
+    <div className="jobcard d-flex mb-3">
       <div>
-        <img src="https://placekitten.com/200" alt="Azienda" />
+        <img src={`https://remotive.com/web/image/hr.job/${img}/logo/128x128`} alt="Azienda" />
       </div>
       <div>
-        <h6>Ingegnere informatico</h6>
-        <p>Idea srl</p>
-        <p>Porto Empedocle, Sicilia, Italia (Ibrido)</p>
+        <h6>{job.title}</h6>
+        <p>{job.company_name}</p>
+        <p>{job.candidate_required_location}</p>
         <p>Selezione attiva</p>
-        <p>2 settimane fa - 23 candidati</p>
+        <p>{diff} giorni fa</p>
       </div>
-      <div></div>
+      <div>
+        <BsBookmark /> <BsFillBookmarkFill />
+      </div>
     </div>
   );
 };
