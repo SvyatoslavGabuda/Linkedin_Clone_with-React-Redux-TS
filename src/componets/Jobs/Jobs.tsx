@@ -1,5 +1,5 @@
 import "./jobs.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { jobsFetch } from "../../app/reducers/jobsSlice";
 import { Col, Row } from "react-bootstrap";
@@ -14,7 +14,11 @@ import { JobComponent } from "./JobComponent";
 export const Jobs = () => {
   const dispatch = useAppDispatch();
   const jobs = useAppSelector((state) => state.allJobs);
-  const limit = 20;
+  const [limit, setLimit] = useState(5);
+
+  const limitUp = () => {
+    setLimit(limit + 5);
+  };
 
   useDocumentTitle(`Offerte di lavoro | LinkedIn`);
 
@@ -25,7 +29,7 @@ export const Jobs = () => {
   return (
     <>
       <Row>
-        <Col xs={12} md={3} xl={3} className="rounded bg-light jobsMenu mb-3">
+        <Col xs={12} md={3} xl={3} className="rounded bg-light jobsMenu mb-3 h-100">
           <ul className="p-0 m-0">
             <Link to="/myjobs">
               <li>
@@ -100,7 +104,10 @@ export const Jobs = () => {
           <div className="jobsList p-3 rounded bg-light mb-3">
             <h5 className="d-flex justify-content-between align-items-center">Consigliato per te</h5>
             <p>Sulla base del tuo profilo e della tua cronologia delle ricerche</p>
-            <div>{jobs.status === "idle" && jobs.allJobs?.map((v, i) => <JobComponent />)}</div>
+            <div>{jobs.status === "idle" && jobs.allJobs?.map((v) => <JobComponent job={v} />)}</div>
+            <div className="text-center" onClick={limitUp}>
+              Mostra altro...
+            </div>
           </div>
         </Col>
         <Col xl={3} className="d-none d-xl-block">
