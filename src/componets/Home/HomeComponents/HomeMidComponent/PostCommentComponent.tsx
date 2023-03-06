@@ -26,10 +26,10 @@ export const PostCommentComponent = ({ comment }: PostCommentProps) => {
       <Card className="singleCommentText p-2">
         <div className="d-flex justify-content-between align-items-center">
           <h6>{comment.author}</h6>
-          <p></p>
+          <p>{commented(comment.createdAt.toString())}</p>
         </div>
-        <p className="title">Title dell'utente</p>
-        <p>Commento: congratulazioni dio can</p>
+        <p className="title">{comment.author}</p>
+        <p>{comment.comment}</p>
       </Card>
     </Col>
   );
