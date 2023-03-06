@@ -1,26 +1,17 @@
 import { CreatePost } from "../CreatePostsComp/CreatePost";
 
-import { Col, NavDropdown, Row } from "react-bootstrap";
-import { BiWorld } from "react-icons/bi";
-import { SlLike } from "react-icons/sl";
-import { FaRegCommentDots } from "react-icons/fa";
-import { TbArrowsRandom } from "react-icons/tb";
-import { RiSendPlaneFill } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import { Col, Row } from "react-bootstrap";
+
 import { Posts } from "../PostsS";
 import "./HomeComponents.scss";
 import { useAppSelector } from "../../../app/hooks";
-import { Iprofile } from "../../Profile/Profile";
-import { differenceInHours, differenceInMinutes } from "date-fns";
-import { BsFlagFill, BsBookmark, BsCodeSlash, BsEyeSlashFill } from "react-icons/bs";
-import { SlLink } from "react-icons/sl";
-import { FiAlertTriangle } from "react-icons/fi";
-import { FaTrashAlt } from "react-icons/fa";
-import { HiOutlinePencil } from "react-icons/hi2";
-import { addFocusPosts, showPutPosts } from "../../../app/reducers/postsPutModSlice";
-import { useAppDispatch } from "../../../app/hooks";
 import { SpinnerSuper } from "../spinner/SpinnerSuper";
-import { postsFetc } from "../../../app/reducers/postsSlice";
+import { SinglePostComponent } from "./HomeMidComponent/SinglePostComponent";
+
+import ReactPaginate from "react-paginate";
+import { useEffect, useState } from "react";
+import { Iposts } from "../../../app/reducers/postsSlice";
+
 export const postsDELETE = async (idPost: string) => {
   try {
     const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${idPost}`, {
@@ -42,28 +33,26 @@ export const postsDELETE = async (idPost: string) => {
   }
 };
 export const HomeMid = () => {
-  const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
-  const MyProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
-  const storePutPosts = useAppSelector((state) => state.postPutModale);
-  const dispatch = useAppDispatch();
+  // const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
+  //setAllPostRev([...allpost].reverse());
+  // const OnlyOnePostForUser = [...new Map(NewsArrData.map((p) => [p.user._id, p])).values()];
+  const allpost = useAppSelector((state) => state.allPosts.allPosts);
+  const [allPostRev, setAllPostRev] = useState<Iposts[]>([]);
+  const loadingState: string = useAppSelector((state) => state.allPosts.status);
+  const [postOffSet, setPostOffset] = useState(0);
+  const [postPerPage, setPostPerPage] = useState(10);
+  const endOffset = postOffSet + postPerPage;
+  const curretPOSTS = allPostRev.slice(postOffSet, endOffset);
+  const pageCount = Math.ceil(allPostRev.length / postPerPage);
 
-  const OnlyOnePostForUser = [...new Map(NewsArrData.map((p) => [p.user._id, p])).values()];
-  const Oggi = new Date();
-  const posted = (date: string) => {
-    if (differenceInMinutes(Oggi, new Date(date)) < 1) {
-      return "Adesso";
-    } else if (differenceInHours(Oggi, new Date(date)) < 1) {
-      let minuti = differenceInMinutes(Oggi, new Date(date)) > 1 ? " minuti" : " minuto";
-      return differenceInMinutes(Oggi, new Date(date)) + minuti;
-    } else {
-      let ore = differenceInHours(Oggi, new Date(date)) > 1 ? " ore" : " ora";
-      return differenceInHours(Oggi, new Date(date)) + ore;
-    }
+  const handlePageClick = (e: any) => {
+    const newOffset = (e.selected * postPerPage) % allPostRev.length;
+    setPostOffset(newOffset);
+    window.scrollTo(0, 0);
   };
-
-  // storePutPosts.focus._id
-  const loadingState = useAppSelector((state) => state.allPosts.status);
-
+  useEffect(() => {
+    setAllPostRev([...allpost].reverse());
+  }, [allpost]);
   return (
     <>
       <Posts />
@@ -72,9 +61,6 @@ export const HomeMid = () => {
           <CreatePost />
         </Row>
         <Row className="flex-column">
-          {/* <SpinnerSuper />
-          <SpinnerSuper />
-          <SpinnerSuper /> */}
           {loadingState === "loading" && (
             <div className="text-center ">
               {/* <Spinner animation="grow" variant="info" /> */}
@@ -83,166 +69,31 @@ export const HomeMid = () => {
               <SpinnerSuper />
             </div>
           )}
-          {NewsArrData &&
+
+          {curretPOSTS && curretPOSTS.map((el) => <SinglePostComponent post={el} key={el._id} />)}
+          {curretPOSTS && (
+            <ReactPaginate
+              breakLabel="..."
+              previousLabel="<<"
+              nextLabel=">>"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              pageCount={pageCount}
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination justify-content-between"
+              activeClassName="active"
+            />
+          )}
+          {/* {NewsArrData &&
             OnlyOnePostForUser.map((Singlepost) => (
-              <Col className="bg-white border border-1 rounded rounded-3 my-2 p-0" key={Singlepost._id}>
-                <div>
-                  {/* Profile */}
-
-                  <div className="d-flex HomeMidProfileCont justify-content-between px-3 pt-3">
-                    <div className="d-flex">
-                      <div className="me-2">
-                        <img src={Singlepost.user.image} alt="ProfilePic" />
-                      </div>
-                      <div>
-                        <Link
-                          to={
-                            "/profile/" + (Singlepost.user._id === MyProfile._id ? MyProfile._id : Singlepost.user._id)
-                          }
-                        >
-                          <h3>
-                            {Singlepost.user.name} {Singlepost.user.surname}
-                          </h3>
-                        </Link>
-                        <p>{Singlepost.user.title}</p>
-                        <div className="d-flex">
-                          <p className="me-1">{posted(Singlepost.createdAt.toString())}</p>
-                          <p>
-                            {" "}
-                            · <BiWorld />
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div>
-                      <NavDropdown
-                        title="..."
-                        align={"end"}
-                        className="fs-2"
-                        onClick={() => {
-                          dispatch(addFocusPosts(Singlepost));
-                        }}
-                      >
-                        <div className="HomeMidDropDwon">
-                          <Link to="/">
-                            <BsBookmark /> Salva
-                          </Link>
-                        </div>
-                        <div className="HomeMidDropDwon">
-                          <Link to="/">
-                            <SlLink /> Copia link al post
-                          </Link>
-                        </div>
-                        <div className="HomeMidDropDwon">
-                          <Link to="/">
-                            <BsCodeSlash /> Incorpora questo post
-                          </Link>
-                        </div>
-                        {Singlepost.user._id === MyProfile._id ? (
-                          <div
-                            className="HomeMidDropDwon"
-                            onClick={() => {
-                              postsDELETE(storePutPosts.focus._id);
-                            }}
-                          >
-                            <Link to="/">
-                              <FaTrashAlt /> Elimina
-                            </Link>
-                          </div>
-                        ) : (
-                          <div className="HomeMidDropDwon">
-                            <Link to="/">
-                              <BsEyeSlashFill /> Non voglio vederlo
-                            </Link>
-                          </div>
-                        )}
-                        {Singlepost.user._id !== MyProfile._id ? (
-                          <div className="HomeMidDropDwon">
-                            <Link to="/">
-                              <FiAlertTriangle /> Perchè vedo questo annuncio?
-                            </Link>
-                          </div>
-                        ) : (
-                          ""
-                        )}
-                        <div className="HomeMidDropDwon">
-                          <Link to="/">
-                            <BsFlagFill /> Segnala post
-                          </Link>
-                        </div>
-                        {Singlepost.user._id === MyProfile._id ? (
-                          <div
-                            className="HomeMidDropDwon"
-                            onClick={() => {
-                              dispatch(showPutPosts());
-                            }}
-                          >
-                            <Link to="/">
-                              <HiOutlinePencil /> Modifica
-                            </Link>
-                          </div>
-                        ) : (
-                          ""
-                        )}
-                      </NavDropdown>
-                    </div>
-                  </div>
-
-                  {/* Profile */}
-
-                  {/* Text */}
-
-                  <div className="px-3 pb-2">{Singlepost.text}</div>
-
-                  {/* Text */}
-
-                  {/* Img */}
-
-                  <div>{Singlepost.image && <img className="w-100" src={Singlepost.image} alt="" />}</div>
-
-                  {/* Img */}
-
-                  {/* Buttons */}
-
-                  <div className="HomeMidButtonsCont d-flex justify-content-evenly rounded rounded-3">
-                    <button className="HomeMidButton d-none d-sm-block">
-                      <div className="d-flex align-items-center">
-                        <div>
-                          <SlLike className="HomeMidIcon me-1" />
-                        </div>
-                        <div>Consiglia</div>
-                      </div>
-                    </button>
-                    <button className="HomeMidButton">
-                      <div className="d-flex align-items-center">
-                        <div>
-                          <FaRegCommentDots className="HomeMidIcon me-1" />
-                        </div>
-                        <div>Commenta</div>
-                      </div>
-                    </button>
-                    <button className="HomeMidButton d-none d-lg-block">
-                      <div className="d-flex align-items-center">
-                        <div>
-                          <TbArrowsRandom className="HomeMidIcon me-1" />
-                        </div>
-                        <div>Diffondi il post</div>
-                      </div>
-                    </button>
-                    <button className="HomeMidButton">
-                      <div className="d-flex align-items-center">
-                        <div>
-                          <RiSendPlaneFill className="HomeMidIcon me-1" />
-                        </div>
-                        <div>Invia</div>
-                      </div>
-                    </button>
-                  </div>
-
-                  {/* Buttons */}
-                </div>
-              </Col>
-            ))}
+              <SinglePostComponent post={Singlepost} key={Singlepost._id} />
+            ))} */}
         </Row>
       </Col>
     </>

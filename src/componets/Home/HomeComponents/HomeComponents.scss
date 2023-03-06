@@ -258,7 +258,7 @@
   }
   .dropdown-menu {
     width: 350px;
-    right: -.8rem !important;
+    right: -0.8rem !important;
   }
   .dropdown-toggle::after {
     display: none;
@@ -355,5 +355,89 @@
   }
   .footer-logo {
     margin-right: 8px;
+  }
+}
+
+.inputCommentContainer {
+  width: 85%;
+}
+
+.commentsInput {
+  font-size: 12px;
+  @media screen and (min-width: 340px) {
+    font-size: 1em;
+  }
+}
+
+.commentsDropdown {
+  .dropFilter {
+    color: gray;
+    background-color: inherit;
+    border: none;
+    &:hover {
+      color: gray;
+      background-color: inherit;
+    }
+  }
+
+  .dropCommentIcon {
+    color: #5e5e5e;
+  }
+
+  .commentsDropdownText {
+    color: gray;
+
+    h6 {
+      color: #555555;
+      font-size: 15px;
+    }
+    p {
+      font-size: 12px;
+      @media screen and (max-width: 350px) {
+        max-width: 200px;
+        white-space: pre-wrap;
+      }
+    }
+  }
+}
+
+.singlePostComment {
+  .specificCommentImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .singleCommentText {
+    background-color: #f2f2f2;
+    width: 90%;
+
+    div {
+      margin-bottom: 5px;
+
+      h6 {
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+
+      p {
+        font-size: 12px;
+        margin-bottom: 0;
+        color: gray;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    p.title {
+      font-size: 12px;
+      color: gray;
+      margin-bottom: 8px;
+    }
   }
 }

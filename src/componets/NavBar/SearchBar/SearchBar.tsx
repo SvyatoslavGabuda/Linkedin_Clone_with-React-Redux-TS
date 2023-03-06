@@ -112,9 +112,23 @@ export const SearchBar = () => {
           </div>
         )}
         {notFoundMsg && (
-          <div className="LoaderWrapper">
-            <span className="SearchedProfileTitle">Stop looking for your imaginary friends</span>
-          </div>
+          <>
+            <div className="LoaderWrapper">
+              <span className="SearchedProfileTitle">Stop looking for your imaginary friends</span>
+            </div>
+            <Link to="/advancedSearch">
+              <span
+                className="ricercaAvanzata btn"
+                onClick={() => {
+                  setExpanded(false);
+                  setAllRes([]);
+                  setSearchPerson("");
+                }}
+              >
+                Ricerca Avanzata
+              </span>
+            </Link>
+          </>
         )}
         {allRes.length > 0 && (
           <>
@@ -125,6 +139,11 @@ export const SearchBar = () => {
                   className="SearchLinkContainer"
                   to={"/profile/" + (el._id === myProfile._id ? "me" : el._id)}
                   key={el._id}
+                  onClick={() => {
+                    setExpanded(false);
+                    setAllRes([]);
+                    setSearchPerson("");
+                  }}
                 >
                   <div className="SearchedProfileContainer">
                     <span className="SearchedProfileIcon">
@@ -143,6 +162,18 @@ export const SearchBar = () => {
                 </Link>
               ))}
             {/* Profilo */}
+            <Link to="/advancedSearch">
+              <span
+                className="ricercaAvanzata btn"
+                onClick={() => {
+                  setExpanded(false);
+                  setAllRes([]);
+                  setSearchPerson("");
+                }}
+              >
+                Ricerca Avanzata
+              </span>
+            </Link>
           </>
         )}
       </div>
