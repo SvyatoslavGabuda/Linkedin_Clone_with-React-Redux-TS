@@ -116,12 +116,23 @@ export const SearchBar = () => {
           </div>
         )}
         {notFoundMsg && (
-          <div className="LoaderWrapper">
-            <span className="SearchedProfileTitle">Stop looking for your imaginary friends</span>
+          <>
+            <div className="LoaderWrapper">
+              <span className="SearchedProfileTitle">Stop looking for your imaginary friends</span>
+            </div>
             <Link to="/advancedSearch">
-              <span className="ricercaAvanzata btn">Ricerca Avanzata</span>
+              <span
+                className="ricercaAvanzata btn"
+                onClick={() => {
+                  setExpanded(false);
+                  setAllRes([]);
+                  setSearchPerson("");
+                }}
+              >
+                Ricerca Avanzata
+              </span>
             </Link>
-          </div>
+          </>
         )}
         {allRes.length > 0 && (
           <>
