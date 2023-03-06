@@ -17,7 +17,7 @@ export const jobsFav = (state = initialState, action: PayloadAction<string>) => 
         return state;
       }
     case "DELJOBFROMFAV":
-      return state;
+      return { ...state, favJobs: state.favJobs.filter((e) => e !== action.payload) };
     default:
       return state;
   }
