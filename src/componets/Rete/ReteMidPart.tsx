@@ -58,7 +58,13 @@ export const ReteMidPart = () => {
             <ReteSpinner />
           </>
         )}
-        {arryForHoldingProfile.length > 0 && <button onClick={handleShowMorePosts}>Mostra Altro</button>}
+        {arryForHoldingProfile.length > 0 && (
+          <div className="d-flex justify-content-center">
+            <button className="rounded-pill py-1 Button3 mb-2 w-75" onClick={handleShowMorePosts}>
+              Mostra Altro
+            </button>
+          </div>
+        )}
       </Row>
     </Col>
   );

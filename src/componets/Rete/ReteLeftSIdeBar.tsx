@@ -8,9 +8,11 @@ import { RiPagesLine } from "react-icons/ri";
 import { FiHash } from "react-icons/fi";
 import { TiContacts } from "react-icons/ti";
 import "./Rete.scss";
+import { useAppSelector } from "../../app/hooks";
 
 export const ReteLeftSideBar = () => {
   const [show, setShow] = useState(false);
+  const Friends = useAppSelector((state) => state.friends.Favfriends);
 
   return (
     <>
@@ -21,11 +23,16 @@ export const ReteLeftSideBar = () => {
               <h5 className="ms-3">Gestisci la tua rete</h5>
             </div>
             <ul>
-              <li>
-                <h6>
-                  <BsFillPeopleFill className="mx-2 ReteIcons" /> Collegamenti
-                </h6>
-              </li>
+              <Link to={"/friends"} className="text-decoration-none">
+                <li>
+                  <div className="d-flex justify-content-between">
+                    <h6>
+                      <BsFillPeopleFill className="mx-2 ReteIcons" /> Collegamenti
+                    </h6>
+                    <span className="me-2 text-secondary">{Friends.length}</span>
+                  </div>
+                </li>
+              </Link>
               {show && (
                 <>
                   <li>

@@ -4,12 +4,16 @@ import { RxCross2 } from "react-icons/rx";
 import Logo from "./Assets/original.png";
 import { Iprofile } from "../Profile/Profile";
 import { BsFillPersonFill } from "react-icons/bs";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 
 interface SingleReteProfileCardProps {
   SingleProfile: Iprofile;
 }
 
 export const SingleReteProfileCard = ({ SingleProfile }: SingleReteProfileCardProps) => {
+  const Friends = useAppSelector((state) => state.friends.Favfriends);
+  const dispatch = useAppDispatch();
+
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="mb-2" key={SingleProfile._id}>
       <div className="ReteLeftProfilePartContainer border border-1 rounded rounded-3">
@@ -36,9 +40,26 @@ export const SingleReteProfileCard = ({ SingleProfile }: SingleReteProfileCardPr
         {/* Button*/}
         {/* ---- */}
         <div className="ReteLeftPartSecond">
-          <button className="Button2 rounded-pill py-1">
-            <BsFillPersonFill />+ Collegati
-          </button>
+          {!Friends.find((el: Iprofile) => el._id === SingleProfile._id) && (
+            <button
+              className="Button2 rounded-pill py-1"
+              onClick={() => {
+                dispatch({ type: "ADDFRIENDTOFAV", payload: SingleProfile });
+              }}
+            >
+              <BsFillPersonFill />+ Collegati
+            </button>
+          )}
+          {Friends.find((el: Iprofile) => el._id === SingleProfile._id) && (
+            <button
+              className="ReteProfileCardDelete py-1 rounded-pill"
+              onClick={() => {
+                dispatch({ type: "DELFRIENDFROMFAV", payload: SingleProfile });
+              }}
+            >
+              Rimuovi
+            </button>
+          )}
         </div>
         {/* ---- */}
         <button className="ReteDeleteButton">

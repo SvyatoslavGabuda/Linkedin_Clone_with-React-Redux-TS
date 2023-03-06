@@ -189,3 +189,63 @@
     transition: 300ms ease-in-out;
   }
 }
+.ReteProfileCardDelete {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  color: #fc0202;
+  background-color: white;
+  box-shadow: inset 0 0 0 1px #fa0202;
+  &:hover {
+    box-shadow: inset 0 0 0 2px #fd0000;
+    background-color: #fc00003f;
+    transition: 300ms ease-in-out;
+  }
+}
+.ReteInputCOntainer {
+  p {
+    color: #0a66c2;
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}
+.ReteFriendContainer {
+  img {
+    width: 72px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+  }
+  .ReteFriendInfoCont {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+  }
+  .ReteFriendButton {
+    background-color: white;
+    border: none;
+
+    color: #5e5e5e;
+    &:hover {
+      background-color: rgba(199, 199, 199, 0.418);
+      border-radius: 50%;
+    }
+  }
+  .ReteFrienDropDownMenu {
+    position: absolute;
+    bottom: -3rem;
+    z-index: 4;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+      rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    .RemoveLink {
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(199, 199, 199, 0.418);
+      }
+    }
+  }
+}

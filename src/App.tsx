@@ -23,6 +23,7 @@ import { AdvancedSearch } from "./componets/AdvancedSearch/AdvancedSearch";
 import { Jobs } from "./componets/Jobs/Jobs";
 import { MyJobs } from "./componets/Jobs/MyJobs";
 import { Rete } from "./componets/Rete/Rete";
+import { Friends } from "./componets/Rete/Friends";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -87,6 +88,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/advancedSearch" element={<AdvancedSearch />} />
             <Route path="/rete" element={<Rete />} />
+            <Route path="/friends" element={<Friends />} />
           </Routes>
         </Container>
         <Chat />

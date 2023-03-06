@@ -1,5 +1,5 @@
-import { configureStore, ThunkAction, Action, Reducer } from "@reduxjs/toolkit";
-import { persistReducer, persistStore } from "redux-persist";
+import { configureStore, ThunkAction, Action, Reducer, combineReducers } from "@reduxjs/toolkit";
+import { persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import { allProfileReduce } from "./reducers/allProfileReduce";
@@ -14,20 +14,29 @@ import postsPutModSlice from "./reducers/postsPutModSlice";
 import postsSlice from "./reducers/postsSlice";
 import slicerForUpDate from "./reducers/slicerForUpDate";
 import upgrateModSlice from "./reducers/upgrateModSlice";
+import { friends } from "./reducers/favFriends";
 
 // const allReducer = combineReducers({
 //   profile: allProfileReduce as Reducer,
 // });
 
 const persistConfig = {
-  key : '',
-  storage
+  key : 'root',
+  storage: storage,
+  whitelist: ['jobsFav', 'allJobs', 'friends']
 }
 
-// const persistedReducer = persistReducer(persistConfig, commentSlice.reducer)
+const rootReducer = combineReducers({
+  // jobsFav : jobsFav,
+  // jobsSlice : jobsSlice,
+  // friends : friends as Reducer
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
   reducer: {
+    persistedReducer,
     profile: allProfileReduce as Reducer,
     experience: experienceSlice,
     upGradeModale: upgrateModSlice,
@@ -40,12 +49,13 @@ export const store = configureStore({
     postPutModale: postsPutModSlice,
     upDate: slicerForUpDate,
     comments: commentSlice,
+    friends : friends as Reducer
+  
 
     // newProfile: profileSlice,
   },
 });
 
-const persistor = persistStore(store)
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
