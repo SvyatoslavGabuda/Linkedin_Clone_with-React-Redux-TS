@@ -56,6 +56,20 @@
   border: 1px solid rgba(192, 192, 192, 0.473);
   padding-top: 20px;
   .jobcard {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(167, 167, 167, 0.253);
+    > div:nth-child(2) {
+      width: 100%;
+    }
+    > div:last-child {
+      svg {
+        color: #666666;
+        cursor: pointer;
+        &:hover {
+          color: #414141;
+        }
+      }
+    }
     > div {
       margin-right: 10px;
       > img {
