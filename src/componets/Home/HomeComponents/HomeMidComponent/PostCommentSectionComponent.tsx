@@ -78,7 +78,9 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
       <Row className="d-flex justify-content-center">
         {commentsStore.status === "idle" &&
           commentsStore.comments?.length > 0 &&
-          commentsStore.comments.map((comment, i) => <PostCommentComponent comment={comment} key={i} />)}
+          commentsStore.comments.map((comment, i) => (
+            <PostCommentComponent comment={comment} commentIndex={i} key={i} />
+          ))}
       </Row>
     </div>
   );

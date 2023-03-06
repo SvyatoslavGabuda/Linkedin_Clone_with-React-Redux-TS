@@ -3,12 +3,12 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 export interface Icomments {
   _id: string;
-  rate: number;
+  rate: string;
   comment: string;
   elementId: string;
   author: string;
   createdAt: Date;
-  updatedAt: Date;
+  updatedAt?: Date;
   __v: number;
 }
 interface comments {
@@ -32,7 +32,7 @@ export interface IcommentsPost {
 export interface params {
   metod: string;
   id?: string;
-  commentToPost?: IcommentsPost;
+  commentToPost?: IcommentsPost | Icomments;
 }
 const url = "https://striveschool-api.herokuapp.com/api/comments/";
 
