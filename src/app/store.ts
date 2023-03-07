@@ -22,22 +22,15 @@ import { friends } from "./reducers/favFriends";
 
 const persistConfig = {
   key : 'root',
-  storage: storage,
-  whitelist: ['jobsFav', 'allJobs', 'friends']
+  storage,
+  // whitelist: ['jobsFav', 'allJobs', 'friends']
 }
 
 const rootReducer = combineReducers({
   // jobsFav : jobsFav,
   // jobsSlice : jobsSlice,
   // friends : friends as Reducer
-})
-
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
-export const store = configureStore({
-  reducer: {
-    persistedReducer,
-    profile: allProfileReduce as Reducer,
+  profile: allProfileReduce as Reducer,
     experience: experienceSlice,
     upGradeModale: upgrateModSlice,
     experienceModale: expModSlice,
@@ -50,11 +43,29 @@ export const store = configureStore({
     upDate: slicerForUpDate,
     comments: commentSlice,
     friends : friends as Reducer
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
+
+export const store = configureStore(
+  {reducer: persistedReducer,}
+    // profile: allProfileReduce as Reducer,
+    // experience: experienceSlice,
+    // upGradeModale: upgrateModSlice,
+    // experienceModale: expModSlice,
+    // experiencePutModale: expPutModSlice,
+    // allPosts: postsSlice,
+    // allJobs: jobsSlice,
+    // jobsFav: jobsFav as Reducer,
+    // postsModale: postsModSlice,
+    // postPutModale: postsPutModSlice,
+    // upDate: slicerForUpDate,
+    // comments: commentSlice,
+    // friends : friends as Reducer
   
 
     // newProfile: profileSlice,
-  },
-});
+);
 
 
 export type AppDispatch = typeof store.dispatch;
