@@ -93,7 +93,7 @@ export const Jobs = () => {
               </li>
               <li
                 onClick={() => {
-                  navigate("/jobs/chief");
+                  navigate("/jobs/chief%20of%20staff");
                 }}
               >
                 <AiOutlineSearch />
@@ -101,15 +101,15 @@ export const Jobs = () => {
               </li>
               <li
                 onClick={() => {
-                  navigate("/jobs/");
+                  navigate("/jobs/recruiter");
                 }}
               >
                 <AiOutlineSearch />
-                Lead Web Developer
+                Recruiter
               </li>
               <li
                 onClick={() => {
-                  navigate("/jobs/");
+                  navigate("/jobs/php%20developer");
                 }}
               >
                 <AiOutlineSearch />
@@ -117,11 +117,11 @@ export const Jobs = () => {
               </li>
               <li
                 onClick={() => {
-                  navigate("/jobs/");
+                  navigate("/jobs/marketing");
                 }}
               >
                 <AiOutlineSearch />
-                Web Programmer
+                Marketing
               </li>
             </ul>
           </div>
