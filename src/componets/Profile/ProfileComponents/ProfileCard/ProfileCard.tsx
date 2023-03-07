@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { toogleM } from "../../../../app/reducers/upgrateModSlice";
 import { useParams } from "react-router";
 import { ProfileImageMod } from "./ProfileImageMod";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface ProfileCardProps {
   profile: Iprofile;

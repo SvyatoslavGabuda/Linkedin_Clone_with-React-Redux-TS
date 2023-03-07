@@ -44,7 +44,7 @@ export const ReteMidPart = () => {
       <Row>
         {arryForHoldingProfile.length > 0 ? (
           arryForHoldingProfile.map((SingleProfile: Iprofile) => (
-            <SingleReteProfileCard SingleProfile={SingleProfile} />
+            <SingleReteProfileCard SingleProfile={SingleProfile} key={SingleProfile._id} />
           ))
         ) : (
           <>
