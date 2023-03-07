@@ -8,7 +8,7 @@ import { AiFillYoutube, AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { RiSettings5Fill } from "react-icons/ri";
 import { HomeFooter } from "../Home/HomeComponents/HomeFooter";
 import useDocumentTitle from "../../app/useDocumentTitle";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { JobComponent } from "./JobComponent";
 import { JobSearch } from "./JobsSearch";
 import { Ijob } from "../../app/reducers/jobsSlice";
@@ -16,6 +16,7 @@ import { Ijob } from "../../app/reducers/jobsSlice";
 export const Jobs = () => {
   const dispatch = useAppDispatch();
   const params = useParams();
+  const navigate = useNavigate();
   const jobs = useAppSelector((state) => state.allJobs);
   const [limit, setLimit] = useState(5);
 
@@ -82,23 +83,43 @@ export const Jobs = () => {
               Ricerche di offerte di lavoro suggerite <AiOutlineClose style={{ cursor: "pointer" }} />
             </h5>
             <ul>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/web%20developer");
+                }}
+              >
                 <AiOutlineSearch />
                 Web Developer
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/chief");
+                }}
+              >
                 <AiOutlineSearch />
-                Junior web developer
+                Chief of Staff
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/");
+                }}
+              >
                 <AiOutlineSearch />
                 Lead Web Developer
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/");
+                }}
+              >
                 <AiOutlineSearch />
                 PHP Developer
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/");
+                }}
+              >
                 <AiOutlineSearch />
                 Web Programmer
               </li>
