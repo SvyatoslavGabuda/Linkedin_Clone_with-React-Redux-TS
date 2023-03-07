@@ -31,7 +31,7 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
   const friends = useAppSelector((state) => state.friends.Favfriends);
 
   const finduser = () => {
-    if (friends?.length > 0) return friends.find((person: Iprofile) => person._id === profile._id);
+    if (friends?.length > 0) return friends.find((person: Iprofile) => person?._id === profile?._id);
   };
 
   let verifyUser = finduser();
