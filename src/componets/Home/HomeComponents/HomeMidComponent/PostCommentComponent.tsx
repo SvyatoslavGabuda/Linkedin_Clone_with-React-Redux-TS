@@ -12,16 +12,16 @@ import Template from "../Assets/original.png";
 
 interface PostCommentProps {
   comment: Icomments;
-  commentIndex: number;
+  fetchAgain: () => void;
 }
 
-export const PostCommentComponent = ({ comment, commentIndex }: PostCommentProps) => {
+export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) => {
   const allProfile = useAppSelector((state) => state.profile.allProfile);
   const comments = useAppSelector((state) => state.comments.comments);
   const dispatch = useAppDispatch();
   const [putComment, setPutComment] = useState({
     show: false,
-    comment: comments[commentIndex],
+    comment: comment,
   });
 
   const closeModal = () => {
@@ -29,8 +29,8 @@ export const PostCommentComponent = ({ comment, commentIndex }: PostCommentProps
   };
 
   const DELETEmyComment = async () => {
-    await dispatch(commentFetch({ metod: "DELETE", id: comments[commentIndex]._id }));
-    dispatch(commentFetch({ metod: "GET", id: comments[commentIndex].elementId }));
+    await dispatch(commentFetch({ metod: "DELETE", id: comment._id }));
+    fetchAgain();
   };
 
   const today = new Date();
@@ -99,7 +99,7 @@ export const PostCommentComponent = ({ comment, commentIndex }: PostCommentProps
           <p>{comment.comment}</p>
         </Card>
       </Col>
-      <PostCommentPUTModal toPut={putComment} closeModal={closeModal} />
+      <PostCommentPUTModal toPut={putComment} fetchAgain={fetchAgain} closeModal={closeModal} />
     </>
   );
 };

@@ -14,19 +14,41 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
   const dispatch = useAppDispatch();
   const commentsStore = useAppSelector((state) => state.comments);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+  const [fetchedComments, setFetchedComments] = useState<Icomments[]>([]);
   const [commentText, setCommentText] = useState<IcommentsPost>({
     comment: "",
     rate: "5",
     elementId: postId,
   });
 
+  const url = "https://striveschool-api.herokuapp.com/api/comments/";
+  const fetchCommenti = async () => {
+    try {
+      const response = await fetch(url + postId, {
+        method: "GET",
+        headers: {
+          Authorization: process.env.REACT_APP_COMMENT_BEARER || "nonandra",
+          "content-type": "application/json",
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setFetchedComments(data);
+      } else {
+        console.log("non ha funzionato");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const POSTmyComment = async (comment: IcommentsPost) => {
     await dispatch(commentFetch({ metod: "POST", id: "", commentToPost: comment }));
-    dispatch(commentFetch({ metod: "GET", id: postId }));
+    fetchCommenti();
   };
 
   useEffect(() => {
-    dispatch(commentFetch({ metod: "GET", id: postId }));
+    fetchCommenti();
   }, []);
 
   return (
@@ -77,9 +99,9 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
       </div>
 
       <Row className="d-flex justify-content-center">
-        {commentsStore.status === "idle" && commentsStore.comments?.length > 0 ? (
-          commentsStore.comments.map((comment: Icomments, i: number) => (
-            <PostCommentComponent comment={comment} commentIndex={i} key={i} />
+        {fetchedComments?.length > 0 ? (
+          fetchedComments?.map((comment: Icomments) => (
+            <PostCommentComponent comment={comment} fetchAgain={fetchCommenti} key={comment._id} />
           ))
         ) : (
           <Col xs={11} className="pt-3 pb-4">

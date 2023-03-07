@@ -9,9 +9,10 @@ interface PutCommentProps {
     comment: Icomments;
   };
   closeModal: () => void;
+  fetchAgain: () => void;
 }
 
-export const PostCommentPUTModal = ({ toPut, closeModal }: PutCommentProps) => {
+export const PostCommentPUTModal = ({ toPut, closeModal, fetchAgain }: PutCommentProps) => {
   const dispatch = useAppDispatch();
   const [commentPUT, setCommentPUT] = useState<Icomments>({
     ...toPut.comment,
@@ -19,7 +20,7 @@ export const PostCommentPUTModal = ({ toPut, closeModal }: PutCommentProps) => {
 
   const PUTmyComment = async (comment: Icomments) => {
     await dispatch(commentFetch({ metod: "PUT", id: toPut.comment._id, commentToPost: comment }));
-    dispatch(commentFetch({ metod: "GET", id: toPut.comment.elementId }));
+    fetchAgain();
   };
 
   return (
@@ -49,6 +50,7 @@ export const PostCommentPUTModal = ({ toPut, closeModal }: PutCommentProps) => {
           onClick={(e) => {
             e.preventDefault();
             PUTmyComment(commentPUT);
+            closeModal();
           }}
         >
           Modifica Commento
