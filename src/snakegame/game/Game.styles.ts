@@ -11,9 +11,12 @@ export const GameWrapper = styled.div`
 `;
 
 export const Score = styled.h6`
+  user-select: none;
   font-family: monospace;
   background: transparent;
-  color: lightcyan;
+  font-size: 1.3em;
+
+  color: yellow;
   --webkit-background-clip: text;
   --webkit-text-fill-color: transparent;
 `;
@@ -56,6 +59,7 @@ export const PlayButton = styled.button`
 `;
 
 export const SnakeTitle = styled.h2`
+  user-select: none;
   font-family: monospace;
   color: white;
   font-style: oblique;
