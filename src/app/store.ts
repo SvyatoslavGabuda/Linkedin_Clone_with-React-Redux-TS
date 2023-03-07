@@ -15,6 +15,7 @@ import postsSlice from "./reducers/postsSlice";
 import slicerForUpDate from "./reducers/slicerForUpDate";
 import upgrateModSlice from "./reducers/upgrateModSlice";
 import { friends } from "./reducers/favFriends";
+import gameScoreSlice from "./reducers/gameScoreSlice";
 
 // const allReducer = combineReducers({
 //   profile: allProfileReduce as Reducer,
@@ -23,7 +24,7 @@ import { friends } from "./reducers/favFriends";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["jobsFav", "allJobs", "friends"],
+  whitelist: ["jobsFav", "allJobs", "friends", "gameScore"],
   transforms: [encryptTransform({ secretKey: process.env.REACT_APP_SECRET_KEY || "nonandrà" })],
 };
 
@@ -44,6 +45,7 @@ const rootReducer = combineReducers({
   upDate: slicerForUpDate,
   comments: commentSlice,
   friends: friends as Reducer,
+  gameScore: gameScoreSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -75,4 +77,9 @@ export const store = configureStore(
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>;

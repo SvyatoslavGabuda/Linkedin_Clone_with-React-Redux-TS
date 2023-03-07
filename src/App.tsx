@@ -6,12 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { Counter } from "./features/counter/Counter";
 import "./App.scss";
 import { useAppDispatch } from "./app/hooks";
-import {
-  ADD_TO_ALLPROFILE,
-  ADD_TO_MYPROFILE,
-  HANDLE_LOAD_ALLPROFILE,
-  HANDLE_LOAD_MYPROFILE,
-} from "./app/reducers/allProfileReduce";
+import { ADD_TO_ALLPROFILE, ADD_TO_MYPROFILE, HANDLE_LOAD_ALLPROFILE, HANDLE_LOAD_MYPROFILE } from "./app/reducers/allProfileReduce";
 import { Chat } from "./componets/Chat/Chat";
 import MyFooter from "./componets/Footer/MyFooter";
 import { Home } from "./componets/Home/Home";
@@ -24,6 +19,7 @@ import { Jobs } from "./componets/Jobs/Jobs";
 import { MyJobs } from "./componets/Jobs/MyJobs";
 import { Rete } from "./componets/Rete/Rete";
 import { Friends } from "./componets/Rete/Friends";
+import { GamePage } from "./snakegame/GamePage";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -83,12 +79,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/jobs" element={<Jobs />} />
+            <Route path="/jobs/:search" element={<Jobs />} />
             <Route path="/myjobs" element={<MyJobs />} />
             <Route path="/profile/:id" element={<Profile />} />
             <Route path="*" element={<NotFound />} />
             <Route path="/advancedSearch" element={<AdvancedSearch />} />
             <Route path="/rete" element={<Rete />} />
             <Route path="/friends" element={<Friends />} />
+            <Route path="/game" element={<GamePage />} />
           </Routes>
         </Container>
         <Chat />
