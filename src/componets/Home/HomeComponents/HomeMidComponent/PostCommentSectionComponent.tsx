@@ -1,9 +1,9 @@
-import { Dropdown, Form, InputGroup, Row } from "react-bootstrap";
+import { Col, Dropdown, Form, InputGroup, Row } from "react-bootstrap";
 import { BsClock, BsEmojiNeutral, BsImage } from "react-icons/bs";
 import { IoIosRocket } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { PostCommentComponent } from "./PostCommentComponent";
-import { commentFetch, IcommentsPost } from "../../../../app/reducers/commentSlice";
+import { commentFetch, Icomments, IcommentsPost } from "../../../../app/reducers/commentSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 
 interface PostSectionProps {
@@ -14,6 +14,7 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
   const dispatch = useAppDispatch();
   const commentsStore = useAppSelector((state) => state.comments);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+  const [currentComments, setCurrentComments] = useState<Icomments[]>([]);
   const [commentText, setCommentText] = useState<IcommentsPost>({
     comment: "",
     rate: "5",
@@ -41,6 +42,9 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
             onKeyUp={(e) => {
               e.key === "Enter" && POSTmyComment(commentText);
               e.key === "Enter" && setCommentText({ ...commentText, comment: "" });
+              e.key === "Enter" &&
+                commentsStore.status === "idle" &&
+                dispatch(commentFetch({ metod: "GET", id: postId }));
             }}
           />
           <span className="commentsIconContainer">
@@ -76,11 +80,16 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
       </div>
 
       <Row className="d-flex justify-content-center">
-        {commentsStore.status === "idle" &&
-          commentsStore.comments?.length > 0 &&
+        {commentsStore.status === "idle" && commentsStore.comments?.length > 0 ? (
           commentsStore.comments.map((comment, i) => (
             <PostCommentComponent comment={comment} commentIndex={i} key={i} />
-          ))}
+          ))
+        ) : (
+          <Col xs={11} className="pt-3 pb-4">
+            <h5>Ooops, ancora niente</h5>
+            <p>Sembra che questo post ancora non abbia ricevuto commenti, torna più tardi.</p>
+          </Col>
+        )}
       </Row>
     </div>
   );

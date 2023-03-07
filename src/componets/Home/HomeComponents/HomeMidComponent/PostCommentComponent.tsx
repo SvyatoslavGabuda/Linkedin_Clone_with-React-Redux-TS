@@ -60,7 +60,7 @@ export const PostCommentComponent = ({ comment, commentIndex }: PostCommentProps
         />
         <Card className="singleCommentText p-2">
           <div className="d-flex justify-content-between align-items-center">
-            <h6>{userFound?.name === undefined ? "NoName" : userFound?.name + " " + userFound?.surname}</h6>
+            <h6>{userFound?.name === undefined ? "No-Name" : userFound?.name + " " + userFound?.surname}</h6>
             <span className="d-flex aling-items-center">
               <p className="me-2">{commented(comment.createdAt.toString())}</p>
               <Dropdown>
@@ -94,7 +94,7 @@ export const PostCommentComponent = ({ comment, commentIndex }: PostCommentProps
               </Dropdown>
             </span>
           </div>
-          <p className="title">{userFound?.title}</p>
+          <p className="title">{userFound?.title === undefined ? "Disoccupato a tempo pieno" : userFound.title}</p>
           <p>{comment.comment}</p>
         </Card>
       </Col>
