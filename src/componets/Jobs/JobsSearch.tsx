@@ -36,7 +36,13 @@ export const JobSearch = ({ params }: ISearchProps) => {
 
   useEffect(() => {
     fetchByQuery(query);
-  }, [params, query]);
+  }, [query]);
+
+  useEffect(() => {
+    if (params) {
+      setQuery(params);
+    }
+  }, [params]);
 
   return (
     <div className="jobsList p-3 rounded bg-light mb-3">
