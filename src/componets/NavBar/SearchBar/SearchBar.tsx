@@ -123,6 +123,7 @@ export const SearchBar = () => {
                   setExpanded(false);
                   setAllRes([]);
                   setSearchPerson("");
+                  setNotFoundMsg(false);
                 }}
               >
                 Ricerca Avanzata
@@ -169,6 +170,7 @@ export const SearchBar = () => {
                   setExpanded(false);
                   setAllRes([]);
                   setSearchPerson("");
+                  setNotFoundMsg(false);
                 }}
               >
                 Ricerca Avanzata

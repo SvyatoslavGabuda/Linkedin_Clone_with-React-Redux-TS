@@ -2,7 +2,7 @@ import "./jobs.scss";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { jobsFetch } from "../../app/reducers/jobsSlice";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Spinner } from "react-bootstrap";
 import { BsFillBookmarkFill, BsFillBellFill, BsClipboardCheck } from "react-icons/bs";
 import { AiFillYoutube, AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { RiSettings5Fill } from "react-icons/ri";
@@ -10,6 +10,7 @@ import { HomeFooter } from "../Home/HomeComponents/HomeFooter";
 import useDocumentTitle from "../../app/useDocumentTitle";
 import { Link } from "react-router-dom";
 import { JobComponent } from "./JobComponent";
+import { JobSearch } from "./JobsSearch";
 
 export const Jobs = () => {
   const dispatch = useAppDispatch();
@@ -101,9 +102,15 @@ export const Jobs = () => {
               </li>
             </ul>
           </div>
+          <JobSearch />
           <div className="jobsList p-3 rounded bg-light mb-3">
             <h5 className="d-flex justify-content-between align-items-center">Consigliato per te</h5>
             <p>Sulla base del tuo profilo e della tua cronologia delle ricerche</p>
+            {jobs.status !== "idle" && (
+              <div className="text-center mb-4">
+                <Spinner animation="border" variant="primary" />
+              </div>
+            )}
             <div>{jobs.status === "idle" && jobs.allJobs?.map((v) => <JobComponent job={v} key={v._id} />)}</div>
             <div className="text-center" onClick={limitUp}>
               Mostra altro...
