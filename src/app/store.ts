@@ -1,7 +1,7 @@
 import { configureStore, ThunkAction, Action, Reducer, combineReducers } from "@reduxjs/toolkit";
 import { persistReducer} from "redux-persist";
 import storage from "redux-persist/lib/storage";
-
+import { encryptTransform } from "redux-persist-transform-encrypt";
 import { allProfileReduce } from "./reducers/allProfileReduce";
 import commentSlice from "./reducers/commentSlice";
 import experienceSlice from "./reducers/experienceSlice";
@@ -23,7 +23,8 @@ import { friends } from "./reducers/favFriends";
 const persistConfig = {
   key : 'root',
   storage,
-  // whitelist: ['jobsFav', 'allJobs', 'friends']
+  whitelist: ['jobsFav', 'allJobs', 'friends'],
+  transforms : [encryptTransform({secretKey: process.env.REACT_APP_SECRET_KEY || "nonandrà"})]
 }
 
 const rootReducer = combineReducers({
@@ -48,7 +49,7 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore(
-  {reducer: persistedReducer,}
+  {reducer: persistedReducer}
     // profile: allProfileReduce as Reducer,
     // experience: experienceSlice,
     // upGradeModale: upgrateModSlice,
