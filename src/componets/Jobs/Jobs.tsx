@@ -8,13 +8,15 @@ import { AiFillYoutube, AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { RiSettings5Fill } from "react-icons/ri";
 import { HomeFooter } from "../Home/HomeComponents/HomeFooter";
 import useDocumentTitle from "../../app/useDocumentTitle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { JobComponent } from "./JobComponent";
 import { JobSearch } from "./JobsSearch";
 import { Ijob } from "../../app/reducers/jobsSlice";
 
 export const Jobs = () => {
   const dispatch = useAppDispatch();
+  const params = useParams();
+  const navigate = useNavigate();
   const jobs = useAppSelector((state) => state.allJobs);
   const [limit, setLimit] = useState(5);
 
@@ -81,29 +83,49 @@ export const Jobs = () => {
               Ricerche di offerte di lavoro suggerite <AiOutlineClose style={{ cursor: "pointer" }} />
             </h5>
             <ul>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/web%20developer");
+                }}
+              >
                 <AiOutlineSearch />
                 Web Developer
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/chief%20of%20staff");
+                }}
+              >
                 <AiOutlineSearch />
-                Junior web developer
+                Chief of Staff
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/recruiter");
+                }}
+              >
                 <AiOutlineSearch />
-                Lead Web Developer
+                Recruiter
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/php%20developer");
+                }}
+              >
                 <AiOutlineSearch />
                 PHP Developer
               </li>
-              <li>
+              <li
+                onClick={() => {
+                  navigate("/jobs/marketing");
+                }}
+              >
                 <AiOutlineSearch />
-                Web Programmer
+                Marketing
               </li>
             </ul>
           </div>
-          <JobSearch />
+          <JobSearch params={params?.search as string} />
           <div className="jobsList p-3 rounded bg-light mb-3">
             <h5 className="d-flex justify-content-between align-items-center">Consigliato per te</h5>
             <p>Sulla base del tuo profilo e della tua cronologia delle ricerche</p>
