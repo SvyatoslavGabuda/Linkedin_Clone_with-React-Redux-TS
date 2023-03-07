@@ -8,6 +8,10 @@ import { useAppSelector } from "../../../app/hooks";
 import { SpinnerSuper } from "../spinner/SpinnerSuper";
 import { SinglePostComponent } from "./HomeMidComponent/SinglePostComponent";
 
+import ReactPaginate from "react-paginate";
+import { useEffect, useState } from "react";
+import { Iposts } from "../../../app/reducers/postsSlice";
+
 export const postsDELETE = async (idPost: string) => {
   try {
     const response = await fetch(`https://striveschool-api.herokuapp.com/api/posts/${idPost}`, {
@@ -29,10 +33,26 @@ export const postsDELETE = async (idPost: string) => {
   }
 };
 export const HomeMid = () => {
-  const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
-  const OnlyOnePostForUser = [...new Map(NewsArrData.map((p) => [p.user._id, p])).values()];
+  // const NewsArrData = useAppSelector((state) => state.allPosts.allPosts).slice(-50);
+  //setAllPostRev([...allpost].reverse());
+  // const OnlyOnePostForUser = [...new Map(NewsArrData.map((p) => [p.user._id, p])).values()];
+  const allpost = useAppSelector((state) => state.allPosts.allPosts);
+  const [allPostRev, setAllPostRev] = useState<Iposts[]>([]);
   const loadingState: string = useAppSelector((state) => state.allPosts.status);
+  const [postOffSet, setPostOffset] = useState(0);
+  const [postPerPage, setPostPerPage] = useState(10);
+  const endOffset = postOffSet + postPerPage;
+  const curretPOSTS = allPostRev.slice(postOffSet, endOffset);
+  const pageCount = Math.ceil(allPostRev.length / postPerPage);
 
+  const handlePageClick = (e: any) => {
+    const newOffset = (e.selected * postPerPage) % allPostRev.length;
+    setPostOffset(newOffset);
+    window.scrollTo(0, 0);
+  };
+  useEffect(() => {
+    setAllPostRev([...allpost].reverse());
+  }, [allpost]);
   return (
     <>
       <Posts />
@@ -41,9 +61,6 @@ export const HomeMid = () => {
           <CreatePost />
         </Row>
         <Row className="flex-column">
-          {/* <SpinnerSuper />
-          <SpinnerSuper />
-          <SpinnerSuper /> */}
           {loadingState === "loading" && (
             <div className="text-center ">
               {/* <Spinner animation="grow" variant="info" /> */}
@@ -52,8 +69,31 @@ export const HomeMid = () => {
               <SpinnerSuper />
             </div>
           )}
-          {NewsArrData &&
-            OnlyOnePostForUser.map((Singlepost) => <SinglePostComponent post={Singlepost} key={Singlepost._id} />)}
+
+          {curretPOSTS && curretPOSTS.map((el) => <SinglePostComponent post={el} key={el._id} />)}
+          {curretPOSTS && (
+            <ReactPaginate
+              breakLabel="..."
+              previousLabel="<<"
+              nextLabel=">>"
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={3}
+              pageCount={pageCount}
+              pageLinkClassName="page-link"
+              previousClassName="page-item"
+              previousLinkClassName="page-link"
+              nextClassName="page-item"
+              nextLinkClassName="page-link"
+              breakClassName="page-item"
+              breakLinkClassName="page-link"
+              containerClassName="pagination justify-content-between"
+              activeClassName="active"
+            />
+          )}
+          {/* {NewsArrData &&
+            OnlyOnePostForUser.map((Singlepost) => (
+              <SinglePostComponent post={Singlepost} key={Singlepost._id} />
+            ))} */}
         </Row>
       </Col>
     </>

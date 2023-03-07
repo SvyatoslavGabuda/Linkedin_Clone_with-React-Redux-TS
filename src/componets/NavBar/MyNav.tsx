@@ -29,18 +29,18 @@ const MyNav = () => {
             </Form>
             <div>
               <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
-                <Link
-                  className={location === "/" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"}
-                  to="/"
-                >
+                <Link className={location === "/" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"} to="/">
                   <span className="navlabel">Home</span>
                   <ImHome3 />
                 </Link>
-                <Link className="nav-link nav-link-top" to="/">
+                <Link
+                  className={location === "/rete" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"}
+                  to="/rete"
+                >
                   <span className="navlabel">Rete</span>
                   <BsFillPeopleFill />
                 </Link>
-                <Link className="nav-link nav-link-top" to="/">
+                <Link className={location === "/jobs" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"} to="/jobs">
                   <span className="navlabel">Lavoro</span>
                   <MdBusinessCenter />
                 </Link>
@@ -74,9 +74,7 @@ const MyNav = () => {
                     title="Tu"
                     id="navbarScrollingDropdown"
                     align={"end"}
-                    className={
-                      location === "/profile/me" ? "nav-link profilenav nav-link-active p-0" : "nav-link profilenav p-0"
-                    }
+                    className={location === "/profile/me" ? "nav-link profilenav nav-link-active p-0" : "nav-link profilenav p-0"}
                   >
                     <div className="dd-profile">
                       <div style={{ position: "relative" }}>

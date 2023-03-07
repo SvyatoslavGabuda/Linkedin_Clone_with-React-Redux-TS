@@ -14,7 +14,7 @@ import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { toogleM } from "../../../../app/reducers/upgrateModSlice";
 import { useParams } from "react-router";
 import { ProfileImageMod } from "./ProfileImageMod";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ProfileCardProps {
   profile: Iprofile;
@@ -28,6 +28,13 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
 
   const handleShow = () => setShow(!show);
   const loadingState = useAppSelector((state) => state.profile.loadingMyProfile);
+  const friends = useAppSelector((state) => state.friends.Favfriends);
+
+  const finduser = () => {
+    return friends.find((person: Iprofile) => person._id === profile._id);
+  };
+
+  let verifyUser = finduser();
 
   return (
     <>
@@ -147,7 +154,14 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     </Button>
                   </div>
                   <div>
-                    <button className="rounded-pill py-1 me-2 Button2">{params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}</button>
+                    <button
+                      className={`rounded-pill py-1 me-2 Button2 ${verifyUser && "d-none"}`}
+                      onClick={() => {
+                        dispatch({ type: "ADDFRIENDTOFAV", payload: profile });
+                      }}
+                    >
+                      {params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}
+                    </button>
                   </div>
                   <div>
                     <button className="rounded-pill py-1 Button3">Altro</button>

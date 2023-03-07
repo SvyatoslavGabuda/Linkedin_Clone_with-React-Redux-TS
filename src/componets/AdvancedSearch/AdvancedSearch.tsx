@@ -8,21 +8,23 @@ import { Iprofile } from "../Profile/Profile";
 export const AdvancedSearch = () => {
   const allProfile = useAppSelector((state) => state.profile.allProfile);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+  const [notFoundMsg, setNotFoundMsg] = useState(false);
   const [found, setFound] = useState<Iprofile[]>([]);
-  const [reserctType, setreaserctType] = useState("user");
+  const [reserctType, setreaserctType] = useState("username");
   const handeleChance = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     funzioneRicerca(e, reserctType);
   };
   const funzioneRicerca = (e: any, resType: any) => {
-    //console.log(resType);
+    setNotFoundMsg(false);
+    console.log(resType);
     const risultato = allProfile.filter((prof: any) =>
-      prof[resType].toLowerCase().includes(e.target.value.toLowerCase())
+      prof[resType]?.toLowerCase().includes(e.target.value.toLowerCase())
     );
     // console.log(risultato);
     setFound(risultato);
     if (risultato.length === 0) {
-      //setNotFoundMsg(true);
+      setNotFoundMsg(true);
     }
   };
   return (
@@ -54,6 +56,13 @@ export const AdvancedSearch = () => {
           </Form.Text>
         </Form.Group>
       </Form>
+      {notFoundMsg && (
+        <>
+          <div className="LoaderWrapper">
+            <span className="SearchedProfileTitle">Stop looking for your imaginary friends</span>
+          </div>
+        </>
+      )}
       {found.length > 0 &&
         found.map((el) => (
           <Link
