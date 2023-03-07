@@ -221,6 +221,22 @@
   .ReteFriendInfoCont {
     width: 100%;
     border-bottom: 1px solid lightgray;
+
+    a {
+      text-decoration: none;
+      color: black;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    h5 {
+      font-size: 1.1em;
+    }
+    p {
+      font-size: 0.8em;
+      color: #5e5e5e;
+      font-weight: 300;
+    }
   }
   .ReteFriendButton {
     background-color: white;
@@ -242,6 +258,46 @@
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
       rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
     .RemoveLink {
+      cursor: pointer;
+      &:hover {
+        background-color: rgba(199, 199, 199, 0.418);
+      }
+    }
+  }
+}
+.ReteAllFriendsContainer {
+  .RetePageTitleContainer {
+    h5 {
+      color: #5e5e5e;
+      font-weight: 400;
+    }
+    p {
+      color: #5e5e5e;
+      font-weight: 300;
+      margin-right: 0.5em;
+    }
+    button {
+      border: none;
+      background-color: transparent;
+      font-size: 0.9em;
+      color: #5e5e5e;
+      font-weight: 500;
+    }
+  }
+  .ReteAllFrienDropDownMenu {
+    position: absolute;
+    bottom: -7rem;
+    right: 1em;
+    z-index: 4;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+      rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+    .RemoveLink {
+      font-size: 0.9em;
+      color: #5e5e5e;
+      font-weight: 500;
       cursor: pointer;
       &:hover {
         background-color: rgba(199, 199, 199, 0.418);
