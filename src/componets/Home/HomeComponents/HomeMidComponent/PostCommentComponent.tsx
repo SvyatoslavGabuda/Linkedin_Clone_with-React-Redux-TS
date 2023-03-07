@@ -16,23 +16,24 @@ interface PostCommentProps {
 }
 
 export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) => {
-  const allProfile = useAppSelector((state) => state.profile.allProfile);
-  const comments = useAppSelector((state) => state.comments.comments);
   const dispatch = useAppDispatch();
+  // recover all profiles fetched from the redux store
+  const allProfile = useAppSelector((state) => state.profile.allProfile);
+  // create a internal state to store boolean and comment for the PUT of the comment
   const [putComment, setPutComment] = useState({
     show: false,
     comment: comment,
   });
-
+  // create a method to close the PUT modal, passing it to the modal by props
   const closeModal = () => {
     setPutComment({ ...putComment, show: false });
   };
-
+  // create a method to DELETE a comment when called, then fetch again comments on that post
   const DELETEmyComment = async () => {
     await dispatch(commentFetch({ metod: "DELETE", id: comment._id }));
     fetchAgain();
   };
-
+  // create a method to convert the date "created at" in minutes or hour
   const today = new Date();
   const commented = (date: string) => {
     if (differenceInMinutes(today, new Date(date)) < 1) {
@@ -45,10 +46,11 @@ export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) 
       return differenceInHours(today, new Date(date)) + ore;
     }
   };
-
+  // create a method to match the user who sent a comment with his own profile on linkedin
   const findUser = (email: string) => {
     return allProfile.find((profile: Iprofile) => profile.email === email);
   };
+
   let userFound = findUser(comment.author);
 
   return (

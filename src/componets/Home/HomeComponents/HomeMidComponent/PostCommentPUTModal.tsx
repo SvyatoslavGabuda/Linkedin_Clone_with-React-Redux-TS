@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, InputGroup, Modal } from "react-bootstrap";
+import { Button, Form, FormLabel, InputGroup, Modal } from "react-bootstrap";
 import { useAppDispatch } from "../../../../app/hooks";
 import { commentFetch, Icomments } from "../../../../app/reducers/commentSlice";
 
@@ -24,15 +24,15 @@ export const PostCommentPUTModal = ({ toPut, closeModal, fetchAgain }: PutCommen
   };
 
   return (
-    <Modal show={toPut.show} onHide={closeModal} backdrop="static" keyboard={false}>
-      <Modal.Header closeButton>
+    <Modal show={toPut.show} onHide={closeModal} backdrop="static" keyboard={false} className="modalCommentContainer">
+      <Modal.Header closeButton className="modalCommmentHeader">
         <Modal.Title>Modifica il tuo commento:</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body className="modalCommentBody">
         <Form>
-          <InputGroup className="mb-3">
-            <InputGroup.Text id="inputGroup-sizing-default">Testo del Commento</InputGroup.Text>
-            <Form.Control
+          <InputGroup className="mb-3 d-flex flex-column">
+            <FormLabel id="inputGroup-sizing-default">Testo del Commento</FormLabel>
+            <input
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               value={commentPUT.comment}
@@ -41,9 +41,9 @@ export const PostCommentPUTModal = ({ toPut, closeModal, fetchAgain }: PutCommen
           </InputGroup>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={closeModal}>
-          Close
+      <Modal.Footer className="d-flex justify-content-between commentFooterPut">
+        <Button variant="outline-secondary" className="putCloseButton" onClick={closeModal}>
+          Annulla
         </Button>
         <Button
           variant="primary"
