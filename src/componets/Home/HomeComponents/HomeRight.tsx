@@ -4,6 +4,7 @@ import { BiUpArrow } from "react-icons/bi";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HomeFooter } from "./HomeFooter";
+import { GiSnake } from "react-icons/gi";
 
 export const HomeRight = () => {
   const [show, setShow] = useState(false);
@@ -25,7 +26,12 @@ export const HomeRight = () => {
               <p>17 ore fa | 253 lettori</p>
             </li>
             <li>
-              <h6>Quanto Typescrip ti da noie</h6>
+              <h6>
+                Quanto Typescrip ti da noie{" "}
+                <Link to="/game" style={{ color: "green" }}>
+                  <GiSnake />
+                </Link>
+              </h6>
               <p>Oggi | 999 lettori</p>
             </li>
             <li>
@@ -63,7 +69,8 @@ export const HomeRight = () => {
               setShow(!show);
             }}
           >
-            <BiUpArrow className={!show ? "showchat hidechat" : "showchat"} /> &nbsp; Visualizza Altro
+            <BiUpArrow className={!show ? "showchat hidechat" : "showchat"} /> &nbsp; Visualizza
+            Altro
           </div>
         </div>
         <HomeFooter />

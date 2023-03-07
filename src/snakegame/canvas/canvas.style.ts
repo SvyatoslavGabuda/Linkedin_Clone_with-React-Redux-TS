@@ -5,6 +5,7 @@ export const Canvas = styled.canvas`
   width: 800px;
   height: 400px;
   box-sizing: border-box;
+
   border-image-slice: 1;
   border-image-source: linear-gradient(
     180deg,
