@@ -8,13 +8,14 @@ import { AiFillYoutube, AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 import { RiSettings5Fill } from "react-icons/ri";
 import { HomeFooter } from "../Home/HomeComponents/HomeFooter";
 import useDocumentTitle from "../../app/useDocumentTitle";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { JobComponent } from "./JobComponent";
 import { JobSearch } from "./JobsSearch";
 import { Ijob } from "../../app/reducers/jobsSlice";
 
 export const Jobs = () => {
   const dispatch = useAppDispatch();
+  const params = useParams();
   const jobs = useAppSelector((state) => state.allJobs);
   const [limit, setLimit] = useState(5);
 
@@ -103,7 +104,7 @@ export const Jobs = () => {
               </li>
             </ul>
           </div>
-          <JobSearch />
+          <JobSearch params={params?.search as string} />
           <div className="jobsList p-3 rounded bg-light mb-3">
             <h5 className="d-flex justify-content-between align-items-center">Consigliato per te</h5>
             <p>Sulla base del tuo profilo e della tua cronologia delle ricerche</p>
