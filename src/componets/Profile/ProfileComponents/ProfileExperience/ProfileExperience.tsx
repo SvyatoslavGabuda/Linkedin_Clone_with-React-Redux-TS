@@ -3,7 +3,7 @@ import { Row, Spinner } from "react-bootstrap";
 import { GrAdd } from "react-icons/gr";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { useEffect } from "react";
-import { expFetc } from "../../../../app/reducers/experienceSlice";
+import { expFetc, Iexperience } from "../../../../app/reducers/experienceSlice";
 import { ExpCard } from "./Experience/ExpCard";
 import { showExpM } from "../../../../app/reducers/expModSlice";
 import { useParams } from "react-router-dom";
@@ -19,9 +19,7 @@ export const ProfileExperience = () => {
   const idProva = "63fc6e0af193e60013807f57";
   useEffect(() => {
     if (myProfile) {
-      params.id === "me"
-        ? dispatch(expFetc(myProfile?._id))
-        : dispatch(expFetc(generalProfile?._id));
+      params.id === "me" ? dispatch(expFetc(myProfile?._id)) : dispatch(expFetc(generalProfile?._id));
     }
   }, [params.id, generalProfile?._id, upDateState]);
 
@@ -39,12 +37,11 @@ export const ProfileExperience = () => {
             )}
           </div>
         </div>
-        {experience && experience?.map((exp, i) => <ExpCard key={exp._id} myExp={exp} index={i} />)}
+        {experience &&
+          experience?.map((exp: Iexperience, i: number) => <ExpCard key={exp._id} myExp={exp} index={i} />)}
 
         <div className="d-flex">
-          {experience?.length < 1 && params.id !== "me" && (
-            <h6>Non ci sono Esperienze da mostrare</h6>
-          )}
+          {experience?.length < 1 && params.id !== "me" && <h6>Non ci sono Esperienze da mostrare</h6>}
           {experience?.length < 1 && params.id === "me" && (
             <h6 onClick={() => dispatch(showExpM())} style={{ cursor: "pointer" }}>
               Aggiungi una nuova esperienza...

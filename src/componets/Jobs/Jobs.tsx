@@ -11,6 +11,7 @@ import useDocumentTitle from "../../app/useDocumentTitle";
 import { Link } from "react-router-dom";
 import { JobComponent } from "./JobComponent";
 import { JobSearch } from "./JobsSearch";
+import { Ijob } from "../../app/reducers/jobsSlice";
 
 export const Jobs = () => {
   const dispatch = useAppDispatch();
@@ -111,7 +112,7 @@ export const Jobs = () => {
                 <Spinner animation="border" variant="primary" />
               </div>
             )}
-            <div>{jobs.status === "idle" && jobs.allJobs?.map((v) => <JobComponent job={v} key={v._id} />)}</div>
+            <div>{jobs.status === "idle" && jobs.allJobs?.map((v: Ijob) => <JobComponent job={v} key={v._id} />)}</div>
             <div className="text-center" onClick={limitUp}>
               Mostra altro...
             </div>
