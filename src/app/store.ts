@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action, Reducer, combineReducers } from "@reduxjs/toolkit";
-import { persistReducer} from "redux-persist";
+import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import { allProfileReduce } from "./reducers/allProfileReduce";
@@ -21,53 +21,57 @@ import { friends } from "./reducers/favFriends";
 // });
 
 const persistConfig = {
-  key : 'root',
+  key: "root",
   storage,
-  whitelist: ['jobsFav', 'allJobs', 'friends'],
-  transforms : [encryptTransform({secretKey: process.env.REACT_APP_SECRET_KEY || "nonandrà"})]
-}
+  whitelist: ["jobsFav", "allJobs", "friends"],
+  transforms: [encryptTransform({ secretKey: process.env.REACT_APP_SECRET_KEY || "nonandrà" })],
+};
 
 const rootReducer = combineReducers({
   // jobsFav : jobsFav,
   // jobsSlice : jobsSlice,
   // friends : friends as Reducer
   profile: allProfileReduce as Reducer,
-    experience: experienceSlice,
-    upGradeModale: upgrateModSlice,
-    experienceModale: expModSlice,
-    experiencePutModale: expPutModSlice,
-    allPosts: postsSlice,
-    allJobs: jobsSlice,
-    jobsFav: jobsFav as Reducer,
-    postsModale: postsModSlice,
-    postPutModale: postsPutModSlice,
-    upDate: slicerForUpDate,
-    comments: commentSlice,
-    friends : friends as Reducer
-})
+  experience: experienceSlice,
+  upGradeModale: upgrateModSlice,
+  experienceModale: expModSlice,
+  experiencePutModale: expPutModSlice,
+  allPosts: postsSlice,
+  allJobs: jobsSlice,
+  jobsFav: jobsFav as Reducer,
+  postsModale: postsModSlice,
+  postPutModale: postsPutModSlice,
+  upDate: slicerForUpDate,
+  comments: commentSlice,
+  friends: friends as Reducer,
+});
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore(
-  {reducer: persistedReducer}
-    // profile: allProfileReduce as Reducer,
-    // experience: experienceSlice,
-    // upGradeModale: upgrateModSlice,
-    // experienceModale: expModSlice,
-    // experiencePutModale: expPutModSlice,
-    // allPosts: postsSlice,
-    // allJobs: jobsSlice,
-    // jobsFav: jobsFav as Reducer,
-    // postsModale: postsModSlice,
-    // postPutModale: postsPutModSlice,
-    // upDate: slicerForUpDate,
-    // comments: commentSlice,
-    // friends : friends as Reducer
-  
+  {
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
+  }
+  // profile: allProfileReduce as Reducer,
+  // experience: experienceSlice,
+  // upGradeModale: upgrateModSlice,
+  // experienceModale: expModSlice,
+  // experiencePutModale: expPutModSlice,
+  // allPosts: postsSlice,
+  // allJobs: jobsSlice,
+  // jobsFav: jobsFav as Reducer,
+  // postsModale: postsModSlice,
+  // postPutModale: postsPutModSlice,
+  // upDate: slicerForUpDate,
+  // comments: commentSlice,
+  // friends : friends as Reducer
 
-    // newProfile: profileSlice,
+  // newProfile: profileSlice,
 );
-
 
 export type AppDispatch = typeof store.dispatch;
 export type RootState = ReturnType<typeof store.getState>;
