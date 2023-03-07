@@ -24,7 +24,7 @@ import { Jobs } from "./componets/Jobs/Jobs";
 import { MyJobs } from "./componets/Jobs/MyJobs";
 import { Rete } from "./componets/Rete/Rete";
 import { Friends } from "./componets/Rete/Friends";
-import { GamePage } from "./snake game/GamePage";
+import { GamePage } from "./snakegame/GamePage";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
