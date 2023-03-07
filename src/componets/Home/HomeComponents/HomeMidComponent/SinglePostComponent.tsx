@@ -41,7 +41,7 @@ export const SinglePostComponent = ({ post }: SinglePostProps) => {
   };
 
   return (
-    <Col className="bg-white border border-1 rounded rounded-3 my-2 p-0" key={post._id}>
+    <Col className="bg-white border border-1 rounded rounded-3 my-2 p-0" id="postCard" key={post._id}>
       <div>
         {/* Profile */}
 

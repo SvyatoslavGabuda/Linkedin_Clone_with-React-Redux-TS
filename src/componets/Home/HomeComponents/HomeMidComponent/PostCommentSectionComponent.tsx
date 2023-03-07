@@ -14,15 +14,15 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
   const dispatch = useAppDispatch();
   const commentsStore = useAppSelector((state) => state.comments);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
-  const [currentComments, setCurrentComments] = useState<Icomments[]>([]);
   const [commentText, setCommentText] = useState<IcommentsPost>({
     comment: "",
     rate: "5",
     elementId: postId,
   });
 
-  const POSTmyComment = (comment: IcommentsPost) => {
-    dispatch(commentFetch({ metod: "POST", id: "", commentToPost: comment }));
+  const POSTmyComment = async (comment: IcommentsPost) => {
+    await dispatch(commentFetch({ metod: "POST", id: "", commentToPost: comment }));
+    dispatch(commentFetch({ metod: "GET", id: postId }));
   };
 
   useEffect(() => {
@@ -42,9 +42,6 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
             onKeyUp={(e) => {
               e.key === "Enter" && POSTmyComment(commentText);
               e.key === "Enter" && setCommentText({ ...commentText, comment: "" });
-              e.key === "Enter" &&
-                commentsStore.status === "idle" &&
-                dispatch(commentFetch({ metod: "GET", id: postId }));
             }}
           />
           <span className="commentsIconContainer">

@@ -17,8 +17,9 @@ export const PostCommentPUTModal = ({ toPut, closeModal }: PutCommentProps) => {
     ...toPut.comment,
   });
 
-  const PUTmyComment = (comment: Icomments) => {
-    dispatch(commentFetch({ metod: "PUT", id: toPut.comment._id, commentToPost: comment }));
+  const PUTmyComment = async (comment: Icomments) => {
+    await dispatch(commentFetch({ metod: "PUT", id: toPut.comment._id, commentToPost: comment }));
+    dispatch(commentFetch({ metod: "GET", id: toPut.comment.elementId }));
   };
 
   return (

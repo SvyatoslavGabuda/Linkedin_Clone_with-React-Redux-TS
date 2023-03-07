@@ -23,6 +23,7 @@ import { addFocusPosts, showPutPosts } from "../../../../app/reducers/postsPutMo
 import { ActivityImgMod } from "./ActivityImgMod";
 import { useState } from "react";
 import { postsFetc } from "../../../../app/reducers/postsSlice";
+import { SinglePostComponent } from "../../../Home/HomeComponents/HomeMidComponent/SinglePostComponent";
 
 export const ProfileActivity = () => {
   const params = useParams();
@@ -58,7 +59,7 @@ export const ProfileActivity = () => {
 
   return (
     <>
-      <Row className="border border-1 rounded mb-2 bg-white">
+      <Row className="border border-1 rounded mb-2 bg-white" id="activityRow">
         <div className="px-4 pt-4 pb-3 border-bottom">
           <div className="mb-2 d-flex justify-content-between align-items-center">
             <div>
@@ -100,177 +101,7 @@ export const ProfileActivity = () => {
           </div>
         </div>
         {getLatestPost()[0]?.user &&
-          getLatestPost().map((Singlepost) => (
-            <div className="border-bottom" key={`pa-${Singlepost._id}`}>
-              {/* Profile */}
-
-              <div className="d-flex HomeMidProfileCont justify-content-between px-3 pt-3">
-                <div className="d-flex">
-                  <div className="me-2">
-                    <img src={Singlepost.user.image} alt="ProfilePic" />
-                  </div>
-                  <div>
-                    <Link
-                      to={"/profile/" + (Singlepost.user._id === myProfile._id ? myProfile._id : Singlepost.user._id)}
-                    >
-                      <h3>
-                        {Singlepost.user.name} {Singlepost.user.surname}
-                      </h3>
-                    </Link>
-                    <p>{Singlepost.user.title}</p>
-                    <div className="d-flex">
-                      <p className="me-1">{posted(Singlepost.createdAt.toString())}</p>
-                      <p>
-                        {" "}
-                        · <BiWorld />
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <NavDropdown
-                    title="..."
-                    align={"end"}
-                    className="fs-2"
-                    onClick={() => {
-                      dispatch(addFocusPosts(Singlepost));
-                    }}
-                  >
-                    <div className="HomeMidDropDwon">
-                      <Link to="/">
-                        <BsBookmark /> Salva
-                      </Link>
-                    </div>
-                    <div className="HomeMidDropDwon">
-                      <Link to="/">
-                        <SlLink /> Copia link al post
-                      </Link>
-                    </div>
-                    <div className="HomeMidDropDwon">
-                      <Link to="/">
-                        <BsCodeSlash /> Incorpora questo post
-                      </Link>
-                    </div>
-                    {Singlepost.user._id === myProfile._id ? (
-                      <div
-                        className="HomeMidDropDwon"
-                        onClick={() => {
-                          postsDELETE(storePutPost.focus._id);
-                        }}
-                      >
-                        <Link to="/">
-                          <FaTrashAlt /> Elimina
-                        </Link>
-                      </div>
-                    ) : (
-                      <div className="HomeMidDropDwon">
-                        <Link to="/">
-                          <BsEyeSlashFill /> Non voglio vederlo
-                        </Link>
-                      </div>
-                    )}
-                    {Singlepost.user._id !== myProfile._id ? (
-                      <div className="HomeMidDropDwon">
-                        <Link to="/">
-                          <FiAlertTriangle /> Perchè vedo questo annuncio?
-                        </Link>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    <div className="HomeMidDropDwon">
-                      <Link to="/">
-                        <BsFlagFill /> Segnala post
-                      </Link>
-                    </div>
-                    {Singlepost.user._id === myProfile._id ? (
-                      <div
-                        className="HomeMidDropDwon"
-                        onClick={() => {
-                          dispatch(showPutPosts());
-                        }}
-                      >
-                        <Link to="">
-                          <HiOutlinePencil /> Modifica
-                        </Link>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                    {Singlepost.user._id === myProfile._id ? (
-                      <div
-                        className="HomeMidDropDwon"
-                        onClick={() => {
-                          handleShow();
-                        }}
-                      >
-                        <Link to="">
-                          <HiOutlinePencil /> {Singlepost.image ? "Cambia immagine collegata" : "Aggiungi un'immagine"}
-                        </Link>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </NavDropdown>
-                </div>
-              </div>
-
-              {/* Profile */}
-
-              {/* Text */}
-
-              <div className="px-3 pb-2">{Singlepost.text}</div>
-
-              {/* Text */}
-
-              {/* Img */}
-
-              <div className="w-100 text-center">
-                {Singlepost?.image && <img className="w-100" src={Singlepost.image} alt="" />}
-              </div>
-
-              {/* Img */}
-
-              {/* Buttons */}
-
-              <div className="HomeMidButtonsCont d-flex justify-content-evenly">
-                <button className="HomeMidButton d-none d-sm-block">
-                  <div className="d-flex align-items-center ">
-                    <div>
-                      <SlLike className="HomeMidIcon me-1" />
-                    </div>
-                    <div>Consiglia</div>
-                  </div>
-                </button>
-                <button className="HomeMidButton">
-                  <div className="d-flex align-items-center">
-                    <div>
-                      <FaRegCommentDots className="HomeMidIcon me-1" />
-                    </div>
-                    <div>Commenta</div>
-                  </div>
-                </button>
-                <button className="HomeMidButton  d-none d-lg-block">
-                  <div className="d-flex align-items-center">
-                    <div>
-                      <TbArrowsRandom className="HomeMidIcon me-1" />
-                    </div>
-                    <div>Diffondi il post</div>
-                  </div>
-                </button>
-                <button className="HomeMidButton">
-                  <div className="d-flex align-items-center">
-                    <div>
-                      <RiSendPlaneFill className="HomeMidIcon me-1" />
-                    </div>
-                    <div>Invia</div>
-                  </div>
-                </button>
-              </div>
-
-              {/* Buttons */}
-            </div>
-          ))}
+          getLatestPost().map((Singlepost) => <SinglePostComponent post={Singlepost} key={Singlepost._id} />)}
         <div className="p-0">
           <button className="Button4">Mostra tutte le attività {"->"} </button>
         </div>

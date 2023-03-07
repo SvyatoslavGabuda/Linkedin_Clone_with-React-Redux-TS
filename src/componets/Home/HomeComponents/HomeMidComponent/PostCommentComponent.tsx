@@ -28,8 +28,9 @@ export const PostCommentComponent = ({ comment, commentIndex }: PostCommentProps
     setPutComment({ ...putComment, show: false });
   };
 
-  const DELETEmyComment = () => {
-    dispatch(commentFetch({ metod: "DELETE", id: comments[commentIndex]._id }));
+  const DELETEmyComment = async () => {
+    await dispatch(commentFetch({ metod: "DELETE", id: comments[commentIndex]._id }));
+    dispatch(commentFetch({ metod: "GET", id: comments[commentIndex].elementId }));
   };
 
   const today = new Date();
