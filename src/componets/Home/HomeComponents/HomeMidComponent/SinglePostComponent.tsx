@@ -51,7 +51,7 @@ export const SinglePostComponent = ({ post }: SinglePostProps) => {
               <img src={post.user.image} alt="ProfilePic" />
             </div>
             <div>
-              <Link to={"/profile/" + (post.user._id === MyProfile._id ? MyProfile._id : post.user._id)}>
+              <Link to={"/profile/" + (post.user?._id === MyProfile._id ? MyProfile._id : post.user._id)}>
                 <h3>
                   {post.user.name} {post.user.surname}
                 </h3>
