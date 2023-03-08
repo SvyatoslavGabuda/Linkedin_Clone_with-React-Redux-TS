@@ -162,7 +162,9 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     <button
                       className={`rounded-pill py-1 me-2 Button2 ${verifyUser && "d-none"}`}
                       onClick={() => {
-                        dispatch({ type: "ADDFRIENDTOFAV", payload: profile });
+                        if (params.id !== "me") {
+                          dispatch({ type: "ADDFRIENDTOFAV", payload: profile });
+                        }
                       }}
                     >
                       {params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}
