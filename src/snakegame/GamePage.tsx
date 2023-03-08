@@ -23,7 +23,14 @@ export const GamePage = () => {
   }, []);
   return (
     <>
-      <GameContainer style={{ backgroundImage: "url('assets/image/sfond2.jpg')" }}>
+      <GameContainer
+        style={{
+          backgroundImage: "url('assets/image/sfond2.jpg')",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100%",
+        }}
+      >
         <PlayerBtn onClick={handlePlay}>
           {playPause ? <BsPauseCircleFill /> : <BsPlayCircleFill />}
         </PlayerBtn>
