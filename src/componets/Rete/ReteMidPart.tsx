@@ -7,8 +7,8 @@ import { SingleReteProfileCard } from "./SingleReteProfileCard";
 
 export const ReteMidPart = () => {
   const allProfile = useAppSelector((state) => state.profile.allProfile);
-  const [randomizedArray, setRandomizedArray] = useState<Iprofile[]>([]);
-  const [profileToShow, setProfileToShow] = useState<Iprofile[]>([]);
+  // const [randomizedArray, setRandomizedArray] = useState<Iprofile[]>([]);
+  // const [profileToShow, setProfileToShow] = useState<Iprofile[]>([]);
   const [next, setNext] = useState<number>(0);
   const [profileShowed, setProfileShowed] = useState<number>(8);
   const [arryForHoldingProfile, setArryForHoldingProfile] = useState<Iprofile[]>([]);

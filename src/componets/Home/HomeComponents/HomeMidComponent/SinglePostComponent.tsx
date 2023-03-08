@@ -1,4 +1,11 @@
-import { differenceInHours, differenceInMinutes } from "date-fns";
+import {
+  differenceInDays,
+  differenceInHours,
+  differenceInMinutes,
+  differenceInMonths,
+  differenceInWeeks,
+  differenceInYears,
+} from "date-fns";
 import { Col, NavDropdown } from "react-bootstrap";
 import { BiWorld } from "react-icons/bi";
 import { BsBookmark, BsCodeSlash, BsEyeSlashFill, BsFlagFill } from "react-icons/bs";
@@ -34,9 +41,19 @@ export const SinglePostComponent = ({ post }: SinglePostProps) => {
     } else if (differenceInHours(Oggi, new Date(date)) < 1) {
       let minuti = differenceInMinutes(Oggi, new Date(date)) > 1 ? " minuti" : " minuto";
       return differenceInMinutes(Oggi, new Date(date)) + minuti;
-    } else {
+    } else if (differenceInHours(Oggi, new Date(date)) > 1 && differenceInHours(Oggi, new Date(date)) < 24) {
       let ore = differenceInHours(Oggi, new Date(date)) > 1 ? " ore" : " ora";
       return differenceInHours(Oggi, new Date(date)) + ore;
+    } else if (differenceInDays(Oggi, new Date(date)) >= 1 && differenceInDays(Oggi, new Date(date)) < 7) {
+      let giorni = differenceInDays(Oggi, new Date(date)) > 1 ? " giorni" : " giorno";
+      return differenceInDays(Oggi, new Date(date)) + giorni;
+    } else if (differenceInWeeks(Oggi, new Date(date)) >= 1 && differenceInWeeks(Oggi, new Date(date)) < 4) {
+      return differenceInWeeks(Oggi, new Date(date)) + " s";
+    } else if (differenceInMonths(Oggi, new Date(date)) >= 1 && differenceInMonths(Oggi, new Date(date)) < 12) {
+      return differenceInMonths(Oggi, new Date(date)) + " m";
+    } else {
+      let anni = differenceInYears(Oggi, new Date(date)) > 1 ? " anni" : " anno";
+      return differenceInYears(Oggi, new Date(date)) + anni;
     }
   };
 
