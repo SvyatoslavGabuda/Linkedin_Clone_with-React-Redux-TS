@@ -200,6 +200,8 @@ const useGameLogic = ({ canvasHeight, canvasWidth, onGameOver, gameState }: UseG
     onKeyDownHandler,
     foodPosition,
     resetGameState,
+    setDirection,
+    direction,
   };
 };
 
