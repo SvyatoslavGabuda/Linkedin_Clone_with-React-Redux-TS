@@ -65,4 +65,5 @@ export const SnakeTitle = styled.h2`
   font-style: oblique;
   font-weight: 900;
   font-size: 4em;
+  text-align: center;
 `;

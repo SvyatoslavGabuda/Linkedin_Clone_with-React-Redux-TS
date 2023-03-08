@@ -3,13 +3,13 @@ import { Iexperience } from "./experienceSlice";
 
 interface IshowPlus {
   show: boolean;
-  indexExp: number;
+  indexExp: number | null;
   currentExperience: Iexperience;
 }
 
 const initialState: IshowPlus = {
   show: false,
-  indexExp: 0,
+  indexExp: null,
   currentExperience: {} as Iexperience,
 };
 
