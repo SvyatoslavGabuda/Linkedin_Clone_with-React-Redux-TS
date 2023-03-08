@@ -33,13 +33,12 @@ const Game: React.FC<GameProps> = ({}) => {
     }
   };
 
-  const { snakeBody, onKeyDownHandler, foodPosition, resetGameState, setDirection, direction } =
-    useGameLogic({
-      canvasHeight: 200,
-      canvasWidth: 400,
-      onGameOver,
-      gameState,
-    });
+  const { snakeBody, onKeyDownHandler, foodPosition, resetGameState, setDirection, direction } = useGameLogic({
+    canvasHeight: 200,
+    canvasWidth: 400,
+    onGameOver,
+    gameState,
+  });
 
   const drawGame = (ctx: CanvasRenderingContext2D) => {
     draw({ ctx, snakeBody, foodPosition });
@@ -188,9 +187,7 @@ const Game: React.FC<GameProps> = ({}) => {
           ) : (
             <GameButton
               onClick={() => {
-                setGameState(
-                  gameState === GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING
-                );
+                setGameState(gameState === GameState.RUNNING ? GameState.PAUSED : GameState.RUNNING);
               }}
             >
               {gameState === GameState.RUNNING ? "Pause" : "Play"}

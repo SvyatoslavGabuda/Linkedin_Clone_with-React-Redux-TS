@@ -116,6 +116,19 @@
   &:hover {
     box-shadow: inset 0 0 0 2px #6c757d;
     background-color: #6c757d3f;
+    transition: 300ms ease-in-out;
+  }
+}
+.Button1 {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  color: white;
+  background-color: #0a66c2;
+  box-shadow: inset 0 0 0 1px #0a66c2;
+  &:hover {
+    box-shadow: inset 0 0 0 1px #004182;
+    background-color: #004182;
+    transition: 300ms ease-in-out;
   }
 }
 .Button1,
@@ -165,6 +178,7 @@ section {
   padding: 10px;
   &:hover {
     background-color: #dbdbdb;
+    transition: 300ms ease-in-out;
   }
 }
 .ExpImg {
@@ -179,6 +193,31 @@ section {
     button {
       font-size: 80%;
       margin-bottom: 10px;
+    }
+  }
+}
+.ProfileCardFullContainer {
+  border-radius: 10px;
+}
+.ProfileCArdDropDownMenu {
+  position: absolute;
+  // bottom: 3.5rem;
+  z-index: 4;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px,
+    rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  .RemoveLink {
+    font-size: 1em;
+    color: #5e5e5e;
+    font-weight: 400;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(199, 199, 199, 0.418);
+    }
+    .ProfileIconDropDown {
+      font-size: 1.2em;
     }
   }
 }

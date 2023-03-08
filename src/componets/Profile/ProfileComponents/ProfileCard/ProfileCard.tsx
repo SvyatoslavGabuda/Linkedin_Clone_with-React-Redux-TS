@@ -15,6 +15,9 @@ import { toogleM } from "../../../../app/reducers/upgrateModSlice";
 import { useParams } from "react-router";
 import { ProfileImageMod } from "./ProfileImageMod";
 import { useState } from "react";
+import { BsDownload, BsArrow90DegRight, BsInfoSquareFill, BsFlagFill, BsFillPersonXFill } from "react-icons/bs";
+import { TfiMedallAlt } from "react-icons/tfi";
+import { RiDoubleQuotesR } from "react-icons/ri";
 
 interface ProfileCardProps {
   profile: Iprofile;
@@ -25,7 +28,7 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
   const params = useParams();
 
   const [show, setShow] = useState(false);
-
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleShow = () => setShow(!show);
   const loadingState = useAppSelector((state) => state.profile.loadingMyProfile);
   const friends = useAppSelector((state) => state.friends.Favfriends);
@@ -35,6 +38,10 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
   };
 
   let verifyUser = finduser();
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <>
@@ -46,12 +53,10 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
         )}
         <ProfileImageMod show={show} handleShow={handleShow} />
         {profile && (
-          <Row className="mt-1 border border-1 rounded mb-2 bg-white">
+          <Row className="mt-1 border border-1 mb-2 bg-white ProfileCardFullContainer">
             <section className="p-0">
               <div className="BackgroundContainer rounded-top">
-                <div>
-                  <div></div>
-                </div>
+                {/* <div><div></div></div> */}
                 <div className="CamContainer">
                   {params.id === "me" && (
                     <button>
@@ -163,8 +168,73 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                       {params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}
                     </button>
                   </div>
-                  <div>
-                    <button className="rounded-pill py-1 Button3">Altro</button>
+                  <div className="position relative">
+                    <button className="rounded-pill py-1 Button3" onClick={handleMenuClick}>
+                      Altro
+                    </button>
+                    {isMenuOpen && (
+                      <div
+                        className="ProfileCArdDropDownMenu border border-1 bg-white py-2"
+                        style={{ bottom: `${params.id === "me" ? "16" : verifyUser ? "5.5" : "8"}rem` }}
+                      >
+                        <div className="RemoveLink px-2 py-2 d-flex align-items-center">
+                          <div className="mx-2">
+                            <BsArrow90DegRight className="ProfileIconDropDown" />
+                          </div>
+                          <div>Invia il profilo in un messaggio</div>
+                        </div>
+                        <div className="RemoveLink px-2 py-2 d-flex align-items-center">
+                          <div className="mx-2">
+                            <BsDownload className="ProfileIconDropDown" />
+                          </div>
+                          <div>Salva come PDF</div>
+                        </div>
+                        {params.id !== "me" && (
+                          <div className="RemoveLink px-2 py-2 d-flex align-items-center">
+                            <div className="mx-2">
+                              <TfiMedallAlt className="ProfileIconDropDown" />
+                            </div>
+                            <div>Fai un applauso</div>
+                          </div>
+                        )}
+                        {params.id !== "me" && (
+                          <div className="RemoveLink px-2 py-2 d-flex align-items-center">
+                            <div className="mx-2">
+                              <RiDoubleQuotesR className="ProfileIconDropDown" />
+                            </div>
+                            <div>Chiedi una referenza</div>
+                          </div>
+                        )}
+                        {verifyUser && params.id !== "me" && params.id === verifyUser._id && (
+                          <div
+                            className="RemoveLink px-2 py-2 d-flex align-items-center "
+                            onClick={() => {
+                              dispatch({ type: "DELFRIENDFROMFAV", payload: profile });
+                              handleMenuClick();
+                            }}
+                          >
+                            <div className="mx-2">
+                              <BsFillPersonXFill className="ProfileIconDropDown" />
+                            </div>
+                            <div> Rimuovi collegamento</div>
+                          </div>
+                        )}
+                        {params.id !== "me" && (
+                          <div className="RemoveLink px-2 py-2 d-flex align-items-center ">
+                            <div className="mx-2">
+                              <BsFlagFill className="ProfileIconDropDown" />
+                            </div>
+                            <div>Segnala violenza/Blocca</div>
+                          </div>
+                        )}
+                        <div className="RemoveLink px-2 py-2 d-flex align-items-center">
+                          <div className="mx-2">
+                            <BsInfoSquareFill className="ProfileIconDropDown" />
+                          </div>
+                          <div>Informazioni su questo profilo</div>
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

@@ -55,7 +55,7 @@ export const PlayButton = styled.button`
     background: radial-gradient(circle, hsla(73, 100%, 50%, 1) 0%, hsla(219, 97%, 46%, 1) 100%);
     color: blue;
     box-shadow: 0px 0px 41px 11px hsla(219, 97%, 46%, 1);
-  }
+   }
 `;
 
 export const SnakeTitle = styled.h2`
