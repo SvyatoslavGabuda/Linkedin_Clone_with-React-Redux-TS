@@ -6,6 +6,7 @@ import Canvas from "../canvas/Canvas";
 import draw from "../draw/draw";
 import { GameButton, GameWrapper, Score, PlayButton, SnakeTitle } from "./Game.styles";
 import useGameLogic from "./useGameLogic";
+import { Direction } from "./useGameLogic";
 
 interface GameProps {}
 
@@ -18,9 +19,11 @@ export enum GameState {
 const Game: React.FC<GameProps> = ({}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [gameState, setGameState] = useState<GameState>(GameState.RUNNING);
+
   const dispatch = useAppDispatch();
   const bestScore = useAppSelector((state) => state.gameScore.bestScore);
   const lastScore = useAppSelector((state) => state.gameScore.lastScore);
+
   const onGameOver = () => {
     setGameState(GameState.GAME_OVER);
     dispatch(setLastScore((snakeBody.length - 1) * 10));
@@ -29,15 +32,28 @@ const Game: React.FC<GameProps> = ({}) => {
     }
   };
 
-  const { snakeBody, onKeyDownHandler, foodPosition, resetGameState } = useGameLogic({
-    canvasHeight: 150,
-    canvasWidth: 300,
-    onGameOver,
-    gameState,
-  });
+  const { snakeBody, onKeyDownHandler, foodPosition, resetGameState, setDirection, direction } =
+    useGameLogic({
+      canvasHeight: 200,
+      canvasWidth: 400,
+      onGameOver,
+      gameState,
+    });
 
   const drawGame = (ctx: CanvasRenderingContext2D) => {
     draw({ ctx, snakeBody, foodPosition });
+  };
+  const onKeyDownBtn = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (event.code) {
+      case "KeyS":
+        break;
+      case "KeyW":
+        break;
+      case "KeyD":
+        break;
+      case "KeyA":
+        break;
+    }
   };
 
   return (
@@ -45,6 +61,7 @@ const Game: React.FC<GameProps> = ({}) => {
       <Row>
         <SnakeTitle>---SNAKE---</SnakeTitle>
       </Row>
+      {/* Punteggio */}
       <Row className="justify-content-between " style={{ width: 800 }}>
         <Col className="text-start">
           <Score>Best score: {bestScore} </Score>
@@ -56,24 +73,58 @@ const Game: React.FC<GameProps> = ({}) => {
           <Score>Last score: {lastScore} </Score>
         </Col>
       </Row>
+      {/* campo di gioco */}
       <Canvas ref={canvasRef} draw={drawGame} />
+      {/* Bottoni di controllo */}
       <Row className="justify-content-between  pt-4" style={{ width: 800 }}>
         <Col xs={4}>
           <Row className="justify-content-center ">
             <Col xs={3} className="p-0">
-              <PlayButton>W</PlayButton>
+              <PlayButton
+                onClick={() => {
+                  if (direction !== Direction.DOWN) {
+                    setDirection(Direction.UP);
+                  }
+                }}
+              >
+                W
+              </PlayButton>
             </Col>
           </Row>
           <Row className="justify-content-center">
             <Col xs={3} className="p-0">
-              <PlayButton>A</PlayButton>
+              <PlayButton
+                onClick={() => {
+                  if (direction !== Direction.RIGHT) {
+                    setDirection(Direction.LEFT);
+                  }
+                }}
+              >
+                A
+              </PlayButton>
             </Col>
             <Col xs={3} className="p-0">
-              <PlayButton>S</PlayButton>
+              <PlayButton
+                onClick={() => {
+                  if (direction !== Direction.UP) {
+                    setDirection(Direction.DOWN);
+                  }
+                }}
+              >
+                S
+              </PlayButton>
             </Col>
 
             <Col xs={3} className="p-0">
-              <PlayButton>D</PlayButton>
+              <PlayButton
+                onClick={() => {
+                  if (direction !== Direction.LEFT) {
+                    setDirection(Direction.RIGHT);
+                  }
+                }}
+              >
+                D
+              </PlayButton>
             </Col>
           </Row>
         </Col>
