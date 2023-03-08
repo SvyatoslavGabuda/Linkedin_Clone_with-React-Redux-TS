@@ -95,7 +95,9 @@ export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) 
                   {userFound?.name === undefined ? (
                     "Check all'anagrafe"
                   ) : (
-                    <Link to={`/profile/${userFound?._id}`}>{userFound?.name + " " + userFound?.surname}</Link>
+                    <Link to={`/profile/${userFound?._id === user._id ? "me" : userFound?._id}`}>
+                      {userFound?.name + " " + userFound?.surname}
+                    </Link>
                   )}
                 </h6>
                 <span className="d-flex aling-items-center">

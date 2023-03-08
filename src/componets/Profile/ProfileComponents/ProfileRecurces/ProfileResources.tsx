@@ -2,6 +2,7 @@ import { Row, Badge } from "react-bootstrap";
 import { BsEyeFill } from "react-icons/bs";
 import { FaUserFriends } from "react-icons/fa";
 import { GrBeacon } from "react-icons/gr";
+import { Link } from "react-router-dom";
 
 export const ProfileResources = () => {
   return (
@@ -41,7 +42,7 @@ export const ProfileResources = () => {
             </div>
             <div className="Follower">
               <p>
-                <a href="/">La mia rete</a>
+                <Link to="/rete">La mia rete</Link>
               </p>
               <p>Salva e gestisci i tuoi collegamneti e interessi</p>
             </div>
