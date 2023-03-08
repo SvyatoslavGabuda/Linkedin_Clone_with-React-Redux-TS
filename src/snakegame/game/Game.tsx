@@ -51,7 +51,6 @@ const Game: React.FC<GameProps> = ({}) => {
   const onKeyDownBtn = (event: React.KeyboardEvent<HTMLDivElement>) => {
     switch (event.code) {
       case "KeyS":
-        console.log("S");
         setSBtn(false);
         setWBtn(true);
         setABtn(true);
