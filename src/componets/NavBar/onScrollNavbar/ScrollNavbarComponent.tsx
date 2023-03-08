@@ -3,12 +3,16 @@ import "aos/dist/aos.css";
 import "./ScrollNavbarComponent.scss";
 import { Button, Col, Container, Navbar, Row } from "react-bootstrap";
 import { useEffect } from "react";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { useLocation } from "react-router-dom";
 import { AiFillLock, AiOutlineUserAdd } from "react-icons/ai";
+import { Iprofile } from "../SearchBar/SearchInterface";
+import { MdOutlineDone } from "react-icons/md";
 
 export const ScrollNavbarComponent = () => {
+  const dispatch = useAppDispatch();
   const location = useLocation();
+  const Friends = useAppSelector((state) => state.friends.Favfriends);
   useEffect(() => {
     AOS.init({ startEvent: "load", duration: 500, offset: 350, anchorPlacement: "top-top" });
   }, []);
@@ -52,15 +56,33 @@ export const ScrollNavbarComponent = () => {
             ) : (
               <>
                 <Col md={6} lg={5} xl={4} className="d-flex align-items-center justify-content-around px-0">
-                  <Button className="rounded-pill firstButtonScroll">Altro</Button>
-                  <Button className="rounded-pill secondButtonScroll d-flex align-items-center">
+                  <Button className="rounded-pill firstButtonScroll py-1">Altro</Button>
+                  <Button className="rounded-pill secondButtonScroll d-flex align-items-center py-1">
                     <AiFillLock className="me-1" />
                     <span>Messaggio</span>
                   </Button>
-                  <Button className="rounded-pill thirdButtonScroll d-flex align-items-center">
-                    <AiOutlineUserAdd className="me-1" />
-                    <span>Collegati</span>
-                  </Button>
+                  {!Friends.find((el: Iprofile) => el._id === currentProfile?._id) && (
+                    <Button
+                      className="rounded-pill thirdButtonScroll d-flex align-items-center py-1"
+                      onClick={() => {
+                        dispatch({ type: "ADDFRIENDTOFAV", payload: currentProfile });
+                      }}
+                    >
+                      <AiOutlineUserAdd className="me-1" />
+                      <span>Collegati</span>
+                    </Button>
+                  )}
+                  {Friends.find((el: Iprofile) => el._id === currentProfile?._id) && (
+                    <Button
+                      className="Button6 d-flex align-items-center rounded-pill py-1"
+                      onClick={() => {
+                        dispatch({ type: "DELFRIENDFROMFAV", payload: currentProfile });
+                      }}
+                    >
+                      <MdOutlineDone />
+                      <p className="ms-1">Collegato</p>
+                    </Button>
+                  )}
                 </Col>
               </>
             )}
