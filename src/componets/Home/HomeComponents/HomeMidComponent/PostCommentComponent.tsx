@@ -10,6 +10,7 @@ import { Iprofile } from "../../../Profile/Profile";
 import { PostCommentPUTModal } from "./PostCommentPUTModal";
 import Template from "../Assets/original.png";
 import { MdReport } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 interface PostCommentProps {
   comment: Icomments;
@@ -66,7 +67,7 @@ export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) 
       <Col xs={11} className="singlePostComment d-flex mb-4">
         <img
           src={userFound?.image === undefined ? Template : userFound.image}
-          alt=""
+          alt="user pic"
           className="specificCommentImg me-2"
         />
         <Card
@@ -90,8 +91,12 @@ export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) 
           ) : (
             <>
               <div className="d-flex justify-content-between align-items-center">
-                <h6>
-                  {userFound?.name === undefined ? "Check all'anagrafe" : userFound?.name + " " + userFound?.surname}
+                <h6 className="userName">
+                  {userFound?.name === undefined ? (
+                    "Check all'anagrafe"
+                  ) : (
+                    <Link to={`/profile/${userFound?._id}`}>{userFound?.name + " " + userFound?.surname}</Link>
+                  )}
                 </h6>
                 <span className="d-flex aling-items-center">
                   <p className="me-2">{commented(comment.createdAt.toString())}</p>
@@ -163,7 +168,11 @@ export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) 
                   </>
                 </span>
               </div>
-              <p className="title">{userFound?.title === undefined ? "Disoccupato a tempo pieno" : userFound.title}</p>
+              <p className="title">
+                {userFound?.title === undefined || userFound?.title === ""
+                  ? "Disoccupato a tempo pieno"
+                  : userFound.title}
+              </p>
               <p className="actualComment">{comment.comment}</p>
             </>
           )}
