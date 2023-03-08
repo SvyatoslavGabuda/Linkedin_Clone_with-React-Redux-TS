@@ -1,4 +1,4 @@
-import { Container, Navbar, Nav, NavDropdown, Form, Badge } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Form } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { BsLinkedin, BsFillPeopleFill, BsFillBellFill, BsFillGrid3X3GapFill } from "react-icons/bs";
 import { MdBusinessCenter } from "react-icons/md";
@@ -6,13 +6,15 @@ import { ImHome3 } from "react-icons/im";
 import { AiFillMessage } from "react-icons/ai";
 import "./myNav.scss";
 import { useAppSelector } from "../../app/hooks";
+import { SearchBar } from "./SearchBar/SearchBar";
+import { ScrollNavbarComponent } from "./onScrollNavbar/ScrollNavbarComponent";
 const MyNav = () => {
   const { pathname: location } = useLocation();
   const myProfile = useAppSelector((state) => state.profile.myProfile);
 
   return (
     <>
-      <Navbar expand="sm" className="p-xs-3 p-sm-0 bg-light mb-3 sticky-top">
+      <Navbar expand="sm" className="p-xs-3 p-sm-0 mb-3 bg-light sticky-top">
         <Container>
           <Navbar.Brand>
             <Link to="/" className="d-flex align-items-center">
@@ -22,7 +24,8 @@ const MyNav = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll" className="justify-content-between">
             <Form className="d-none d-md-flex">
-              <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" />
+              {/* <Form.Control type="search" placeholder="Search" className="me-2" aria-label="Search" /> */}
+              <SearchBar />
             </Form>
             <div>
               <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
@@ -30,11 +33,14 @@ const MyNav = () => {
                   <span className="navlabel">Home</span>
                   <ImHome3 />
                 </Link>
-                <Link className="nav-link nav-link-top" to="/">
+                <Link
+                  className={location === "/rete" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"}
+                  to="/rete"
+                >
                   <span className="navlabel">Rete</span>
                   <BsFillPeopleFill />
                 </Link>
-                <Link className="nav-link nav-link-top" to="/">
+                <Link className={location === "/jobs" ? "nav-link nav-link-top nav-link-active" : "nav-link nav-link-top"} to="/jobs">
                   <span className="navlabel">Lavoro</span>
                   <MdBusinessCenter />
                 </Link>
@@ -129,6 +135,7 @@ const MyNav = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <ScrollNavbarComponent />
     </>
   );
 };

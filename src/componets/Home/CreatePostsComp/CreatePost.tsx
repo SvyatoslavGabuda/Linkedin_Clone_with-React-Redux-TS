@@ -8,8 +8,8 @@ import { MdOutlineArticle } from "react-icons/md";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { Col, Row } from "react-bootstrap";
 import { PostsModal } from "./PostsModal";
-import { useState } from "react";
 import { tooglePosts } from "../../../app/reducers/postsModSlice";
+import { PostsPutModal } from "./PostsPutModal";
 
 export const CreatePost = () => {
   const myProfile = useAppSelector((state) => state.profile.myProfile);
@@ -18,8 +18,8 @@ export const CreatePost = () => {
     <>
       <Card className="createPost">
         <Card.Body>
-          <Card.Text className="createPostTextAreaOne">
-            <Row className="align-items-center">
+          <div className="createPostTextAreaOne">
+            <Row className="align-items-center mb-3">
               <Col xs={1} className="text-center p-0">
                 {myProfile && (
                   <>
@@ -30,7 +30,7 @@ export const CreatePost = () => {
               </Col>
               <Col className="h-100  m-0 pe-0">
                 <div
-                  className="rounded-pill avviaPost "
+                  className="rounded-pill avviaPost m-0"
                   onClick={() => {
                     dispatch(tooglePosts());
                   }}
@@ -39,11 +39,11 @@ export const CreatePost = () => {
                 </div>
               </Col>
             </Row>
-          </Card.Text>
-          <Card.Text className="createPostTextAreaTwo">
+          </div>
+          <div className="createPostTextAreaTwo">
             <Row className="justify-content-around">
               <Col className="p-0">
-                <Button variant="light" className="rounded-pill">
+                <Button variant="light" className="">
                   <Row>
                     <Col xs={2}>
                       <HiPhoto className="photoIcon" />{" "}
@@ -53,7 +53,7 @@ export const CreatePost = () => {
                 </Button>
               </Col>
               <Col className="p-0">
-                <Button variant="light" className="rounded-pill">
+                <Button variant="light" className="">
                   <Row>
                     <Col xs={2}>
                       <BsFillPlayBtnFill className="playIcon" />
@@ -63,7 +63,7 @@ export const CreatePost = () => {
                 </Button>
               </Col>
               <Col className="p-0">
-                <Button variant="light" className="rounded-pill">
+                <Button variant="light" className="">
                   <Row>
                     <Col xs={2}>
                       <BsCalendar2Event className="calendarIcon" />
@@ -73,7 +73,7 @@ export const CreatePost = () => {
                 </Button>
               </Col>
               <Col xs={4} className="p-0">
-                <Button variant="light" className="w-100 rounded-pill">
+                <Button variant="light" className="w-100 ">
                   <Row>
                     <Col xs={2}>
                       <MdOutlineArticle className="articleIcon " />
@@ -83,10 +83,11 @@ export const CreatePost = () => {
                 </Button>
               </Col>
             </Row>
-          </Card.Text>
+          </div>
         </Card.Body>
       </Card>
       <PostsModal />
+      <PostsPutModal />
     </>
   );
 };

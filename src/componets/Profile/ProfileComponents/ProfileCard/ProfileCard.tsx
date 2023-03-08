@@ -1,5 +1,5 @@
 import "./profileCard.scss";
-import { Row, Button, Col } from "react-bootstrap";
+import { Row, Button, Col, Spinner } from "react-bootstrap";
 import { AiFillCamera } from "react-icons/ai";
 import { HiOutlinePencil } from "react-icons/hi2";
 import Logo from "./Assets/original.png";
@@ -10,9 +10,11 @@ import { ProfileExperience } from "../ProfileExperience/ProfileExperience";
 import { ProfileInterest } from "../ProfileInterests/ProfileInterests";
 import { ProfileResources } from "../ProfileRecurces/ProfileResources";
 import { Iprofile } from "../../Profile";
-import { useAppDispatch } from "../../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { toogleM } from "../../../../app/reducers/upgrateModSlice";
 import { useParams } from "react-router";
+import { ProfileImageMod } from "./ProfileImageMod";
+import { useState } from "react";
 
 interface ProfileCardProps {
   profile: Iprofile;
@@ -21,9 +23,28 @@ interface ProfileCardProps {
 export const ProfileCard = ({ profile }: ProfileCardProps) => {
   const dispatch = useAppDispatch();
   const params = useParams();
+
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(!show);
+  const loadingState = useAppSelector((state) => state.profile.loadingMyProfile);
+  const friends = useAppSelector((state) => state.friends.Favfriends);
+
+  const finduser = () => {
+    if (friends?.length > 0) return friends.find((person: Iprofile) => person?._id === profile?._id);
+  };
+
+  let verifyUser = finduser();
+
   return (
     <>
       <Col xs={12} md={7} lg={8}>
+        {loadingState === true && (
+          <div className="text-center py-5">
+            <Spinner animation="grow" variant="info" />
+          </div>
+        )}
+        <ProfileImageMod show={show} handleShow={handleShow} />
         {profile && (
           <Row className="mt-1 border border-1 rounded mb-2 bg-white">
             <section className="p-0">
@@ -47,20 +68,32 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                   <div className="ProfileImgContainer2">
                     <div className="ProfileImgContainer3">
                       <div className="ProfileImgContainer4" style={{ position: "relative" }}>
-                        <img src={profile.image} alt="ProfilePic" />
-                        {params.id === "me" && (
-                          <div
-                            className="d-block rounded-circle"
-                            style={{
-                              position: "absolute",
-                              backgroundColor: "green",
-                              width: "24px",
-                              height: "24px",
-                              bottom: "8px",
-                              right: "8px",
-                              border: "3px solid white",
+                        {params.id === "me" ? (
+                          <img
+                            src={profile.image}
+                            alt="ProfilePic"
+                            onClick={() => {
+                              handleShow();
                             }}
-                          ></div>
+                          />
+                        ) : (
+                          <img src={profile.image} alt="ProfilePic" />
+                        )}
+                        {params.id === "me" && (
+                          <>
+                            <div
+                              className="d-block rounded-circle"
+                              style={{
+                                position: "absolute",
+                                backgroundColor: "green",
+                                width: "24px",
+                                height: "24px",
+                                bottom: "8px",
+                                right: "8px",
+                                border: "3px solid white",
+                              }}
+                            ></div>
+                          </>
                         )}
                       </div>
                     </div>
@@ -93,7 +126,7 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                       <a href="/">1 collegamento</a>
                     </p>
                   </div>
-                  <div>
+                  <div className="d-none d-lg-block">
                     <ul>
                       <li className="mb-3">
                         <div className="d-flex align-items-center">
@@ -114,14 +147,21 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                     </ul>
                   </div>
                 </div>
-                <div className="d-flex">
+                <div className="d-flex profileCardButtonsModifiers">
                   <div>
                     <Button variant="primary" className="rounded-pill py-1 me-2 Button1">
                       {params.id === "me" ? "Disponibile per" : "Messaggio"}
                     </Button>
                   </div>
                   <div>
-                    <button className="rounded-pill py-1 me-2 Button2">{params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}</button>
+                    <button
+                      className={`rounded-pill py-1 me-2 Button2 ${verifyUser && "d-none"}`}
+                      onClick={() => {
+                        dispatch({ type: "ADDFRIENDTOFAV", payload: profile });
+                      }}
+                    >
+                      {params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}
+                    </button>
                   </div>
                   <div>
                     <button className="rounded-pill py-1 Button3">Altro</button>

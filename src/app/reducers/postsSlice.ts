@@ -9,6 +9,7 @@ export interface Iposts {
   createdAt: Date;
   updatedAt: Date;
   __v: number;
+  image?: string;
 }
 
 export interface User {
@@ -45,7 +46,7 @@ export const postsFetc = createAsyncThunk("fetch-posts", async () => {
     });
     if (resposnse.ok) {
       const data = await resposnse.json();
-      console.log(data);
+      // console.log(data);
       return data;
     } else {
       console.log("errroer");

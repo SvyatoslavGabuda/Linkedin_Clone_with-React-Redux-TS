@@ -7,7 +7,7 @@ const MyFooter = () => {
   const location = useLocation();
   return (
     <footer className="my-5">
-      {location.pathname !== "/" && (
+      {location.pathname !== "/" && location.pathname !== "/jobs" && location.pathname !== "/rete" && (
         <Container>
           <Row>
             <Col>

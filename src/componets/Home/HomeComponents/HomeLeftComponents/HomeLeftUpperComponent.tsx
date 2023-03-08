@@ -9,6 +9,7 @@ import { HomeLeftProps } from "../HomeLeftComponent";
 
 export const HomeLeftUpperComponent = ({ isShown }: HomeLeftProps) => {
   const currentProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
+  const friends = useAppSelector((state) => state.friends.Favfriends);
 
   return (
     <>
@@ -34,17 +35,17 @@ export const HomeLeftUpperComponent = ({ isShown }: HomeLeftProps) => {
             {/* Seconda linea */}
             {/* ---- */}
             <div className={`HomeLeftPartSecond ${isShown === false && "isItShown"}`}>
-              <a href="/">
+              <Link to={"/rete"}>
                 <div className="d-flex justify-content-between px-3 text-start">
                   <div>
                     <p className="text-secondary">Collegamento</p>
                     <p className="text-black">Espandi la tua rete</p>
                   </div>
                   <div>
-                    <span>12</span>
+                    <span>{friends.length}</span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
             {/* ---- */}
             {/* terza linea */}

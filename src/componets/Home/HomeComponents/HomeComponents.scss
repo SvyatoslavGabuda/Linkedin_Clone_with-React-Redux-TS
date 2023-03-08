@@ -19,8 +19,10 @@
     }
 
     img {
-      height: 68px;
       width: 68px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: center;
       margin: -38px auto 1.2rem;
       border: 2px solid white;
       border-radius: 50%;
@@ -36,11 +38,12 @@
   .HomeLeftPartSecond {
     padding: 12px 0px;
     border-bottom: 1px solid lightgray;
+    &:hover {
+      background-color: rgba(199, 199, 199, 0.418);
+      transition: 300ms ease-in-out;
+    }
     a {
       text-decoration: none;
-      &:hover {
-        background-color: rgba(199, 199, 199, 0.418);
-      }
     }
     div {
       span {
@@ -56,6 +59,7 @@
     border-bottom: 1px solid lightgray;
     &:hover {
       background-color: rgba(199, 199, 199, 0.418);
+      transition: 300ms ease-in-out;
     }
     h3 {
       font-size: 0.9em;
@@ -85,6 +89,7 @@
     }
     &:hover {
       background-color: rgba(199, 199, 199, 0.418);
+      transition: 300ms ease-in-out;
     }
   }
 }
@@ -92,6 +97,8 @@
 .HomeLeftLowerContainer {
   padding-top: 8px;
   margin-bottom: 8px;
+  position: sticky;
+  top: 62px;
   .header {
     padding-left: 12px;
     margin-right: 8px;
@@ -211,6 +218,7 @@
     &:hover {
       background-color: rgba(199, 199, 199, 0.418);
       border-radius: 5px;
+      transition: 300ms ease-in-out;
     }
     .HomeMidIcon {
       font-size: 1.3em;
@@ -245,6 +253,7 @@
     a {
       text-decoration: none;
       color: #5e5e5e;
+      font-weight: 500;
       &:hover {
         text-decoration: none;
         color: #5e5e5e;
@@ -253,6 +262,7 @@
   }
   .dropdown-menu {
     width: 350px;
+    right: -0.8rem !important;
   }
   .dropdown-toggle::after {
     display: none;
@@ -266,7 +276,9 @@
   }
   img {
     width: 48px;
-    height: 48px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
     border-radius: 50%;
   }
 }
@@ -322,6 +334,8 @@
   }
 }
 .HomeRightFooter {
+  position: sticky;
+  top: 70px;
   > div {
     &:last-child {
       margin-top: 10px;
@@ -345,5 +359,197 @@
   }
   .footer-logo {
     margin-right: 8px;
+  }
+}
+
+.inputCommentContainer {
+  border-color: gray !important;
+  width: 85%;
+}
+
+.commentsInput {
+  font-size: 12px;
+  @media screen and (min-width: 340px) {
+    font-size: 1em;
+  }
+}
+
+.commentsIconContainer {
+  .commentInputIcon {
+    color: #555555;
+    transition: 0.2s;
+    &:hover {
+      transition: 0.2s;
+      color: black;
+      transform: scale(1.05);
+    }
+  }
+}
+
+.commentInputImage {
+  box-shadow: 9px 10px 15px -3px rgba(0, 0, 0, 0.15);
+}
+
+.commentsDropdown {
+  .dropFilter {
+    color: gray;
+    background-color: inherit;
+    border: none;
+    &:hover {
+      color: gray;
+      background-color: inherit;
+    }
+  }
+
+  .dropCommentIcon {
+    color: #5e5e5e;
+  }
+
+  .commentsDropdownText {
+    color: gray;
+
+    h6 {
+      color: #555555;
+      font-size: 15px;
+    }
+    p {
+      font-size: 12px;
+      @media screen and (max-width: 350px) {
+        max-width: 200px;
+        white-space: pre-wrap;
+      }
+    }
+  }
+}
+
+.singlePostComment {
+  .specificCommentImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 9px 10px 15px -3px rgba(0, 0, 0, 0.15);
+  }
+
+  .alertCondition {
+    padding: 0 !important;
+    margin: 0 !important;
+
+    .alertComment {
+      width: 100%;
+      font-size: 12px;
+      margin: 0;
+    }
+  }
+
+  .singleCommentText {
+    background-color: #f2f2f2;
+    border-radius: 0 0.375rem 0.375rem 0.375rem;
+    border: none;
+    width: 90%;
+
+    div {
+      h6 {
+        font-size: 14px;
+        margin-bottom: 0;
+      }
+
+      p {
+        font-size: 12px;
+        margin-bottom: 0;
+        color: gray;
+      }
+    }
+
+    p.actualComment {
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    p.title {
+      font-size: 12px;
+      font-weight: 400;
+      color: gray;
+      margin-bottom: 6px;
+      transform: translateY(-5px);
+    }
+  }
+}
+
+.singleCommentDropdown {
+  background-color: inherit;
+  border: none;
+  color: #555555;
+  transform: translateY(-3px);
+  &:hover {
+    color: #555555;
+    background-color: inherit;
+    border: none;
+  }
+
+  .btn {
+    background-color: inherit;
+  }
+
+  .dropdown-toggle:after {
+    background-color: #555555;
+  }
+}
+
+.emojiPicker {
+  position: absolute !important;
+  top: 100%;
+  right: 2%;
+  z-index: 2000;
+}
+
+// CSS instructions for PUT modal comments
+
+.modalCommentContainer {
+  .textAreaLabel {
+    font-size: 12px;
+  }
+
+  .areaCommentContainer {
+    border: 1px solid lightgray;
+    display: flex;
+    justify-content: flex-end;
+    .commentPutInput {
+      border: none;
+      width: 100%;
+      min-height: 80px;
+      line-height: 18px;
+    }
+
+    .commentPutIcon {
+      color: #555555;
+      transition: 0.2s;
+      &:hover {
+        transition: 0.2s;
+        color: black;
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .putCloseButton {
+    color: #555555;
+    font-size: 0.9em;
+    border: none;
+    &:hover {
+      color: #555555;
+      background-color: rgb(230, 230, 230);
+    }
+  }
+
+  .putButton {
+    color: #0a66c2;
+    border: none;
+    background-color: inherit;
+    font-size: 0.9em;
+    &:hover {
+      background-color: #0a66c248;
+    }
   }
 }

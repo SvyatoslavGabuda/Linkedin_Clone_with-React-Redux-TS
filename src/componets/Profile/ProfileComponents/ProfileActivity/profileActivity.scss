@@ -1,31 +1,41 @@
-
-.Button1,.Button2, .Button3,.Button4, p{
-    font-weight: 500;
+.Button1,
+.Button2,
+.Button3,
+.Button4,
+p {
+  font-weight: 500;
 }
 p {
-    margin: 0;
-    font-size: 0.9em;
+  margin: 0;
+  font-size: 0.9em;
 }
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 .Follower {
-a {
-        text-decoration: none;
-        color: black;
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-} 
-    
-.Button4 {
-    width: 100%;
-    border: none;
-    background-color: white;
-    color: #6c757d;
-    padding: 10px;
+  a {
+    text-decoration: none;
+    color: black;
     &:hover {
-        background-color: #dbdbdb;
+      text-decoration: underline;
     }
+  }
+}
+
+.Button4 {
+  width: 100%;
+  border: none;
+  background-color: white;
+  color: #6c757d;
+  padding: 10px;
+  &:hover {
+    background-color: #dbdbdb;
+  }
+}
+
+#activityRow {
+  #postCard {
+    margin: 0 !important;
+    border: 0 !important;
+  }
 }

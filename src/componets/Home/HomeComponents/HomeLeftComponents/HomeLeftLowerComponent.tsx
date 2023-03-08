@@ -32,7 +32,7 @@ export const HomeLeftLowerComponent = ({ isShown }: HomeLeftProps) => {
               </li>
               <li className="eventList">
                 <AiTwotoneCalendar className="eventIcon" />
-                <span>Titolo evento</span>
+                <span>Epicode - Javaspritz Classe FS 08-22</span>
               </li>
             </ul>
           </div>
@@ -41,7 +41,7 @@ export const HomeLeftLowerComponent = ({ isShown }: HomeLeftProps) => {
             <ul className="HomeLeftGroupsList">
               <li className="eventList">
                 <HiUserGroup className="eventIcon" />
-                <span>Titolo evento</span>
+                <span>Buildweek - React / TypeScript</span>
               </li>
               <li className="eventList">
                 <span className="seeAll">Vedi tutti</span>

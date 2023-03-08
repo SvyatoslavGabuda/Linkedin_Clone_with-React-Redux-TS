@@ -1,58 +1,58 @@
-.BackgroundContainer{
-    min-height: 195.5px;
-    max-height: 195.5px;
-    position: relative;
-    overflow-y: hidden;
-    background: linear-gradient(62deg, rgb(21, 213, 235) 0.00%, rgb(255, 0, 191) 100.00%);
-    div {
-        position: absolute;
-        // top: 0;
-        // left: 0;
-        // right: 0;
-        bottom: 0;
-        transition-duration: .4s;
-        transition-timing-function: ease-in-out;
-        transition-property: opacity;
-        transition-delay: 1s;
-        opacity: 1;
+.BackgroundContainer {
+  min-height: 195.5px;
+  max-height: 195.5px;
+  position: relative;
+  overflow-y: hidden;
+  background: linear-gradient(62deg, rgb(21, 213, 235) 0%, rgb(255, 0, 191) 100%);
+  div {
+    position: absolute;
+    // top: 0;
+    // left: 0;
+    // right: 0;
+    bottom: 0;
+    transition-duration: 0.4s;
+    transition-timing-function: ease-in-out;
+    transition-property: opacity;
+    transition-delay: 1s;
+    opacity: 1;
 
-        div {
-            position: relative;
-            width: 100%;
-            padding-bottom: 25%;
-            cursor: pointer;
-        } 
+    div {
+      position: relative;
+      width: 100%;
+      padding-bottom: 25%;
+      cursor: pointer;
     }
+  }
 }
 .CamContainer {
-    position: absolute;
-    top: calc(1.6rem + .4rem);
-    right: calc(1.6rem + .4rem);
+  position: absolute;
+  top: calc(1.6rem + 0.4rem);
+  right: calc(1.6rem + 0.4rem);
 
-    button {
-        height: 2.4rem;
-        width: 2.4rem;
+  button {
+    height: 2.4rem;
+    width: 2.4rem;
     min-width: auto;
     background-color: white;
     color: #004182;
     border: none;
     border-radius: 50%;
-    }
+  }
 }
 .IconCam {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 1.3rem;
-    height: 1.3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1.3rem;
+  height: 1.3rem;
 }
 
 .ProfileImgContainer2 {
-    margin-top: -112px;
-    z-index: 4;
+  margin-top: -112px;
+  z-index: 4;
 
-    .ProfileImgContainer3 {
-        width: 160px;
+  .ProfileImgContainer3 {
+    width: 160px;
     height: 160px;
     box-sizing: border-box;
     border-radius: 49.9%;
@@ -60,107 +60,125 @@
     border: 4px solid white;
 
     .ProfileImgContainer4 {
-        width: 100%;
-    height: 100%;
-    background-color:white;
-    display: block;
-    border-radius: 49.9%;
-    img {
+      width: 100%;
+      height: 100%;
+      background-color: white;
+      display: block;
+      border-radius: 49.9%;
+      img {
         width: 152px;
-        height: 152px;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        object-position: center;
         border-radius: 50%;
+      }
     }
-    }
-    }
+  }
 }
 .ButtonContainer3 {
-    button {
-        background-color: white;
-        border: none;
-        // border-radius: 50%;
-        height: 4rem;
+  button {
+    background-color: white;
+    border: none;
+    // border-radius: 50%;
+    height: 4rem;
     width: 4rem;
-        & :hover {
-            background-color: #dbdbdb;
-            border-radius: 50%;
-        }
-        li {
-            padding: 10px 0px;
-        }
+    & :hover {
+      background-color: #dbdbdb;
+      border-radius: 50%;
     }
+    li {
+      padding: 10px 0px;
+    }
+  }
 }
 .IconPen {
-    width: 1.5rem;
-    height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .Button2 {
-    padding: .6rem 1.2rem;
-    border: none;  
-    color: #0d6efd;
-    background-color: white;
-    box-shadow: inset 0 0 0 1px #0d6efd;
- &:hover {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  color: #0d6efd;
+  background-color: white;
+  box-shadow: inset 0 0 0 1px #0d6efd;
+  &:hover {
     box-shadow: inset 0 0 0 2px #0d6efd;
-background-color: #0d6dfd3f;
- }
+    background-color: #0d6dfd3f;
+    transition: 300ms ease-in-out;
+  }
 }
 .Button3 {
-    padding: .6rem 1.2rem;
-    border: none;
-    color: #6c757d;
-    background-color: white;
-    box-shadow: inset 0 0 0 1px #6c757d;
-    &:hover {
-        box-shadow: inset 0 0 0 2px #6c757d;
-        background-color: #6c757d3f;
-    }
+  padding: 0.6rem 1.2rem;
+  border: none;
+  color: #6c757d;
+  background-color: white;
+  box-shadow: inset 0 0 0 1px #6c757d;
+  &:hover {
+    box-shadow: inset 0 0 0 2px #6c757d;
+    background-color: #6c757d3f;
+  }
 }
-.Button1,.Button2, .Button3,.Button4, p{
-    font-weight: 500;
+.Button1,
+.Button2,
+.Button3,
+.Button4,
+p {
+  font-weight: 500;
 }
 p {
-    margin: 0;
-    font-size: 0.9em;
+  margin: 0;
+  font-size: 0.9em;
 }
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 ul {
-    li {
-        img {
-            width: 32px;
-            height: 32px;
-        }
-        span {
-            font-weight: 500;
-            a {
-                color: black;
-            }
-        }
+  li {
+    img {
+      width: 32px;
+      height: 32px;
     }
+    span {
+      font-weight: 500;
+      a {
+        color: black;
+      }
+    }
+  }
 }
 
 section {
-    border-radius: 10px;
-    overflow: hidden;
-    a {
-        text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
+  border-radius: 10px;
+  overflow: hidden;
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
     }
+  }
 }
 .Button4 {
-    width: 100%;
-    border: none;
-    background-color: white;
-    color: #6c757d;
-    padding: 10px;
-    &:hover {
-        background-color: #dbdbdb;
-    }
+  width: 100%;
+  border: none;
+  background-color: white;
+  color: #6c757d;
+  padding: 10px;
+  &:hover {
+    background-color: #dbdbdb;
+  }
 }
 .ExpImg {
-width: 48px;
-height: 48px;
+  object-fit: cover;
+  object-position: center;
+  width: 48px;
+  height: 48px;
+}
+.profileCardButtonsModifiers {
+  @media screen and (max-width: 576px) {
+    flex-direction: column;
+    button {
+      font-size: 80%;
+      margin-bottom: 10px;
+    }
+  }
 }

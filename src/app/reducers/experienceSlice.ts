@@ -7,6 +7,7 @@ export interface Iexperience {
   company: string;
   startDate: Date;
   description: string;
+  image: string;
   area: string;
   username: string;
   user: string;
@@ -34,7 +35,7 @@ export const expFetc = createAsyncThunk("fetct", async (id: string) => {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log("experience ", data);
+      // console.log("experience ", data);
       return data;
     } else {
       console.log("errorer");

@@ -3,6 +3,8 @@ import { BsFillInfoSquareFill } from "react-icons/bs";
 import { BiUpArrow } from "react-icons/bi";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { HomeFooter } from "./HomeFooter";
+import { GiSnake } from "react-icons/gi";
 
 export const HomeRight = () => {
   const [show, setShow] = useState(false);
@@ -24,7 +26,12 @@ export const HomeRight = () => {
               <p>17 ore fa | 253 lettori</p>
             </li>
             <li>
-              <h6>Quanto Typescrip ti da noie</h6>
+              <h6>
+                Quanto Typescrip ti da noie{" "}
+                <Link to="/game" style={{ color: "green" }}>
+                  <GiSnake />
+                </Link>
+              </h6>
               <p>Oggi | 999 lettori</p>
             </li>
             <li>
@@ -62,53 +69,11 @@ export const HomeRight = () => {
               setShow(!show);
             }}
           >
-            <BiUpArrow className={!show ? "showchat hidechat" : "showchat"} /> &nbsp; Visualizza Altro
+            <BiUpArrow className={!show ? "showchat hidechat" : "showchat"} /> &nbsp; Visualizza
+            Altro
           </div>
         </div>
-        <div className="HomeRightFooter">
-          <div>
-            <Link className="footer-link" to="/">
-              Informazioni
-            </Link>
-            <Link className="footer-link" to="/">
-              Accessibilità
-            </Link>
-          </div>
-          <div>
-            <Link className="footer-link" to="/">
-              Centro assistenza
-            </Link>
-            <Link className="footer-link" to="/">
-              Privacy e condizioni
-            </Link>
-          </div>
-          <div>
-            <Link className="footer-link" to="/">
-              Opzioni per gli annunci pubblicitari
-            </Link>
-          </div>
-          <div>
-            <Link className="footer-link" to="/">
-              Pubblicità
-            </Link>
-            <Link className="footer-link" to="/">
-              Servizi alle aziende
-            </Link>
-          </div>
-          <div>
-            <Link className="footer-link" to="/">
-              Scarica l'app LinkedIn
-            </Link>
-            <Link className="footer-link" to="/">
-              Altro
-            </Link>
-          </div>
-          <div className="HomeFooterCR">
-            {" "}
-            <img className="footer-logo" src="logo.webp" alt="Linkedin Logo" height={"16px"} />
-            LinkedIn Corporation &copy; {new Date().getFullYear()}
-          </div>
-        </div>
+        <HomeFooter />
       </Col>
     </>
   );

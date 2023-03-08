@@ -1,9 +1,13 @@
 import "./profile.scss";
-import { ProfileActivity } from "./ProfileComponents/ProfileActivity/ProfileActivity";
 import { ProfileCard } from "./ProfileComponents/ProfileCard/ProfileCard";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { ADD_TO_ALLPROFILE, ADD_TO_GENERALPROFILE, ADD_TO_MYPROFILE } from "../../app/reducers/allProfileReduce";
+import {
+  ADD_TO_ALLPROFILE,
+  ADD_TO_GENERALPROFILE,
+  ADD_TO_MYPROFILE,
+  HANDLE_LOAD_ALLPROFILE,
+  HANDLE_LOAD_MYPROFILE,
+} from "../../app/reducers/allProfileReduce";
 import { useParams } from "react-router-dom";
 import { ProfileSideBar } from "./ProfileComponents/ProfileSideBar/ProfileSideBar";
 import { ProfileModale } from "./ProfileComponents/ProfileModale/ProfileModale";
@@ -13,6 +17,7 @@ import { GetExperience } from "./ProfileComponents/ProfileExperience/Experience/
 import { useAppSelector } from "../../app/hooks";
 import { ExperienceModalComponent } from "./ProfileComponents/ProfileExperience/ExperienceModalComponenent";
 import { ExperiencePutModalComponent } from "./ProfileComponents/ProfileExperience/ExperiencePutModalComponent";
+import useDocumentTitle from "../../app/useDocumentTitle";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -43,6 +48,7 @@ const Profile = () => {
   const dispatch = useAppDispatch();
   //fetch tutti i profili
   const profileFetch = async () => {
+    dispatch({ type: HANDLE_LOAD_ALLPROFILE, payload: true });
     try {
       const response = await fetch(url, {
         headers: {
@@ -51,7 +57,7 @@ const Profile = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         setAllProfile(data);
         dispatch({ type: ADD_TO_ALLPROFILE, payload: data });
       } else {
@@ -59,10 +65,13 @@ const Profile = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      dispatch({ type: HANDLE_LOAD_ALLPROFILE, payload: false });
     }
   };
   //fetch Profilo in base al BEARER
   const myProfileFetch = async () => {
+    dispatch({ type: HANDLE_LOAD_MYPROFILE, payload: true });
     try {
       const response = await fetch(url + "me", {
         headers: {
@@ -71,11 +80,15 @@ const Profile = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("myprofle", data);
+        // console.log("myprofle", data);
         setMyProfile(data);
         dispatch({ type: ADD_TO_MYPROFILE, payload: data });
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch({ type: HANDLE_LOAD_MYPROFILE, payload: false });
+    }
   };
   //fetch PROFILO IN base al id
   const idProfileFetch = async () => {
@@ -94,11 +107,13 @@ const Profile = () => {
     } catch (error) {}
   };
 
+  const upDateState = useAppSelector((state) => state.upDate.numberOfUpdate);
+
   useEffect(() => {
     profileFetch();
     myProfileFetch();
     //dispatch(profileFetch());
-  }, []);
+  }, [upDateState]);
 
   useEffect(() => {
     idProfileFetch();
@@ -107,6 +122,16 @@ const Profile = () => {
   const currentProfile: Iprofile = useAppSelector((state) => state.profile.myProfile);
 
   const clickedProfile: Iprofile = useAppSelector((state) => state.profile.generalProfile);
+
+  let titolocondizionale = "";
+
+  if (params.id === "me") {
+    titolocondizionale = `${myProfile?.name} ${myProfile?.surname} | `;
+  } else if (params.id !== "me") {
+    titolocondizionale = `${clickedProfile?.name} ${clickedProfile?.surname} | `;
+  }
+
+  useDocumentTitle(`${titolocondizionale} LinkedIn`);
 
   return (
     <>
