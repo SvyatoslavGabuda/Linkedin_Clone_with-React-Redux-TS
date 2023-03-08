@@ -7,6 +7,7 @@ import draw from "../draw/draw";
 import { GameButton, GameWrapper, Score, PlayButton, SnakeTitle } from "./Game.styles";
 import useGameLogic from "./useGameLogic";
 import { Direction } from "./useGameLogic";
+import "./gameButton.scss";
 
 interface GameProps {}
 
@@ -43,21 +44,47 @@ const Game: React.FC<GameProps> = ({}) => {
   const drawGame = (ctx: CanvasRenderingContext2D) => {
     draw({ ctx, snakeBody, foodPosition });
   };
+  const [sBtn, setSBtn] = useState(true);
+  const [wBtn, setWBtn] = useState(true);
+  const [aBtn, setABtn] = useState(true);
+  const [dBtn, setDBtn] = useState(true);
   const onKeyDownBtn = (event: React.KeyboardEvent<HTMLDivElement>) => {
     switch (event.code) {
       case "KeyS":
+        setSBtn(false);
+        setWBtn(true);
+        setABtn(true);
+        setDBtn(true);
         break;
       case "KeyW":
+        setSBtn(true);
+        setWBtn(false);
+        setABtn(true);
+        setDBtn(true);
         break;
       case "KeyD":
+        setSBtn(true);
+        setWBtn(true);
+        setABtn(true);
+        setDBtn(false);
         break;
       case "KeyA":
+        setSBtn(true);
+        setWBtn(true);
+        setABtn(false);
+        setDBtn(true);
         break;
     }
   };
 
   return (
-    <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
+    <GameWrapper
+      tabIndex={0}
+      onKeyDown={(e) => {
+        onKeyDownHandler(e);
+        onKeyDownBtn(e);
+      }}
+    >
       <Row>
         <SnakeTitle>---SNAKE---</SnakeTitle>
       </Row>
@@ -81,7 +108,12 @@ const Game: React.FC<GameProps> = ({}) => {
           <Row className="justify-content-center ">
             <Col xs={3} className="p-0">
               <PlayButton
+                className={wBtn ? "" : "pressBtn"}
                 onClick={() => {
+                  setSBtn(true);
+                  setWBtn(false);
+                  setABtn(true);
+                  setDBtn(true);
                   if (direction !== Direction.DOWN) {
                     setDirection(Direction.UP);
                   }
@@ -94,7 +126,12 @@ const Game: React.FC<GameProps> = ({}) => {
           <Row className="justify-content-center">
             <Col xs={3} className="p-0">
               <PlayButton
+                className={aBtn ? "" : "pressBtn"}
                 onClick={() => {
+                  setSBtn(true);
+                  setWBtn(true);
+                  setABtn(false);
+                  setDBtn(true);
                   if (direction !== Direction.RIGHT) {
                     setDirection(Direction.LEFT);
                   }
@@ -105,7 +142,12 @@ const Game: React.FC<GameProps> = ({}) => {
             </Col>
             <Col xs={3} className="p-0">
               <PlayButton
+                className={sBtn ? "" : "pressBtn"}
                 onClick={() => {
+                  setSBtn(false);
+                  setWBtn(true);
+                  setABtn(true);
+                  setDBtn(true);
                   if (direction !== Direction.UP) {
                     setDirection(Direction.DOWN);
                   }
@@ -117,7 +159,12 @@ const Game: React.FC<GameProps> = ({}) => {
 
             <Col xs={3} className="p-0">
               <PlayButton
+                className={dBtn ? "" : "pressBtn"}
                 onClick={() => {
+                  setSBtn(true);
+                  setWBtn(true);
+                  setABtn(true);
+                  setDBtn(false);
                   if (direction !== Direction.LEFT) {
                     setDirection(Direction.RIGHT);
                   }
