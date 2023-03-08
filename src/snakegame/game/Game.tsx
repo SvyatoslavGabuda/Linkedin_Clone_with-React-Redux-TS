@@ -39,6 +39,18 @@ const Game: React.FC<GameProps> = ({}) => {
   const drawGame = (ctx: CanvasRenderingContext2D) => {
     draw({ ctx, snakeBody, foodPosition });
   };
+  const onKeyDownBtn = (event: React.KeyboardEvent<HTMLDivElement>) => {
+    switch (event.code) {
+      case "KeyS":
+        break;
+      case "KeyW":
+        break;
+      case "KeyD":
+        break;
+      case "KeyA":
+        break;
+    }
+  };
 
   return (
     <GameWrapper tabIndex={0} onKeyDown={onKeyDownHandler}>
