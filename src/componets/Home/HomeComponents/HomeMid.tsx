@@ -56,7 +56,7 @@ export const HomeMid = () => {
   return (
     <>
       <Posts />
-      <Col>
+      <Col xs={12} md={8} xl={6}>
         <Row>
           <CreatePost />
         </Row>
@@ -73,19 +73,19 @@ export const HomeMid = () => {
           {curretPOSTS && curretPOSTS.map((el) => <SinglePostComponent post={el} key={el._id} />)}
           {curretPOSTS && (
             <ReactPaginate
-              breakLabel="..."
-              previousLabel="<<"
-              nextLabel=">>"
+              breakLabel="&#8230;"
+              breakClassName="linkPaginazione rounded-pill"
+              previousLabel="<"
+              nextLabel=">"
               onPageChange={handlePageClick}
               pageRangeDisplayed={3}
               pageCount={pageCount}
-              pageLinkClassName="page-link"
+              pageLinkClassName="rounded-pill linkPaginazione"
               previousClassName="page-item"
               previousLinkClassName="page-link"
               nextClassName="page-item"
               nextLinkClassName="page-link"
-              breakClassName="page-item"
-              breakLinkClassName="page-link"
+              breakLinkClassName="threeDots"
               containerClassName="pagination justify-content-between"
               activeClassName="active"
             />

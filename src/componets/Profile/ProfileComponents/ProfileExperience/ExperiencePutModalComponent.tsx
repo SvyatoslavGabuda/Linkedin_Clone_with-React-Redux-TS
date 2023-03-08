@@ -21,7 +21,14 @@ export const ExperiencePutModalComponent = () => {
   // define dispatch
   const dispatch = useAppDispatch();
   // create a internal state to store the value of the experience into the input to modify
-  const [experience, setExperience] = useState<IexperiencePost>();
+  const [experience, setExperience] = useState<IexperiencePost>({
+    role: "",
+    company: "",
+    startDate: "",
+    endDate: "",
+    description: "",
+    area: "",
+  });
 
   useEffect(() => {
     if (myProfile) {
@@ -31,13 +38,17 @@ export const ExperiencePutModalComponent = () => {
         startDate:
           user.experience[putStore.indexExp]?.startDate &&
           format(new Date(user.experience[putStore.indexExp]?.startDate), "yyyy-MM-dd"),
-        endDate: "",
+        endDate:
+          user.experience[putStore.indexExp]?.endDate?.length > 0
+            ? format(new Date(user.experience[putStore.indexExp]?.endDate), "yyyy-MM-dd")
+            : "",
         description: user.experience[putStore.indexExp]?.description,
         area: user.experience[putStore.indexExp]?.area,
       });
+      console.log(experience);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [putStore.show]);
+  }, [putStore.indexExp]);
 
   //   Fetch to PUT an existing Experience
   const putExperience = async () => {
@@ -110,7 +121,6 @@ export const ExperiencePutModalComponent = () => {
             onSubmit={(e) => {
               e.preventDefault();
               putExperience();
-              // chiama funzione PUT
               dispatch(hidePutM());
             }}
           >
@@ -181,7 +191,7 @@ export const ExperiencePutModalComponent = () => {
                       <Form.Control
                         type="date"
                         placeholder=""
-                        value={experience.endDate && experience.endDate.toString()}
+                        value={experience.endDate.length > 1 ? experience.endDate.toString() : ""}
                         onChange={(e) => {
                           setExperience({
                             ...experience,

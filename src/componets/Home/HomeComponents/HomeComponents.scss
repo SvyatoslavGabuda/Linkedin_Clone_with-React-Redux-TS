@@ -553,3 +553,104 @@
     }
   }
 }
+
+// CSS instructions for the pagination
+
+.pagination {
+  background-color: #f3f2ef;
+  padding: 0.5em;
+  border-radius: 10px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0.6em;
+  }
+
+  .linkPaginazione {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+    padding: 2px 4px;
+    text-decoration: none;
+    color: gray;
+    cursor: pointer;
+    transition: 0.2s;
+
+    &:hover {
+      transition: 0.2s;
+      background-color: rgb(226, 226, 226);
+      color: #555555;
+    }
+
+    &:focus {
+      background-color: #0a66c2;
+      color: white;
+      transition: 0.2s;
+    }
+
+    @media screen and (min-width: 440px) {
+      font-size: 14px;
+    }
+
+    @media screen and (min-width: 576px) {
+      font-size: 16px;
+    }
+
+    @media screen and (min-width: 768px) {
+      padding: 4px 8px;
+    }
+
+    @media screen and (min-width: 992px) {
+      padding: 4px 12px;
+    }
+  }
+}
+
+.threeDots {
+  background-color: inherit;
+  text-align: center;
+
+  text-decoration: none;
+  color: gray;
+  cursor: pointer;
+  transition: 0.2s;
+
+  text-decoration: none;
+  color: #555555;
+}
+
+.pagination li:first-of-type {
+  font-weight: 700;
+
+  a {
+    color: #0a66c2;
+    background-color: inherit;
+    border: none;
+    font-size: 0.8em;
+    padding: 0;
+    @media screen and (min-width: 440px) {
+      font-size: 1em;
+    }
+    @media screen and (min-width: 576px) {
+      font-size: 1.1em;
+    }
+  }
+}
+
+.pagination li:last-of-type {
+  font-weight: 700;
+
+  a {
+    color: #0a66c2;
+    background-color: inherit;
+    border: none;
+    font-size: 0.8em;
+    padding: 0;
+    @media screen and (min-width: 440px) {
+      font-size: 1em;
+    }
+    @media screen and (min-width: 576px) {
+      font-size: 1.1em;
+    }
+  }
+}
