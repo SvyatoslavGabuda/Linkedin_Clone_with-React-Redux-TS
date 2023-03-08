@@ -1,19 +1,30 @@
 import { Col, Dropdown, Form, InputGroup, Row } from "react-bootstrap";
-import { BsClock, BsEmojiNeutral, BsImage } from "react-icons/bs";
+import { BsClock, BsEmojiSmile, BsImage } from "react-icons/bs";
 import { IoIosRocket } from "react-icons/io";
 import { useEffect, useState } from "react";
 import { PostCommentComponent } from "./PostCommentComponent";
 import { commentFetch, Icomments, IcommentsPost } from "../../../../app/reducers/commentSlice";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
 
 interface PostSectionProps {
   postId: string;
 }
 
+export interface EmojiObject {
+  id: string;
+  keywords: string[];
+  name: string;
+  native: any;
+  shortcodes: string;
+  unified: string;
+}
+
 export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
   const dispatch = useAppDispatch();
-  const commentsStore = useAppSelector((state) => state.comments);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
+  const [showEmojiBox, setShowEmojiBox] = useState(false);
   const [fetchedComments, setFetchedComments] = useState<Icomments[]>([]);
   const [commentText, setCommentText] = useState<IcommentsPost>({
     comment: "",
@@ -42,6 +53,14 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
     }
   };
 
+  const addEmoji = (e: any) => {
+    const emoji: any = e.unified.split("_");
+    const codeArray: any = [];
+    emoji.forEach((em: EmojiObject) => codeArray.push("0x" + em));
+    let fixedEmoji = String.fromCodePoint(...codeArray);
+    setCommentText({ ...commentText, comment: commentText.comment + fixedEmoji });
+  };
+
   const POSTmyComment = async (comment: IcommentsPost) => {
     await dispatch(commentFetch({ metod: "POST", id: "", commentToPost: comment }));
     fetchCommenti();
@@ -53,11 +72,16 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
 
   return (
     <div className="postCommentContainer pt-3">
-      <div className="d-flex align-items-center justify-content-center">
-        <img className="me-3" src={myProfile.image} alt="" style={{ width: 35 + "px", borderRadius: 50 + "px" }} />
-        <InputGroup className="border rounded-pill d-flex align-items-center justify-content-start inputCommentContainer">
+      <div className="d-flex align-items-center justify-content-center mb-3">
+        <img
+          className="me-3 commentInputImage"
+          src={myProfile.image}
+          alt=""
+          style={{ width: 45 + "px", borderRadius: 50 + "px" }}
+        />
+        <InputGroup className="border rounded-pill p-2 d-flex align-items-center justify-content-start inputCommentContainer">
           <Form.Control
-            className="border-0 rounded me-1 commentsInput"
+            className="border-0 p-0 rounded me-1 commentsInput"
             placeholder="Aggiungi un commento..."
             value={commentText.comment}
             onChange={(e) => setCommentText({ ...commentText, comment: e.target.value })}
@@ -67,9 +91,14 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
             }}
           />
           <span className="commentsIconContainer">
-            <BsEmojiNeutral className="fs-4 me-2 text-secondary" />
-            <BsImage className="fs-4 me-2 text-secondary" />
+            <BsEmojiSmile className="fs-4 me-2 commentInputIcon" onClick={() => setShowEmojiBox(!showEmojiBox)} />
+            <BsImage className="fs-4 me-2 commentInputIcon" />
           </span>
+          {showEmojiBox && (
+            <div className="emojiPicker">
+              <Picker data={data} theme="light" maxFrequentRows={0} onEmojiSelect={addEmoji} />
+            </div>
+          )}
         </InputGroup>
       </div>
       <div className="my-2 commentsDropdown">
@@ -80,14 +109,14 @@ export const PostCommentSectionComponent = ({ postId }: PostSectionProps) => {
 
           <Dropdown.Menu>
             <Dropdown.Item href="#/action-1" className="d-flex align-items-center">
-              <IoIosRocket className="fs-3 dropCommentIcon" />
+              <IoIosRocket className="fs-4 dropCommentIcon" />
               <span className="ms-3 commentsDropdownText">
                 <h6 className="mb-0">Più rilevanti</h6>
                 <p>Vedi i commenti più pertinenti</p>
               </span>
             </Dropdown.Item>
             <Dropdown.Item href="#/action-2" className="d-flex align-items-center">
-              <BsClock className="fs-3 dropCommentIcon" />
+              <BsClock className="fs-4 dropCommentIcon" />
 
               <span className="ms-3 commentsDropdownText">
                 <h6 className="mb-0">Più recenti</h6>
