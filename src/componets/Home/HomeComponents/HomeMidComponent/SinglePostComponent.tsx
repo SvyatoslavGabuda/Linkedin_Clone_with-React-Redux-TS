@@ -41,7 +41,7 @@ export const SinglePostComponent = ({ post }: SinglePostProps) => {
     } else if (differenceInHours(Oggi, new Date(date)) < 1) {
       let minuti = differenceInMinutes(Oggi, new Date(date)) > 1 ? " minuti" : " minuto";
       return differenceInMinutes(Oggi, new Date(date)) + minuti;
-    } else if (differenceInHours(Oggi, new Date(date)) > 1 && differenceInHours(Oggi, new Date(date)) < 24) {
+    } else if (differenceInHours(Oggi, new Date(date)) >= 1 && differenceInHours(Oggi, new Date(date)) < 24) {
       let ore = differenceInHours(Oggi, new Date(date)) > 1 ? " ore" : " ora";
       return differenceInHours(Oggi, new Date(date)) + ore;
     } else if (differenceInDays(Oggi, new Date(date)) >= 1 && differenceInDays(Oggi, new Date(date)) < 7) {
@@ -52,7 +52,7 @@ export const SinglePostComponent = ({ post }: SinglePostProps) => {
     } else if (differenceInMonths(Oggi, new Date(date)) >= 1 && differenceInMonths(Oggi, new Date(date)) < 12) {
       return differenceInMonths(Oggi, new Date(date)) + " m";
     } else {
-      let anni = differenceInYears(Oggi, new Date(date)) > 1 ? " anni" : " anno";
+      let anni = differenceInYears(Oggi, new Date(date)) >= 1 ? " anni" : " anno";
       return differenceInYears(Oggi, new Date(date)) + anni;
     }
   };
