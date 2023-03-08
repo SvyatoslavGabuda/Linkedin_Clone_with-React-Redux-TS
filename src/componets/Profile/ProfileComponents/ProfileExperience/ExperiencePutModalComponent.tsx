@@ -37,7 +37,7 @@ export const ExperiencePutModalComponent = () => {
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [putStore.show]);
 
   //   Fetch to PUT an existing Experience
   const putExperience = async () => {
