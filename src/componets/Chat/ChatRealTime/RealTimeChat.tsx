@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useAppSelector } from "../../../app/hooks";
 import { CgImage } from "react-icons/cg";
@@ -8,12 +8,28 @@ import { BiSmile } from "react-icons/bi";
 import { BsThreeDots, BsArrowsAngleContract } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import "./RealTimeChat.scss";
+import { ChatMessage } from "../IoChat/Chat_Interfaces";
 
-interface RealTimeChatProps {}
+interface RealTimeChatProps {
+  socket: any;
+}
 
-export const RealTimeChat = (props: RealTimeChatProps) => {
+export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
   const profile = useAppSelector((state) => state.profile.myProfile);
+  const ChatStore = useAppSelector((state) => state.chat.id);
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [textPUT, setTextPUT] = useState("");
+
+  useEffect(() => {
+    socket.emit("joinRoom", {
+      token: process.env.REACT_APP_BEARER,
+      id: ChatStore,
+    });
+  }, [ChatStore]);
+
+  socket.on("joined", ({ msgs }: any) => {
+    setMessages(msgs);
+  });
 
   return (
     <div className="RealTimeChatContainer border border-1">
@@ -41,28 +57,21 @@ export const RealTimeChat = (props: RealTimeChatProps) => {
         </div>
       </div>
       <div>
-        <div className="RealTimeChatImgInChatContainer py-3 px-2">
-          <img src={profile?.image} alt="Profile Pic" />
-          <h3 className="mt-2 ms-2">
-            {profile?.name} {profile?.surname}
-          </h3>
-          <p className="ms-2">{profile?.title}</p>
-        </div>
         <div className="RealTimeChatMessageArea">
-          <div className="d-flex p-2">
-            <div>
-              <img src={profile?.image} alt="Profile Img" />
-            </div>
-            <div className="ms-2">
-              <h6>
-                {profile?.name} {profile?.surname}
-              </h6>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet molestiae nulla alias dolorum facere
-                rem obcaecati ipsa fugiat, ex laudantium nostrum beatae eum magni illum nam mollitia veritatis et odio!
-              </p>
-            </div>
-          </div>
+          {messages.length > 0 &&
+            messages.map((msg) => (
+              <div className="d-flex p-2" key={msg.id}>
+                <div>
+                  <img src={msg.User.linkedinProPic} alt="Profile Img" />
+                </div>
+                <div className="ms-2">
+                  <h6>
+                    {msg.User.first_name} {msg.User.last_name}
+                  </h6>
+                  <p>{msg.content}</p>
+                </div>
+              </div>
+            ))}
         </div>
         <div className="RealTimeChatInputArea">
           <Form

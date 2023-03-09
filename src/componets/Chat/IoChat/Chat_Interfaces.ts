@@ -11,7 +11,7 @@ export interface ChatMessage extends Standard {
 }
 
 export interface User extends Standard {
-  firstname: string;
+  first_name: string;
   last_name: string;
   linkedinId: string;
   linkedinProPic: string;

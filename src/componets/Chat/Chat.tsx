@@ -110,7 +110,7 @@ export const Chat = () => {
                   <p>{el.name}</p>
                   <p>Una macchinata di pazzi</p>
                 </div>
-                <div>{format(new Date(el.updatedAt), "hh")}</div>
+                <div>{format(new Date(el.updatedAt), "d MMM")}</div>
               </div>
             ))}
           <div className="chatElement">
@@ -144,7 +144,7 @@ export const Chat = () => {
             <div>5/10/11</div>
           </div>
         </div>
-        <RealTimeChat />
+        {ChatStore !== "" && <RealTimeChat socket={socket} />}
       </div>
     </>
   );
