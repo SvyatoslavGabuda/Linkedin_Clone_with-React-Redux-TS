@@ -89,11 +89,17 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
                 <div>
                   <img src={msg.User.linkedinProPic} alt="Profile Img" />
                 </div>
-                <div className="ms-2">
+                <div className="ms-2" data-is="ciao">
+                  <div
+                    className={
+                      profile._id === msg.User.linkedinId ? "RealTimeMessageMe py-2 me-2" : "RealTimeMessage py-2"
+                    }
+                  >
+                    <p>{msg.content}</p>
+                  </div>
                   <h6>
                     {msg.User.first_name} {msg.User.last_name}
                   </h6>
-                  <p>{msg.content}</p>
                 </div>
               </div>
             ))}

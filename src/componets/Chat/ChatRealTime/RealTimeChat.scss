@@ -54,6 +54,7 @@
   .RealTimeChatInputArea {
     .RealTimeChatTextAreaCont {
       border-bottom: 1px solid rgba(211, 211, 211, 0.541);
+      border-top: 1px solid rgba(211, 211, 211, 0.541);
       .RealTimeChatTextArea {
         background-color: #f3f2ef;
       }
@@ -76,12 +77,34 @@
     }
   }
   .RealTimeChatMessageArea {
+    max-height: 400px;
+    overflow-y: scroll;
     img {
       width: 40px;
       border-radius: 50%;
       aspect-ratio: 1/1;
       object-fit: cover;
       object-position: center;
+    }
+    .RealTimeMessageMe {
+      background-color: #42a5f5;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      padding: 0px 10px;
+      color: white;
+    }
+    .RealTimeMessage {
+      background-color: #f1f1f1;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding: 0px 10px;
+    }
+    h6 {
+      font-size: 0.8em;
+      font-weight: 400;
+      color: #5e5e5e;
     }
   }
 }
