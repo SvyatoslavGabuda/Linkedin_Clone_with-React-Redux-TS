@@ -43,12 +43,27 @@ export const RealTimeChat = (props: RealTimeChatProps) => {
       <div>
         <div className="RealTimeChatImgInChatContainer py-3 px-2">
           <img src={profile?.image} alt="Profile Pic" />
-          <h3 className="mt-2">
+          <h3 className="mt-2 ms-2">
             {profile?.name} {profile?.surname}
           </h3>
-          <p>{profile?.title}</p>
+          <p className="ms-2">{profile?.title}</p>
         </div>
-        <div className="RealTimeChatMessageArea"></div>
+        <div className="RealTimeChatMessageArea">
+          <div className="d-flex p-2">
+            <div>
+              <img src={profile?.image} alt="Profile Img" />
+            </div>
+            <div className="ms-2">
+              <h6>
+                {profile?.name} {profile?.surname}
+              </h6>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet molestiae nulla alias dolorum facere
+                rem obcaecati ipsa fugiat, ex laudantium nostrum beatae eum magni illum nam mollitia veritatis et odio!
+              </p>
+            </div>
+          </div>
+        </div>
         <div className="RealTimeChatInputArea">
           <Form
             onSubmit={(e) => {
