@@ -10,6 +10,7 @@ import { Room, User } from "./IoChat/Chat_Interfaces";
 import { format } from "date-fns";
 import { joined, leveRoom } from "../../app/reducers/chatIdSlice";
 
+import { RealTimeChat } from "./ChatRealTime/RealTimeChat";
 export const Chat = () => {
   const ADDRESS = "https://chat-api-epicode.herokuapp.com";
   const socket = io(ADDRESS, { transports: ["websocket"] });
@@ -143,6 +144,7 @@ export const Chat = () => {
             <div>5/10/11</div>
           </div>
         </div>
+        <RealTimeChat />
       </div>
     </>
   );
