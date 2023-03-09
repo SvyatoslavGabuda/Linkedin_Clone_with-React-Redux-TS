@@ -160,7 +160,7 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                   </div>
                   <div>
                     <button
-                      className={`rounded-pill py-1 me-2 Button2 ${verifyUser && "d-none"}`}
+                      className={`rounded-pill py-1 me-2  Button2 ${verifyUser && "d-none"}`}
                       onClick={() => {
                         if (params.id !== "me") {
                           dispatch({ type: "ADDFRIENDTOFAV", payload: profile });

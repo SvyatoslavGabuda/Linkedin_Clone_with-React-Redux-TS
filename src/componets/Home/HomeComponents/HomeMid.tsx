@@ -67,10 +67,14 @@ export const HomeMid = () => {
               <SpinnerSuper />
               <SpinnerSuper />
               <SpinnerSuper />
+              <SpinnerSuper />
+              <SpinnerSuper />
             </div>
           )}
 
-          {curretPOSTS && curretPOSTS.map((el) => <SinglePostComponent post={el} key={el._id} />)}
+          {curretPOSTS &&
+            loadingState === "idle" &&
+            curretPOSTS.map((el) => <SinglePostComponent post={el} key={el._id} />)}
           {curretPOSTS && (
             <ReactPaginate
               breakLabel="&#8230;"

@@ -21,14 +21,7 @@ export const ExperiencePutModalComponent = () => {
   // define dispatch
   const dispatch = useAppDispatch();
   // create a internal state to store the value of the experience into the input to modify
-  const [experience, setExperience] = useState<IexperiencePost>({
-    role: "",
-    company: "",
-    startDate: "",
-    endDate: "",
-    description: "",
-    area: "",
-  });
+  const [experience, setExperience] = useState<IexperiencePost>();
 
   useEffect(() => {
     if (myProfile) {
@@ -45,7 +38,6 @@ export const ExperiencePutModalComponent = () => {
         description: user.experience[putStore.indexExp]?.description,
         area: user.experience[putStore.indexExp]?.area,
       });
-      console.log(experience);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [putStore.indexExp]);
@@ -135,7 +127,7 @@ export const ExperiencePutModalComponent = () => {
                     <Form.Control
                       type="text"
                       placeholder="Esempio: Retail Sales Manager"
-                      value={experience.role}
+                      value={experience.role || ""}
                       onChange={(e) => {
                         setExperience({
                           ...experience,
@@ -150,7 +142,7 @@ export const ExperiencePutModalComponent = () => {
                       <Form.Control
                         type="text"
                         placeholder="Esempio: Microsoft"
-                        value={experience.company}
+                        value={experience.company || ""}
                         onChange={(e) => {
                           setExperience({
                             ...experience,
@@ -177,7 +169,7 @@ export const ExperiencePutModalComponent = () => {
                       <Form.Control
                         type="date"
                         placeholder=""
-                        value={experience.startDate && experience.startDate.toString()}
+                        value={(experience.startDate && experience.startDate.toString()) || ""}
                         onChange={(e) => {
                           setExperience({
                             ...experience,
@@ -206,7 +198,7 @@ export const ExperiencePutModalComponent = () => {
                     <Form.Control
                       as={"textarea"}
                       placeholder="Inserisci una descrizione che rispecchi le competenze acquisite e il tuo ruolo"
-                      value={experience.description}
+                      value={experience.description || ""}
                       onChange={(e) => {
                         setExperience({
                           ...experience,
@@ -220,7 +212,7 @@ export const ExperiencePutModalComponent = () => {
                     <Form.Control
                       type="text"
                       placeholder="Esempio: Milano, IT"
-                      value={experience.area}
+                      value={experience.area || ""}
                       onChange={(e) => {
                         setExperience({
                           ...experience,
