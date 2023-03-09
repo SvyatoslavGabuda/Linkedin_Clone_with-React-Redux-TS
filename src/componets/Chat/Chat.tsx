@@ -5,6 +5,7 @@ import { SlNote } from "react-icons/sl";
 import { TfiMoreAlt } from "react-icons/tfi";
 import { useAppSelector } from "../../app/hooks";
 import "./chat.scss";
+import { RealTimeChat } from "./ChatRealTime/RealTimeChat";
 export const Chat = () => {
   const [show, setShow] = useState(false);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
@@ -85,6 +86,7 @@ export const Chat = () => {
             <div>5/10/11</div>
           </div>
         </div>
+        <RealTimeChat />
       </div>
     </>
   );

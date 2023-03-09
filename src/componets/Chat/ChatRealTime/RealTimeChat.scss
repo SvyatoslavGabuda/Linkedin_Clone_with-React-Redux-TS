@@ -1,0 +1,78 @@
+.RealTimeChatContainer {
+  width: 400px;
+  position: absolute;
+  right: 18rem;
+  bottom: 0rem;
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 2px 2px 30px rgba(117, 117, 117, 0.466);
+  .RealTimeChatFirstPart {
+    border-bottom: 2px solid lightgray;
+    .RealTimeCHatUpperSection {
+      img {
+        width: 32px;
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        object-position: center;
+        margin-right: 10px;
+      }
+      h4 {
+        font-size: 1em;
+        margin-bottom: 0;
+      }
+    }
+    .RealTimeChatButtonsContainer {
+      button {
+        border: none;
+        background-color: transparent;
+        padding: 5px 7px;
+        &:hover {
+          background-color: rgb(239, 238, 238);
+        }
+      }
+    }
+  }
+  .RealTimeChatImgInChatContainer {
+    border-bottom: 1px solid rgba(211, 211, 211, 0.541);
+    img {
+      width: 72px;
+      border-radius: 50%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: center;
+    }
+    h3 {
+      font-size: 1.1em;
+      margin-bottom: 0;
+    }
+    p {
+      font-size: 1em;
+      font-weight: 400;
+    }
+  }
+  .RealTimeChatInputArea {
+    .RealTimeChatTextAreaCont {
+      border-bottom: 1px solid rgba(211, 211, 211, 0.541);
+      .RealTimeChatTextArea {
+        background-color: #f3f2ef;
+      }
+    }
+    .RealTimeChatlBtn {
+      font-size: 1em;
+      padding: 5px 10px;
+      &:hover {
+        background-color: rgb(239, 238, 238);
+        color: black;
+      }
+    }
+    .RealTimeChatlBtnGif {
+      font-size: 1em;
+      padding: 5px 5px;
+      &:hover {
+        background-color: rgb(239, 238, 238);
+        color: black;
+      }
+    }
+  }
+}
