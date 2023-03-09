@@ -4,11 +4,14 @@ import { Iprofile } from "../Profile/Profile";
 import { SingleFriend } from "./SingleFriend";
 import { MdArrowDropDown } from "react-icons/md";
 import { useEffect, useState } from "react";
+import "./Rete.scss";
 
 export const Friends = () => {
   const friends: Iprofile[] = useAppSelector((state) => state.friends.Favfriends);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [friendsArry, setFriendsArry] = useState(friends);
+  const [searchPerson, setSearchPerson] = useState("");
+  const [notFoundMsg, setNotFoundMsg] = useState(false);
 
   const handleMenuClick = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -46,6 +49,24 @@ export const Friends = () => {
       }
     });
     setFriendsArry(sortedFriends);
+  };
+
+  const changeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    if (e.target.value.trim() === "") setNotFoundMsg(false);
+
+    setSearchPerson(e.target.value);
+    //console.log(e.target.value);
+    funzioneRicerca(e);
+  };
+
+  const funzioneRicerca = (e: any) => {
+    const risultato = friends.filter((user: any) => user.username.toLowerCase().includes(e.target.value.toLowerCase()));
+
+    setFriendsArry(risultato);
+    if (risultato.length === 0) {
+      setNotFoundMsg(true);
+    }
   };
 
   useEffect(() => {
@@ -87,12 +108,24 @@ export const Friends = () => {
             </div>
           </div>
           <div className="d-flex align-items-end ReteInputCOntainer">
-            <input type="text" placeholder="Cerca per nome" className="me-2" />
+            <input
+              type="text"
+              placeholder="Cerca per nome"
+              className="me-2"
+              value={searchPerson}
+              onChange={changeHandle}
+            />
             <p>Esegui la ricerca usando i filtri</p>
           </div>
         </div>
         {friendsArry.length > 0 &&
+          !notFoundMsg &&
           friendsArry.map((Friend: Iprofile) => <SingleFriend friend={Friend} key={Friend._id} />)}
+        {notFoundMsg && (
+          <div className="LoaderWrapper">
+            <span className="SearchedProfileTitle fw-bold fs-6">E da me che voi? Io te posso cantà na canzone</span>
+          </div>
+        )}
       </Col>
     </Row>
   );

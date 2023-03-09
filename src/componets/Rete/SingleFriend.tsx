@@ -20,14 +20,14 @@ export const SingleFriend = ({ friend }: SingleFriendProps) => {
 
   return (
     <div className="ReteFriendContainer d-flex w-100">
-      <Link to={"/profile" + friend._id}>
+      <Link to={"/profile/" + friend._id}>
         <div>
           <img src={friend.image} alt="ProfilePic" className="m-2" />
         </div>
       </Link>
       <div className="d-flex justify-content-between ReteFriendInfoCont p-2">
         <div className="d-flex flex-column justify-content-center">
-          <Link to={"/profile" + friend._id}>
+          <Link to={"/profile/" + friend._id}>
             <h5>
               {friend.name} {friend.surname}
             </h5>
