@@ -9,8 +9,10 @@ import { io } from "socket.io-client";
 import { Room, User } from "./IoChat/Chat_Interfaces";
 import { format } from "date-fns";
 import { joined, leveRoom } from "../../app/reducers/chatIdSlice";
-
+import TsLogo from "../Profile/ProfileComponents/ProfileCard/Assets/Typescript_logo_2020.svg.png";
+import EpicodeLogo from "../Profile/ProfileComponents/ProfileCard/Assets/original.png";
 import { RealTimeChat } from "./ChatRealTime/RealTimeChat";
+
 export const Chat = () => {
   const ADDRESS = "https://chat-api-epicode.herokuapp.com";
   const socket = io(ADDRESS, { transports: ["websocket"] });
@@ -29,13 +31,11 @@ export const Chat = () => {
   };
 
   socket.on("loggedIn", (bouncedMessage) => {
-    // console.log(bouncedMessage);
     setRooms(bouncedMessage.rooms);
   });
 
   socket.on("newUserHasLoggedIn", (users) => {
     setOnlineUsers(users);
-    console.log(onlineUsers);
   });
 
   useEffect(() => {
@@ -97,10 +97,10 @@ export const Chat = () => {
             <div>7 Feb</div>
           </div>
           {rooms.length > 0 &&
-            rooms.map((el) => (
+            rooms.map((el, i) => (
               <div className="chatElement" key={el.id} onClick={() => setRoomId(el.id)}>
                 <div>
-                  <img src={myProfile?.image} alt="Profile" className="chatlistimg rounded-circle" />
+                  <img src={i === 0 ? TsLogo : EpicodeLogo} alt="Profile" className="chatlistimg rounded-circle" />
                 </div>
                 <div className="chatbody px-2">
                   <p>{el.name}</p>

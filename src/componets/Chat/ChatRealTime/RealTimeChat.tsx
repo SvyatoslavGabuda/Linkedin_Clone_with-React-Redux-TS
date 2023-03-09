@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useAppSelector } from "../../../app/hooks";
 import { CgImage } from "react-icons/cg";
@@ -9,6 +9,7 @@ import { BsThreeDots, BsArrowsAngleContract } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import "./RealTimeChat.scss";
 import { ChatMessage } from "../IoChat/Chat_Interfaces";
+import { Room } from "../IoChat/Chat_Interfaces";
 
 interface RealTimeChatProps {
   socket: any;
@@ -19,6 +20,20 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
   const ChatStore = useAppSelector((state) => state.chat.id);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [msgContent, setMsgContent] = useState("");
+  const [roomName, setRoomName] = useState("");
+  const listRef = useRef<HTMLDivElement>(null);
+
+  const ADDRESS = "https://chat-api-epicode.herokuapp.com";
+  const roomFetcher = async () => {
+    try {
+      const resp = await fetch(ADDRESS + "/api/all");
+      const data = await resp.json();
+      let match: Room = data.find((room: Room) => room.id === ChatStore);
+      // console.log(match);
+      setRoomName(match.name);
+      return match;
+    } catch (error) {}
+  };
 
   const sendMessage = () => {
     socket.emit("sendMsg", { room: ChatStore, token: process.env.REACT_APP_BEARER, msg: msgContent });
@@ -27,9 +42,9 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
   const addMessage = (msg: ChatMessage) => {
     if (msg.RoomId === ChatStore) {
       setMessages((prevState) => [...prevState, msg]);
-      console.log("listened message");
-      console.log("testo messaggio", msg.content);
-      console.log("roomid", msg.RoomId, " - ", ChatStore);
+      // console.log("listened message");
+      // console.log("testo messaggio", msg.content);
+      // console.log("roomid", msg.RoomId, " - ", ChatStore);
     }
   };
 
@@ -42,7 +57,7 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
     });
 
     socket.on("joined", ({ msgs }: any) => {
-      console.log("join");
+      // console.log("join");
       let reversedMsgs = msgs.reverse();
       setMessages(reversedMsgs);
       socket.on("message", (msg: ChatMessage) => {
@@ -50,22 +65,25 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
       });
     });
 
+    roomFetcher();
+
     return () => {
       socket.off("message");
     };
   }, [ChatStore]);
+
+  useEffect(() => {
+    if (listRef.current) {
+      listRef.current.scrollTop = listRef.current.scrollHeight;
+    }
+  });
 
   return (
     <div className="RealTimeChatContainer border border-1">
       <div className="d-flex justify-content-between RealTimeChatFirstPart px-2 py-2 align-items-center">
         <div className="d-flex align-items-center RealTimeCHatUpperSection">
           <div>
-            <img src={profile?.image} alt="Pic Profile" />
-          </div>
-          <div>
-            <h4>
-              {profile?.name} {profile?.surname}
-            </h4>
+            <h4>{roomName !== "" && roomName.slice(0, 1).toLocaleUpperCase() + roomName.slice(1)}</h4>
           </div>
         </div>
         <div className="RealTimeChatButtonsContainer d-flex justify-content-center align-items-center">
@@ -81,7 +99,7 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
         </div>
       </div>
       <div>
-        <div className="RealTimeChatMessageArea">
+        <div className="RealTimeChatMessageArea" ref={listRef}>
           {messages.length > 0 &&
             messages.map((msg) => (
               <div
