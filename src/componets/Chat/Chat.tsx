@@ -84,7 +84,7 @@ export const Chat = () => {
           </div>
           {rooms.length > 0 &&
             rooms.map((el) => (
-              <div className="chatElement" onClick={() => console.log("aprirà la chat")}>
+              <div className="chatElement" key={el.id} onClick={() => console.log("aprirà la chat")}>
                 <div>
                   <img src={myProfile?.image} alt="Profile" className="chatlistimg rounded-circle" />
                 </div>
