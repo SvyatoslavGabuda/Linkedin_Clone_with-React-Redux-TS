@@ -3,21 +3,38 @@ import { Form } from "react-bootstrap";
 import { BiUpArrow } from "react-icons/bi";
 import { SlNote } from "react-icons/sl";
 import { TfiMoreAlt } from "react-icons/tfi";
-import { useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import "./chat.scss";
 import { io } from "socket.io-client";
-import { Room } from "./IoChat/Chat_Interfaces";
+import { Room, User } from "./IoChat/Chat_Interfaces";
 import { format } from "date-fns";
+import { joined, leveRoom } from "../../app/reducers/chatIdSlice";
 
 export const Chat = () => {
   const ADDRESS = "https://chat-api-epicode.herokuapp.com";
   const socket = io(ADDRESS, { transports: ["websocket"] });
+  const dispatch = useAppDispatch();
+  const ChatStore = useAppSelector((state) => state.chat.id);
   const [rooms, setRooms] = useState<Room[]>([]);
   const [connected, setConnected] = useState<boolean>(false);
+  const [onlineUsers, setOnlineUsers] = useState<User[]>([]);
+
+  const setRoomId = (id: string) => {
+    if (ChatStore === id) {
+      dispatch(leveRoom());
+    } else {
+      dispatch(joined(id));
+    }
+  };
 
   socket.on("loggedIn", (bouncedMessage) => {
     console.log(bouncedMessage);
     setRooms(bouncedMessage.rooms);
+  });
+
+  socket.on("newUserHasLoggedIn", (users) => {
+    setOnlineUsers(users);
+    console.log(onlineUsers);
   });
 
   useEffect(() => {
@@ -84,7 +101,7 @@ export const Chat = () => {
           </div>
           {rooms.length > 0 &&
             rooms.map((el) => (
-              <div className="chatElement" key={el.id} onClick={() => console.log("aprirà la chat")}>
+              <div className="chatElement" key={el.id} onClick={() => setRoomId(el.id)}>
                 <div>
                   <img src={myProfile?.image} alt="Profile" className="chatlistimg rounded-circle" />
                 </div>
