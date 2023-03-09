@@ -16,6 +16,7 @@ import slicerForUpDate from "./reducers/slicerForUpDate";
 import upgrateModSlice from "./reducers/upgrateModSlice";
 import { friends } from "./reducers/favFriends";
 import gameScoreSlice from "./reducers/gameScoreSlice";
+import chatIdSlice from "./reducers/chatIdSlice";
 
 // const allReducer = combineReducers({
 //   profile: allProfileReduce as Reducer,
@@ -46,6 +47,7 @@ const rootReducer = combineReducers({
   comments: commentSlice,
   friends: friends as Reducer,
   gameScore: gameScoreSlice,
+  chat: chatIdSlice,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

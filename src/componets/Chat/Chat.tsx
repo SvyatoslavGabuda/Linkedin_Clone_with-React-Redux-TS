@@ -1,12 +1,40 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { BiUpArrow } from "react-icons/bi";
 import { SlNote } from "react-icons/sl";
 import { TfiMoreAlt } from "react-icons/tfi";
 import { useAppSelector } from "../../app/hooks";
 import "./chat.scss";
+import { io } from "socket.io-client";
+import { Room } from "./IoChat/Chat_Interfaces";
+import { format } from "date-fns";
+
 import { RealTimeChat } from "./ChatRealTime/RealTimeChat";
 export const Chat = () => {
+  const ADDRESS = "https://chat-api-epicode.herokuapp.com";
+  const socket = io(ADDRESS, { transports: ["websocket"] });
+  const [rooms, setRooms] = useState<Room[]>([]);
+  const [connected, setConnected] = useState<boolean>(false);
+
+  socket.on("loggedIn", (bouncedMessage) => {
+    console.log(bouncedMessage);
+    setRooms(bouncedMessage.rooms);
+  });
+
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("Connection established!");
+      socket.emit("setIdentity", { token: process.env.REACT_APP_BEARER });
+      setConnected(true);
+    }); //manda un clg quando siete collegati
+    //vari emit, tra cui "setIdentity" e se volete "joinRoom"
+
+    return () => {
+      socket.disconnect();
+      console.log("disconnected");
+    }; //on unMount, vi disconnette :)
+  }, [connected]);
+
   const [show, setShow] = useState(false);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
 
@@ -55,6 +83,19 @@ export const Chat = () => {
             </div>
             <div>7 Feb</div>
           </div>
+          {rooms.length > 0 &&
+            rooms.map((el) => (
+              <div className="chatElement" key={el.id} onClick={() => console.log("aprirà la chat")}>
+                <div>
+                  <img src={myProfile?.image} alt="Profile" className="chatlistimg rounded-circle" />
+                </div>
+                <div className="chatbody px-2">
+                  <p>{el.name}</p>
+                  <p>Una macchinata di pazzi</p>
+                </div>
+                <div>{format(new Date(el.updatedAt), "hh")}</div>
+              </div>
+            ))}
           <div className="chatElement">
             <div>
               <img src="https://placekitten.com/330/200" alt="Profile" className="chatlistimg rounded-circle" />
