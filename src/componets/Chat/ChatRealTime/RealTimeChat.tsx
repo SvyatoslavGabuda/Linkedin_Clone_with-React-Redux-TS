@@ -31,20 +31,25 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
       setMessages(reversedMsgs);
     });
 
-    socket.on("message", (msg: ChatMessage) => {
-      setMessages((prevState) => [...prevState, msg]);
-      console.log("message");
-    });
+    // socket.on("message", (msg: ChatMessage) => {
+    //   setMessages((prevState) => [...prevState, msg]);
+    //   console.log("message");
+    // });
 
-    return () => {
-      socket.off("message");
-    };
+    // return () => {
+    //   socket.off("message");
+    // };
   });
 
   useEffect(() => {
     socket.emit("joinRoom", {
       token: process.env.REACT_APP_BEARER,
       id: ChatStore,
+    });
+
+    socket.on("message", (msg: ChatMessage) => {
+      setMessages((prevState) => [...prevState, msg]);
+      console.log("message");
     });
   }, [ChatStore]);
 
@@ -77,7 +82,10 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
         <div className="RealTimeChatMessageArea">
           {messages.length > 0 &&
             messages.map((msg) => (
-              <div className="d-flex p-2" key={msg.id}>
+              <div
+                className={profile._id === msg.User.linkedinId ? "d-flex flex-row-reverse p-2" : "d-flex p-2"}
+                key={msg.id}
+              >
                 <div>
                   <img src={msg.User.linkedinProPic} alt="Profile Img" />
                 </div>
