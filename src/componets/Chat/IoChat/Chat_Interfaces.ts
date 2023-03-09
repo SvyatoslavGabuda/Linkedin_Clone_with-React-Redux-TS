@@ -8,6 +8,7 @@ export interface ChatMessage extends Standard {
   content: string;
   UserId: string;
   User: User;
+  RoomId: string;
 }
 
 export interface User extends Standard {

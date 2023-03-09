@@ -24,33 +24,35 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
     socket.emit("sendMsg", { room: ChatStore, token: process.env.REACT_APP_BEARER, msg: msgContent });
   };
 
-  useEffect(() => {
-    socket.on("joined", ({ msgs }: any) => {
-      console.log("join");
-      let reversedMsgs = msgs.reverse();
-      setMessages(reversedMsgs);
-    });
-
-    // socket.on("message", (msg: ChatMessage) => {
-    //   setMessages((prevState) => [...prevState, msg]);
-    //   console.log("message");
-    // });
-
-    // return () => {
-    //   socket.off("message");
-    // };
-  });
+  const addMessage = (msg: ChatMessage) => {
+    if (msg.RoomId === ChatStore) {
+      setMessages((prevState) => [...prevState, msg]);
+      console.log("listened message");
+      console.log("testo messaggio", msg.content);
+      console.log("roomid", msg.RoomId, " - ", ChatStore);
+    }
+  };
 
   useEffect(() => {
+    setMessages([]);
+
     socket.emit("joinRoom", {
       token: process.env.REACT_APP_BEARER,
       id: ChatStore,
     });
 
-    socket.on("message", (msg: ChatMessage) => {
-      setMessages((prevState) => [...prevState, msg]);
-      console.log("message");
+    socket.on("joined", ({ msgs }: any) => {
+      console.log("join");
+      let reversedMsgs = msgs.reverse();
+      setMessages(reversedMsgs);
+      socket.on("message", (msg: ChatMessage) => {
+        addMessage(msg);
+      });
     });
+
+    return () => {
+      socket.off("message");
+    };
   }, [ChatStore]);
 
   return (
