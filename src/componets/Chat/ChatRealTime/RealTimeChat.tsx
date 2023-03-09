@@ -18,7 +18,28 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
   const profile = useAppSelector((state) => state.profile.myProfile);
   const ChatStore = useAppSelector((state) => state.chat.id);
   const [messages, setMessages] = useState<ChatMessage[]>([]);
-  const [textPUT, setTextPUT] = useState("");
+  const [msgContent, setMsgContent] = useState("");
+
+  const sendMessage = () => {
+    socket.emit("sendMsg", { room: ChatStore, token: process.env.REACT_APP_BEARER, msg: msgContent });
+  };
+
+  useEffect(() => {
+    socket.on("joined", ({ msgs }: any) => {
+      console.log("join");
+      let reversedMsgs = msgs.reverse();
+      setMessages(reversedMsgs);
+    });
+
+    socket.on("message", (msg: ChatMessage) => {
+      setMessages((prevState) => [...prevState, msg]);
+      console.log("message");
+    });
+
+    return () => {
+      socket.off("message");
+    };
+  });
 
   useEffect(() => {
     socket.emit("joinRoom", {
@@ -26,10 +47,6 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
       id: ChatStore,
     });
   }, [ChatStore]);
-
-  socket.on("joined", ({ msgs }: any) => {
-    setMessages(msgs);
-  });
 
   return (
     <div className="RealTimeChatContainer border border-1">
@@ -85,10 +102,15 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
                 className="border-0 mx-auto RealTimeChatTextArea my-2"
                 placeholder="Scrivi un messaggio"
                 style={{ minHeight: "100px" }}
-                value={textPUT}
+                value={msgContent}
                 onChange={(e) => {
-                  setTextPUT(e.target.value);
+                  setMsgContent(e.target.value);
                 }}
+                // // onKeyDown={(e) => {
+                // //   e.preventDefault();
+                // //   e.code === "Enter" && sendMessage();
+                // //   setMsgContent("");
+                // // }}
               />
             </Form.Group>
 
@@ -127,11 +149,16 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
                 <div className="d-flex justify-content-center align-items-center me-2">
                   <div>
                     <Button
-                      variant={textPUT !== "" ? "primary" : "outline-secondary"}
+                      variant={msgContent !== "" ? "primary" : "outline-secondary"}
                       type="submit"
                       className="rounded-pill py-0 me-2"
                       size="sm"
-                      disabled={textPUT !== "" ? false : true}
+                      disabled={msgContent !== "" ? false : true}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        sendMessage();
+                        setMsgContent("");
+                      }}
                     >
                       Invia
                     </Button>

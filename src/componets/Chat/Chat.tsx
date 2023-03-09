@@ -29,7 +29,7 @@ export const Chat = () => {
   };
 
   socket.on("loggedIn", (bouncedMessage) => {
-    console.log(bouncedMessage);
+    // console.log(bouncedMessage);
     setRooms(bouncedMessage.rooms);
   });
 
@@ -39,17 +39,20 @@ export const Chat = () => {
   });
 
   useEffect(() => {
-    socket.on("connect", () => {
-      console.log("Connection established!");
-      socket.emit("setIdentity", { token: process.env.REACT_APP_BEARER });
-      setConnected(true);
-    }); //manda un clg quando siete collegati
+    if (!connected) {
+      socket.on("connect", () => {
+        console.log("Connection established!");
+        socket.emit("setIdentity", { token: process.env.REACT_APP_BEARER });
+        setConnected(true);
+      });
+    } //manda un clg quando siete collegati
     //vari emit, tra cui "setIdentity" e se volete "joinRoom"
 
-    return () => {
-      socket.disconnect();
-      console.log("disconnected");
-    }; //on unMount, vi disconnette :)
+    // return () => {
+    //   socket.disconnect();
+
+    //   console.log("disconnected");
+    // }; //on unMount, vi disconnette :)
   }, [connected]);
 
   const [show, setShow] = useState(false);
