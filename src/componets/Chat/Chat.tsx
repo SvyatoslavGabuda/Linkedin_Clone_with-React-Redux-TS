@@ -7,6 +7,7 @@ import { useAppSelector } from "../../app/hooks";
 import "./chat.scss";
 import { io } from "socket.io-client";
 import { Room } from "./IoChat/Chat_Interfaces";
+import { format } from "date-fns";
 
 export const Chat = () => {
   const ADDRESS = "https://chat-api-epicode.herokuapp.com";
@@ -32,6 +33,7 @@ export const Chat = () => {
       console.log("disconnected");
     }; //on unMount, vi disconnette :)
   }, [connected]);
+
   const [show, setShow] = useState(false);
   const myProfile = useAppSelector((state) => state.profile.myProfile);
 
@@ -80,6 +82,19 @@ export const Chat = () => {
             </div>
             <div>7 Feb</div>
           </div>
+          {rooms.length > 0 &&
+            rooms.map((el) => (
+              <div className="chatElement" onClick={() => console.log("aprirà la chat")}>
+                <div>
+                  <img src={myProfile?.image} alt="Profile" className="chatlistimg rounded-circle" />
+                </div>
+                <div className="chatbody px-2">
+                  <p>{el.name}</p>
+                  <p>Una macchinata di pazzi</p>
+                </div>
+                <div>{format(new Date(el.updatedAt), "hh")}</div>
+              </div>
+            ))}
           <div className="chatElement">
             <div>
               <img src="https://placekitten.com/330/200" alt="Profile" className="chatlistimg rounded-circle" />
