@@ -6,7 +6,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import { Counter } from "./features/counter/Counter";
 import "./App.scss";
 import { useAppDispatch } from "./app/hooks";
-import { ADD_TO_ALLPROFILE, ADD_TO_MYPROFILE, HANDLE_LOAD_ALLPROFILE, HANDLE_LOAD_MYPROFILE } from "./app/reducers/allProfileReduce";
+import {
+  ADD_TO_ALLPROFILE,
+  ADD_TO_MYPROFILE,
+  HANDLE_LOAD_ALLPROFILE,
+  HANDLE_LOAD_MYPROFILE,
+} from "./app/reducers/allProfileReduce";
 import { Chat } from "./componets/Chat/Chat";
 import MyFooter from "./componets/Footer/MyFooter";
 import { Home } from "./componets/Home/Home";
@@ -71,6 +76,7 @@ function App() {
     myProfileFetch();
     profileFetch();
   }, []);
+
   return (
     <>
       <BrowserRouter>

@@ -572,6 +572,15 @@
     margin-top: 0.6em;
   }
 
+  .active {
+    a {
+      background-color: #0a66c2;
+      color: white;
+      transition: 0.2s;
+      color: white;
+    }
+  }
+
   .linkPaginazione {
     display: flex;
     align-items: center;
@@ -587,12 +596,6 @@
       transition: 0.2s;
       background-color: rgb(226, 226, 226);
       color: #555555;
-    }
-
-    &:focus {
-      background-color: #0a66c2;
-      color: white;
-      transition: 0.2s;
     }
 
     @media screen and (min-width: 440px) {

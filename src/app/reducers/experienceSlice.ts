@@ -26,7 +26,7 @@ const initialState: expState = {
 };
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
-export const expFetc = createAsyncThunk("fetct", async (id: string) => {
+export const expFetc = createAsyncThunk("fetch", async (id: string) => {
   try {
     const response = await fetch(url + id + "/experiences", {
       headers: {
@@ -35,10 +35,9 @@ export const expFetc = createAsyncThunk("fetct", async (id: string) => {
     });
     if (response.ok) {
       const data = await response.json();
-      // console.log("experience ", data);
       return data;
     } else {
-      console.log("errorer");
+      console.log("fatal error in Experience GET fetch");
     }
   } catch (error) {
     console.log(error);

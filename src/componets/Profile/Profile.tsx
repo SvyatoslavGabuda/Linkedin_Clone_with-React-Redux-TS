@@ -18,6 +18,7 @@ import { useAppSelector } from "../../app/hooks";
 import { ExperienceModalComponent } from "./ProfileComponents/ProfileExperience/ExperienceModalComponenent";
 import { ExperiencePutModalComponent } from "./ProfileComponents/ProfileExperience/ExperiencePutModalComponent";
 import useDocumentTitle from "../../app/useDocumentTitle";
+import { expFetc } from "../../app/reducers/experienceSlice";
 
 const url = "https://striveschool-api.herokuapp.com/api/profile/";
 
@@ -83,6 +84,7 @@ const Profile = () => {
         // console.log("myprofle", data);
         setMyProfile(data);
         dispatch({ type: ADD_TO_MYPROFILE, payload: data });
+        dispatch(expFetc(data._id));
       }
     } catch (error) {
       console.log(error);
@@ -103,6 +105,7 @@ const Profile = () => {
 
         setGeneralProfile(data);
         dispatch({ type: ADD_TO_GENERALPROFILE, payload: data });
+        dispatch(expFetc(data._id));
       }
     } catch (error) {}
   };

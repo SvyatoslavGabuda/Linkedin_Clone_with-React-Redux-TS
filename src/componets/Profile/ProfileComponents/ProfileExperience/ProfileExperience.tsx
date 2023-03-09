@@ -10,18 +10,16 @@ import { useParams } from "react-router-dom";
 
 export const ProfileExperience = () => {
   const dispatch = useAppDispatch();
-  const myProfile = useAppSelector((state) => state.profile.myProfile);
-  const generalProfile = useAppSelector((state) => state.profile.generalProfile);
+
   const params = useParams();
   const experience = useAppSelector((state) => state.experience.experience);
   const loadingState = useAppSelector((state) => state.experience.status);
-  const upDateState = useAppSelector((state) => state.upDate.numberOfUpdate);
-  const idProva = "63fc6e0af193e60013807f57";
-  useEffect(() => {
-    if (myProfile) {
-      params.id === "me" ? dispatch(expFetc(myProfile?._id)) : dispatch(expFetc(generalProfile?._id));
-    }
-  }, [params.id, generalProfile?._id, upDateState]);
+
+  // useEffect(() => {
+  //   if (myProfile) {
+  //     params.id === "me" ? dispatch(expFetc(myProfile?._id)) : dispatch(expFetc(generalProfile?._id));
+  //   }
+  // }, [params.id, generalProfile?._id, upDateState]);
 
   return (
     <Row className="border-1 border border-1 rounded mb-2 bg-white">
