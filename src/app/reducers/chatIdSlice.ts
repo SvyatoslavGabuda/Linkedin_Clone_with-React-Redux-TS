@@ -12,7 +12,7 @@ const chatIdSlice = createSlice({
   name: "chat",
   initialState,
   reducers: {
-    joinde(state, actions: PayloadAction<string>) {
+    joined(state, actions: PayloadAction<string>) {
       state.id = actions.payload;
     },
     leveRoom(state) {
@@ -20,5 +20,5 @@ const chatIdSlice = createSlice({
     },
   },
 });
-export const { joinde, leveRoom } = chatIdSlice.actions;
+export const { joined, leveRoom } = chatIdSlice.actions;
 export default chatIdSlice.reducer;
