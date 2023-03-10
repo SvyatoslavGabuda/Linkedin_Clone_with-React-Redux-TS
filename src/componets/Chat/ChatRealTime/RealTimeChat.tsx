@@ -10,6 +10,7 @@ import { RxCross2 } from "react-icons/rx";
 import "./RealTimeChat.scss";
 import { ChatMessage } from "../IoChat/Chat_Interfaces";
 import { Room } from "../IoChat/Chat_Interfaces";
+import { format } from "date-fns";
 
 interface RealTimeChatProps {
   socket: any;
@@ -42,6 +43,7 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
   const addMessage = (msg: ChatMessage) => {
     if (msg.RoomId === ChatStore) {
       setMessages((prevState) => [...prevState, msg]);
+      console.log(msg);
       // console.log("listened message");
       // console.log("testo messaggio", msg.content);
       // console.log("roomid", msg.RoomId, " - ", ChatStore);
@@ -117,9 +119,13 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
                   >
                     <p>{msg.content}</p>
                   </div>
-                  <h6>
-                    {msg.User.first_name} {msg.User.last_name}
-                  </h6>
+                  <div className="realChatUserContainer">
+                    <h6>
+                      {msg.User.first_name} {msg.User.last_name}
+                    </h6>
+                    <span className="px-2"> - </span>
+                    <span className="dateMessage">{format(new Date(msg.createdAt), "HH:mm")}</span>
+                  </div>
                 </div>
               </div>
             ))}
