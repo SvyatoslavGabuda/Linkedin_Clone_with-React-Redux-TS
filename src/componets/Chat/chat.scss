@@ -5,14 +5,14 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  height: 90vh;
+  height: 85vh;
   transition: all 0.5s ease;
   z-index: 10;
   border-radius: 10px 0 0 0;
   box-shadow: 2px 2px 30px rgba(117, 117, 117, 0.466);
 }
 .chat-closed {
-  transform: translateY(calc(90vh - 3rem));
+  transform: translateY(calc(85vh - 3rem));
 }
 .chat-profile-pic {
   width: 1.8rem;
@@ -37,11 +37,14 @@
   rotate: 180deg;
 }
 .chat-list {
+  height: 79vh;
   padding: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  overflow-y: overlay;
+  overflow-x: hidden;
 }
 .chatElement {
   display: flex;
