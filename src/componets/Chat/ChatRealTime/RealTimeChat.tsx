@@ -10,6 +10,7 @@ import { RxCross2 } from "react-icons/rx";
 import "./RealTimeChat.scss";
 import { ChatMessage } from "../IoChat/Chat_Interfaces";
 import { Room } from "../IoChat/Chat_Interfaces";
+import { ChatPutTitle } from "./ChatPutTitle";
 
 interface RealTimeChatProps {
   socket: any;
@@ -21,6 +22,7 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [msgContent, setMsgContent] = useState("");
   const [roomName, setRoomName] = useState("");
+  const [putShow, setputShow] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
 
   const ADDRESS = "https://chat-api-epicode.herokuapp.com";
@@ -37,6 +39,10 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
 
   const sendMessage = () => {
     socket.emit("sendMsg", { room: ChatStore, token: process.env.REACT_APP_BEARER, msg: msgContent });
+  };
+
+  const handleClosePut = () => {
+    setputShow(false);
   };
 
   const addMessage = (msg: ChatMessage) => {
@@ -87,9 +93,16 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
           </div>
         </div>
         <div className="RealTimeChatButtonsContainer d-flex justify-content-center align-items-center">
-          <button type="button" className="rounded-pill RealTimeChatlBtn me-1">
+          <button
+            type="button"
+            className="rounded-pill RealTimeChatlBtn me-1"
+            onClick={() => {
+              setputShow(true);
+            }}
+          >
             <BsThreeDots className="fs-5" />
           </button>
+          <ChatPutTitle show={putShow} handleClose={handleClosePut} id={ChatStore} oldName={roomName} />
           <button type="button" className="rounded-pill RealTimeChatlBtn me-1">
             <BsArrowsAngleContract className="fs-5" />
           </button>
@@ -102,19 +115,12 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
         <div className="RealTimeChatMessageArea" ref={listRef}>
           {messages.length > 0 &&
             messages.map((msg) => (
-              <div
-                className={profile._id === msg.User.linkedinId ? "d-flex flex-row-reverse p-2" : "d-flex p-2"}
-                key={msg.id}
-              >
+              <div className={profile._id === msg.User.linkedinId ? "d-flex flex-row-reverse p-2" : "d-flex p-2"} key={msg.id}>
                 <div>
                   <img src={msg.User.linkedinProPic} alt="Profile Img" />
                 </div>
                 <div className="ms-2" data-is="ciao">
-                  <div
-                    className={
-                      profile._id === msg.User.linkedinId ? "RealTimeMessageMe py-2 me-2" : "RealTimeMessage py-2"
-                    }
-                  >
+                  <div className={profile._id === msg.User.linkedinId ? "RealTimeMessageMe py-2 me-2" : "RealTimeMessage py-2"}>
                     <p>{msg.content}</p>
                   </div>
                   <h6>
@@ -151,32 +157,16 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
             <Row>
               <Col xs={4} className="d-flex justify-content-between w-100 p-1">
                 <div className="d-flex ms-2">
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill RealTimeChatlBtn me-0"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill RealTimeChatlBtn me-0">
                     <CgImage className="text-black" />
                   </Button>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill RealTimeChatlBtn me-0 px-2"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill RealTimeChatlBtn me-0 px-2">
                     <TiAttachment className="fs-5 text-black" />
                   </Button>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill RealTimeChatlBtnGif me-0"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill RealTimeChatlBtnGif me-0">
                     <MdGif className="fs-4 text-black" />
                   </Button>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill RealTimeChatlBtn me-0"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill RealTimeChatlBtn me-0">
                     <BiSmile className="text-black" />
                   </Button>
                 </div>
@@ -198,11 +188,7 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
                     </Button>
                   </div>
                   <div>
-                    <Button
-                      variant="outline-secondary border-0"
-                      type="button"
-                      className="rounded-pill RealTimeChatlBtn me-0"
-                    >
+                    <Button variant="outline-secondary border-0" type="button" className="rounded-pill RealTimeChatlBtn me-0">
                       <BsThreeDots className="text-black" />
                     </Button>
                   </div>
