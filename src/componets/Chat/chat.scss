@@ -45,6 +45,9 @@
 }
 .chatElement {
   display: flex;
+  cursor: pointer;
+  transition: 0.2s;
+  padding-top: 10px;
   font-size: 0.8rem;
   > div:first-child {
     width: 55px;
@@ -52,18 +55,23 @@
   > div:last-child {
     width: 45px;
   }
+  &:hover {
+    transition: 0.2s;
+    background-color: rgb(231, 231, 231);
+  }
 }
 .chatlistimg {
   width: 100%;
   aspect-ratio: 1/1;
   object-fit: cover;
   object-position: center;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
 }
 .chatbody {
   width: 164px;
   padding-bottom: 5px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid rgba(131, 129, 129, 0.363);
+  // margin-bottom: 10px;
+  // border-bottom: 1px solid rgba(131, 129, 129, 0.363);
   > p:first-child {
     margin-bottom: 5px;
   }
@@ -78,4 +86,12 @@
     display: block;
     margin-bottom: 5px;
   }
+}
+
+.horizontalLine {
+  transform: translateX(5px);
+  height: 1px;
+  width: 65%;
+  color: gray;
+  background-color: gray;
 }

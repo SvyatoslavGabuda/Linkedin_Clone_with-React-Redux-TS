@@ -109,18 +109,22 @@ export const Chat = () => {
             </div>
             <div>7 Feb</div>
           </div>
+          <hr className="p-0 m-0 horizontalLine" />
           {rooms.length > 0 &&
             rooms.map((el, i) => (
-              <div className="chatElement" key={el.id} onClick={() => setRoomId(el.id)}>
-                <div>
-                  <img src={i === 0 ? TsLogo : EpicodeLogo} alt="Profile" className="chatlistimg rounded-circle" />
+              <span key={el.id}>
+                <div className="chatElement pb-1" onClick={() => setRoomId(el.id)}>
+                  <div>
+                    <img src={i === 0 ? TsLogo : EpicodeLogo} alt="Profile" className="chatlistimg rounded-circle" />
+                  </div>
+                  <div className="chatbody px-2">
+                    <p>{el.name}</p>
+                    <p>Una macchinata di pazzi</p>
+                  </div>
+                  <div>{format(new Date(el.updatedAt), "d MMM")}</div>
                 </div>
-                <div className="chatbody px-2">
-                  <p>{el.name}</p>
-                  <p>Una macchinata di pazzi</p>
-                </div>
-                <div>{format(new Date(el.updatedAt), "d MMM")}</div>
-              </div>
+                <hr className="p-0 m-0 horizontalLine" style={{ transform: "translateX(50px)" }} />
+              </span>
             ))}
           <div className="chatElement">
             <div>
@@ -132,6 +136,7 @@ export const Chat = () => {
             </div>
             <div>7 Feb</div>
           </div>
+          <hr className="p-0 m-0 horizontalLine" />
           <div className="chatElement">
             <div>
               <img src="https://placekitten.com/100/230" alt="Profile" className="chatlistimg rounded-circle" />
@@ -142,6 +147,7 @@ export const Chat = () => {
             </div>
             <div>7 Feb</div>
           </div>
+          <hr className="p-0 m-0 horizontalLine" />
           <div className="chatElement">
             <div>
               <img src="https://placekitten.com/310/200" alt="Profile" className="chatlistimg rounded-circle" />
@@ -152,6 +158,7 @@ export const Chat = () => {
             </div>
             <div>5/10/11</div>
           </div>
+          <hr className="p-0 m-0 horizontalLine" />
         </div>
         {ChatStore !== "" && <RealTimeChat socket={socket} />}
       </div>
