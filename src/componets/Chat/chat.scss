@@ -1,0 +1,100 @@
+.chat {
+  background-color: white;
+  border: 1px solid rgba(128, 128, 128, 0.397);
+  width: 280px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 85vh;
+  transition: all 0.5s ease;
+  z-index: 10;
+  border-radius: 10px 0 0 0;
+  box-shadow: 2px 2px 30px rgba(117, 117, 117, 0.466);
+}
+.chat-closed {
+  transform: translateY(calc(85vh - 3rem));
+}
+.chat-profile-pic {
+  width: 1.8rem;
+  margin-right: 10px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+.chat-header {
+  > div:first-child {
+    display: flex;
+    align-items: center;
+  }
+  padding: 8px;
+  user-select: none;
+}
+.showchat {
+  color: gray;
+  transition: rotate 0.8s ease;
+}
+.hidechat {
+  rotate: 180deg;
+}
+.chat-list {
+  height: 79vh;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-y: overlay;
+  overflow-x: hidden;
+}
+.chatElement {
+  display: flex;
+  cursor: pointer;
+  transition: 0.2s;
+  padding-top: 10px;
+  font-size: 0.8rem;
+  > div:first-child {
+    width: 55px;
+  }
+  > div:last-child {
+    width: 45px;
+  }
+  &:hover {
+    transition: 0.2s;
+    background-color: rgb(231, 231, 231);
+  }
+}
+.chatlistimg {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: rgba(50, 50, 105, 0.15) 0px 2px 5px 0px, rgba(0, 0, 0, 0.05) 0px 1px 1px 0px;
+}
+.chatbody {
+  width: 164px;
+  padding-bottom: 5px;
+  // margin-bottom: 10px;
+  // border-bottom: 1px solid rgba(131, 129, 129, 0.363);
+  > p:first-child {
+    margin-bottom: 5px;
+  }
+  > p:last-child {
+    font-size: 0.66rem;
+    overflow: hidden;
+    max-height: 2rem;
+    line-height: 1rem;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    text-overflow: ellipsis;
+    display: block;
+    margin-bottom: 5px;
+  }
+}
+
+.horizontalLine {
+  transform: translateX(5px);
+  height: 1px;
+  width: 65%;
+  color: gray;
+  background-color: gray;
+}

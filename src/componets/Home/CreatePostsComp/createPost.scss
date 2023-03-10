@@ -1,0 +1,97 @@
+.createPost {
+  .createPostTextAreaOne {
+    img {
+      border-radius: 50%;
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: center;
+    }
+    .avviaPost {
+      margin-right: 10px;
+      height: 100%;
+      border: 1px solid darkgray;
+      cursor: pointer;
+      color: rgb(121, 121, 121);
+      user-select: none;
+      padding: 12px 18px;
+      &:hover {
+        background-color: lightgray;
+      }
+    }
+  }
+  .createPostTextAreaTwo {
+    @media screen and (max-width: 512px) {
+      > div:first-child {
+        flex-direction: column;
+        > div:last-child {
+          display: none;
+        }
+      }
+      button {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+    button {
+      > .row {
+        align-items: center;
+      }
+      div.col {
+        font-size: 0.8rem;
+      }
+    }
+    .btn {
+      color: gray;
+      font-weight: 500;
+    }
+    .photoIcon {
+      color: #378fe9;
+      font-size: 1.5em;
+    }
+    .playIcon {
+      color: #5f9b41;
+      font-size: 1.5em;
+    }
+    .calendarIcon {
+      color: #c37d16;
+      font-size: 1.5em;
+    }
+    .articleIcon {
+      color: #e16745;
+      font-size: 1.5em;
+    }
+  }
+}
+.modalRow {
+  img {
+    width: 60px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+  }
+  .chiunque {
+    padding: 5px 15px;
+  }
+}
+.modalBtn {
+  font-size: 1em;
+  margin-right: 10px;
+  padding: 5px 10px;
+  &:hover {
+    background-color: rgb(239, 238, 238);
+    color: gray;
+  }
+}
+
+.imagePosted {
+  background-color: #5f9b41;
+  color: white;
+  padding: 5px 10px;
+  &:hover {
+    background-color: #5f9b41;
+    color: white;
+    opacity: 0.8;
+  }
+}

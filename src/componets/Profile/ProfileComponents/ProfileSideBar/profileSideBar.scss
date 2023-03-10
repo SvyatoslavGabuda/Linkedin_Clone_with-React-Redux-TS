@@ -1,0 +1,106 @@
+// CSS sideBarUpperSection instructions
+.sideBarUpperSection {
+  .upperSectionLink {
+    color: grey;
+    font-size: 1rem;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline blueviolet;
+    }
+  }
+
+  .sideBarQuestionIcon {
+    font-size: 0.9rem;
+  }
+}
+
+// CSS BusinessSection instructions
+
+.sideBarItem {
+  max-width: 100%;
+  .sideBarCard {
+    .sideBarCardImg {
+      width: 48px;
+      height: 48px;
+      border-radius: 50px;
+      background-color: black;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .sideBarCardText {
+      max-width: 75%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      .itemLink {
+        text-decoration: none;
+        color: black;
+        font-size: inherit !important;
+      }
+
+      h4 {
+        font-size: 1.1em;
+        padding-bottom: 0.1em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        &:hover {
+          color: #0a66c2;
+          text-decoration: underline #0a66c2;
+        }
+      }
+
+      p {
+        font-size: 0.9em;
+        padding-bottom: 0.5em;
+
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media screen and (min-width: 768px) {
+          font-size: 0.8em;
+        }
+        @media screen and (min-width: 1200px) {
+          font-size: 0.9em;
+        }
+      }
+    }
+  }
+
+  .btn {
+    font-size: 0.8em;
+    // border-radius: 20px;
+    // padding: 5px 1.22em;
+    margin-left: 5em;
+    color: #6c757d;
+    // &:hover {
+    //   border: 1px solid grey;
+    //   color: black;
+    //   background-color: rgba(0, 0, 0, 0.144);
+    // }
+  }
+  .Button6 {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    color: #198754;
+    background-color: white;
+    box-shadow: inset 0 0 0 1px #198754;
+    margin-left: 5em;
+    font-size: 0.8em;
+    &:hover {
+      box-shadow: inset 0 0 0 2px #198754;
+      background-color: #1987544b;
+    }
+  }
+}
+
+.sideBarItemTitle {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

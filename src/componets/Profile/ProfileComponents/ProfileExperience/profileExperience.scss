@@ -1,0 +1,96 @@
+.modalExperience {
+  transition: 0.3s;
+  label {
+    font-size: 0.9rem;
+    color: gray;
+    margin-bottom: 4px;
+  }
+  .startexperience {
+    margin-right: 20px;
+  }
+}
+
+.disappearModal {
+  transition: 0.3s;
+  display: none !important;
+}
+
+.modalExpImgContent {
+  background-color: black;
+  .currentExpImage {
+    width: 70%;
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
+  }
+}
+.imageInputExp {
+  padding-top: 32px;
+}
+
+.expPutSubmitButton {
+  background-color: #0a66c2;
+  font-size: 14.4px;
+}
+
+#uploadExpButton {
+  color: grey;
+  transition: 0.2s;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  &:hover {
+    transition: 0.2s;
+    color: black;
+    background-color: rgb(197, 197, 197);
+  }
+}
+
+.inputLabelExp {
+  color: grey;
+  font-weight: 500;
+  transition: 0.2s;
+  border: 1px solid lightgray;
+  background-color: rgb(226, 226, 226);
+  border-radius: 5px;
+
+  &:hover {
+    transition: 0.2s;
+    color: black;
+    background-color: rgb(197, 197, 197);
+  }
+  input[type="file"] {
+    display: none;
+  }
+}
+
+.savePutButton {
+  background-color: #0a66c2;
+  font-weight: 500;
+  border: #0a66c2;
+
+  &:hover {
+    background-color: #09529b;
+  }
+}
+
+.littlePenExp {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: fit-content;
+  transition: 0.2s;
+
+  &:hover {
+    transition: 0.2s;
+    background-color: rgb(226, 226, 226);
+  }
+}
+
+.IconPenContainer {
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+  &:hover {
+    transition: 0.2s;
+    background-color: rgb(226, 226, 226);
+  }
+}

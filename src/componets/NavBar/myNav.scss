@@ -1,0 +1,133 @@
+.navbar-brand {
+  font-size: 2rem;
+  scale: 1.15;
+}
+.nav-link-top {
+  min-width: 75px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  transition: all 0.5s ease;
+  svg {
+    font-size: 1.5rem;
+  }
+  span.navlabel {
+    font-size: 0.8rem;
+  }
+}
+.profilenav {
+  text-align: center;
+}
+#navbarScrollingDropdown {
+  font-size: 0.8rem;
+  padding: 0;
+}
+.nav-profile-pic {
+  width: 1.5rem;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  object-position: center;
+}
+.nav-link-active {
+  border-bottom: 2px solid black;
+  margin-bottom: -1px;
+  color: black;
+  > div > a {
+    color: black;
+  }
+}
+#navbarScrollingDropdown {
+  a {
+    color: black;
+    &:hover {
+      color: lightblue;
+    }
+  }
+}
+#navbarScroll {
+  @media screen and (min-width: 568px) and (max-width: 768px) {
+    .navbar-nav > a:last-child {
+      display: none;
+    }
+  }
+  @media screen and (max-width: 576px) {
+    .navbar-nav {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: row;
+      overflow: hidden;
+    }
+    .navlabel {
+      display: none;
+    }
+    .nav-link-top {
+      min-width: unset;
+    }
+    .dropdown {
+      display: none;
+    }
+    .min75md {
+      min-width: unset !important;
+    }
+  }
+  .min75md {
+    min-width: 75px;
+  }
+  .dropdown-menu {
+    width: 270px;
+    padding: 10px;
+    box-shadow: 5px 5px 15px rgba(143, 143, 143, 0.527);
+  }
+  .ddprofileimg {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: center;
+  }
+  .dd-profile {
+    display: flex;
+    font-size: 0.8rem;
+    > div:first-child {
+      width: 70px;
+    }
+  }
+  .ddprofilebody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    > p {
+      font-size: 0.66rem;
+      overflow: hidden;
+      max-height: 1rem;
+      line-height: 1rem;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 5;
+      text-overflow: ellipsis;
+      display: block;
+      user-select: none;
+    }
+  }
+  .openprofilebtnnav {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 0.96rem;
+    color: #1461c2;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  hr {
+    color: lightgray;
+    margin: 10px 0;
+  }
+  .nav-link:not(:first-of-type) {
+    font-size: 0.8rem;
+    padding: 5px 0;
+  }
+  h6 {
+    font-weight: 600;
+    user-select: none;
+  }
+}
