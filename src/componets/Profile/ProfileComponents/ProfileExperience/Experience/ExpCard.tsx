@@ -35,7 +35,7 @@ export const ExpCard = ({ myExp, index }: ExpCardProps) => {
           </div>
         </div>
         {params.id === "me" && (
-          <div>
+          <span className="p-1 littlePenExp rounded">
             <HiOutlinePencil
               onClick={(e) => {
                 e.preventDefault();
@@ -44,7 +44,7 @@ export const ExpCard = ({ myExp, index }: ExpCardProps) => {
                 dispatch(addExperience(myExp));
               }}
             />
-          </div>
+          </span>
         )}
       </span>
     </>

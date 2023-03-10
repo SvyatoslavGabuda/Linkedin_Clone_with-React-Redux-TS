@@ -236,7 +236,7 @@ export const ExperiencePutModalComponent = () => {
               >
                 Elimina esperienza
               </Button>
-              <Button variant="primary" type="submit">
+              <Button className="savePutButton px-4" type="submit">
                 Salva
               </Button>
             </Modal.Footer>

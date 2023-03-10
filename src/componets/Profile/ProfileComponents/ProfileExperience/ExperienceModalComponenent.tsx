@@ -37,17 +37,14 @@ export const ExperienceModalComponent = () => {
   // Fetch to POST a new Experience
   const postNewExperience = async () => {
     try {
-      const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/profile/${user?._id}/experiences`,
-        {
-          method: "POST",
-          body: JSON.stringify(experience),
-          headers: {
-            Authorization: process.env.REACT_APP_BEARER || "nonandra",
-            "content-type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/profile/${user?._id}/experiences`, {
+        method: "POST",
+        body: JSON.stringify(experience),
+        headers: {
+          Authorization: process.env.REACT_APP_BEARER || "nonandra",
+          "content-type": "application/json",
+        },
+      });
       let existingExperience = await response.json();
       if (response.ok) {
         console.log("POST completata");
@@ -108,12 +105,7 @@ export const ExperienceModalComponent = () => {
 
   return (
     <>
-      <Modal
-        show={showExpM}
-        onHide={() => dispatch(hideExpM())}
-        size="lg"
-        className="modalExperience"
-      >
+      <Modal show={showExpM} onHide={() => dispatch(hideExpM())} size="lg" className="modalExperience">
         <Form
           onSubmit={(e) => {
             e.preventDefault();
@@ -220,7 +212,7 @@ export const ExperienceModalComponent = () => {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" type="submit">
+            <Button className="savePutButton px-4" type="submit">
               Salva
             </Button>
           </Modal.Footer>

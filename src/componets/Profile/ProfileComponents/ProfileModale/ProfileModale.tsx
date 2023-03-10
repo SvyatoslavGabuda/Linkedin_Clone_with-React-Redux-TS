@@ -145,7 +145,7 @@ export const ProfileModale = () => {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="primary" type="submit">
+            <Button className="savePutButton px-4" type="submit">
               Salva
             </Button>
             {/*             <Button variant="secondary" onClick={() => dispatch(hideM())}>

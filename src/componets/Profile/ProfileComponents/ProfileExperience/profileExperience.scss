@@ -61,3 +61,36 @@
     display: none;
   }
 }
+
+.savePutButton {
+  background-color: #0a66c2;
+  font-weight: 500;
+  border: #0a66c2;
+
+  &:hover {
+    background-color: #09529b;
+  }
+}
+
+.littlePenExp {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: fit-content;
+  transition: 0.2s;
+
+  &:hover {
+    transition: 0.2s;
+    background-color: rgb(226, 226, 226);
+  }
+}
+
+.IconPenContainer {
+  display: flex;
+  align-items: center;
+  transition: 0.2s;
+  &:hover {
+    transition: 0.2s;
+    background-color: rgb(226, 226, 226);
+  }
+}

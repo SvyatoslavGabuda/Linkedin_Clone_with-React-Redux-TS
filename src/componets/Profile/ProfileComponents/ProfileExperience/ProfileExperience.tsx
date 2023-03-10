@@ -30,7 +30,9 @@ export const ProfileExperience = () => {
             {loadingState === "loading" && <Spinner animation="grow" variant="info" />}
             {params.id === "me" && (
               <div style={{ cursor: "pointer" }} onClick={() => dispatch(showExpM())}>
-                <GrAdd className="IconPen" />
+                <span className="p-1 IconPenContainer rounded">
+                  <GrAdd className="IconPen" />
+                </span>
               </div>
             )}
           </div>

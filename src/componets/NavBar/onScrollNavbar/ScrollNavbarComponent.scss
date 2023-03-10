@@ -190,7 +190,7 @@
     &:hover {
       transition: 0.2s;
       background-color: #0a4a8a;
-      border: 1px solid #0956a3;
+      box-shadow: inset 0 0 0 2px #0a4a8a;
     }
   }
 }

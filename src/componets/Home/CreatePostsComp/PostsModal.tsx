@@ -127,11 +127,7 @@ export const PostsModal = () => {
             <Modal.Footer className="justify-content-between">
               <Row>
                 <Col>
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <BsEmojiSmile />
                   </Button>
                 </Col>
@@ -140,17 +136,10 @@ export const PostsModal = () => {
                 <Col className="d-flex align-items-center">
                   <Form.Label
                     htmlFor="newPostImage"
-                    className={
-                      imageAvailable ? "rounded-pill modalBtn imagePosted" : "rounded-pill modalBtn"
-                    }
+                    className={imageAvailable ? "rounded-pill modalBtn imagePosted" : "rounded-pill modalBtn"}
                   >
                     <BsImage />
-                    <input
-                      type="file"
-                      id="newPostImage"
-                      style={{ display: "none" }}
-                      onChange={handleFile}
-                    />
+                    <input type="file" id="newPostImage" style={{ display: "none" }} onChange={handleFile} />
                   </Form.Label>
                   <Form.Label className="rounded-pill modalBtn">
                     <BsPlayBtnFill />
@@ -166,11 +155,7 @@ export const PostsModal = () => {
                   </Form.Label>
                 </Col>
                 <Col xs={4} className="d-flex align-items-center">
-                  <Button
-                    variant="outline-secondary border-0"
-                    type="button"
-                    className="rounded-pill modalBtn"
-                  >
+                  <Button variant="outline-secondary border-0" type="button" className="rounded-pill modalBtn">
                     <AiOutlineClockCircle />
                   </Button>
                   <Button
