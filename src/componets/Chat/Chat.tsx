@@ -12,6 +12,7 @@ import { joined, leveRoom } from "../../app/reducers/chatIdSlice";
 import TsLogo from "../Profile/ProfileComponents/ProfileCard/Assets/Typescript_logo_2020.svg.png";
 import EpicodeLogo from "../Profile/ProfileComponents/ProfileCard/Assets/original.png";
 import { RealTimeChat } from "./ChatRealTime/RealTimeChat";
+import { ChatNewModal } from "./ChatRealTime/ChatNewModal";
 
 export const Chat = () => {
   const ADDRESS = "https://chat-api-epicode.herokuapp.com";
@@ -19,6 +20,7 @@ export const Chat = () => {
   const dispatch = useAppDispatch();
   const ChatStore = useAppSelector((state) => state.chat.id);
   const [rooms, setRooms] = useState<Room[]>([]);
+  const [newChat, setNewChat] = useState(false);
   const [connected, setConnected] = useState<boolean>(false);
   const [onlineUsers, setOnlineUsers] = useState<User[]>([]);
 
@@ -54,12 +56,7 @@ export const Chat = () => {
   return (
     <>
       <div className={show ? "d-none d-sm-block chat" : "d-none d-sm-block chat chat-closed"}>
-        <div
-          className="chat-header d-flex justify-content-between"
-          onClick={() => {
-            setShow(!show);
-          }}
-        >
+        <div className="chat-header d-flex justify-content-between">
           <div>
             <div style={{ position: "relative" }}>
               <img className="chat-profile-pic rounded-circle" src={myProfile?.image} alt="Profile" />
@@ -80,8 +77,24 @@ export const Chat = () => {
           </div>
           <span>
             <TfiMoreAlt style={{ marginRight: "15px", scale: "0.9" }} />
-            <SlNote style={{ marginRight: "12px", scale: "0.9" }} />
-            <BiUpArrow className={show ? "showchat hidechat" : "showchat"} />
+            <SlNote
+              style={{ marginRight: "12px", scale: "0.9" }}
+              onClick={() => {
+                setNewChat(true);
+              }}
+            />
+            <BiUpArrow
+              className={show ? "showchat hidechat" : "showchat"}
+              onClick={() => {
+                setShow(!show);
+              }}
+            />
+            <ChatNewModal
+              handleClose={() => {
+                setNewChat(false);
+              }}
+              show={newChat}
+            />
           </span>
         </div>
         <div className="chat-list">

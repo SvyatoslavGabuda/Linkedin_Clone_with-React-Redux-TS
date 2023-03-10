@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Form, Row, Col, Button } from "react-bootstrap";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { CgImage } from "react-icons/cg";
 import { TiAttachment } from "react-icons/ti";
 import { MdGif } from "react-icons/md";
@@ -11,6 +11,8 @@ import "./RealTimeChat.scss";
 import { ChatMessage } from "../IoChat/Chat_Interfaces";
 import { Room } from "../IoChat/Chat_Interfaces";
 import { format } from "date-fns";
+import { ChatPutTitle } from "./ChatPutTitle";
+import { leveRoom } from "../../../app/reducers/chatIdSlice";
 
 interface RealTimeChatProps {
   socket: any;
@@ -19,9 +21,11 @@ interface RealTimeChatProps {
 export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
   const profile = useAppSelector((state) => state.profile.myProfile);
   const ChatStore = useAppSelector((state) => state.chat.id);
+  const dispatch = useAppDispatch();
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [msgContent, setMsgContent] = useState("");
   const [roomName, setRoomName] = useState("");
+  const [putShow, setputShow] = useState(false);
   const listRef = useRef<HTMLDivElement>(null);
 
   const ADDRESS = "https://chat-api-epicode.herokuapp.com";
@@ -38,6 +42,10 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
 
   const sendMessage = () => {
     socket.emit("sendMsg", { room: ChatStore, token: process.env.REACT_APP_BEARER, msg: msgContent });
+  };
+
+  const handleClosePut = () => {
+    setputShow(false);
   };
 
   const addMessage = (msg: ChatMessage) => {
@@ -89,13 +97,26 @@ export const RealTimeChat = ({ socket }: RealTimeChatProps) => {
           </div>
         </div>
         <div className="RealTimeChatButtonsContainer d-flex justify-content-center align-items-center">
-          <button type="button" className="rounded-pill RealTimeChatlBtn me-1">
+          <button
+            type="button"
+            className="rounded-pill RealTimeChatlBtn me-1"
+            onClick={() => {
+              setputShow(true);
+            }}
+          >
             <BsThreeDots className="fs-5" />
           </button>
+          <ChatPutTitle show={putShow} handleClose={handleClosePut} id={ChatStore} oldName={roomName} />
           <button type="button" className="rounded-pill RealTimeChatlBtn me-1">
             <BsArrowsAngleContract className="fs-5" />
           </button>
-          <button type="button" className="rounded-pill RealTimeChatlBtn me-0">
+          <button
+            type="button"
+            className="rounded-pill RealTimeChatlBtn me-0"
+            onClick={() => {
+              dispatch(leveRoom());
+            }}
+          >
             <RxCross2 className="fs-5" />
           </button>
         </div>
