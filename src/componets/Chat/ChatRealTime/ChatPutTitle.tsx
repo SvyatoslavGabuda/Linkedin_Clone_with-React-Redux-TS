@@ -1,5 +1,5 @@
 import { Button, Modal } from "react-bootstrap";
-import { FormHTMLAttributes, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface IChatPutProps {
   show: boolean;
@@ -27,11 +27,14 @@ export const ChatPutTitle = ({ show, handleClose, id, oldName }: IChatPutProps) 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name }),
       });
-      console.log("fetchfinita");
     } catch (e) {
       console.log("è esploso tutto!");
     }
   };
+
+  useEffect(() => {
+    setName(oldName);
+  }, [oldName]);
 
   return (
     <Modal show={show} onHide={handleClose}>
