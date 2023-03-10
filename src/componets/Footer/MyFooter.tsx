@@ -11,7 +11,7 @@ const MyFooter = () => {
         <Container>
           <Row>
             <Col>
-              <img className="footer-logo" src="logo.webp" alt="Linkedin Logo" height={"24px"} />
+              <img className="footer-logo" src="/logo.webp" alt="Linkedin Logo" height={"24px"} />
             </Col>
           </Row>
           <Row className="">

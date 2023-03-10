@@ -170,15 +170,12 @@ export const ProfileCard = ({ profile }: ProfileCardProps) => {
                       {params.id === "me" ? "Aggiungi sezione del profilo" : "Segui"}
                     </button>
                   </div>
-                  <div className="position relative">
+                  <div className="position-relative">
                     <button className="rounded-pill py-1 Button3" onClick={handleMenuClick}>
                       Altro
                     </button>
                     {isMenuOpen && (
-                      <div
-                        className="ProfileCArdDropDownMenu border border-1 bg-white py-2"
-                        style={{ bottom: `${params.id === "me" ? "16" : verifyUser ? "5.5" : "8"}rem` }}
-                      >
+                      <div className="ProfileCArdDropDownMenu border border-1 bg-white py-2" style={{ top: `130%` }}>
                         <div className="RemoveLink px-2 py-2 d-flex align-items-center">
                           <div className="mx-2">
                             <BsArrow90DegRight className="ProfileIconDropDown" />

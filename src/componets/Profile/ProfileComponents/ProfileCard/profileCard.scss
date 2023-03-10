@@ -160,13 +160,15 @@ ul {
   }
 }
 
-section {
-  border-radius: 10px;
-  overflow: hidden;
-  a {
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
+.ProfileCardFullContainer {
+  section {
+    border-radius: 10px;
+    // overflow: hidden;
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -221,6 +223,7 @@ section {
 .ProfileCArdDropDownMenu {
   position: absolute;
   // bottom: 3.5rem;
+  min-width: 280px;
   z-index: 4;
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
