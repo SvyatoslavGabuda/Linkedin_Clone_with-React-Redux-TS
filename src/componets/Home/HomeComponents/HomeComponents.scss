@@ -459,6 +459,10 @@
           text-decoration: none;
           cursor: pointer;
           margin-bottom: 0;
+          &:hover {
+            color: #0a66c2;
+            text-decoration: underline;
+          }
         }
       }
 
@@ -509,6 +513,32 @@
   top: 100%;
   right: 2%;
   z-index: 2000;
+}
+
+.commentOptionsContainer {
+  transform: translateX(75px);
+  font-size: 0.8em;
+
+  @media screen and (min-width: 992px) {
+    transform: translateX(80px);
+  }
+  @media screen and (min-width: 1200px) {
+    transform: translateX(85px);
+  }
+
+  p {
+    color: gray;
+    transition: 0.2s;
+    &:hover {
+      text-decoration: underline;
+      color: #3b3b3b;
+      background-color: rgb(236, 236, 236);
+      transition: 0.2s;
+    }
+  }
+  span {
+    color: gray;
+  }
 }
 
 // CSS instructions for PUT modal comments

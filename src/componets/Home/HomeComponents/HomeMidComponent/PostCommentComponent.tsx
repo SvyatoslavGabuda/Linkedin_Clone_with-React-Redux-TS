@@ -64,7 +64,7 @@ export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) 
 
   return (
     <>
-      <Col xs={11} className="singlePostComment d-flex mb-4">
+      <Col xs={11} className="singlePostComment d-flex">
         <img
           src={userFound?.image === undefined ? Template : userFound.image}
           alt="user pic"
@@ -180,6 +180,11 @@ export const PostCommentComponent = ({ comment, fetchAgain }: PostCommentProps) 
           )}
         </Card>
       </Col>
+      <div className="d-flex align-items-center mb-3 mt-1 commentOptionsContainer">
+        <p className="px-1 rounded">Consiglia</p>
+        <span className="px-2">|</span>
+        <p className="px-1 rounded">Rispondi</p>
+      </div>
       <PostCommentPUTModal toPut={putComment} fetchAgain={fetchAgain} closeModal={closeModal} />
     </>
   );
